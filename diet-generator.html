@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Macro Ledger — Whole-Food Diet Planner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="diet-generator.css">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+
+<header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+         <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+
+<!-- ══════════════════════════ TOAST ══════════════════════════ -->
+<div class="toast" id="toast">
+  <i class="fa-solid fa-circle-check"></i>
+  <span id="toastMsg">Done!</span>
+</div>
+</header>
+
+<main>
+<div id="loading-overlay">
+  <div class="spinner"></div>
+  <p>Crafting your personalized diet plan…</p>
+</div>
+<div id="toast"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-content">
+    <h1>Diet Generator</h1>
+    <p>Create a personalized diet plan tailored to your goals, lifestyle, and nutritional needs.</p>
+    <div class="hero-badges">
+      <div class="badge">
+        <div class="badge-icon"><i class="fa-solid fa-user"></i></div>
+        <div class="badge-text"><strong>Personalized</strong><span>Plans for you</span></div>
+      </div>
+      <div class="badge">
+        <div class="badge-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+        <div class="badge-text"><strong>Balanced</strong><span>Nutrition</span></div>
+      </div>
+      <div class="badge">
+        <div class="badge-icon"><i class="fa-solid fa-microscope"></i></div>
+        <div class="badge-text"><strong>Science Based</strong><span>Results</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- MAIN -->
+<div class="main-wrap">
+  <div class="two-col">
+ 
+    <!-- FORM -->
+    <div class="form-panel">
+ 
+      <!-- STEP 1: GOAL -->
+      <div class="step-section">
+        <div class="step-header">
+          <div class="step-num">1</div>
+          <h3>Your Goal</h3>
+        </div>
+        <div class="goal-grid" id="goalGrid">
+          <button class="goal-btn active" data-goal="fat_loss" onclick="selectGoal(this)"><i class="fa-solid fa-fire g-icon"></i> Fat Loss</button>
+          <button class="goal-btn" data-goal="muscle_gain" onclick="selectGoal(this)"><i class="fa-solid fa-dumbbell g-icon"></i> Muscle Gain</button>
+          <button class="goal-btn" data-goal="maintenance" onclick="selectGoal(this)"><i class="fa-solid fa-scale-balanced g-icon"></i> Maintenance</button>
+          <button class="goal-btn" data-goal="weight_gain" onclick="selectGoal(this)"><i class="fa-solid fa-chart-line g-icon"></i> Weight Gain</button>
+          <button class="goal-btn" data-goal="testosterone" onclick="selectGoal(this)"><i class="fa-solid fa-bolt g-icon"></i> Testosterone Boost</button>
+          <button class="goal-btn" data-goal="endurance" onclick="selectGoal(this)"><i class="fa-solid fa-person-running g-icon"></i> Endurance</button>
+          <button class="goal-btn" data-goal="keto" onclick="selectGoal(this)"><i class="fa-solid fa-leaf g-icon"></i> Keto</button>
+          <button class="goal-btn" data-goal="hormonal" onclick="selectGoal(this)"><i class="fa-solid fa-venus g-icon"></i> Hormonal Balance</button>
+        </div>
+      </div>
+ 
+      <!-- STEP 2: DETAILS -->
+      <div class="step-section">
+        <div class="step-header">
+          <div class="step-num">2</div>
+          <h3>Your Details</h3>
+        </div>
+        <div class="details-grid">
+          <div class="field">
+            <label>Age</label>
+            <input type="number" id="age" value="28" min="15" max="80">
+          </div>
+          <div class="field">
+            <label>Gender</label>
+            <div class="gender-toggle">
+              <button class="gender-btn active" onclick="selectGender(this,'male')"><i class="fa-solid fa-mars"></i> Male</button>
+              <button class="gender-btn" onclick="selectGender(this,'female')"><i class="fa-solid fa-venus"></i> Female</button>
+            </div>
+          </div>
+          <div class="field">
+            <label>Weight (kg)</label>
+            <input type="number" id="weight" value="70" min="30" max="200">
+          </div>
+          <div class="field">
+            <label>Height (cm)</label>
+            <input type="number" id="height" value="175" min="100" max="230">
+          </div>
+          <div class="field full">
+            <label>Activity Level</label>
+            <select id="activity">
+              <option value="1.2">Sedentary (desk job, little exercise)</option>
+              <option value="1.375">Lightly Active (1–3 days/week)</option>
+              <option value="1.55" selected>Moderately Active (3–5 days/week)</option>
+              <option value="1.725">Very Active (6–7 days/week)</option>
+              <option value="1.9">Extremely Active (twice/day training)</option>
+            </select>
+          </div>
+          <div class="field full">
+            <label>Body Goal Timeline</label>
+            <select id="timeline">
+              <option value="4">4 Weeks</option>
+              <option value="8" selected>8 Weeks</option>
+              <option value="12">12 Weeks</option>
+              <option value="16">16 Weeks</option>
+              <option value="24">24 Weeks</option>
+            </select>
+          </div>
+        </div>
+      </div>
+ 
+      <!-- STEP 3: PREFERENCES -->
+      <div class="step-section">
+        <div class="step-header">
+          <div class="step-num">3</div>
+          <h3>Preferences</h3>
+        </div>
+ 
+        <span class="pref-label">Diet Type</span>
+        <div class="toggle-row" id="dietTypeRow">
+          <button class="tog-btn" data-val="vegetarian" onclick="selectTog(this,'dietTypeRow')">Vegetarian</button>
+          <button class="tog-btn active" data-val="non_veg" onclick="selectTog(this,'dietTypeRow')">Non-Vegetarian</button>
+          <button class="tog-btn" data-val="vegan" onclick="selectTog(this,'dietTypeRow')">Vegan</button>
+          <button class="tog-btn" data-val="pescatarian" onclick="selectTog(this,'dietTypeRow')">Pescatarian</button>
+        </div>
+ 
+        <span class="pref-label">Supplements</span>
+        <div class="toggle-row" id="suppRow">
+          <button class="tog-btn active" data-val="with_supps" onclick="selectTog(this,'suppRow')">With Supplements</button>
+          <button class="tog-btn" data-val="no_supps" onclick="selectTog(this,'suppRow')">No Supplements</button>
+        </div>
+ 
+        <span class="pref-label">Meals Per Day</span>
+        <div class="toggle-row" id="mealsRow">
+          <button class="tog-btn" data-val="3" onclick="selectTog(this,'mealsRow')">3 Meals</button>
+          <button class="tog-btn active" data-val="4" onclick="selectTog(this,'mealsRow')">4 Meals</button>
+          <button class="tog-btn" data-val="5" onclick="selectTog(this,'mealsRow')">5 Meals</button>
+          <button class="tog-btn" data-val="6" onclick="selectTog(this,'mealsRow')">6 Meals</button>
+        </div>
+ 
+        <span class="pref-label">Cooking Preference</span>
+        <div class="toggle-row" id="cookRow">
+          <button class="tog-btn active" data-val="low" onclick="selectTog(this,'cookRow')">Low Time</button>
+          <button class="tog-btn" data-val="medium" onclick="selectTog(this,'cookRow')">Medium</button>
+          <button class="tog-btn" data-val="high" onclick="selectTog(this,'cookRow')">No Limit</button>
+        </div>
+ 
+        <span class="pref-label">Food Allergies / Avoid</span>
+        <div class="field" style="margin-top:4px">
+          <input type="text" id="allergies" placeholder="e.g. Nuts, Dairy, Gluten">
+        </div>
+      </div>
+ 
+      <button class="gen-btn" onclick="generateDiet()" id="genBtn">
+        <i class="fa-solid fa-wand-magic-sparkles"></i> Generate My Diet Plan
+      </button>
+    </div>
+ 
+    <!-- RIGHT -->
+    <div class="right-panel" id="rightPanel">
+ 
+      <!-- Empty state -->
+      <div class="empty-state" id="emptyState">
+        <div class="e-icon"><i class="fa-solid fa-bowl-food"></i></div>
+        <h4>Your diet plan will appear here</h4>
+        <p>Fill in your details and click Generate to get a personalized plan with meals, macros, supplements &amp; grocery list.</p>
+      </div>
+ 
+    </div>
+  </div>
+ 
+  <!-- WHY -->
+  <div class="why-section" style="margin-top:28px">
+    <h3>Why Our Diet Plans Work?</h3>
+    <p>We combine science, experience, and personalization to help you get real results.</p>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-seedling"></i></div>
+        <strong>Balanced Nutrition</strong>
+        <span>Right macros for you</span>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-rotate"></i></div>
+        <strong>Sustainable &amp; Flexible</strong>
+        <span>Easy to follow</span>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-apple-whole"></i></div>
+        <strong>Real Food Focus</strong>
+        <span>No crash diets</span>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="fa-solid fa-chart-bar"></i></div>
+        <strong>Proven Results</strong>
+        <span>Backed by science</span>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- 7-DAY MODAL -->
+<div id="plan-modal" onclick="closeModal(event)">
+  <div class="plan-modal-inner">
+    <div class="modal-header">
+      <h3><i class="fa-solid fa-calendar-days"></i> Complete 7-Day Meal Plan</h3>
+      <button class="modal-close" onclick="document.getElementById('plan-modal').style.display='none'"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="days-wrap" id="daysContent"></div>
+  </div>
+</div>
+ 
+</main>
+
+<!-- ============ FOOTER ============ -->
+    <footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+
+  
+/* ── NAVBAR SCROLL SHADOW ───────────────────────────────────── */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+});
+
+           // navbar responsive
+const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const icon = menu.querySelector("i");
+
+menu.onclick = function () {
+    navLinks.classList.toggle("active");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+};
+
+/* ── TOAST ──────────────────────────────────────────────────── */
+let toastTimer1;
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMsg').innerHTML = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+ /* ════════════════════════════════════════════════════════════
+   MACRO LEDGER — whole foods only, no recipes.
+   All values per 100g edible portion (cooked unless noted).
+   ════════════════════════════════════════════════════════════ */
+   // ── FA icon map for meals (replaces emoji) ──
+const mealIcons = {
+  breakfast:   'fa-solid fa-mug-hot',
+  morning:     'fa-solid fa-sun',
+  lunch:       'fa-solid fa-utensils',
+  pre:         'fa-solid fa-bolt',
+  post:        'fa-solid fa-trophy',
+  afternoon:   'fa-solid fa-cookie-bite',
+  evening:     'fa-solid fa-moon',
+  dinner:      'fa-solid fa-plate-wheat',
+  bedtime:     'fa-solid fa-bed',
+  before:      'fa-solid fa-bed',
+  recovery:    'fa-solid fa-heart-pulse',
+  snack:       'fa-solid fa-apple-whole',
+};
+ 
+function getMealIcon(mealName) {
+  const key = mealName.toLowerCase().split(' ')[0];
+  return mealIcons[key] || 'fa-solid fa-circle-dot';
+}
+ 
+// ── Supplement icon map ──
+const suppIcons = {
+  'whey':        'fa-solid fa-flask',
+  'fat burner':  'fa-solid fa-fire',
+  'l-carnitine': 'fa-solid fa-heart-pulse',
+  'green tea':   'fa-solid fa-leaf',
+  'multivitamin':'fa-solid fa-pills',
+  'electrolytes':'fa-solid fa-droplet',
+  'creatine':    'fa-solid fa-atom',
+  'bcaa':        'fa-solid fa-dna',
+  'mass gainer': 'fa-solid fa-weight-scale',
+  'zinc':        'fa-solid fa-shield',
+  'magnesium':   'fa-solid fa-moon',
+  'vitamin d':   'fa-solid fa-sun',
+  'omega':       'fa-solid fa-fish',
+  'ashwagandha': 'fa-solid fa-spa',
+  'tongkat':     'fa-solid fa-seedling',
+  'vitex':       'fa-solid fa-venus',
+  'maca':        'fa-solid fa-mountain',
+  'inositol':    'fa-solid fa-star',
+  'beta':        'fa-solid fa-bolt',
+  'beetroot':    'fa-solid fa-circle',
+  'iron':        'fa-solid fa-circle-dot',
+  'b-complex':   'fa-solid fa-tablets',
+  'mct oil':     'fa-solid fa-oil-can',
+  'potassium':   'fa-solid fa-droplet',
+  'casein':      'fa-solid fa-flask',
+};
+ 
+function getSuppIcon(name) {
+  const key = name.toLowerCase();
+  for (const [k,v] of Object.entries(suppIcons)) {
+    if (key.includes(k)) return v;
+  }
+  return 'fa-solid fa-capsules';
+}
+ 
+// ── STATE ──
+let currentGoal = 'fat_loss';
+let currentGender = 'male';
+let dietType = 'non_veg';
+let suppChoice = 'with_supps';
+let mealsPerDay = 4;
+let cookPref = 'low';
+let generatedData = null;
+ 
+function selectGoal(btn) {
+  document.querySelectorAll('.goal-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentGoal = btn.dataset.goal;
+}
+function selectGender(btn, g) {
+  document.querySelectorAll('.gender-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  currentGender = g;
+}
+function selectTog(btn, rowId) {
+  document.querySelectorAll(`#${rowId} .tog-btn`).forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (rowId === 'dietTypeRow') dietType = btn.dataset.val;
+  if (rowId === 'suppRow') suppChoice = btn.dataset.val;
+  if (rowId === 'mealsRow') mealsPerDay = parseInt(btn.dataset.val);
+  if (rowId === 'cookRow') cookPref = btn.dataset.val;
+}
+ 
+// ── CALORIE CALCULATOR (Mifflin-St Jeor) ──
+function calcCalories() {
+  const w = parseFloat(document.getElementById('weight').value) || 70;
+  const h = parseFloat(document.getElementById('height').value) || 175;
+  const a = parseFloat(document.getElementById('age').value) || 28;
+  const act = parseFloat(document.getElementById('activity').value) || 1.55;
+  let bmr = currentGender === 'male'
+    ? 10*w + 6.25*h - 5*a + 5
+    : 10*w + 6.25*h - 5*a - 161;
+  let tdee = Math.round(bmr * act);
+  let calories, protein, carbs, fats;
+  const goalMods = {
+    fat_loss:    { cal: -400, p: 2.2, f: 0.9 },
+    muscle_gain: { cal: +300, p: 2.0, f: 1.0 },
+    maintenance: { cal:    0, p: 1.8, f: 1.0 },
+    weight_gain: { cal: +500, p: 1.8, f: 1.1 },
+    testosterone:{ cal: +100, p: 1.8, f: 1.2 },
+    endurance:   { cal:  +50, p: 1.6, f: 0.8 },
+    keto:        { cal: -300, p: 1.8, f: 1.5 },
+    hormonal:    { cal:    0, p: 1.7, f: 1.1 },
+  };
+  const mod = goalMods[currentGoal] || goalMods.maintenance;
+  calories = tdee + mod.cal;
+  protein  = Math.round(w * mod.p);
+  fats     = Math.round(w * mod.f);
+  if (currentGoal === 'keto') {
+    carbs = Math.round((calories - protein*4 - fats*9) / 4);
+    carbs = Math.max(carbs, 20);
+  } else {
+    carbs = Math.round((calories - protein*4 - fats*9) / 4);
+  }
+  calories = Math.round(calories);
+  return { calories, protein, carbs, fats };
+}
+ 
+// ── DIET DATA ──
+const dietDB = {
+  fat_loss: {
+    label: 'Fat Loss',
+    meals: {
+      non_veg: [
+        { name:'Breakfast', desc:'Egg white omelette with spinach & whole grain toast', kcal: 380 },
+        { name:'Morning Snack', desc:'Apple with 2 tbsp almond butter', kcal: 180 },
+        { name:'Lunch', desc:'Grilled chicken breast, quinoa & mixed greens', kcal: 520 },
+        { name:'Evening Snack', desc:'Greek yogurt with berries', kcal: 150 },
+        { name:'Dinner', desc:'Baked salmon, steamed broccoli & sweet potato', kcal: 480 },
+        { name:'Before Bed', desc:'Cottage cheese with flaxseeds', kcal: 140 },
+      ],
+      vegetarian: [
+        { name:'Breakfast', desc:'Oats with chia seeds, berries & almond milk', kcal: 350 },
+        { name:'Morning Snack', desc:'Banana with peanut butter', kcal: 160 },
+        { name:'Lunch', desc:'Lentil soup with whole grain bread & salad', kcal: 490 },
+        { name:'Evening Snack', desc:'Paneer cubes with cucumber', kcal: 160 },
+        { name:'Dinner', desc:'Tofu stir-fry with brown rice & vegetables', kcal: 460 },
+        { name:'Before Bed', desc:'Low-fat Greek yogurt with honey', kcal: 130 },
+      ],
+      vegan: [
+        { name:'Breakfast', desc:'Smoothie bowl: banana, blueberries, hemp seeds', kcal: 340 },
+        { name:'Morning Snack', desc:'Mixed nuts & dried cranberries', kcal: 170 },
+        { name:'Lunch', desc:'Chickpea salad wrap with tahini dressing', kcal: 480 },
+        { name:'Evening Snack', desc:'Orange & a handful of edamame', kcal: 130 },
+        { name:'Dinner', desc:'Black bean tacos with avocado & corn salsa', kcal: 470 },
+        { name:'Before Bed', desc:'Chamomile tea with chia pudding', kcal: 120 },
+      ],
+      pescatarian: [
+        { name:'Breakfast', desc:'Smoked salmon on rye with cream cheese & capers', kcal: 390 },
+        { name:'Morning Snack', desc:'Grapes & low-fat cheese', kcal: 160 },
+        { name:'Lunch', desc:'Tuna salad with quinoa & avocado', kcal: 510 },
+        { name:'Evening Snack', desc:'Shrimp cocktail with lemon', kcal: 120 },
+        { name:'Dinner', desc:'Grilled cod, roasted veggies & wild rice', kcal: 490 },
+        { name:'Before Bed', desc:'Cottage cheese with walnuts', kcal: 150 },
+      ],
+    },
+    supplements: {
+      with_supps: [
+        { name:'Whey Protein', dose:'25g post-workout', time:'After training' },
+        { name:'Fat Burner (CLA)', dose:'1000mg', time:'With meals' },
+        { name:'L-Carnitine', dose:'2g', time:'Pre-workout' },
+        { name:'Green Tea Extract', dose:'400mg', time:'Morning' },
+        { name:'Multivitamin', dose:'1 capsule', time:'With breakfast' },
+        { name:'Electrolytes', dose:'Per label', time:'Intra-workout' },
+      ],
+      no_supps: [],
+    },
+    grocery: {
+      'Proteins': ['Chicken breast','Salmon','Eggs','Greek yogurt','Cottage cheese','Tuna'],
+      'Vegetables': ['Spinach','Broccoli','Mixed greens','Cucumber','Bell peppers','Zucchini'],
+      'Carbs': ['Sweet potato','Brown rice','Quinoa','Whole grain bread','Oats'],
+      'Fats & Extras': ['Almonds','Olive oil','Avocado','Flaxseeds','Almond butter'],
+    },
+  },
+  muscle_gain: {
+    label: 'Muscle Gain',
+    meals: {
+      non_veg: [
+        { name:'Breakfast', desc:'4 whole eggs scrambled, oats with banana & whey shake', kcal: 650 },
+        { name:'Morning Snack', desc:'Mass gainer shake or banana with peanut butter toast', kcal: 450 },
+        { name:'Lunch', desc:'200g chicken thigh, 200g white rice, coleslaw', kcal: 780 },
+        { name:'Pre-Workout', desc:'Turkey sandwich on whole wheat with Greek yogurt', kcal: 480 },
+        { name:'Post-Workout', desc:'Whey protein shake with milk & quick oats', kcal: 400 },
+        { name:'Dinner', desc:'Lean beef stir fry with noodles & mixed veggies', kcal: 720 },
+      ],
+      vegetarian: [
+        { name:'Breakfast', desc:'Whole wheat pancakes with Greek yogurt & honey', kcal: 620 },
+        { name:'Morning Snack', desc:'Peanut butter toast & a glass of full-fat milk', kcal: 420 },
+        { name:'Lunch', desc:'Paneer curry with basmati rice & dal', kcal: 760 },
+        { name:'Pre-Workout', desc:'Banana, peanut butter & oat energy bites', kcal: 380 },
+        { name:'Post-Workout', desc:'Soy protein shake with almond milk', kcal: 360 },
+        { name:'Dinner', desc:'Rajma (kidney bean) curry, brown rice & raita', kcal: 680 },
+      ],
+      vegan: [
+        { name:'Breakfast', desc:'Overnight oats: chia, oat milk, hemp protein, dates', kcal: 580 },
+        { name:'Morning Snack', desc:'Peanut butter & banana smoothie with soy milk', kcal: 460 },
+        { name:'Lunch', desc:'Tempeh tacos with black beans, avocado & rice', kcal: 740 },
+        { name:'Pre-Workout', desc:'Dates with almond butter & rice cakes', kcal: 370 },
+        { name:'Post-Workout', desc:'Pea protein shake with oat milk & frozen berries', kcal: 380 },
+        { name:'Dinner', desc:'Lentil & chickpea curry, basmati rice, naan', kcal: 720 },
+      ],
+      pescatarian: [
+        { name:'Breakfast', desc:'4 eggs scrambled with smoked salmon & rye toast', kcal: 640 },
+        { name:'Morning Snack', desc:'Full-fat Greek yogurt with granola & honey', kcal: 420 },
+        { name:'Lunch', desc:'Tuna pasta bake with mozzarella & salad', kcal: 770 },
+        { name:'Pre-Workout', desc:'Whole grain crackers with tuna & avocado', kcal: 410 },
+        { name:'Post-Workout', desc:'Whey/casein shake with milk', kcal: 380 },
+        { name:'Dinner', desc:'Grilled mackerel, mashed sweet potato & green beans', kcal: 700 },
+      ],
+    },
+    supplements: {
+      with_supps: [
+        { name:'Whey/Casein Protein', dose:'30–40g', time:'Post-workout & bed' },
+        { name:'Creatine Monohydrate', dose:'5g daily', time:'With food or shake' },
+        { name:'BCAAs', dose:'10g', time:'Intra-workout' },
+        { name:'Mass Gainer', dose:'Per label', time:'Post-workout if needed' },
+        { name:'Zinc & Magnesium (ZMA)', dose:'Per label', time:'Before bed' },
+        { name:'Multivitamin', dose:'1 capsule', time:'With breakfast' },
+      ],
+      no_supps: [],
+    },
+    grocery: {
+      'Proteins': ['Chicken thigh','Beef mince','Eggs','Full-fat Greek yogurt','Whole milk','Paneer'],
+      'Carbs': ['White rice','Oats','Whole wheat bread','Sweet potato','Pasta','Bananas'],
+      'Vegetables': ['Broccoli','Spinach','Mixed stir-fry veg','Tomatoes','Onions'],
+      'Fats': ['Peanut butter','Olive oil','Whole eggs','Avocado','Nuts'],
+    },
+  },
+  maintenance: {
+    label: 'Maintenance',
+    meals: {
+      non_veg: [
+        { name:'Breakfast', desc:'2 eggs, avocado toast & a piece of fruit', kcal: 420 },
+        { name:'Morning Snack', desc:'Apple & a handful of mixed nuts', kcal: 200 },
+        { name:'Lunch', desc:'Grilled chicken salad with olive oil dressing', kcal: 560 },
+        { name:'Evening Snack', desc:'Protein smoothie with berries', kcal: 220 },
+        { name:'Dinner', desc:'Baked tilapia, roasted veg & quinoa', kcal: 520 },
+      ],
+      vegetarian: [
+        { name:'Breakfast', desc:'Whole grain pancakes with fresh berries & maple syrup', kcal: 400 },
+        { name:'Morning Snack', desc:'Banana & almond butter', kcal: 200 },
+        { name:'Lunch', desc:'Falafel wrap with hummus, lettuce & tomato', kcal: 540 },
+        { name:'Evening Snack', desc:'String cheese & whole grain crackers', kcal: 190 },
+        { name:'Dinner', desc:'Veggie pasta with marinara & parmesan', kcal: 500 },
+      ],
+      vegan: [
+        { name:'Breakfast', desc:'Acai bowl with granola, coconut flakes & mango', kcal: 390 },
+        { name:'Morning Snack', desc:'Orange & pumpkin seeds', kcal: 170 },
+        { name:'Lunch', desc:'Hummus & veggie wrap with tabbouleh', kcal: 520 },
+        { name:'Evening Snack', desc:'Edamame & trail mix', kcal: 180 },
+        { name:'Dinner', desc:'Thai peanut tofu with rice noodles', kcal: 490 },
+      ],
+      pescatarian: [
+        { name:'Breakfast', desc:'Poached eggs on toast with smoked mackerel', kcal: 430 },
+        { name:'Morning Snack', desc:'Grapes & cottage cheese', kcal: 190 },
+        { name:'Lunch', desc:'Salmon rice bowl with edamame & sesame dressing', kcal: 550 },
+        { name:'Evening Snack', desc:'Kefir & a piece of fruit', kcal: 180 },
+        { name:'Dinner', desc:'Prawn stir-fry with bok choy & brown rice', kcal: 510 },
+      ],
+    },
+    supplements: {
+      with_supps: [
+        { name:'Multivitamin', dose:'1 capsule', time:'With breakfast' },
+        { name:'Omega-3 Fish Oil', dose:'2g EPA/DHA', time:'With meals' },
+        { name:'Vitamin D3', dose:'2000 IU', time:'Morning' },
+        { name:'Magnesium', dose:'300mg', time:'Before bed' },
+      ],
+      no_supps: [],
+    },
+    grocery: {
+      'Proteins': ['Chicken breast','Tilapia','Eggs','Greek yogurt','Cottage cheese'],
+      'Carbs': ['Quinoa','Brown rice','Whole grain bread','Sweet potato','Oats'],
+      'Vegetables': ['Mixed salad greens','Broccoli','Bell peppers','Zucchini','Spinach'],
+      'Fats': ['Avocado','Olive oil','Mixed nuts','Almond butter'],
+    },
+  },
+  weight_gain: {
+    label: 'Weight Gain',
+    meals: {
+      non_veg: [
+        { name:'Breakfast', desc:'Oatmeal with whole milk, banana, peanut butter & 3 eggs', kcal: 800 },
+        { name:'Morning Snack', desc:'Mass gainer shake + whole grain crackers with cheese', kcal: 600 },
+        { name:'Lunch', desc:'250g chicken leg, 300g rice, dal & salad', kcal: 900 },
+        { name:'Afternoon Snack', desc:'Trail mix, dried fruits & full-fat milk', kcal: 500 },
+        { name:'Dinner', desc:'Beef/lamb kebab with naan, hummus & roasted veg', kcal: 850 },
+        { name:'Before Bed', desc:'Casein shake or full-fat cottage cheese with nuts', kcal: 400 },
+      ],
+      vegetarian: [
+        { name:'Breakfast', desc:'French toast with honey, banana & a glass of full milk', kcal: 750 },
+        { name:'Morning Snack', desc:'Paneer sandwich & full-fat lassi', kcal: 580 },
+        { name:'Lunch', desc:'Chole (chickpea) curry, 3 chapatis, rice & raita', kcal: 880 },
+        { name:'Afternoon Snack', desc:'Peanut butter banana shake', kcal: 480 },
+        { name:'Dinner', desc:'Paneer tikka masala with basmati rice & naan', kcal: 820 },
+        { name:'Before Bed', desc:'Full-fat milk with turmeric & honey', kcal: 200 },
+      ],
+      vegan: [
+        { name:'Breakfast', desc:'High-calorie smoothie: banana, oats, peanut butter, oat milk', kcal: 720 },
+        { name:'Morning Snack', desc:'Cashew & date energy balls', kcal: 560 },
+        { name:'Lunch', desc:'Tempeh & black bean burrito bowl with extra rice & guac', kcal: 860 },
+        { name:'Afternoon Snack', desc:'Peanut butter on thick toast, banana', kcal: 480 },
+        { name:'Dinner', desc:'Masoor dal, rajma, 3 chapatis, rice & pickle', kcal: 800 },
+        { name:'Before Bed', desc:'Warm oat milk with chia seeds & maple syrup', kcal: 220 },
+      ],
+      pescatarian: [
+        { name:'Breakfast', desc:'5-egg omelette with cheese, smoked salmon & buttered toast', kcal: 790 },
+        { name:'Morning Snack', desc:'Full-fat milk & nut butter protein shake', kcal: 580 },
+        { name:'Lunch', desc:'Salmon pasta bake with cream sauce & garlic bread', kcal: 900 },
+        { name:'Afternoon Snack', desc:'Prawn fried rice extra portion', kcal: 520 },
+        { name:'Dinner', desc:'Grilled sardines, mashed potato with butter & salad', kcal: 830 },
+        { name:'Before Bed', desc:'Casein protein with full-fat milk', kcal: 350 },
+      ],
+    },
+    supplements: {
+      with_supps: [
+        { name:'Mass Gainer', dose:'Per label (2–3 scoops)', time:'Post-workout & morning' },
+        { name:'Creatine', dose:'5g daily', time:'Any time' },
+        { name:'Whey Protein', dose:'30g', time:'Post-workout' },
+        { name:'ZMA', dose:'Per label', time:'Before bed' },
+        { name:'Vitamin D3', dose:'2000 IU', time:'Morning' },
+        { name:'Omega-3', dose:'2g', time:'With meals' },
+      ],
+      no_supps: [],
+    },
+    grocery: {
+      'Proteins': ['Chicken leg','Beef','Eggs','Full-fat milk','Cottage cheese','Cheese'],
+      'Carbs': ['White rice','Pasta','Naan','Oats','Potatoes','Whole wheat bread','Bananas','Dates'],
+      'Fats': ['Peanut butter','Butter','Olive oil','Avocado','Mixed nuts','Cashews'],
+      'Extras': ['Honey','Maple syrup','Dark chocolate','Full-fat yogurt'],
+    },
+  },
+  testosterone: {
+    label: 'Testosterone Boost',
+    meals: {
+      non_veg: [
+        { name:'Breakfast', desc:'3 whole eggs with yolk, beef sausage & avocado', kcal: 580 },
+        { name:'Morning Snack', desc:'Brazil nuts (3), walnuts & dark chocolate square', kcal: 250 },
+        { name:'Lunch', desc:'Grass-fed beef steak, broccoli & sweet potato', kcal: 700 },
+        { name:'Pre-Workout', desc:'Pomegranate juice & pumpkin seeds', kcal: 180 },
+        { name:'Dinner', desc:'Oysters (if available), lamb chops & leafy greens', kcal: 620 },
+        { name:'Evening', desc:'Ashwagandha turmeric milk (warm)', kcal: 120 },
+      ],
+      vegetarian: [
+        { name:'Breakfast', desc:'3 whole eggs, paneer scramble & avocado on rye', kcal: 560 },
+        { name:'Morning Snack', desc:'Pumpkin seeds, Brazil nuts & dark chocolate', kcal: 260 },
+        { name:'Lunch', desc:'Spinach & paneer curry, brown rice & dhal', kcal: 680 },
+        { name:'Pre-Workout', desc:'Pomegranate & beetroot juice', kcal: 170 },
+        { name:'Dinner', desc:'Roasted garlic broccoli with quinoa & feta cheese', kcal: 560 },
+        { name:'Evening', desc:'Ashwagandha golden milk', kcal: 120 },
+      ],
+      vegan: [
+        { name:'Breakfast', desc:'Avocado & hemp seed toast, flaxseed smoothie', kcal: 520 },
+        { name:'Morning Snack', desc:'Pumpkin seeds, Brazil nuts & cacao nibs', kcal: 260 },
+        { name:'Lunch', desc:'Maca & spinach grain bowl with pumpkin seed pesto', kcal: 620 },
+        { name:'Pre-Workout', desc:'Beetroot & ginger shot + banana', kcal: 150 },
+        { name:'Dinner', desc:'Roasted garlic tempeh with cruciferous veg & brown rice', kcal: 560 },
+        { name:'Evening', desc:'Ashwagandha & oat milk warm drink', kcal: 100 },
+      ],
+      pescatarian: [
+        { name:'Breakfast', desc:'Eggs & smoked mackerel with avocado on sourdough', kcal: 580 },
+        { name:'Morning Snack', desc:'Brazil nuts, pumpkin seeds & pomegranate', kcal: 250 },
+        { name:'Lunch', desc:'Sardines on rye with olive oil, garlic & greens', kcal: 680 },
+        { name:'Pre-Workout', desc:'Beetroot juice & a banana', kcal: 170 },
+        { name:'Dinner', desc:'Garlic prawn stir-fry with broccoli & brown rice', kcal: 620 },
+        { name:'Evening', desc:'Ashwagandha turmeric milk', kcal: 120 },
+      ],
+    },
+    supplements: {
+      with_supps: [
+        { name:'Ashwagandha', dose:'600mg KSM-66', time:'Morning or night' },
+        { name:'Zinc', dose:'25–30mg', time:'With dinner' },
+        { name:'Magnesium Glycinate', dose:'400mg', time:'Before bed' },
+        { name:'Vitamin D3 + K2', dose:'5000 IU + 100mcg', time:'With fat-containing meal' },
+        { name:'Tongkat Ali', dose:'400mg', time:'Morning' },
+        { name:'Omega-3', dose:'3g EPA/DHA', time:'With meals' },
+      ],
+      no_supps: [],
+    },
+    grocery: {
+      'T-Boosting Foods': ['Grass-fed beef','Oysters','Eggs (whole)','Sardines','Mackerel','Lamb'],
+      'Fats': ['Avocado','Extra virgin olive oil','Coconut oil','Pumpkin seeds','Brazil nuts','Walnuts'],
+      'Vegetables': ['Broccoli','Spinach','Kale','Garlic','Onions','Beetroot'],
+      'Extras': ['Pomegranate','Dark chocolate (85%+)','Ashwagandha powder','Turmeric','Ginger'],
+    },
+  },
+  endurance: {
+    label: 'Endurance',
+    meals: {
+      non_veg: [
+        { name:'Breakfast', desc:'Banana oat pancakes with honey & a boiled egg', kcal: 520 },
+        { name:'Pre-Run Snack', desc:'Energy bar or banana with peanut butter', kcal: 200 },
+        { name:'Lunch', desc:'Chicken & sweet potato bowl with spinach', kcal: 620 },
+        { name:'Recovery', desc:'Chocolate milk recovery shake', kcal: 300 },
+        { name:'Dinner', desc:'Turkey mince bolognese with whole wheat pasta', kcal: 680 },
+        { name:'Bedtime', desc:'Casein protein & banana', kcal: 250 },
+      ],
+      vegetarian: [
+        { name:'Breakfast', desc:'Banana porridge with hemp seeds, honey & berries', kcal: 500 },
+        { name:'Pre-Run Snack', desc:'Medjool dates (3) with almond butter', kcal: 190 },
+        { name:'Lunch', desc:'Pasta with pesto, cherry tomatoes & mozzarella', kcal: 600 },
+        { name:'Recovery', desc:'Chocolate soy milk & banana', kcal: 280 },
+        { name:'Dinner', desc:"Lentil shepherd's pie with sweet potato mash", kcal: 660 },
+        { name:'Bedtime', desc:'Warm milk with honey & turmeric', kcal: 160 },
+      ],
+      vegan: [
+        { name:'Breakfast', desc:'Overnight oats with chia, mango & pea protein', kcal: 490 },
+        { name:'Pre-Run Snack', desc:'Dates & rice cakes with almond butter', kcal: 200 },
+        { name:'Lunch', desc:'Bean & rice burrito with salsa & guacamole', kcal: 590 },
+        { name:'Recovery', desc:'Pea protein shake with banana & oat milk', kcal: 300 },
+        { name:'Dinner', desc:'Chickpea pasta with tomato sauce & nutritional yeast', kcal: 650 },
+        { name:'Bedtime', desc:'Oat milk warm drink with banana', kcal: 160 },
+      ],
+      pescatarian: [
+        { name:'Breakfast', desc:'Banana oat smoothie with Greek yogurt & honey', kcal: 510 },
+        { name:'Pre-Run Snack', desc:'Whole grain rice cakes with tuna', kcal: 190 },
+        { name:'Lunch', desc:'Tuna & sweet potato rice bowl with greens', kcal: 610 },
+        { name:'Recovery', desc:'Chocolate milk & a banana', kcal: 290 },
+        { name:'Dinner', desc:'Salmon pasta with olive oil & garlic', kcal: 670 },
+        { name:'Bedtime', desc:'Cottage cheese with honey', kcal: 200 },
+      ],
+    },
+    supplements: {
+      with_supps: [
+        { name:'Electrolyte Mix', dose:'Per label', time:'During exercise' },
+        { name:'Beta-Alanine', dose:'3.2g', time:'Pre-workout' },
+        { name:'Beetroot Extract', dose:'500mg', time:'1hr before run' },
+        { name:'Omega-3', dose:'2g', time:'With meals' },
+        { name:'Iron (if deficient)', dose:'Per doctor', time:'As prescribed' },
+        { name:'B-Complex', dose:'1 cap', time:'Morning' },
+      ],
+      no_supps: [],
+    },
+    grocery: {
+      'Carbs': ['Oats','Whole wheat pasta','Sweet potato','Bananas','Dates','Brown rice','Whole grain bread'],
+      'Proteins': ['Chicken breast','Turkey mince','Eggs','Greek yogurt','Cottage cheese'],
+      'Fats': ['Peanut butter','Almond butter','Olive oil','Avocado'],
+      'Extras': ['Honey','Chocolate milk','Beetroot juice','Energy gels','Sports drink'],
+    },
+  },
+  keto: {
+    label: 'Ketogenic',
+    meals: {
+      non_veg: [
+        { name:'Breakfast', desc:'Bacon, eggs & avocado (no toast)', kcal: 580 },
+        { name:'Morning Snack', desc:'Cheese cubes & a handful of macadamia nuts', kcal: 280 },
+        { name:'Lunch', desc:'Chicken caesar salad (no croutons) with parmesan', kcal: 520 },
+        { name:'Afternoon Snack', desc:'Beef jerky & walnuts', kcal: 220 },
+        { name:'Dinner', desc:'Ribeye steak with butter-fried asparagus & mushrooms', kcal: 680 },
+        { name:'Bedtime', desc:'Fat bomb: cream cheese & dark chocolate', kcal: 180 },
+      ],
+      vegetarian: [
+        { name:'Breakfast', desc:'Keto omelette: 3 eggs, feta, spinach & butter', kcal: 520 },
+        { name:'Morning Snack', desc:'Brie & macadamia nuts', kcal: 280 },
+        { name:'Lunch', desc:'Keto salad: avocado, mozzarella, olives & pine nuts', kcal: 500 },
+        { name:'Afternoon Snack', desc:'Celery with cream cheese & walnuts', kcal: 200 },
+        { name:'Dinner', desc:'Paneer butter masala (low-carb) with cauliflower rice', kcal: 640 },
+        { name:'Bedtime', desc:'Heavy cream fat bomb with vanilla', kcal: 170 },
+      ],
+      vegan: [
+        { name:'Breakfast', desc:'Avocado & hemp seed bowl with coconut cream', kcal: 490 },
+        { name:'Morning Snack', desc:'Mixed nuts & coconut chips', kcal: 270 },
+        { name:'Lunch', desc:'Tofu & avocado salad with tahini dressing', kcal: 480 },
+        { name:'Afternoon Snack', desc:'Olives & walnut butter on cucumber slices', kcal: 190 },
+        { name:'Dinner', desc:'Keto tempeh bowl with cauliflower rice & peanut sauce', kcal: 620 },
+        { name:'Bedtime', desc:'Coconut milk chia pudding (unsweetened)', kcal: 160 },
+      ],
+      pescatarian: [
+        { name:'Breakfast', desc:'Smoked salmon omelette with cream cheese & dill', kcal: 560 },
+        { name:'Morning Snack', desc:'Mackerel pâté with cucumber slices', kcal: 250 },
+        { name:'Lunch', desc:'Tuna avocado salad with olive oil & lemon', kcal: 510 },
+        { name:'Afternoon Snack', desc:'Cold shrimp with garlic butter dip', kcal: 180 },
+        { name:'Dinner', desc:'Salmon in cream sauce with asparagus & cauliflower mash', kcal: 660 },
+        { name:'Bedtime', desc:'Cream cheese fat bomb', kcal: 180 },
+      ],
+    },
+    supplements: {
+      with_supps: [
+        { name:'Electrolytes (Na/K/Mg)', dose:'Per label', time:'Daily — crucial on keto' },
+        { name:'MCT Oil', dose:'1–2 tbsp', time:'Coffee or shake' },
+        { name:'Magnesium', dose:'400mg', time:'Before bed' },
+        { name:'Omega-3', dose:'2g', time:'With meals' },
+        { name:'Vitamin D3', dose:'2000 IU', time:'Morning' },
+        { name:'Potassium', dose:'99mg', time:'With meals' },
+      ],
+      no_supps: [],
+    },
+    grocery: {
+      'Proteins & Fats': ['Eggs','Bacon','Ribeye steak','Chicken thigh','Salmon','Tuna','Sardines'],
+      'Dairy': ['Butter','Heavy cream','Cream cheese','Cheddar','Brie','Greek yogurt (full-fat)'],
+      'Vegetables (low-carb)': ['Cauliflower','Spinach','Broccoli','Asparagus','Zucchini','Celery','Cucumber'],
+      'Nuts & Extras': ['Macadamia nuts','Walnuts','Avocado','Olives','MCT oil','Dark chocolate (90%+)'],
+    },
+  },
+  hormonal: {
+    label: 'Hormonal Balance (Women)',
+    meals: {
+      non_veg: [
+        { name:'Breakfast', desc:'Seed cycling: flaxseed oats with berries & collagen powder', kcal: 420 },
+        { name:'Morning Snack', desc:'Vitamin C-rich fruit & pumpkin seeds', kcal: 160 },
+        { name:'Lunch', desc:'Salmon salad with walnuts, avocado & leafy greens', kcal: 560 },
+        { name:'Afternoon Snack', desc:'Blueberries & dark chocolate square', kcal: 150 },
+        { name:'Dinner', desc:'Chicken & sweet potato with roasted broccoli & garlic', kcal: 580 },
+        { name:'Evening', desc:'Spearmint or maca tea with almond milk', kcal: 60 },
+      ],
+      vegetarian: [
+        { name:'Breakfast', desc:'Seed cycling oats: flaxseed, berries & Greek yogurt', kcal: 400 },
+        { name:'Morning Snack', desc:'Kiwi & pumpkin seeds', kcal: 140 },
+        { name:'Lunch', desc:'Lentil & avocado salad with olive oil & lemon dressing', kcal: 540 },
+        { name:'Afternoon Snack', desc:'Blueberries & walnuts', kcal: 160 },
+        { name:'Dinner', desc:'Paneer & spinach curry with quinoa & raita', kcal: 560 },
+        { name:'Evening', desc:'Spearmint tea with a square of dark chocolate', kcal: 70 },
+      ],
+      vegan: [
+        { name:'Breakfast', desc:'Ground flaxseed smoothie bowl with mango & hemp seeds', kcal: 390 },
+        { name:'Morning Snack', desc:'Orange & pumpkin seeds', kcal: 140 },
+        { name:'Lunch', desc:'Tempeh & roasted veg tacos with avocado crema', kcal: 520 },
+        { name:'Afternoon Snack', desc:'Blueberries, walnuts & dark chocolate', kcal: 160 },
+        { name:'Dinner', desc:'Miso-glazed tofu with bok choy & brown rice', kcal: 540 },
+        { name:'Evening', desc:'Spearmint & licorice root tea', kcal: 10 },
+      ],
+      pescatarian: [
+        { name:'Breakfast', desc:'Seed cycling oats with chia, walnuts & berries', kcal: 410 },
+        { name:'Morning Snack', desc:'Citrus & Brazil nuts', kcal: 150 },
+        { name:'Lunch', desc:'Mackerel & avocado salad with leafy greens & olive oil', kcal: 550 },
+        { name:'Afternoon Snack', desc:'Blueberries & dark chocolate', kcal: 150 },
+        { name:'Dinner', desc:'Baked salmon, roasted sweet potato & broccoli', kcal: 570 },
+        { name:'Evening', desc:'Spearmint tea', kcal: 10 },
+      ],
+    },
+    supplements: {
+      with_supps: [
+        { name:'Vitex (Chaste Tree)', dose:'400mg', time:'Morning' },
+        { name:'Maca Root', dose:'1500mg', time:'With food' },
+        { name:'Magnesium Glycinate', dose:'400mg', time:'Before bed' },
+        { name:'Vitamin D3 + K2', dose:'2000 IU', time:'Morning' },
+        { name:'Omega-3', dose:'2g EPA/DHA', time:'With meals' },
+        { name:'Inositol (Myo)', dose:'2–4g', time:'Split dose AM/PM' },
+      ],
+      no_supps: [],
+    },
+    grocery: {
+      'Hormone Foods': ['Salmon','Mackerel','Flaxseeds','Pumpkin seeds','Sesame seeds','Walnuts'],
+      'Phytoestrogen': ['Edamame','Tofu','Tempeh','Lentils','Chickpeas','Miso'],
+      'Cruciferous': ['Broccoli','Cauliflower','Brussels sprouts','Kale','Bok choy'],
+      'Antioxidants': ['Blueberries','Kiwi','Oranges','Dark chocolate (85%+)','Avocado','Spinach'],
+    },
+  },
+};
+ 
+// ── GENERATE ──
+function generateDiet() {
+  const age    = parseInt(document.getElementById('age').value);
+  const weight = parseFloat(document.getElementById('weight').value);
+  const height = parseFloat(document.getElementById('height').value);
+  if (!age || !weight || !height) { showToast('Please fill in all details'); return; }
+ 
+  document.getElementById('loading-overlay').style.display = 'flex';
+  document.getElementById('genBtn').disabled = true;
+ 
+  setTimeout(() => {
+    document.getElementById('loading-overlay').style.display = 'none';
+    document.getElementById('genBtn').disabled = false;
+    renderResults();
+  }, 1800);
+}
+ 
+function renderResults() {
+  const macros = calcCalories();
+  const diet   = dietDB[currentGoal];
+  if (!diet) return;
+  const meals  = diet.meals[dietType] || diet.meals['non_veg'];
+  const supps  = diet.supplements[suppChoice] || [];
+  const grocery = diet.grocery;
+ 
+  const shownMeals = meals.slice(0, mealsPerDay);
+  const totalMealKcal = shownMeals.reduce((a,m) => a + m.kcal, 0);
+  const scaleFactor   = macros.calories / totalMealKcal;
+  const scaledMeals   = shownMeals.map(m => ({ ...m, kcal: Math.round(m.kcal * scaleFactor) }));
+ 
+  const protPct = Math.round((macros.protein * 4 / macros.calories) * 100);
+  const carbPct = Math.round((macros.carbs   * 4 / macros.calories) * 100);
+  const fatPct  = 100 - protPct - carbPct;
+ 
+  generatedData = { macros, diet, meals: scaledMeals, supps, grocery, protPct, carbPct, fatPct };
+ 
+  const rp = document.getElementById('rightPanel');
+  rp.innerHTML = `
+    <!-- SUMMARY -->
+    <div class="summary-card">
+      <div class="summary-header">
+        <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Your Diet Plan — ${diet.label}</h3>
+        <div class="dl-btns">
+          <button class="dl-btn" onclick="downloadPDF()"><i class="fa-solid fa-download"></i> Download PDF</button>
+          <button class="dl-btn" onclick="downloadGroceryPDF()"><i class="fa-solid fa-cart-shopping"></i> Grocery PDF</button>
+        </div>
+      </div>
+      <div class="macro-bar-wrap">
+        <div class="bar-label"><span>Macros</span><span>P ${protPct}% · C ${carbPct}% · F ${fatPct}%</span></div>
+        <div class="bar-track">
+          <div class="bar-seg" style="width:${protPct}%;background:#006D77;"></div>
+          <div class="bar-seg" style="width:${carbPct}%;background:#00B4D8;"></div>
+          <div class="bar-seg" style="width:${fatPct}%;background:#4FD1C5;"></div>
+        </div>
+      </div>
+      <div class="macro-grid">
+        <div class="macro-item">
+          <div class="m-label">Calories</div>
+          <div class="m-val">~${macros.calories.toLocaleString()}</div>
+          <div class="m-pct">kcal daily</div>
+        </div>
+        <div class="macro-item">
+          <div class="m-label">Protein</div>
+          <div class="m-val">${macros.protein}g</div>
+          <div class="m-pct">${protPct}%</div>
+        </div>
+        <div class="macro-item">
+          <div class="m-label">Carbs</div>
+          <div class="m-val">${macros.carbs}g</div>
+          <div class="m-pct">${carbPct}%</div>
+        </div>
+        <div class="macro-item">
+          <div class="m-label">Fats</div>
+          <div class="m-val">${macros.fats}g</div>
+          <div class="m-pct">${fatPct}%</div>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- MEAL PLAN -->
+    <div class="meal-card">
+      <h3>Sample Meal Plan</h3>
+      ${scaledMeals.map(m => `
+        <div class="meal-row">
+          <div class="meal-emoji"><i class="${getMealIcon(m.name)}"></i></div>
+          <div class="meal-info">
+            <div class="meal-name">${m.name}</div>
+            <div class="meal-desc">${m.desc}</div>
+          </div>
+          <div class="meal-kcal">${m.kcal} kcal</div>
+        </div>
+      `).join('')}
+      <button class="view-plan-btn" onclick="show7Day()">
+        <i class="fa-solid fa-calendar-week"></i> View Complete 7-Day Plan
+      </button>
+    </div>
+ 
+    ${supps.length ? `
+    <!-- SUPPLEMENTS -->
+    <div class="supp-card">
+      <h3><i class="fa-solid fa-capsules" style="color:var(--primary)"></i> Recommended Supplements</h3>
+      <div class="supp-grid">
+        ${supps.map(s => `
+          <div class="supp-item">
+            <div class="supp-icon"><i class="${getSuppIcon(s.name)}"></i></div>
+            <div>
+              <div class="supp-name">${s.name}</div>
+              <div class="supp-dose">${s.dose}</div>
+              <div class="supp-time"><i class="fa-regular fa-clock"></i> ${s.time}</div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+    ` : ''}
+ 
+    <!-- GROCERY -->
+    <div class="grocery-card">
+      <h3><i class="fa-solid fa-basket-shopping" style="color:var(--primary)"></i> Grocery List</h3>
+      <div class="grocery-cats">
+        ${Object.entries(grocery).map(([cat, items]) => `
+          <div>
+            <div class="g-cat-title">${cat}</div>
+            <div class="g-items">${items.map(i => `<span class="g-tag">${i}</span>`).join('')}</div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+ 
+    <!-- FEATURES -->
+    <div class="features-card">
+      <h3>What You Get</h3>
+      <div class="feat-grid">
+        <div class="feat-item"><div class="feat-icon"><i class="fa-solid fa-clipboard-list"></i></div><strong>Personalized Plan</strong><span>Tailored to your goals</span></div>
+        <div class="feat-item"><div class="feat-icon"><i class="fa-solid fa-cart-shopping"></i></div><strong>Grocery List</strong><span>What to buy & how much</span></div>
+        <div class="feat-item"><div class="feat-icon"><i class="fa-solid fa-chart-pie"></i></div><strong>Calorie Tracking</strong><span>Track every nutrient</span></div>
+        <div class="feat-item"><div class="feat-icon"><i class="fa-solid fa-calendar-week"></i></div><strong>7-Day Rotation</strong><span>Variety all week</span></div>
+        <div class="feat-item"><div class="feat-icon"><i class="fa-solid fa-flask"></i></div><strong>Expert Guidance</strong><span>Science-backed nutrition</span></div>
+        <div class="feat-item"><div class="feat-icon"><i class="fa-solid fa-file-arrow-down"></i></div><strong>PDF Download</strong><span>Keep it offline</span></div>
+      </div>
+    </div>
+  `;
+ 
+  showToast('Diet plan generated successfully');
+}
+ 
+// ── 7-DAY MODAL ──
+function show7Day() {
+  if (!generatedData) return;
+  const { diet, macros } = generatedData;
+  const meals = diet.meals[dietType] || diet.meals['non_veg'];
+  const days = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday'];
+  const variations = [
+    meals.map(m => m),
+    [...meals.slice(1), meals[0]],
+    [...meals.slice(2), ...meals.slice(0,2)],
+    meals.map(m => m),
+    [...meals.slice(1), meals[0]],
+    [...meals.slice(2), ...meals.slice(0,2)],
+    meals.map(m => m),
+  ];
+ 
+  document.getElementById('daysContent').innerHTML = days.map((day, i) => {
+    const dayMeals = variations[i].slice(0, mealsPerDay);
+    const totalKcal = dayMeals.reduce((a,m) => a + m.kcal, 0);
+    const sf = macros.calories / totalKcal;
+    return `
+      <div class="day-block">
+        <div class="day-title"><i class="fa-solid fa-calendar-day"></i> ${day} · ~${macros.calories} kcal</div>
+        <div class="day-meals">
+          ${dayMeals.map(m => `
+            <div class="day-meal-row">
+              <span class="dm-name">${m.name}</span>
+              <span class="dm-food"><i class="${getMealIcon(m.name)}"></i>${m.desc}</span>
+              <span class="dm-kcal">${Math.round(m.kcal * sf)} kcal</span>
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+  }).join('');
+  document.getElementById('plan-modal').style.display = 'flex';
+}
+ 
+function closeModal(e) {
+  if (e.target === document.getElementById('plan-modal'))
+    document.getElementById('plan-modal').style.display = 'none';
+}
+ 
+// ── PDF DOWNLOAD ──
+// Strip characters jsPDF's built-in helvetica can't encode
+function safe(str) {
+  return String(str)
+    .replace(/\u2014/g, '-').replace(/\u2013/g, '-')  // em/en dash
+    .replace(/\u00B7/g, '|').replace(/\u22C5/g, '|')  // middle dots
+    .replace(/[^\x00-\xFF]/g, '');                      // any remaining non-latin-1
+}
+ 
+function downloadPDF() {
+  if (!generatedData) { showToast('Generate a plan first'); return; }
+  showToast('Generating PDF...');
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit:'mm', format:'a4' });
+  const { macros, diet, meals, supps, protPct, carbPct, fatPct } = generatedData;
+  const W = doc.internal.pageSize.getWidth();
+ 
+  // Header
+  doc.setFillColor(0, 109, 119);
+  doc.rect(0, 0, W, 40, 'F');
+  doc.setTextColor(255,255,255);
+  doc.setFontSize(22); doc.setFont('helvetica','bold');
+  doc.text('NutriPlan - Personalized Diet', 14, 18);
+  doc.setFontSize(11); doc.setFont('helvetica','normal');
+  doc.text(safe(`Goal: ${diet.label}  |  Diet: ${dietType.replace('_',' ')}  |  Generated ${new Date().toLocaleDateString()}`), 14, 28);
+  doc.text(safe(`Timeline: ${document.getElementById('timeline').value} Weeks`), 14, 36);
+ 
+  // Macro summary box
+  let y = 50;
+  doc.setFillColor(238, 248, 250);
+  doc.roundedRect(12, y, W-24, 28, 4, 4, 'F');
+  doc.setTextColor(0, 109, 119); doc.setFontSize(10); doc.setFont('helvetica','bold');
+  ['Calories','Protein','Carbs','Fats'].forEach((lbl,i) => {
+    const x = 14 + i * ((W-28)/4);
+    doc.text(lbl, x, y+8);
+    doc.setTextColor(19,51,61); doc.setFontSize(14); doc.setFont('helvetica','bold');
+    const val = [macros.calories+'kcal', macros.protein+'g', macros.carbs+'g', macros.fats+'g'][i];
+    doc.text(val, x, y+18);
+    doc.setTextColor(96,125,139); doc.setFontSize(9); doc.setFont('helvetica','normal');
+    const pct = [null, protPct+'%', carbPct+'%', fatPct+'%'][i];
+    if (pct) doc.text(pct, x, y+24);
+    doc.setTextColor(0, 109, 119); doc.setFontSize(10); doc.setFont('helvetica','bold');
+  });
+ 
+  // Meal Plan
+  y += 36;
+  doc.setTextColor(19,51,61); doc.setFontSize(13); doc.setFont('helvetica','bold');
+  doc.text('Sample Meal Plan', 14, y); y += 8;
+ 
+  meals.forEach((m,i) => {
+    // Wrap description to fit in available width (from x=55 to W-35)
+    doc.setFontSize(9); doc.setFont('helvetica','normal');
+    const descLines = doc.splitTextToSize(safe(m.desc), W - 90);
+    const rowH = Math.max(12, descLines.length * 5 + 4);
+ 
+    if (y + rowH > 265) { doc.addPage(); y = 20; }
+    doc.setFillColor(i%2===0 ? 248:255, i%2===0?252:255, i%2===0?253:255);
+    doc.rect(12, y-4, W-24, rowH, 'F');
+ 
+    doc.setTextColor(0,109,119); doc.setFontSize(9); doc.setFont('helvetica','bold');
+    doc.text(safe(m.name), 16, y+3);
+ 
+    doc.setTextColor(19,51,61); doc.setFont('helvetica','normal');
+    doc.text(descLines, 55, y+3);
+ 
+    doc.setTextColor(0,109,119); doc.setFont('helvetica','bold');
+    doc.text(safe(m.kcal+' kcal'), W-16, y+3, {align:'right'});
+ 
+    y += rowH + 2;
+  });
+ 
+  // Supplements
+  if (supps.length) {
+    y += 6;
+    if (y > 240) { doc.addPage(); y = 20; }
+    doc.setTextColor(19,51,61); doc.setFontSize(13); doc.setFont('helvetica','bold');
+    doc.text('Supplements', 14, y); y += 8;
+    supps.forEach((s) => {
+      if (y > 265) { doc.addPage(); y = 20; }
+      doc.setFillColor(248,252,253);
+      doc.rect(12, y-3, W-24, 10, 'F');
+      doc.setTextColor(0,109,119); doc.setFontSize(9); doc.setFont('helvetica','bold');
+      doc.text(safe(s.name), 16, y+4);
+      doc.setTextColor(96,125,139); doc.setFont('helvetica','normal');
+      doc.text(safe(s.dose) + ' | ' + safe(s.time), 80, y+4);
+      y += 12;
+    });
+  }
+ 
+  // Grocery List
+  y += 6;
+  if (y > 220) { doc.addPage(); y = 20; }
+  doc.setTextColor(19,51,61); doc.setFontSize(13); doc.setFont('helvetica','bold');
+  doc.text('Grocery List', 14, y); y += 8;
+  Object.entries(generatedData.grocery).forEach(([cat, items]) => {
+    if (y > 265) { doc.addPage(); y = 20; }
+    doc.setTextColor(0,109,119); doc.setFontSize(10); doc.setFont('helvetica','bold');
+    doc.text(safe(cat), 14, y); y += 6;
+    doc.setTextColor(19,51,61); doc.setFontSize(9); doc.setFont('helvetica','normal');
+    const line = items.map(safe).join(', ');
+    const wrapped = doc.splitTextToSize(line, W-28);
+    if (y + wrapped.length * 5 > 272) { doc.addPage(); y = 20; }
+    doc.text(wrapped, 14, y);
+    y += wrapped.length * 5 + 6;
+  });
+ 
+  // Footer on every page
+  const pages = doc.internal.getNumberOfPages();
+  for (let i=1; i<=pages; i++) {
+    doc.setPage(i);
+    doc.setFillColor(0,109,119);
+    doc.rect(0, 287, W, 10, 'F');
+    doc.setTextColor(255,255,255); doc.setFontSize(8); doc.setFont('helvetica','normal');
+    doc.text('NutriPlan - Personalized Nutrition', 14, 293);
+    doc.text(`Page ${i} of ${pages}`, W-14, 293, {align:'right'});
+  }
+ 
+  doc.save(`NutriPlan_${safe(diet.label).replace(/ /g,'_')}_Diet.pdf`);
+  showToast('PDF downloaded successfully');
+}
+ 
+function downloadGroceryPDF() {
+  if (!generatedData) { showToast('Generate a plan first'); return; }
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({ unit:'mm', format:'a4' });
+  const W = doc.internal.pageSize.getWidth();
+  const { diet, grocery } = generatedData;
+ 
+  doc.setFillColor(0, 109, 119);
+  doc.rect(0, 0, W, 36, 'F');
+  doc.setTextColor(255,255,255); doc.setFontSize(20); doc.setFont('helvetica','bold');
+  doc.text('Weekly Grocery List', 14, 16);
+  doc.setFontSize(11); doc.setFont('helvetica','normal');
+  doc.text(safe(`${diet.label} Plan  |  ${new Date().toLocaleDateString()}`), 14, 28);
+ 
+  let y = 48;
+  Object.entries(grocery).forEach(([cat, items]) => {
+    if (y > 260) { doc.addPage(); y = 20; }
+    doc.setFillColor(0, 109, 119);
+    doc.roundedRect(12, y-5, W-24, 10, 2, 2, 'F');
+    doc.setTextColor(255,255,255); doc.setFontSize(10); doc.setFont('helvetica','bold');
+    doc.text(safe(cat), 16, y+1);
+    y += 12;
+    items.forEach(item => {
+      if (y > 272) { doc.addPage(); y = 20; }
+      doc.setTextColor(19,51,61); doc.setFontSize(10); doc.setFont('helvetica','normal');
+      doc.setDrawColor(217,238,242);
+      doc.rect(14, y-3, 5, 5);
+      doc.text(safe(item), 22, y+1);
+      y += 9;
+    });
+    y += 4;
+  });
+ 
+  // Footer
+  const pages = doc.internal.getNumberOfPages();
+  for (let i=1; i<=pages; i++) {
+    doc.setPage(i);
+    doc.setFillColor(0,109,119);
+    doc.rect(0, 287, W, 10, 'F');
+    doc.setTextColor(255,255,255); doc.setFontSize(8); doc.setFont('helvetica','normal');
+    doc.text('NutriPlan - Personalized Nutrition', 14, 293);
+    doc.text(`Page ${i} of ${pages}`, W-14, 293, {align:'right'});
+  }
+ 
+  doc.save(`NutriPlan_GroceryList.pdf`);
+  showToast('Grocery PDF downloaded successfully');
+}
+ 
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.innerHTML = `<i class="fa-solid fa-circle-check"></i> ${msg}`;
+  t.style.display = 'flex';
+  setTimeout(() => t.style.display = 'none', 2800);
+}
+
+
+</script>
+</body>
+</html>

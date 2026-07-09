@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitFuel  Your Cart</title>
+<link rel="stylesheet" href="cart.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+<body>
+<header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+        <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+
+<main>
+  <h1>Your Cart</h1>
+  <p class="cart-sub">Review your items and proceed to secure checkout.</p>
+
+  <!-- TRUST BAR -->
+  <div class="trust-bar">
+    <div class="trust-item"><i class="fa-solid fa-lock trust-icon"></i><div><strong>Secure Checkout</strong><span>100% Safe & Secure</span></div></div>
+    <div class="trust-item"><i class="fa-solid fa-truck-fast trust-icon"></i><div><strong>Fast Delivery</strong><span>Quick & Reliable</span></div></div>
+    <div class="trust-item"><i class="fa-solid fa-rotate-left trust-icon"></i><div><strong>30-Day Returns</strong><span>Easy Returns Policy</span></div></div>
+    <div class="trust-item"><i class="fa-solid fa-tag trust-icon"></i><div><strong>Best Prices</strong><span>Price Match Guarantee</span></div></div>
+  </div>
+
+  <div id="cart-content"></div>
+</main>
+
+<div class="toast" id="toast"></div>
+
+ <footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<script>
+  
+/* ── NAVBAR SCROLL SHADOW ───────────────────────────────────── */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+});
+
+           // navbar responsive
+const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const icon = menu.querySelector("i");
+
+menu.onclick = function () {
+    navLinks.classList.toggle("active");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+};
+/* ── TOAST ──────────────────────────────────────────────────── */
+let toastTimer;
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMsg').innerHTML = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+
+ 
+const RECS = [
+  { name:'Pre-Workout', brand:'C4', price:39.99, rating:'4.7 (650)', img:'image/Pre-Workout.jfif', placeholder:'Pre-Workout' },
+  { name:'Daily Multivitamin', brand:'Garden of Life', price:24.99, rating:'4.8 (700)', img:'image/Daily Multivitamin.jfif', placeholder:'Multivitamin' },
+  { name:'BCAA 2:1:1', brand:'Xtend', price:29.99, rating:'4.7 (650)', img:'image/BCAA.jfif', placeholder:'BCAA' },
+  { name:'Protein Bars', brand:'Quest', price:19.99, rating:'4.8 (580)', img:'image/Protein Bars 12-Pack.jfif', placeholder:'Protein+Bars' },
+  { name:'Shaker Bottle', brand:'FitFuel', price:12.99, rating:'4.6 (430)', img:'image/FitFuel Shaker Bottle.jfif', placeholder:'Shaker+Bottle' },
+];
+ 
+let cart = JSON.parse(localStorage.getItem('fitfuel_cart') || '[]');
+let coupon = { code: 'WELCOME10', discount: 10 };
+let couponApplied = JSON.parse(localStorage.getItem('fitfuel_coupon') || 'false');
+ 
+function saveCart(){ localStorage.setItem('fitfuel_cart', JSON.stringify(cart)); }
+ 
+function subtotal(){ return cart.reduce((s,i)=>s+i.price*i.qty, 0); }
+function shipping(){ return subtotal() >= 75 ? 0 : 9.99; }
+function tax(){ return subtotal() * 0.06; }
+function total(){ return subtotal() + shipping() + tax() - (couponApplied ? coupon.discount : 0); }
+ 
+function render(){
+  const el = document.getElementById('cart-content');
+  if(!cart.length){ renderEmpty(el); return; }
+  const shippingLeft = Math.max(0, 75 - subtotal());
+  const progress = Math.min(100, (subtotal()/75)*100);
+ 
+  el.innerHTML = `
+  <div class="cart-layout">
+    <div>
+      <div class="cart-table">
+        <div class="cart-table-head">
+          <span>Product</span>
+          <span>Price</span>
+          <span>Quantity</span>
+          <span>Total</span>
+          <span></span>
+        </div>
+        ${cart.map(item=>`
+          <div class="cart-item">
+            <div class="item-info">
+              <img class="item-img" src="${item.img}" alt="${item.name}" onerror="this.src='https://placehold.co/70x70/f0f9ff/0ea5e9?text=${encodeURIComponent(item.name)}'">
+              <div>
+                <div class="item-name">${item.name}</div>
+                <div class="item-variant">${item.brand}</div>
+                <div class="item-stock">✓ In Stock</div>
+              </div>
+            </div>
+            <div class="item-price">$${item.price.toFixed(2)}</div>
+            <div class="qty-ctrl">
+              <button class="qty-btn" onclick="changeQty('${item.name}',-1)">−</button>
+              <span class="qty-num">${item.qty}</span>
+              <button class="qty-btn" onclick="changeQty('${item.name}',1)">+</button>
+            </div>
+            <div class="item-total">$${(item.price*item.qty).toFixed(2)}</div>
+            <button class="remove-btn" onclick="removeItem('${item.name}')">✕</button>
+          </div>
+        `).join('')}
+        <div class="cart-actions">
+          <button class="continue-btn" onclick="window.location.href='store.html'">← Continue Shopping</button>
+          <button class="clear-btn" onclick="clearCart()">🗑 Clear Cart</button>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- ORDER SUMMARY -->
+    <div class="order-summary">
+      <h2>Order Summary</h2>
+      <div class="summary-row">
+        <span>Subtotal (${cart.reduce((s,i)=>s+i.qty,0)} items)</span>
+        <span>$${subtotal().toFixed(2)}</span>
+      </div>
+ 
+      ${couponApplied ? `
+        <div class="summary-row">
+          <span>Discount</span>
+          <span class="discount">−$${coupon.discount.toFixed(2)}</span>
+        </div>
+        <div class="coupon-tag">
+          🏷 ${coupon.code} <button class="coupon-remove" onclick="removeCoupon()">✕</button>
+        </div>
+      ` : `
+        <div class="coupon-row">
+          <input class="coupon-input" id="coupon-input" type="text" placeholder="Coupon code (try WELCOME10)">
+          <button class="apply-btn" onclick="applyCoupon()">Apply</button>
+        </div>
+      `}
+ 
+      <div class="summary-row">
+        <span>Shipping ℹ</span>
+        <span class="${shipping()===0?'free':''}">${shipping()===0?'FREE':'$'+shipping().toFixed(2)}</span>
+      </div>
+      <div class="summary-row">
+        <span>Estimated Tax ℹ</span>
+        <span>$${tax().toFixed(2)}</span>
+      </div>
+      <div class="divider"></div>
+      <div class="summary-total">
+        <span>Total</span>
+        <span>$${total().toFixed(2)}</span>
+      </div>
+ 
+      <a href="checkout.html"><button class="checkout-btn"><i class="fa-solid fa-lock trust-icon"></i> Checkout Securely</button></a>
+     
+      <div class="more-pay">More payment options</div>
+ 
+      ${shippingLeft > 0 ? `
+        <div class="ship-bar">
+          <p>You're $${shippingLeft.toFixed(2)} Away From FREE Shipping!</p>
+          <div class="progress-track"><div class="progress-fill" style="width:${progress}%"></div></div>
+          <small>Spend $75.00 or more to unlock free standard shipping.</small>
+        </div>
+      ` : `
+        <div class="ship-bar">
+          <p>🎉 You've unlocked FREE Shipping!</p>
+          <div class="progress-track"><div class="progress-fill" style="width:100%"></div></div>
+        </div>
+      `}
+ 
+      <div class="accepts">
+        <p>We Accept</p>
+        <div class="pay-logos">
+          <span class="pay-logo">VISA</span>
+          <span class="pay-logo">MC</span>
+          <span class="pay-logo">AMEX</span>
+          <span class="pay-logo">PayPal</span>
+          <span class="pay-logo"><i class="fa-brands fa-apple"></i> Pay</span>
+        </div>
+      </div>
+      <div class="secure-note"><span class="lock"><i class="fa-solid fa-lock trust-icon"></i></span> <span><strong>Secure Checkout</strong><br>Your information is 100% secure and encrypted.</span></div>
+    </div>
+  </div>
+ 
+  <!-- RECOMMENDATIONS -->
+  <div class="rec-section">
+    <h2>You May Also Like</h2>
+    <div class="rec-grid">
+      ${RECS.map(r=>`
+        <div class="rec-card">
+          <img src="${r.img}" alt="${r.name}" onerror="this.src='https://placehold.co/90x90/f0f9ff/0ea5e9?text=${encodeURIComponent(r.placeholder)}'">
+          <h4>${r.name}</h4>
+          <div class="rec-rating">★ ${r.rating}</div>
+          <div class="rec-price">$${r.price.toFixed(2)}</div>
+          <button class="rec-add" onclick="addRec('${r.name}')">Add to Cart</button>
+        </div>
+      `).join('')}
+    </div>
+  </div>
+  `;
+}
+ 
+function renderEmpty(el){
+  el.innerHTML = `
+    <div class="empty-cart">
+      <div class="empty-icon">🛒</div>
+      <h2>Your cart is empty</h2>
+      <p>Add some supplements to get started!</p>
+      <a class="shop-btn" href="store.html">← Shop Now</a>
+    </div>
+  `;
+}
+ 
+function changeQty(name, delta){
+  const item = cart.find(i => i.name === name);
+  if(!item) return;
+  item.qty += delta;
+  if(item.qty <= 0){ cart = cart.filter(i => i.name !== name); }
+  saveCart(); render();
+}
+ 
+function removeItem(name){
+  cart = cart.filter(i => i.name !== name);
+  saveCart(); render();
+  showToast('Item removed from cart');
+}
+ 
+function clearCart(){
+  if(confirm('Clear all items from your cart?')){ cart=[]; saveCart(); render(); }
+}
+ 
+function applyCoupon(){
+  const val = document.getElementById('coupon-input').value.trim().toUpperCase();
+  if(val === coupon.code){
+    couponApplied = true;
+    localStorage.setItem('fitfuel_coupon','true');
+    render(); showToast('🎉 Coupon applied! $10 off');
+  } else {
+    showToast('❌ Invalid coupon code');
+  }
+}
+ 
+function removeCoupon(){
+  couponApplied = false;
+  localStorage.setItem('fitfuel_coupon','false');
+  render();
+}
+ 
+function addRec(name){
+  const prod = RECS.find(r => r.name === name);
+  if(!prod) return;
+  const existing = cart.find(c => c.name === name);
+  if(existing){ existing.qty++; } else { cart.push({...prod, qty:1}); }
+  saveCart(); render();
+  showToast(`✓ ${prod.name} added to cart!`);
+}
+ 
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 2400);
+}
+ 
+render();
+
+</script>
+</body>
+</html>

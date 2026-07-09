@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Iron fuel/order confirmed</title>
+    <link rel="stylesheet" href="order conformation.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+<body>
+       <header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+        <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+
+
+    <main>
+
+  <!-- SUCCESS HERO -->
+  <section class="confirm-hero">
+    <div class="success-icon">
+      <i class="fa-solid fa-check"></i>
+    </div>
+    <h1>Order Confirmed</h1>
+    <p class="confirm-sub">Thanks for your order — a confirmation has been sent to <span id="confirmEmail">your email</span>.</p>
+
+    <div class="order-meta">
+      <div class="meta-item">
+        <span class="meta-label">Order Number</span>
+        <span class="meta-value" id="confirmOrderNumber">—</span>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-item">
+        <span class="meta-label">Order Date</span>
+        <span class="meta-value" id="confirmOrderDate">—</span>
+      </div>
+      <div class="meta-divider"></div>
+      <div class="meta-item">
+        <span class="meta-label">Estimated Delivery</span>
+        <span class="meta-value" id="confirmDelivery">—</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORDER TRACKING -->
+  <section class="confirm-card">
+    <h2>Order Status</h2>
+    <div class="track-tracker">
+      <div class="track-step done">
+        <span class="track-circle"><i class="fa-solid fa-check"></i></span>
+        <span class="track-label">Order Placed</span>
+      </div>
+      <div class="track-line"></div>
+      <div class="track-step">
+        <span class="track-circle"><i class="fa-solid fa-box"></i></span>
+        <span class="track-label">Processing</span>
+      </div>
+      <div class="track-line"></div>
+      <div class="track-step">
+        <span class="track-circle"><i class="fa-solid fa-truck"></i></span>
+        <span class="track-label">Shipped</span>
+      </div>
+      <div class="track-line"></div>
+      <div class="track-step">
+        <span class="track-circle"><i class="fa-solid fa-house"></i></span>
+        <span class="track-label">Delivered</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="confirm-layout">
+
+    <!-- LEFT COLUMN -->
+    <div class="confirm-main">
+
+      <!-- ITEMS -->
+      <section class="confirm-card">
+        <h2>Items in Your Order</h2>
+        <div class="confirm-items" id="confirmItems"></div>
+      </section>
+
+      <!-- SHIPPING & PAYMENT -->
+      <section class="confirm-card">
+        <div class="info-grid">
+          <div class="info-block">
+            <div class="info-head">
+              <i class="fa-solid fa-location-dot"></i>
+              <h3>Shipping Address</h3>
+            </div>
+            <p class="info-text" id="confirmAddress">—</p>
+            <p class="info-text-muted" id="confirmShipMethod">—</p>
+          </div>
+          <div class="info-block">
+            <div class="info-head">
+              <i class="fa-regular fa-credit-card"></i>
+              <h3>Payment Method</h3>
+            </div>
+            <p class="info-text" id="confirmPaymentMethod">—</p>
+            <p class="info-text-muted">Billed to the address above</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- RIGHT: SUMMARY -->
+    <aside class="confirm-summary">
+      <div class="summary-card">
+        <h2>Order Total</h2>
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="confirmSubtotal">$0.00</span>
+        </div>
+        <div class="summary-row" id="confirmDiscountRow" style="display:none;">
+          <span>Discount</span>
+          <span class="discount" id="confirmDiscount">−$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span id="confirmShipping">FREE</span>
+        </div>
+        <div class="summary-row">
+          <span>Estimated Tax</span>
+          <span id="confirmTax">$0.00</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="summary-total">
+          <span>Total Paid</span>
+          <span id="confirmTotal">$0.00</span>
+        </div>
+
+        <button class="invoice-btn" id="downloadInvoiceBtn">
+          <i class="fa-solid fa-download"></i> Download Invoice
+        </button>
+
+        <a class="track-order-btn" href="#" id="trackOrderBtn">
+          <i class="fa-solid fa-truck-fast"></i> Track Order
+        </a>
+
+        <a class="continue-shopping-btn" href="store.html">
+          Continue Shopping <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="help-card">
+        <i class="fa-regular fa-circle-question"></i>
+        <div>
+          <strong>Need help with your order?</strong>
+          <p>Contact our support team anytime.</p>
+          <a href="#">Get Support <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- EMPTY STATE (shown if no order found) -->
+  <section class="confirm-empty hidden" id="confirmEmpty">
+    <i class="fa-regular fa-face-frown"></i>
+    <h2>No Recent Order Found</h2>
+    <p>We couldn't find an order to show. If you just placed one, check your email for confirmation.</p>
+    <a class="continue-shopping-btn" href="store.html">Go to Store <i class="fa-solid fa-arrow-right"></i></a>
+  </section>
+
+</main>
+
+<div class="toast" id="confirmToast"></div>
+
+<!-- ============ FOOTER ============ -->
+    <footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<script>
+/* ── LOAD ORDER ────────────────────────────────────────── */
+const lastOrder = JSON.parse(localStorage.getItem('fitfuel_last_order') || 'null');
+
+function initConfirmationPage(){
+  if(!lastOrder){
+    showEmptyState();
+    return;
+  }
+  renderOrderMeta();
+  renderTrackingStatus();
+  renderConfirmItems();
+  renderShippingPayment();
+  renderConfirmTotals();
+  initActionButtons();
+}
+
+function showEmptyState(){
+  document.querySelector('.confirm-hero').classList.add('hidden');
+  document.querySelectorAll('.confirm-card, .confirm-layout').forEach(el => el.classList.add('hidden'));
+  document.getElementById('confirmEmpty').classList.remove('hidden');
+}
+
+/* ── HERO META ─────────────────────────────────────────── */
+function renderOrderMeta(){
+  document.getElementById('confirmEmail').textContent = lastOrder.email;
+  document.getElementById('confirmOrderNumber').textContent = lastOrder.orderNumber;
+
+  const orderDate = new Date(lastOrder.date);
+  document.getElementById('confirmOrderDate').textContent = formatDate(orderDate);
+
+  const deliveryDays = lastOrder.shipMethod === 'express' ? 2 : lastOrder.shipMethod === 'pickup' ? 1 : 5;
+  const deliveryDate = new Date(orderDate);
+  deliveryDate.setDate(deliveryDate.getDate() + deliveryDays);
+  document.getElementById('confirmDelivery').textContent = formatDate(deliveryDate);
+}
+
+function formatDate(date){
+  return date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' });
+}
+
+/* ── TRACKING STEP (visual only, based on shipping method) ─ */
+function renderTrackingStatus(){
+  if(lastOrder.shipMethod === 'pickup'){
+    document.querySelectorAll('.track-label')[3].textContent = 'Ready for Pickup';
+  }
+}
+
+/* ── ITEMS ─────────────────────────────────────────────── */
+function renderConfirmItems(){
+  const el = document.getElementById('confirmItems');
+  el.innerHTML = lastOrder.items.map(item => `
+    <div class="confirm-item">
+      <img src="${item.img}" alt="${item.name}" onerror="this.src='https://placehold.co/64x64/EEF8FA/006D77?text=${encodeURIComponent(item.name)}'">
+      <div class="confirm-item-info">
+        <div class="confirm-item-name">${item.name}</div>
+        <div class="confirm-item-brand">${item.brand}</div>
+      </div>
+      <div class="confirm-item-qty">Qty ${item.qty}</div>
+      <div class="confirm-item-price">$${(item.price * item.qty).toFixed(2)}</div>
+    </div>
+  `).join('');
+}
+
+/* ── SHIPPING & PAYMENT ────────────────────────────────── */
+function renderShippingPayment(){
+  const a = lastOrder.address;
+  const addressParts = [lastOrder.name, a.address1, a.address2, `${a.city}, ${a.state} ${a.zip}`, a.country]
+    .filter(Boolean);
+  document.getElementById('confirmAddress').innerHTML = addressParts.join('<br>');
+  document.getElementById('confirmShipMethod').textContent = lastOrder.shipMethodLabel;
+  document.getElementById('confirmPaymentMethod').textContent = lastOrder.paymentMethod;
+}
+
+/* ── TOTALS ────────────────────────────────────────────── */
+function renderConfirmTotals(){
+  document.getElementById('confirmSubtotal').textContent = `$${lastOrder.subtotal.toFixed(2)}`;
+  document.getElementById('confirmTax').textContent = `$${lastOrder.tax.toFixed(2)}`;
+  document.getElementById('confirmShipping').textContent = lastOrder.shipping === 0 ? 'FREE' : `$${lastOrder.shipping.toFixed(2)}`;
+  document.getElementById('confirmTotal').textContent = `$${lastOrder.total.toFixed(2)}`;
+
+  if(lastOrder.discount > 0){
+    document.getElementById('confirmDiscountRow').style.display = 'flex';
+    document.getElementById('confirmDiscount').textContent = `−$${lastOrder.discount.toFixed(2)}`;
+  }
+}
+
+/* ── ACTIONS ───────────────────────────────────────────── */
+function initActionButtons(){
+  document.getElementById('downloadInvoiceBtn').addEventListener('click', handleDownloadInvoice);
+  document.getElementById('trackOrderBtn').addEventListener('click', handleTrackOrder);
+}
+
+function handleDownloadInvoice(){
+  showConfirmToast('Invoice download will be available soon');
+}
+
+function handleTrackOrder(e){
+  e.preventDefault();
+  showConfirmToast(`Tracking for ${lastOrder.orderNumber} isn't available yet`);
+}
+
+/* ── TOAST ─────────────────────────────────────────────── */
+function showConfirmToast(msg){
+  const toast = document.getElementById('confirmToast');
+  toast.innerHTML = `<i class="fa-solid fa-circle-info"></i> ${msg}`;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2600);
+}
+
+initConfirmationPage();
+</script>
+    
+</body>
+</html>

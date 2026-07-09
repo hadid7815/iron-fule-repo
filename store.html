@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitFuel Store</title>
+<link rel="stylesheet" href="store.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+<body>
+    <header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+         <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+
+<main>
+ 
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Premium Supplements.<span>Real Results.</span></h1>
+      <p>High-quality supplements to fuel your workouts, recovery, and performance goals.</p>
+      <div class="hero-badges">
+        <div class="hero-badge">
+          <span class="hero-badge-icon"><i class="fa-solid fa-shield-halved"></i></span>
+          <div><strong>100% Authentic</strong><small>Genuine Products</small></div>
+        </div>
+        <div class="hero-badge">
+          <span class="hero-badge-icon"><i class="fa-solid fa-bolt"></i></span>
+          <div><strong>Fast &amp; Secure</strong><small>Delivery</small></div>
+        </div>
+        <div class="hero-badge">
+          <span class="hero-badge-icon"><i class="fa-solid fa-medal"></i></span>
+          <div><strong>Expert Approved</strong><small>Trusted by Pros</small></div>
+        </div>
+      </div>
+    </div>
+    <img class="hero-img" src="image/herosection store1.png" alt="FitFuel Whey Protein">
+  </section>
+ 
+  <!-- STORE PANEL -->
+  <section class="store-panel">
+ 
+    <div class="store-header">
+      <div>
+        <h2>Supplements Store</h2>
+        <p>Choose from our wide range of premium supplements for every fitness goal.</p>
+      </div>
+      <div class="sort-wrap">
+        <span>Sort by</span>
+        <select id="sortSelect">
+          <option value="featured">Featured</option>
+          <option value="bestseller">Best Sellers</option>
+          <option value="new">New Arrivals</option>
+          <option value="price-low">Price: Low to High</option>
+          <option value="price-high">Price: High to Low</option>
+        </select>
+      </div>
+    </div>
+ 
+    <div class="store-layout">
+ 
+      <!-- LEFT: FILTERS -->
+      <aside class="filters-col">
+        <h3 class="filters-title">Filters</h3>
+ 
+        <div class="filter-group">
+          <button class="filter-group-head" data-toggle="cat-list">Categories <i class="fa-solid fa-chevron-up"></i></button>
+          <ul class="filter-list" id="cat-list">
+            <li><a href="#" class="cat-link active" data-cat="all">All Products</a></li>
+            <li><a href="#" class="cat-link" data-cat="protein">Protein</a></li>
+            <li><a href="#" class="cat-link" data-cat="pre-workout">Pre-Workout</a></li>
+            <li><a href="#" class="cat-link" data-cat="amino-acids">Amino Acids</a></li>
+            <li><a href="#" class="cat-link" data-cat="vitamins">Vitamins</a></li>
+            <li><a href="#" class="cat-link" data-cat="weight-gain">Weight Gain</a></li>
+            <li><a href="#" class="cat-link" data-cat="weight-loss">Weight Loss</a></li>
+            <li><a href="#" class="cat-link" data-cat="health">Health &amp; Wellness</a></li>
+            <li><a href="#" class="cat-link" data-cat="accessories">Accessories</a></li>
+          </ul>
+        </div>
+ 
+        <div class="filter-group">
+          <button class="filter-group-head" data-toggle="goal-list">Goal <i class="fa-solid fa-chevron-up"></i></button>
+          <ul class="filter-checks" id="goal-list">
+            <li><label><input type="checkbox"><span>Muscle Gain</span></label></li>
+            <li><label><input type="checkbox"><span>Weight Loss</span></label></li>
+            <li><label><input type="checkbox"><span>Endurance</span></label></li>
+            <li><label><input type="checkbox"><span>Recovery</span></label></li>
+            <li><label><input type="checkbox"><span>General Health</span></label></li>
+          </ul>
+        </div>
+ 
+        <div class="filter-group">
+          <button class="filter-group-head" data-toggle="brand-list">Brand <i class="fa-solid fa-chevron-up"></i></button>
+          <ul class="filter-checks" id="brand-list">
+            <li><label><input type="checkbox"><span>Optimum Nutrition</span></label></li>
+            <li><label><input type="checkbox"><span>BSN</span></label></li>
+            <li><label><input type="checkbox"><span>MuscleTech</span></label></li>
+            <li><label><input type="checkbox"><span>Dymatize</span></label></li>
+            <li><label><input type="checkbox"><span>MyProtein</span></label></li>
+          </ul>
+          <a href="#" class="view-more">View More</a>
+        </div>
+ 
+        <div class="filter-group">
+          <button class="filter-group-head" data-toggle="price-range">Price Range <i class="fa-solid fa-chevron-up"></i></button>
+          <div id="price-range">
+            <input type="range" id="priceSlider" min="10" max="200" value="200" class="price-slider">
+            <div class="price-labels"><span>$10</span><span>$200</span></div>
+          </div>
+        </div>
+ 
+        <button class="apply-filters-btn">Apply Filters</button>
+      </aside>
+ 
+      <!-- CENTER: PRODUCT GRID -->
+      <div class="products-col">
+        <div class="product-grid" id="productGrid">
+ 
+          <div class="product-card" data-category="protein" data-badge="">
+            <div class="card-img-wrap">
+              <img src="image/Whey Isolate.jfif" alt="Whey Protein Isolate">
+            </div>
+            <div class="card-body">
+              <div class="card-cat">Protein</div>
+              <h3>Whey Protein Isolate</h3>
+              <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-num">4.8</span><span class="reviews">(178)</span></div>
+              <div class="card-price-row"><span class="price">$49.99</span></div>
+              <button class="btn-cart" onclick="addToCart(this,'Whey Protein Isolate')">Add to Cart</button>
+            </div>
+          </div>
+ 
+          <div class="product-card" data-category="pre-workout" data-badge="">
+            <div class="card-img-wrap">
+              <img src="image/Pre-Workout.jfif" alt="C4 Original Pre-Workout">
+            </div>
+            <div class="card-body">
+              <div class="card-cat">Pre-Workout</div>
+              <h3>C4 Original Pre-Workout</h3>
+              <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-num">4.7</span><span class="reviews">(156)</span></div>
+              <div class="card-price-row"><span class="price">$34.99</span></div>
+              <button class="btn-cart" onclick="addToCart(this,'C4 Original Pre-Workout')">Add to Cart</button>
+            </div>
+          </div>
+ 
+          <div class="product-card" data-category="amino-acids" data-badge="">
+            <div class="card-img-wrap">
+              <img src="image/BCAA.jfif" alt="BCAA 2:1:1">
+            </div>
+            <div class="card-body">
+              <div class="card-cat">BCAA</div>
+              <h3>BCAA 2:1:1</h3>
+              <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-num">4.7</span><span class="reviews">(142)</span></div>
+              <div class="card-price-row"><span class="price">$29.99</span></div>
+              <button class="btn-cart" onclick="addToCart(this,'BCAA 2:1:1')">Add to Cart</button>
+            </div>
+          </div>
+ 
+          <div class="product-card" data-category="protein" data-badge="">
+            <div class="card-img-wrap">
+              <img src="image/whey protein.jfif" alt="Gold Standard Whey">
+            </div>
+            <div class="card-body">
+              <div class="card-cat">Protein</div>
+              <h3>Gold Standard Whey</h3>
+              <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-num">4.8</span><span class="reviews">(243)</span></div>
+              <div class="card-price-row"><span class="price">$54.99</span></div>
+              <button class="btn-cart" onclick="addToCart(this,'Gold Standard Whey')">Add to Cart</button>
+            </div>
+          </div>
+ 
+          <div class="product-card" data-category="weight-gain" data-badge="">
+            <div class="card-img-wrap">
+              <img src="image/Creatine Monohydrate.jfif" alt="Creatine Monohydrate">
+            </div>
+            <div class="card-body">
+              <div class="card-cat">Creatine</div>
+              <h3>Creatine Monohydrate</h3>
+              <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-num">4.7</span><span class="reviews">(180)</span></div>
+              <div class="card-price-row"><span class="price">$24.99</span></div>
+              <button class="btn-cart" onclick="addToCart(this,'Creatine Monohydrate')">Add to Cart</button>
+            </div>
+          </div>
+ 
+          <div class="product-card" data-category="weight-loss" data-badge="">
+            <div class="card-img-wrap">
+              <img src="image/L-Carnitine.jfif" alt="L-Carnitine 3000">
+            </div>
+            <div class="card-body">
+              <div class="card-cat">Fat Burner</div>
+              <h3>L-Carnitine 3000</h3>
+              <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-num">4.6</span><span class="reviews">(98)</span></div>
+              <div class="card-price-row"><span class="price">$19.99</span></div>
+              <button class="btn-cart" onclick="addToCart(this,'L-Carnitine 3000')">Add to Cart</button>
+            </div>
+          </div>
+ 
+          <div class="product-card" data-category="weight-gain" data-badge="">
+            <div class="card-img-wrap">
+              <img src="image/Mass Gainer.jfif" alt="Serious Mass">
+            </div>
+            <div class="card-body">
+              <div class="card-cat">Mass Gainer</div>
+              <h3>Serious Mass</h3>
+              <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-num">4.6</span><span class="reviews">(121)</span></div>
+              <div class="card-price-row"><span class="price">$69.99</span></div>
+              <button class="btn-cart" onclick="addToCart(this,'Serious Mass')">Add to Cart</button>
+            </div>
+          </div>
+ 
+          <div class="product-card" data-category="health" data-badge="">
+            <div class="card-img-wrap">
+              <img src="image/Omega 3 Fish Oil.jfif" alt="Omega 3 Fish Oil">
+            </div>
+            <div class="card-body">
+              <div class="card-cat">Omega</div>
+              <h3>Omega 3 Fish Oil</h3>
+              <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-num">4.6</span><span class="reviews">(137)</span></div>
+              <div class="card-price-row"><span class="price">$19.99</span></div>
+              <button class="btn-cart" onclick="addToCart(this,'Omega 3 Fish Oil')">Add to Cart</button>
+            </div>
+          </div>
+ 
+          <div class="product-card" data-category="vitamins" data-badge="">
+            <div class="card-img-wrap">
+              <img src="image/Daily Multivitamin.jfif" alt="Daily Multivitamin">
+            </div>
+            <div class="card-body">
+              <div class="card-cat">Vitamins</div>
+              <h3>Daily Multivitamin</h3>
+              <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-num">4.7</span><span class="reviews">(112)</span></div>
+              <div class="card-price-row"><span class="price">$16.99</span></div>
+              <button class="btn-cart" onclick="addToCart(this,'Daily Multivitamin')">Add to Cart</button>
+            </div>
+          </div>
+ 
+          <div class="product-card" data-category="amino-acids" data-badge="">
+            <div class="card-img-wrap">
+              <img src="image/L-Glutamine.jfif" alt="L-Glutamine">
+            </div>
+            <div class="card-body">
+              <div class="card-cat">Glutamine</div>
+              <h3>L-Glutamine</h3>
+              <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-num">4.6</span><span class="reviews">(88)</span></div>
+              <div class="card-price-row"><span class="price">$22.99</span></div>
+              <button class="btn-cart" onclick="addToCart(this,'L-Glutamine')">Add to Cart</button>
+            </div>
+          </div>
+ 
+          <div class="product-card" data-category="protein" data-badge="">
+            <div class="card-img-wrap">
+              <img src="image/Casein Protein.jfif" alt="Micellar Casein">
+            </div>
+            <div class="card-body">
+              <div class="card-cat">Casein</div>
+              <h3>Micellar Casein</h3>
+              <div class="card-rating"><span class="stars">★★★★☆</span><span class="rating-num">4.7</span><span class="reviews">(101)</span></div>
+              <div class="card-price-row"><span class="price">$39.99</span></div>
+              <button class="btn-cart" onclick="addToCart(this,'Micellar Casein')">Add to Cart</button>
+            </div>
+          </div>
+ 
+          <div class="product-card" data-category="accessories" data-badge="">
+            <div class="card-img-wrap">
+              <img src="image/FitFuel Shaker Bottle.jfif" alt="FitFuel Shaker Bottle">
+            </div>
+            <div class="card-body">
+              <div class="card-cat">Shaker</div>
+              <h3>FitFuel Shaker Bottle</h3>
+              <div class="card-rating"><span class="stars">★★★★★</span><span class="rating-num">4.9</span><span class="reviews">(210)</span></div>
+              <div class="card-price-row"><span class="price">$9.99</span></div>
+              <button class="btn-cart" onclick="addToCart(this,'FitFuel Shaker Bottle')">Add to Cart</button>
+            </div>
+          </div>
+ 
+        </div>
+      </div>
+ 
+      <!-- RIGHT: DEAL + WHY + CATEGORIES -->
+      <aside class="side-col">
+ 
+        <div class="deal-card">
+          <h4><i class="fa-solid fa-bolt"></i> Deal of the Day</h4>
+          <div class="deal-body">
+            <img src="image/Whey Isolate.jfif" alt="Whey Protein Isolate">
+            <div>
+              <div class="deal-name">Whey Protein<br>Isolate</div>
+              <div class="deal-stars">★★★★☆</div>
+            </div>
+          </div>
+          <div class="deal-price-row">
+            <span class="deal-price">$39.99</span>
+            <span class="deal-old">$59.99</span>
+          </div>
+          <div class="deal-off">33% OFF</div>
+          <div class="deal-timer" id="dealTimer">
+            <div><span id="dt-h">07</span><small>HRS</small></div>
+            <span>:</span>
+            <div><span id="dt-m">42</span><small>MINS</small></div>
+            <span>:</span>
+            <div><span id="dt-s">15</span><small>SECS</small></div>
+          </div>
+          <button class="deal-btn" onclick="addToCart(document.querySelector('.products-col .btn-cart'),'Whey Protein Isolate')">Shop Now</button>
+        </div>
+ 
+        <div class="why-card">
+          <h4>Why Choose FitFuel</h4>
+          <ul>
+            <li><span class="why-ic"><i class="fa-solid fa-shield-halved"></i></span><div><strong>Premium Quality</strong><small>Only the best for your body</small></div></li>
+            <li><span class="why-ic"><i class="fa-solid fa-flask"></i></span><div><strong>Lab Tested</strong><small>Safety &amp; purity guaranteed</small></div></li>
+            <li><span class="why-ic"><i class="fa-solid fa-truck-fast"></i></span><div><strong>Fast Delivery</strong><small>Quick &amp; reliable shipping</small></div></li>
+            <li><span class="why-ic"><i class="fa-solid fa-medal"></i></span><div><strong>Trusted by Athletes</strong><small>Used by pros worldwide</small></div></li>
+          </ul>
+        </div>
+ 
+        <div class="cat-card">
+          <h4>Shop by Category</h4>
+          <ul>
+            <li><a href="#"><i class="fa-solid fa-bottle-water"></i> Protein <i class="fa-solid fa-chevron-right arrow"></i></a></li>
+            <li><a href="#"><i class="fa-solid fa-bolt"></i> Pre-Workout <i class="fa-solid fa-chevron-right arrow"></i></a></li>
+            <li><a href="#"><i class="fa-solid fa-link"></i> Amino Acids <i class="fa-solid fa-chevron-right arrow"></i></a></li>
+            <li><a href="#"><i class="fa-solid fa-capsules"></i> Vitamins <i class="fa-solid fa-chevron-right arrow"></i></a></li>
+            <li><a href="#"><i class="fa-solid fa-weight-hanging"></i> Weight Gain <i class="fa-solid fa-chevron-right arrow"></i></a></li>
+            <li><a href="#"><i class="fa-solid fa-person-walking"></i> Weight Loss <i class="fa-solid fa-chevron-right arrow"></i></a></li>
+            <li><a href="#"><i class="fa-solid fa-suitcase-medical"></i> Accessories <i class="fa-solid fa-chevron-right arrow"></i></a></li>
+          </ul>
+          <button class="view-all-btn">View All Categories</button>
+        </div>
+ 
+      </aside>
+ 
+    </div>
+ 
+    <p class="trusted-line">Trusted by Thousands of Fitness Enthusiasts</p>
+    <div class="brand-strip">
+      <span><i class="fa-solid fa-circle-dot"></i> OPTIMUM<br><small>NUTRITION</small></span>
+      <span>MUSCLETECH</span>
+      <span><i class="fa-solid fa-atom"></i> BSN</span>
+      <span><i class="fa-solid fa-play"></i> Dymatize</span>
+      <span>MYPROTEIN</span>
+      <span><i class="fa-solid fa-bolt"></i> CELLUCOR</span>
+    </div>
+ 
+  </section>
+ 
+</main>
+ 
+<!-- CART FAB -->
+<button class="cart-fab" id="cart-fab" onclick="window.location.href='cart.html'">🛒 View Cart <span class="fab-count" id="fab-count">0</span></button>
+ 
+<!-- FEATURE STRIP -->
+<div class="feature-strip">
+  <div class="feature-item"><i class="fa-solid fa-lock"></i><div><strong>Secure Payment</strong><small>Your data is safe with us</small></div></div>
+  <div class="feature-item"><i class="fa-solid fa-rotate-left"></i><div><strong>30-Day Returns</strong><small>Hassle-free returns</small></div></div>
+  <div class="feature-item"><i class="fa-solid fa-truck"></i><div><strong>Fast Shipping</strong><small>Get it delivered quickly</small></div></div>
+  <div class="feature-item"><i class="fa-solid fa-headset"></i><div><strong>24/7 Support</strong><small>We're here to help</small></div></div>
+</div>
+ 
+<footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+  
+ 
+<script>
+           // navbar responsive
+const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const icon = menu.querySelector("i");
+
+menu.onclick = function () {
+    navLinks.classList.toggle("active");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+};
+
+/* ── TOAST ──────────────────────────────────────────────────── */
+let toastTimer;
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMsg').innerHTML = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 2500);
+}
+ 
+/* ── FILTER GROUP COLLAPSE ─────────────────────────────────── */
+document.querySelectorAll('.filter-group-head').forEach(function(head){
+  head.addEventListener('click', function(){
+    var targetId = this.getAttribute('data-toggle');
+    var target = document.getElementById(targetId);
+    var icon = this.querySelector('i');
+    target.classList.toggle('collapsed');
+    icon.classList.toggle('fa-chevron-up');
+    icon.classList.toggle('fa-chevron-down');
+  });
+});
+ 
+/* ── CATEGORY FILTER ────────────────────────────────────────── */
+var catLinks = document.querySelectorAll('.cat-link');
+var productCards = document.querySelectorAll('#productGrid .product-card');
+ 
+catLinks.forEach(function(link){
+  link.addEventListener('click', function(e){
+    e.preventDefault();
+    var cat = this.getAttribute('data-cat');
+    catLinks.forEach(function(l){ l.classList.remove('active'); });
+    this.classList.add('active');
+    productCards.forEach(function(card){
+      var show = cat === 'all' || card.getAttribute('data-category') === cat;
+      card.style.display = show ? 'flex' : 'none';
+    });
+  });
+});
+ 
+/* ── SORT ───────────────────────────────────────────────────── */
+document.getElementById('sortSelect').addEventListener('change', function(){
+  var val = this.value;
+  var grid = document.getElementById('productGrid');
+  var cards = Array.prototype.slice.call(grid.querySelectorAll('.product-card'));
+ 
+  cards.sort(function(a,b){
+    var pa = parseFloat(a.querySelector('.price').textContent.replace('$',''));
+    var pb = parseFloat(b.querySelector('.price').textContent.replace('$',''));
+    var ra = parseFloat(a.querySelector('.rating-num').textContent);
+    var rb = parseFloat(b.querySelector('.rating-num').textContent);
+    if (val === 'price-low') return pa - pb;
+    if (val === 'price-high') return pb - pa;
+    if (val === 'bestseller' || val === 'new') return rb - ra;
+    return 0;
+  });
+ 
+  cards.forEach(function(c){ grid.appendChild(c); });
+});
+ 
+/* ── PRICE SLIDER ───────────────────────────────────────────── */
+var priceSlider = document.getElementById('priceSlider');
+priceSlider.addEventListener('input', function(){
+  document.querySelector('.price-labels span:last-child').textContent = '$' + this.value;
+});
+ 
+document.querySelector('.apply-filters-btn').addEventListener('click', function(){
+  var max = parseFloat(priceSlider.value);
+  productCards.forEach(function(card){
+    var price = parseFloat(card.querySelector('.price').textContent.replace('$',''));
+    var matchesCat = document.querySelector('.cat-link.active').getAttribute('data-cat') === 'all' ||
+                      card.getAttribute('data-category') === document.querySelector('.cat-link.active').getAttribute('data-cat');
+    card.style.display = (price <= max && matchesCat) ? 'flex' : 'none';
+  });
+  showToast('Filters applied!');
+});
+ 
+/* ── DEAL TIMER ─────────────────────────────────────────────── */
+var dealSeconds = 7*3600 + 42*60 + 15;
+setInterval(function(){
+  if (dealSeconds > 0) dealSeconds--;
+  var h = Math.floor(dealSeconds/3600);
+  var m = Math.floor((dealSeconds%3600)/60);
+  var s = dealSeconds%60;
+  document.getElementById('dt-h').textContent = String(h).padStart(2,'0');
+  document.getElementById('dt-m').textContent = String(m).padStart(2,'0');
+  document.getElementById('dt-s').textContent = String(s).padStart(2,'0');
+}, 1000);
+ 
+/* ── CART ───────────────────────────────────────────────────── */
+var cartCount = 0;
+ 
+function addToCart(btn, name) {
+  var cart = JSON.parse(localStorage.getItem('fitfuel_cart') || '[]');
+ 
+  var card = btn.closest('.product-card') || document.querySelector('#productGrid .product-card');
+  var priceText = card.querySelector('.price').textContent.replace('$','');
+  var price = parseFloat(priceText);
+  var brand = card.querySelector('.card-cat') ? card.querySelector('.card-cat').textContent : '';
+  var img = card.querySelector('img').src;
+ 
+  var existing = cart.find(function(i){ return i.name === name; });
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({ name: name, brand: brand, price: price, img: img, placeholder: name, qty: 1 });
+  }
+ 
+  localStorage.setItem('fitfuel_cart', JSON.stringify(cart));
+ 
+  cartCount = cart.reduce(function(s,i){ return s + i.qty; }, 0);
+  document.getElementById('fab-count').textContent = cartCount;
+  document.getElementById('cart-fab').classList.add('visible');
+ 
+  if (btn && btn.classList && btn.classList.contains('btn-cart')) {
+    var original = btn.textContent;
+    btn.textContent = '✓ Added!';
+    btn.classList.add('added');
+    setTimeout(function() { btn.textContent = original; btn.classList.remove('added'); }, 1500);
+  }
+  showToast('✓ ' + name + ' added to cart!');
+}
+ 
+function footerSubscribe() {
+  var email = document.getElementById('footerEmail').value.trim();
+  if (!email) { showToast('Please enter your email'); return; }
+  showToast('Subscribed! 🎉');
+  document.getElementById('footerEmail').value = '';
+}
+ 
+document.getElementById('cart-fab').addEventListener('click', function() {
+  window.location.href = 'cart.html';
+});
+ 
+/* Load existing cart count on page load */
+var savedCart = JSON.parse(localStorage.getItem('fitfuel_cart') || '[]');
+cartCount = savedCart.reduce(function(s,i){ return s + i.qty; }, 0);
+if (cartCount > 0) {
+  document.getElementById('fab-count').textContent = cartCount;
+  document.getElementById('cart-fab').classList.add('visible');
+}
+
+
+</script>
+</body>
+</html>

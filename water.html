@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Water Intake calculator</title>
+
+<link rel="stylesheet" href="water.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+<body>
+    <header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+         <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+    
+    <main>
+     <!-- Hero -->
+    <section class="hero-section">
+        <div class="container text-center">
+
+           
+            <h1 class="hero-title" style="font-size:80px;">
+                Calculate 
+                <span style="color: #9ffcf7;">Your Water Intake</span>
+            </h1>
+
+            <p class="hero-subtitle">
+               A water calculator estimates how much water you should drink daily based on factors like:
+            </p>
+
+        </div>
+    </section>
+
+<div class="bg"></div>
+
+<div class="grid">
+
+<div class="card">
+<h3>Calculate Water</h3>
+
+<label>Body Weight (kg)</label>
+<input type="number" id="weight" placeholder="Enter your weight">
+
+<label>Climate</label>
+<select id="climate">
+<option value="1">Temperate / Indoor</option>
+<option value="1.15">Hot / Humid (+15%)</option>
+<option value="1.10">High Altitude (+10%)</option>
+<option value="1.05">Cold (+5%)</option>
+</select>
+
+<label>Exercise</label>
+<select id="exercise">
+<option value="0">None</option>
+<option value="350">30–60 min</option>
+<option value="700">60–90 min</option>
+<option value="1000">90–120 min</option>
+<option value="1500">2+ hours</option>
+</select>
+
+<label>Diet</label>
+<select id="diet">
+<option value="0">Mixed</option>
+<option value="300">High Protein</option>
+<option value="500">Keto</option>
+<option value="-100">Plant-Based</option>
+</select>
+
+<button onclick="calc()">Calculate Water</button>
+</div>
+
+<div class="card" id="resultPDF" style="width: 700px; margin:auto;">
+<h3>Result Dashboard</h3>
+
+<div class="bottle">
+<div class="water" id="water"></div>
+</div>
+
+<div class="big-number" id="liters">0 L</div>
+<div style="text-align:center" id="ml">0 ml</div>
+
+<div style="text-align:center; margin-top:20px;">
+    <button onclick="downloadPDF()">
+        <i class="fas fa-file-pdf"></i> Download PDF Report
+    </button>
+</div>
+
+<div id="badge" class="badge"></div>
+
+<div class="glasses" id="glasses"></div>
+
+
+
+</div>
+
+<div class="card">
+<h3>Hydration Score</h3>
+<div class="circle" id="circle" style="--p:0deg">
+<span id="score">0%</span>
+</div>
+</div>
+
+<div class="card">
+<h3>Health Tips</h3>
+<div class="tips">
+💧 Drink water before meals for better digestion<br>
+⚡ Hydration improves energy & focus<br>
+🏋️ Increase intake during workouts<br>
+🌙 Drink consistently, not all at once
+</div>
+</div>
+
+</div>
+
+</div>
+</main>
+
+    <footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+               // navbar responsive
+const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const icon = menu.querySelector("i");
+
+menu.onclick = function () {
+    navLinks.classList.toggle("active");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+};
+
+               document.addEventListener("DOMContentLoaded", function () {
+
+            // create close button
+            let closeBtn = document.createElement("button");
+
+            closeBtn.innerHTML = "✖";
+            closeBtn.className = "js-close-btn";
+
+            // add style + position
+            closeBtn.style.position = "fixed";
+            closeBtn.style.top = "70px";
+            closeBtn.style.right = "20px";
+            closeBtn.style.width = "40px";
+            closeBtn.style.height = "40px";
+            closeBtn.style.borderRadius = "50%";
+            closeBtn.style.border = "none";
+            closeBtn.style.background = "#006D77";
+            closeBtn.style.color = "white";
+            closeBtn.style.fontSize = "18px";
+            closeBtn.style.cursor = "pointer";
+            closeBtn.style.zIndex = "9999";
+
+            document.body.appendChild(closeBtn);
+
+            // close action
+            closeBtn.addEventListener("click", function () {
+                window.location.href = "all calculator.html";
+                // 👆 yahan apna main page name likho
+            });
+
+        });
+
+
+// ================= CALCULATE WATER =================
+function calc() {
+
+    let weight = parseFloat(document.getElementById("weight").value);
+    let climate = parseFloat(document.getElementById("climate").value);
+    let exercise = parseFloat(document.getElementById("exercise").value);
+    let diet = parseFloat(document.getElementById("diet").value);
+
+    if (!weight || weight <= 0) {
+        alert("Please enter valid weight");
+        return;
+    }
+
+    let waterML = weight * 35;
+    waterML = waterML * climate;
+    waterML += exercise;
+    waterML += diet;
+
+    let liters = (waterML / 1000).toFixed(1);
+    let glasses = Math.round(waterML / 250);
+
+    document.getElementById("water").style.height =
+        Math.min((waterML / 5000) * 100, 100) + "%";
+
+    document.getElementById("liters").innerText = liters + " L";
+    document.getElementById("ml").innerText = Math.round(waterML) + " ml";
+
+    let badge = "";
+    if (liters < 2) badge = "💧 Basic Hydration";
+    else if (liters < 3) badge = "💦 Good Hydration";
+    else if (liters < 4) badge = "🌊 Excellent Hydration";
+    else badge = "🏆 Athlete Level";
+
+    document.getElementById("badge").innerText = badge;
+
+    let glassHTML = "";
+    for (let i = 0; i < glasses; i++) {
+        glassHTML += "🥛 ";
+    }
+    document.getElementById("glasses").innerHTML = glassHTML;
+
+    let score = Math.min(Math.round((liters / 5) * 100), 100);
+    document.getElementById("score").innerText = score + "%";
+    document.getElementById("circle").style.setProperty("--p", score * 3.6 + "deg");
+}
+
+
+// ================= DOWNLOAD PDF =================
+function downloadPDF() {
+
+    const { jsPDF } = window.jspdf;
+
+    let liters = document.getElementById("liters").innerText;
+    let ml = document.getElementById("ml").innerText;
+    let badge = document.getElementById("badge").innerText;
+    let score = document.getElementById("score").innerText;
+
+    if (liters === "0 L") {
+        alert("Please calculate water intake first.");
+        return;
+    }
+
+    const pdf = new jsPDF();
+
+    pdf.setFont("helvetica", "bold");
+    pdf.setFontSize(22);
+    pdf.text("HydraFit AI", 20, 20);
+
+    pdf.setFontSize(14);
+    pdf.text("Premium Water Intake Report", 20, 30);
+
+    pdf.line(20, 35, 190, 35);
+
+    pdf.setFontSize(12);
+    pdf.text("Recommended Water Intake:", 20, 50);
+    pdf.text(liters, 120, 50);
+
+    pdf.text("Daily Water (ml):", 20, 65);
+    pdf.text(ml, 120, 65);
+
+    pdf.text("Hydration Status:", 20, 80);
+    pdf.text(badge, 120, 80);
+
+    pdf.text("Hydration Score:", 20, 95);
+    pdf.text(score, 120, 95);
+
+    pdf.line(20, 110, 190, 110);
+
+    pdf.setFontSize(14);
+    pdf.text("Health Tips", 20, 125);
+
+    pdf.setFontSize(11);
+    pdf.text("• Drink water before meals", 25, 140);
+    pdf.text("• Stay hydrated during workouts", 25, 150);
+    pdf.text("• Drink consistently throughout the day", 25, 160);
+    pdf.text("• Proper hydration improves focus & energy", 25, 170);
+
+    pdf.setFontSize(10);
+    pdf.text("Generated by HydraFit AI", 20, 280);
+
+    pdf.save("HydraFit-Water-Report.pdf");
+}
+
+</script>
+
+</body>
+</html>

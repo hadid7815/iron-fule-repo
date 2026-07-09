@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FitFuel Training</title>
+  <link rel="stylesheet" href="training.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+</head>
+<body>
+
+ <header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+         <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+  <!-- ══════════ HERO ══════════ -->
+  <section class="hero">
+    <div class="hero__left">
+      <h1 class="hero__heading">
+        Train Smarter.
+        <span class="hero__heading-accent">Get Stronger.</span>
+      </h1>
+      <p class="hero__subtext">Expert-designed programs, personalized coaching, and the tools you need to build the best version of yourself.</p>
+
+      <div class="hero__buttons">
+        <a href="#plans"><button class="btn-primary">Explore Programs</button></a>
+      </div>
+
+      <div class="hero__badges">
+        <div class="hero__badge">
+          <span class="hero__badge-icon">🏋️</span>
+          <div>
+            <strong class="hero__badge-label">Expert Coaches</strong>
+            <small class="hero__badge-sub">Certified Experienced</small>
+          </div>
+        </div>
+        <div class="hero__badge">
+          <span class="hero__badge-icon">📋</span>
+          <div>
+            <strong class="hero__badge-label">Personalized</strong>
+            <small class="hero__badge-sub">Plans For You</small>
+          </div>
+        </div>
+        <div class="hero__badge">
+          <span class="hero__badge-icon">📈</span>
+          <div>
+            <strong class="hero__badge-label">Track Progress</strong>
+            <small class="hero__badge-sub">See Real Results</small>
+          </div>
+        </div>
+        <div class="hero__badge">
+          <span class="hero__badge-icon">🤝</span>
+          <div>
+            <strong class="hero__badge-label">Supportive Community</strong>
+            <small class="hero__badge-sub">You're Not Alone</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__right">
+      <img class="hero__image"
+        src="image/herosection store1.png"
+        alt="Fit athletes training"
+        onerror="this.src='https://placehold.co/460x360/dbeafe/0ea5e9?text=Train+Smarter'">
+    </div>
+  </section>
+
+
+  <!-- ══════════ PROGRAMS ══════════ -->
+  <section class="programs">
+    <p class="eyebrow">Programs for Every Goal</p>
+    <h2 class="section-title">Find Your Perfect Program</h2>
+
+    <div class="programs__tabs" id="programs-tabs">
+      <button class="programs__tab programs__tab--active" data-prog="muscle">
+        <span class="programs__tab-icon">💪</span>
+        <div>
+          <strong class="programs__tab-label">Muscle Building</strong>
+          <small class="programs__tab-sub">Build Strength</small>
+        </div>
+      </button>
+      <button class="programs__tab" data-prog="fatloss">
+        <span class="programs__tab-icon">🔥</span>
+        <div>
+          <strong class="programs__tab-label">Fat Loss</strong>
+          <small class="programs__tab-sub">Burn Fat</small>
+        </div>
+      </button>
+      <button class="programs__tab" data-prog="strength">
+        <span class="programs__tab-icon">🏋️</span>
+        <div>
+          <strong class="programs__tab-label">Strength</strong>
+          <small class="programs__tab-sub">Increase Power</small>
+        </div>
+      </button>
+      <button class="programs__tab" data-prog="endurance">
+        <span class="programs__tab-icon">🏃</span>
+        <div>
+          <strong class="programs__tab-label">Endurance</strong>
+          <small class="programs__tab-sub">Improve Stamina</small>
+        </div>
+      </button>
+      <button class="programs__tab" data-prog="mobility">
+        <span class="programs__tab-icon">🧘</span>
+        <div>
+          <strong class="programs__tab-label">Mobility</strong>
+          <small class="programs__tab-sub">Move Better</small>
+        </div>
+      </button>
+      <button class="programs__tab" data-prog="beginner">
+        <span class="programs__tab-icon">⭐</span>
+        <div>
+          <strong class="programs__tab-label">Beginner</strong>
+          <small class="programs__tab-sub">Start Your Journey</small>
+        </div>
+      </button>
+    </div>
+  </section>
+
+
+  <!-- ══════════ WORKOUT PLANS ══════════ -->
+  <section class="plans" id="plans">
+    <div class="plans__header">
+      <h2 class="plans__heading">Workout Plans for You</h2>
+      <div class="plans__gender-tabs">
+        <button class="plans__gender-btn plans__gender-btn--active" data-gender="men">For Men</button>
+        <button class="plans__gender-btn" data-gender="women">For Women</button>
+      </div>
+    </div>
+
+    <div class="plans__slider-wrap">
+      <button class="plans__slider-btn plans__slider-btn--prev" aria-label="Previous">‹</button>
+      <div class="plans__grid" id="plans-grid"></div>
+      <button class="plans__slider-btn plans__slider-btn--next" aria-label="Next">›</button>
+    </div>
+
+    <div class="plans__view-all">
+      <a href="workout-generator.html">View All Plans →</a>
+    </div>
+  </section>
+
+
+  <!-- ══════════ THREE COLUMN ══════════ -->
+  <section class="three-col">
+
+    <!-- Personal Training -->
+    <div class="pt-col">
+      <h2 class="pt__heading">Personal Training</h2>
+      <p class="pt__desc">Get 1-on-1 coaching tailored to your goals, lifestyle, and schedule.</p>
+      <ul class="pt__features">
+        <li>Personalized Workouts</li>
+        <li>Nutrition Guidance</li>
+        <li>Form Technique Correction</li>
+        <li>Ongoing Support  Motivation</li>
+      </ul>
+      <button class="btn-primary">Get a Trainer</button>
+      <img class="pt__image"
+        src="image/personal training 5.jpg"
+        alt="Personal trainer session"
+        onerror="this.src='https://placehold.co/380x200/dbeafe/0ea5e9?text=Personal+Training'">
+    </div>
+
+    <!-- How It Works -->
+    <div class="how-col">
+      <h2 class="how__heading">How It Works</h2>
+
+      <div class="how__step">
+        <div class="how__step-num">1</div>
+        <div>
+          <span class="how__step-icon">📝</span>
+          <strong class="how__step-title">Take the Quiz</strong>
+          <p class="how__step-desc">Tell us about your goals, experience, and lifestyle.</p>
+        </div>
+      </div>
+
+      <div class="how__step">
+        <div class="how__step-num">2</div>
+        <div>
+          <span class="how__step-icon">📋</span>
+          <strong class="how__step-title">Get Your Plan</strong>
+          <p class="how__step-desc">Receive a personalized workout plan that fits you.</p>
+        </div>
+      </div>
+
+      <div class="how__step">
+        <div class="how__step-num">3</div>
+        <div>
+          <span class="how__step-icon">🏃</span>
+          <strong class="how__step-title">Train  Track</strong>
+          <p class="how__step-desc">Follow your plan and track your progress.</p>
+        </div>
+      </div>
+
+      <div class="how__step">
+        <div class="how__step-num">4</div>
+        <div>
+          <span class="how__step-icon">🏆</span>
+          <strong class="how__step-title">Get Results</strong>
+          <p class="how__step-desc">Stay consistent and achieve your goals.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Card -->
+    <div class="cta-card">
+      <div>
+        <h2 class="cta-card__heading">Start Your Transformation Today</h2>
+        <p class="cta-card__desc">Join thousands who are becoming stronger, healthier, and more confident every day.</p>
+        <button class="cta-card__btn">Get Started Now</button>
+      </div>
+      <div class="cta-card__members">
+        <div class="cta-card__avatars">
+          <span class="cta-card__avatar">😊</span>
+          <span class="cta-card__avatar">💪</span>
+          <span class="cta-card__avatar">🏃</span>
+          <span class="cta-card__avatar">⭐</span>
+        </div>
+        <div>
+          <strong class="cta-card__members-count">10K+</strong>
+          <small class="cta-card__members-label">Happy Members</small>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ══════════ trainers section ══════════ -->
+<section class="section trainers-section" id="trainers">
+  <div class="section-header">
+    <span class="section-label">EXPERT COACHES</span>
+    <h2 class="section-title">Meet Our Trainers</h2>
+    <p class="section-sub">World-class coaches with proven track records. Find your perfect match and start training smarter.</p>
+  </div>
+ 
+  <div class="trust-strip">
+    <div class="trust-item"><strong>8</strong> coaches</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><strong>4,755</strong> clients trained</div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><strong>4.9</strong> avg. rating</div>
+  </div>
+ 
+  <div class="trainer-filters-wrap">
+    <div class="trainer-filters" id="trainerFilters">
+      <div class="filter-pill-slider" id="filterSlider"></div>
+      <button class="filter-btn active" data-filter="all">All Trainers</button>
+      <button class="filter-btn" data-filter="strength">Strength</button>
+      <button class="filter-btn" data-filter="cardio">Cardio</button>
+      <button class="filter-btn" data-filter="nutrition">Nutrition</button>
+      <button class="filter-btn" data-filter="functional">Functional</button>
+      <button class="filter-btn" data-filter="combat">Combat</button>
+      <button class="filter-btn" data-filter="pilates">Pilates</button>
+      <button class="filter-btn" data-filter="recovery">Recovery</button>
+      <button class="filter-btn" data-filter="rehab">Rehab</button>
+    </div>
+  </div>
+ 
+  <div class="trainers-grid" id="trainersGrid">
+ 
+    <!-- 1 -->
+    <div class="trainer-card" data-category="strength">
+      <div class="trainer-img" style="background:linear-gradient(135deg,#d4f7f3,#b2eeea)">
+        <img src="image/trainer 1 - Copy.jpg" alt="Marcus Reed" onerror="window.__avatarFallback(this,'Marcus Reed','#0d9488')">
+        <button class="trainer-save" aria-label="Save Marcus Reed" onclick="window.__toggleSave(this)"><i class="fa-regular fa-heart"></i></button>
+        <div class="trainer-badge"><i class="fa-solid fa-star"></i> Top Rated</div>
+        <div class="trainer-avail avail-open"><span class="avail-dot"></span>Available Today</div>
+      </div>
+      <div class="trainer-body">
+        <div class="trainer-top">
+          <div>
+            <div class="trainer-name">Marcus Reed <i class="fa-solid fa-circle-check verified" title="Verified trainer"></i></div>
+            <div class="trainer-role">Strength  Hypertrophy Coach</div>
+          </div>
+          <div class="trainer-price">$85<span>/session</span></div>
+        </div>
+        <div class="trainer-tags">
+          <span class="tag">Powerlifting</span>
+          <span class="tag">Hypertrophy</span>
+          <span class="tag">CSCS</span>
+        </div>
+        <div class="trainer-bio">15 years transforming physiques. CSCS certified, former competitive powerlifter with 200+ success stories.</div>
+        <div class="trainer-stats">
+          <div class="trainer-stat"><strong>847</strong>clients</div>
+          <div class="trainer-stat"><strong>15yr</strong>experience</div>
+          <div class="trainer-stat"><strong>4.9 <i class="fa-solid fa-star" style="font-size:10px;color:#F59E0B"></i></strong>rating</div>
+        </div>
+        <div class="trainer-actions">
+          <a class="btn-book" href="Book session.html?trainer=marcus">Book Session</a>
+          <a class="trainer-social" href="messeges.html?trainer=marcus" aria-label="Message"><i class="fa-regular fa-message"></i></a>
+          <a class="trainer-social" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 2 -->
+    <div class="trainer-card" data-category="nutrition">
+      <div class="trainer-img" style="background:linear-gradient(135deg,#ffe4f7,#ffd6f0)">
+        <img src="image/trainer female1.1.jpg" alt="Sofia Patel" onerror="window.__avatarFallback(this,'Sofia Patel','#db2777')">
+        <button class="trainer-save" aria-label="Save Sofia Patel" onclick="window.__toggleSave(this)"><i class="fa-regular fa-heart"></i></button>
+        <div class="trainer-badge" style="background:#db2777"><i class="fa-solid fa-leaf"></i> Nutrition</div>
+        <div class="trainer-avail avail-limited"><span class="avail-dot"></span>2 spots left this week</div>
+      </div>
+      <div class="trainer-body">
+        <div class="trainer-top">
+          <div>
+            <div class="trainer-name">Sofia Patel <i class="fa-solid fa-circle-check verified" title="Verified trainer"></i></div>
+            <div class="trainer-role">Nutrition  Wellness Expert</div>
+          </div>
+          <div class="trainer-price">$70<span>/session</span></div>
+        </div>
+        <div class="trainer-tags">
+          <span class="tag">Meal Planning</span>
+          <span class="tag">Mindful Eating</span>
+          <span class="tag">RD</span>
+        </div>
+        <div class="trainer-bio">Registered dietitian certified yoga instructor. Specializes in sustainable nutrition and mindful eating programs.</div>
+        <div class="trainer-stats">
+          <div class="trainer-stat"><strong>1,200</strong>clients</div>
+          <div class="trainer-stat"><strong>12yr</strong>experience</div>
+          <div class="trainer-stat"><strong>5.0 <i class="fa-solid fa-star" style="font-size:10px;color:#F59E0B"></i></strong>rating</div>
+        </div>
+        <div class="trainer-actions">
+          <a class="btn-book" href="Book session.html?trainer=sofia">Book Session</a>
+          <a class="trainer-social" href="messeges.html?trainer=sofia" aria-label="Message"><i class="fa-regular fa-message"></i></a>
+          <a class="trainer-social" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 3 -->
+    <div class="trainer-card" data-category="cardio">
+      <div class="trainer-img" style="background:linear-gradient(135deg,#ddeeff,#c0d8f8)">
+        <img src="image/trainer 1 - Copy.jpg" alt="HK" onerror="window.__avatarFallback(this,'HK','#2f6fed')">
+        <button class="trainer-save" aria-label="Save HK" onclick="window.__toggleSave(this)"><i class="fa-regular fa-heart"></i></button>
+        <div class="trainer-badge" style="background:var(--accent-blue)"><i class="fa-solid fa-heart-pulse"></i> Cardio</div>
+        <div class="trainer-avail avail-open"><span class="avail-dot"></span>Available Today</div>
+      </div>
+      <div class="trainer-body">
+        <div class="trainer-top">
+          <div>
+            <div class="trainer-name">HK <i class="fa-solid fa-circle-check verified" title="Verified trainer"></i></div>
+            <div class="trainer-role">Cardio HIIT Specialist</div>
+          </div>
+          <div class="trainer-price">$75<span>/session</span></div>
+        </div>
+        <div class="trainer-tags">
+          <span class="tag">HIIT</span>
+          <span class="tag">Marathon Prep</span>
+          <span class="tag">8-Week Shred</span>
+        </div>
+        <div class="trainer-bio">Ex-Olympic marathon runner turned elite trainer. Burns fat, builds stamina — his 8-week shred program is legendary.</div>
+        <div class="trainer-stats">
+          <div class="trainer-stat"><strong>634</strong>clients</div>
+          <div class="trainer-stat"><strong>10yr</strong>experience</div>
+          <div class="trainer-stat"><strong>4.8 <i class="fa-solid fa-star" style="font-size:10px;color:#F59E0B"></i></strong>rating</div>
+        </div>
+        <div class="trainer-actions">
+          <a class="btn-book" href="Book session.html?trainer=hk">Book Session</a>
+          <a class="trainer-social" href="messeges.html?trainer=hk" aria-label="Message"><i class="fa-regular fa-message"></i></a>
+          <a class="trainer-social" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 4 -->
+    <div class="trainer-card" data-category="recovery">
+      <div class="trainer-img" style="background:linear-gradient(135deg,#f0fdf4,#bbf7d0)">
+        <img src="image/female trainer2.jpg" alt="Amara Okonkwo" onerror="window.__avatarFallback(this,'Amara Okonkwo','#059669')">
+        <button class="trainer-save" aria-label="Save Amara Okonkwo" onclick="window.__toggleSave(this)"><i class="fa-regular fa-heart"></i></button>
+        <div class="trainer-badge" style="background:#059669"><i class="fa-solid fa-seedling"></i> Yoga</div>
+        <div class="trainer-avail avail-booked"><span class="avail-dot"></span>Next available: Thu</div>
+      </div>
+      <div class="trainer-body">
+        <div class="trainer-top">
+          <div>
+            <div class="trainer-name">Amara Okonkwo <i class="fa-solid fa-circle-check verified" title="Verified trainer"></i></div>
+            <div class="trainer-role">Flexibility Recovery Coach</div>
+          </div>
+          <div class="trainer-price">$90<span>/session</span></div>
+        </div>
+        <div class="trainer-tags">
+          <span class="tag">Mobility</span>
+          <span class="tag">Injury Prevention</span>
+          <span class="tag">Physio</span>
+        </div>
+        <div class="trainer-bio">Certified mobility expert and physiotherapist. Helps athletes recover faster, prevent injury, and move pain-free.</div>
+        <div class="trainer-stats">
+          <div class="trainer-stat"><strong>520</strong>clients</div>
+          <div class="trainer-stat"><strong>9yr</strong>experience</div>
+          <div class="trainer-stat"><strong>4.9 <i class="fa-solid fa-star" style="font-size:10px;color:#F59E0B"></i></strong>rating</div>
+        </div>
+        <div class="trainer-actions">
+          <a class="btn-book" href="Book session.html?trainer=amara">Book Session</a>
+          <a class="trainer-social" href="messeges.html?trainer=amara" aria-label="Message"><i class="fa-regular fa-message"></i></a>
+          <a class="trainer-social" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 5 -->
+    <div class="trainer-card" data-category="functional">
+      <div class="trainer-img" style="background:linear-gradient(135deg,#fff1e6,#ffd9b3)">
+        <img src="image/trainer-diego.jpg" alt="Diego Vargas" onerror="window.__avatarFallback(this,'Diego Vargas','#ea580c')">
+        <button class="trainer-save" aria-label="Save Diego Vargas" onclick="window.__toggleSave(this)"><i class="fa-regular fa-heart"></i></button>
+        <div class="trainer-badge" style="background:#ea580c"><i class="fa-solid fa-bolt"></i> Functional</div>
+        <div class="trainer-avail avail-open"><span class="avail-dot"></span>Available Today</div>
+      </div>
+      <div class="trainer-body">
+        <div class="trainer-top">
+          <div>
+            <div class="trainer-name">Diego Vargas <i class="fa-solid fa-circle-check verified" title="Verified trainer"></i></div>
+            <div class="trainer-role">Functional CrossFit Coach</div>
+          </div>
+          <div class="trainer-price">$80<span>/session</span></div>
+        </div>
+        <div class="trainer-tags">
+          <span class="tag">CrossFit</span>
+          <span class="tag">Olympic Lifts</span>
+          <span class="tag">Conditioning</span>
+        </div>
+        <div class="trainer-bio">Former CrossFit Games competitor turned coach. Builds explosive, functional strength through Olympic lifts and metabolic conditioning.</div>
+        <div class="trainer-stats">
+          <div class="trainer-stat"><strong>412</strong>clients</div>
+          <div class="trainer-stat"><strong>8yr</strong>experience</div>
+          <div class="trainer-stat"><strong>4.7 <i class="fa-solid fa-star" style="font-size:10px;color:#F59E0B"></i></strong>rating</div>
+        </div>
+        <div class="trainer-actions">
+          <a class="btn-book" href="Book session.html?trainer=diego">Book Session</a>
+          <a class="trainer-social" href="messeges.html?trainer=diego" aria-label="Message"><i class="fa-regular fa-message"></i></a>
+          <a class="trainer-social" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 6 -->
+    <div class="trainer-card" data-category="combat">
+      <div class="trainer-img" style="background:linear-gradient(135deg,#fee2e2,#fecaca)">
+        <img src="image/trainer-priya.jpg" alt="Priya Nair" onerror="window.__avatarFallback(this,'Priya Nair','#dc2626')">
+        <button class="trainer-save" aria-label="Save Priya Nair" onclick="window.__toggleSave(this)"><i class="fa-regular fa-heart"></i></button>
+        <div class="trainer-badge" style="background:#dc2626"><i class="fa-solid fa-hand-fist"></i> Combat</div>
+        <div class="trainer-avail avail-limited"><span class="avail-dot"></span>3 spots left this week</div>
+      </div>
+      <div class="trainer-body">
+        <div class="trainer-top">
+          <div>
+            <div class="trainer-name">Priya Nair <i class="fa-solid fa-circle-check verified" title="Verified trainer"></i></div>
+            <div class="trainer-role">Boxing Combat Conditioning</div>
+          </div>
+          <div class="trainer-price">$78<span>/session</span></div>
+        </div>
+        <div class="trainer-tags">
+          <span class="tag">Boxing</span>
+          <span class="tag">Kickboxing</span>
+          <span class="tag">Conditioning</span>
+        </div>
+        <div class="trainer-bio">National-level amateur boxer with a passion for conditioning. Combines technical sparring drills with fat-torching circuits.</div>
+        <div class="trainer-stats">
+          <div class="trainer-stat"><strong>389</strong>clients</div>
+          <div class="trainer-stat"><strong>7yr</strong>experience</div>
+          <div class="trainer-stat"><strong>4.8 <i class="fa-solid fa-star" style="font-size:10px;color:#F59E0B"></i></strong>rating</div>
+        </div>
+        <div class="trainer-actions">
+          <a class="btn-book" href="Book session.html?trainer=priya">Book Session</a>
+          <a class="trainer-social" href="messeges.html?trainer=priya" aria-label="Message"><i class="fa-regular fa-message"></i></a>
+          <a class="trainer-social" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 7 -->
+    <div class="trainer-card" data-category="pilates">
+      <div class="trainer-img" style="background:linear-gradient(135deg,#f3e8ff,#e0c8fb)">
+        <img src="image/trainer-liam.jpg" alt="Liam O'Connor" onerror="window.__avatarFallback(this,&quot;Liam O'Connor&quot;,'#7c3aed')">
+        <button class="trainer-save" aria-label="Save Liam O'Connor" onclick="window.__toggleSave(this)"><i class="fa-regular fa-heart"></i></button>
+        <div class="trainer-badge" style="background:#7c3aed"><i class="fa-solid fa-spa"></i> Pilates</div>
+        <div class="trainer-avail avail-open"><span class="avail-dot"></span>Available Today</div>
+      </div>
+      <div class="trainer-body">
+        <div class="trainer-top">
+          <div>
+            <div class="trainer-name">Liam O'Connor <i class="fa-solid fa-circle-check verified" title="Verified trainer"></i></div>
+            <div class="trainer-role">Pilates Core Specialist</div>
+          </div>
+          <div class="trainer-price">$72<span>/session</span></div>
+        </div>
+        <div class="trainer-tags">
+          <span class="tag">Reformer Pilates</span>
+          <span class="tag">Core Stability</span>
+          <span class="tag">Posture</span>
+        </div>
+        <div class="trainer-bio">Reformer-certified Pilates master who's worked with dancers and post-natal clients. Builds unshakeable core strength from the inside out.</div>
+        <div class="trainer-stats">
+          <div class="trainer-stat"><strong>455</strong>clients</div>
+          <div class="trainer-stat"><strong>11yr</strong>experience</div>
+          <div class="trainer-stat"><strong>4.9 <i class="fa-solid fa-star" style="font-size:10px;color:#F59E0B"></i></strong>rating</div>
+        </div>
+        <div class="trainer-actions">
+          <a class="btn-book" href="Book session.html?trainer=liam">Book Session</a>
+          <a class="trainer-social" href="messeges.html?trainer=liam" aria-label="Message"><i class="fa-regular fa-message"></i></a>
+          <a class="trainer-social" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+ 
+    <!-- 8 -->
+    <div class="trainer-card" data-category="rehab">
+      <div class="trainer-img" style="background:linear-gradient(135deg,#e0fbff,#bdf2fb)">
+        <img src="image/trainer-yuki.jpg" alt="Yuki Tanaka" onerror="window.__avatarFallback(this,'Yuki Tanaka','#0891b2')">
+        <button class="trainer-save" aria-label="Save Yuki Tanaka" onclick="window.__toggleSave(this)"><i class="fa-regular fa-heart"></i></button>
+        <div class="trainer-badge" style="background:#0891b2"><i class="fa-solid fa-kit-medical"></i> Rehab</div>
+        <div class="trainer-avail avail-booked"><span class="avail-dot"></span>Next available: Mon</div>
+      </div>
+      <div class="trainer-body">
+        <div class="trainer-top">
+          <div>
+            <div class="trainer-name">Dr. Yuki Tanaka <i class="fa-solid fa-circle-check verified" title="Verified trainer"></i></div>
+            <div class="trainer-role">Sports Rehab Injury Specialist</div>
+          </div>
+          <div class="trainer-price">$95<span>/session</span></div>
+        </div>
+        <div class="trainer-tags">
+          <span class="tag">Post-Injury Recovery</span>
+          <span class="tag">Sports Medicine</span>
+          <span class="tag">DPT</span>
+        </div>
+        <div class="trainer-bio">Doctor of Physical Therapy specializing in return-to-sport rehab. Bridges the gap between injury and peak performance.</div>
+        <div class="trainer-stats">
+          <div class="trainer-stat"><strong>298</strong>clients</div>
+          <div class="trainer-stat"><strong>13yr</strong>experience</div>
+          <div class="trainer-stat"><strong>5.0 <i class="fa-solid fa-star" style="font-size:10px;color:#F59E0B"></i></strong>rating</div>
+        </div>
+        <div class="trainer-actions">
+          <a class="btn-book" href="Book session.html?trainer=yuki">Book Session</a>
+          <a class="trainer-social" href="messeges.html?trainer=yuki" aria-label="Message"><i class="fa-regular fa-message"></i></a>
+          <a class="trainer-social" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+    </div>
+ 
+  </div>
+</section>
+
+</main>
+
+    <footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  
+/* ── NAVBAR SCROLL SHADOW ───────────────────────────────────── */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+});
+           // navbar responsive
+const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const icon = menu.querySelector("i");
+
+menu.onclick = function () {
+    navLinks.classList.toggle("active");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+};
+
+/* ── TOAST ──────────────────────────────────────────────────── */
+let toastTimer;
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMsg').innerHTML = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+  /* ─── DATA ─────────────────────────────────────── */
+  const PLANS = {
+    men: [
+      {
+        title: 'Muscle Building Plan',
+        weeks: '8–12 Weeks',
+        features: ['Build lean muscle mass', 'Increase strength', '3–5 Workouts / Week'],
+        img: 'image/bulking.jpg',
+        ph: 'Muscle+Building'
+      },
+      {
+        title: 'Fat Loss Plan',
+        weeks: '6–10 Weeks',
+        features: ['Burn fat & calories', 'Improve conditioning', '4–6 Workouts / Week'],
+        img: 'image/cutting.jpg',
+        ph: 'Fat+Loss'
+      },
+      {
+        title: 'Strength Power Plan',
+        weeks: '8 Weeks',
+        features: ['Increase strength', 'Build explosive power', '3–4 Workouts / Week'],
+        img: 'image/strenght.jpg',
+        ph: 'Strength+Power'
+      },
+      {
+        title: 'Athletic Performance',
+        weeks: '10–12 Weeks',
+        features: ['Boost speed & agility', 'Improve endurance', '4–5 Workouts / Week'],
+        img: 'image/athletic.jpg',
+        ph: 'Athletic+Performance'
+      }
+    ],
+    women: [
+      {
+        title: 'Glute & Tone Plan',
+        weeks: '8 Weeks',
+        features: ['Tone & sculpt body', 'Glute activation', '3–4 Workouts / Week'],
+        img: 'image/glute.jpg',
+        ph: 'Glute+Tone'
+      },
+      {
+        title: 'Full Body Burn',
+        weeks: '6–8 Weeks',
+        features: ['Full body fat burn', 'HIIT cardio blend', '4–5 Workouts / Week'],
+        img: 'image/full body.jpg',
+        ph: 'Full+Body+Burn'
+      },
+      {
+        title: 'Lean & Strong',
+        weeks: '10 Weeks',
+        features: ['Build lean muscle', 'Increase strength', '3–5 Workouts / Week'],
+        img: 'image/lean and strong.jpg',
+        ph: 'Lean+Strong'
+      },
+      {
+        title: 'Yoga & Mobility',
+        weeks: 'Ongoing',
+        features: ['Improve flexibility', 'Core strength', '5 Sessions / Week'],
+        img: 'image/yoga.jpg',
+        ph: 'Yoga+Mobility'
+      }
+    ]
+  };
+
+  /* ─── STATE ─────────────────────────────────────── */
+  let activeGender = 'men';
+
+  /* ─── RENDER PLANS ─────────────────────────────── */
+  function renderPlans() {
+    const grid = document.getElementById('plans-grid');
+    const plans = PLANS[activeGender];
+
+    grid.innerHTML = plans.map(function(plan) {
+      const featureItems = plan.features.map(function(f) {
+        return '<li>' + f + '</li>';
+      }).join('');
+
+      return (
+        '<div class="plan-card">' +
+          '<img class="plan-card__image"' +
+            ' src="' + plan.img + '"' +
+            ' alt="' + plan.title + '"' +
+            ' onerror="this.src=\'https://placehold.co/300x400/1e3a5f/38bdf8?text=' + encodeURIComponent(plan.ph) + '\'">' +
+          '<div class="plan-card__overlay"></div>' +
+          '<div class="plan-card__body">' +
+            '<h3 class="plan-card__title">' + plan.title + '</h3>' +
+            '<div class="plan-card__weeks">' + plan.weeks + '</div>' +
+            '<ul class="plan-card__features">' + featureItems + '</ul>' +
+            '<a class="plan-card__link" href="workout-generator.html">View Plan</a>' +
+          '</div>' +
+        '</div>'
+      );
+    }).join('');
+  }
+
+  /* ─── GENDER SWITCH ─────────────────────────────── */
+  function handleGenderSwitch(event) {
+    const btn = event.currentTarget;
+    const gender = btn.dataset.gender;
+
+    if (gender === activeGender) return;
+    activeGender = gender;
+
+    document.querySelectorAll('.plans__gender-btn').forEach(function(b) {
+      b.classList.remove('plans__gender-btn--active');
+    });
+    btn.classList.add('plans__gender-btn--active');
+
+    renderPlans();
+  }
+
+  /* ─── PROGRAM TAB SWITCH ────────────────────────── */
+  function handleProgTabSwitch(event) {
+    const tab = event.currentTarget;
+
+    document.querySelectorAll('.programs__tab').forEach(function(t) {
+      t.classList.remove('programs__tab--active');
+    });
+    tab.classList.add('programs__tab--active');
+  }
+
+  /* ─── SLIDER (future) ───────────────────────────── */
+  function handleSlide(direction) {
+    // Reserved for future carousel offset logic
+  }
+
+  /* ─── INIT ──────────────────────────────────────── */
+  function init() {
+    renderPlans();
+
+    document.querySelectorAll('.plans__gender-btn').forEach(function(btn) {
+      btn.addEventListener('click', handleGenderSwitch);
+    });
+
+    document.querySelectorAll('.programs__tab').forEach(function(tab) {
+      tab.addEventListener('click', handleProgTabSwitch);
+    });
+
+    document.querySelector('.plans__slider-btn--prev')
+      .addEventListener('click', function() { handleSlide(-1); });
+
+    document.querySelector('.plans__slider-btn--next')
+      .addEventListener('click', function() { handleSlide(1); });
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+
+  // Graceful avatar fallback if a trainer photo fails to load
+  window.__avatarFallback = function(imgEl, name, color){
+    const wrap = imgEl.parentElement;
+    const initials = name.split(' ').filter(Boolean).map(w => w[0]).slice(0,2).join('').toUpperCase();
+    const fallback = document.createElement('div');
+    fallback.className = 'avatar-fallback';
+    fallback.style.background = color;
+    fallback.textContent = initials;
+    imgEl.replaceWith(fallback);
+  };
+ 
+  // Save / favorite toggle
+  window.__toggleSave = function(btn){
+    btn.classList.toggle('saved');
+    const icon = btn.querySelector('i');
+    icon.classList.toggle('fa-regular');
+    icon.classList.toggle('fa-solid');
+  };
+ 
+  // Specialty filter with animated pill slider
+  (function(){
+    const wrap = document.getElementById('trainerFilters');
+    const slider = document.getElementById('filterSlider');
+    const buttons = Array.from(wrap.querySelectorAll('.filter-btn'));
+    const cards = Array.from(document.querySelectorAll('.trainer-card'));
+ 
+    function moveSlider(btn){
+      slider.style.left = btn.offsetLeft + 'px';
+      slider.style.width = btn.offsetWidth + 'px';
+    }
+ 
+    function applyFilter(filter){
+      cards.forEach(card => {
+        const match = filter === 'all' || card.dataset.category === filter;
+        card.classList.toggle('is-hidden', !match);
+      });
+    }
+ 
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        moveSlider(btn);
+        applyFilter(btn.dataset.filter);
+      });
+    });
+ 
+    window.addEventListener('resize', () => {
+      const active = wrap.querySelector('.filter-btn.active');
+      if (active) moveSlider(active);
+    });
+ 
+    // init
+    moveSlider(buttons[0]);
+  })();
+
+
+</script>
+
+</body>
+</html>

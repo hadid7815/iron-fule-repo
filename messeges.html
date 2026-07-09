@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Messages</title>
+<link rel="stylesheet" href="messeges.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+<body>
+ <header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+        <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+
+<header class="topbar">
+  <a class="back-link" href="trainers-section.html"><i class="fa-solid fa-arrow-left"></i> Back to Trainers</a>
+  <div class="topbar-title">Messages</div>
+  <div class="topbar-spacer"></div>
+</header>
+
+<div class="app-shell">
+  <main class="messages-layout" id="messagesLayout">
+    <aside class="conv-list-pane">
+      <div class="conv-search">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input id="convSearch" placeholder="Search coaches...">
+      </div>
+      <div class="conv-list" id="convList"></div>
+    </aside>
+    <section class="thread-pane" id="threadPane"></section>
+  </main>
+</div>
+
+    <footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+             // navbar responsive
+const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const icon = menu.querySelector("i");
+
+menu.onclick = function () {
+    navLinks.classList.toggle("active");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+};
+
+const TRAINERS = [
+  {id:'marcus', name:'Marcus Reed', role:'Strength & Hypertrophy Coach', color:'#0d9488', online:true, img:'image/trainer 1 - Copy.jpg'},
+  {id:'sofia', name:'Sofia Patel', role:'Nutrition & Wellness Expert', color:'#db2777', online:true, img:'image/trainer female1.1.jpg'},
+  {id:'hk', name:'HK', role:'Cardio & HIIT Specialist', color:'#2f6fed', online:false, img:'image/trainer 1 - Copy.jpg'},
+  {id:'amara', name:'Amara Okonkwo', role:'Flexibility & Recovery Coach', color:'#059669', online:false, img:'image/female trainer2.jpg'},
+  {id:'diego', name:'Diego Vargas', role:'Functional & CrossFit Coach', color:'#ea580c', online:true, img:'image/trainer-diego.jpg'},
+  {id:'priya', name:'Priya Nair', role:'Boxing & Combat Conditioning', color:'#dc2626', online:false, img:'image/trainer-priya.jpg'},
+  {id:'liam', name:"Liam O'Connor", role:'Pilates & Core Specialist', color:'#7c3aed', online:true, img:'image/trainer-liam.jpg'},
+  {id:'yuki', name:'Dr. Yuki Tanaka', role:'Sports Rehab & Injury Specialist', color:'#0891b2', online:false, img:'image/trainer-yuki.jpg'}
+];
+
+// seed conversation threads
+const THREADS = {
+  marcus: { unread:0, messages:[
+    {from:'them', text:"Hey! Ready to crush leg day this week?", time:'Mon 9:02 AM'},
+    {from:'me', text:"Haha yes, still sore from last time though 😅", time:'Mon 9:10 AM'},
+    {from:'them', text:"That's the DOMS doing its job. Hydrate and we'll go a bit lighter on volume.", time:'Mon 9:12 AM'},
+    {system:true, text:'Session booked for Mon, Jun 22 at 10:00 AM'},
+    {from:'them', text:"See you at 10 — bring your lifting belt.", time:'Yesterday 6:40 PM'}
+  ]},
+  sofia: { unread:2, messages:[
+    {from:'them', text:"How did the new meal plan feel this week?", time:'9:14 AM'},
+    {from:'me', text:"Honestly really good, way less afternoon crash", time:'9:20 AM'},
+    {from:'them', text:"Love that. Let's bump your protein target slightly next week.", time:'9:21 AM'},
+    {from:'them', text:"I'll send the updated macros tonight 🥗", time:'9:21 AM'}
+  ]},
+  hk: { unread:0, messages:[
+    {from:'them', text:"Great pace on yesterday's intervals!", time:'Tue 7:30 AM'},
+    {from:'me', text:"Felt brutal but worth it", time:'Tue 7:45 AM'},
+    {from:'them', text:"That's exactly the adaptation we want. Recovery run tomorrow, easy effort.", time:'Tue 7:46 AM'}
+  ]},
+  amara: { unread:0, messages:[
+    {from:'them', text:"How's the shoulder feeling after our mobility work?", time:'Fri 4:02 PM'},
+    {from:'me', text:"Way better, almost no pinching now", time:'Fri 4:30 PM'},
+    {from:'them', text:"Great progress. Keep up the band work daily and we'll reassess next session.", time:'Fri 4:32 PM'}
+  ]},
+  diego: { unread:1, messages:[
+    {from:'them', text:"New WOD is up — thoughts on adding a metcon finisher Saturday?", time:'10:05 AM'},
+    {from:'them', text:"Totally optional, but it'll be a fun one 💪", time:'10:06 AM'}
+  ]},
+  priya: { unread:0, messages:[
+    {from:'them', text:"Footwork looked sharp today, especially the pivot drills.", time:'Wed 5:15 PM'},
+    {from:'me', text:"Thanks! Still working on keeping my guard up though", time:'Wed 5:20 PM'},
+    {from:'them', text:"We'll drill that combo again Thursday. Small fixes, big difference.", time:'Wed 5:22 PM'}
+  ]},
+  liam: { unread:0, messages:[
+    {from:'them', text:"Your core control on the reformer has improved a lot this month.", time:'Mon 1:10 PM'},
+    {from:'me', text:"It's finally starting to click, thank you!", time:'Mon 1:15 PM'},
+    {from:'them', text:"Let's add a single-leg series next session to keep challenging it.", time:'Mon 1:16 PM'}
+  ]},
+  yuki: { unread:1, messages:[
+    {from:'them', text:"How's the knee responding to the new loading protocol?", time:'8:40 AM'},
+    {from:'them', text:"No swelling or pain afterward I hope?", time:'8:41 AM'}
+  ]}
+};
+
+const REPLIES = [
+  "Got it, thanks for the update!",
+  "Sounds good — see you at our next session.",
+  "Noted 👍 I'll factor that in.",
+  "Appreciate you telling me. Let's discuss more at your next session.",
+  "Great question — I'll put together some notes and send them over."
+];
+
+function initials(name){ return name.split(' ').filter(Boolean).map(w=>w[0]).slice(0,2).join('').toUpperCase(); }
+function avatarHTML(t, size, radius){
+  return `<img class="conv-avatar" style="width:${size}px;height:${size}px;border-radius:${radius}px" src="${t.img}" alt="${t.name}"
+    onerror="this.outerHTML='<div class=&quot;conv-avatar-fallback&quot; style=&quot;width:${size}px;height:${size}px;border-radius:${radius}px;background:${t.color}&quot;>${initials(t.name)}</div>'">`;
+}
+
+const params = new URLSearchParams(window.location.search);
+const fromParam = params.get('trainer');
+let activeId = TRAINERS.some(t=>t.id===fromParam) ? fromParam : TRAINERS[0].id;
+
+function lastMessagePreview(id){
+  const msgs = THREADS[id].messages;
+  const last = [...msgs].reverse().find(m=>!m.system) || msgs[msgs.length-1];
+  return last.system ? last.text : last.text;
+}
+function lastTime(id){
+  const msgs = THREADS[id].messages.filter(m=>!m.system);
+  return msgs.length ? msgs[msgs.length-1].time : '';
+}
+
+function renderConvList(filterText){
+  const list = document.getElementById('convList');
+  const q = (filterText||'').toLowerCase();
+  list.innerHTML = TRAINERS
+    .filter(t => t.name.toLowerCase().includes(q) || t.role.toLowerCase().includes(q))
+    .map(t=>{
+      const thread = THREADS[t.id];
+      const unread = thread.unread;
+      return `
+      <div class="conv-item ${t.id===activeId?'active':''} ${unread?'unread':''}" data-id="${t.id}">
+        <div class="conv-avatar-wrap">
+          ${avatarHTML(t,46,14)}
+          ${t.online?'<span class="online-dot"></span>':''}
+        </div>
+        <div class="conv-info">
+          <div class="conv-top-row">
+            <span class="conv-name">${t.name}</span>
+            <span class="conv-time">${lastTime(t.id)}</span>
+          </div>
+          <div class="conv-bottom-row">
+            <span class="conv-preview">${lastMessagePreview(t.id)}</span>
+            ${unread?`<span class="unread-badge">${unread}</span>`:''}
+          </div>
+        </div>
+      </div>`;
+    }).join('') || '<div style="padding:20px;color:var(--text-light);font-size:13px;text-align:center">No coaches match your search.</div>';
+
+  list.querySelectorAll('.conv-item').forEach(item=>{
+    item.addEventListener('click', ()=>{
+      activeId = item.dataset.id;
+      THREADS[activeId].unread = 0;
+      renderConvList(document.getElementById('convSearch').value);
+      renderThread();
+      document.getElementById('messagesLayout').classList.add('show-thread');
+    });
+  });
+}
+
+function renderThread(){
+  const t = TRAINERS.find(tr=>tr.id===activeId);
+  const pane = document.getElementById('threadPane');
+  pane.innerHTML = `
+    <div class="thread-header">
+      <button class="thread-back" id="threadBack" aria-label="Back to conversations"><i class="fa-solid fa-arrow-left"></i></button>
+      ${avatarHTML(t,42,13)}
+      <div class="thread-id">
+        <div class="thread-name">${t.name}</div>
+        <div class="thread-status ${t.online?'online':''}"><span class="dot"></span>${t.online?'Online now':'Offline'} · ${t.role}</div>
+      </div>
+      <button class="thread-book" id="threadBookBtn"><i class="fa-regular fa-calendar"></i> Book Session</button>
+    </div>
+    <div class="thread-messages" id="threadMessages"></div>
+    <div class="thread-input">
+      <button class="icon-btn" aria-label="Attach file"><i class="fa-solid fa-paperclip"></i></button>
+      <textarea id="messageInput" rows="1" placeholder="Write a message..."></textarea>
+      <button class="send-btn" id="sendBtn" aria-label="Send message"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  `;
+  renderMessages();
+
+  document.getElementById('threadBookBtn').addEventListener('click', ()=>{
+    window.location.href = `book-session.html?trainer=${t.id}`;
+  });
+  document.getElementById('threadBack').addEventListener('click', ()=>{
+    document.getElementById('messagesLayout').classList.remove('show-thread');
+  });
+
+  const input = document.getElementById('messageInput');
+  const sendBtn = document.getElementById('sendBtn');
+  input.addEventListener('input', ()=>{
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+  });
+  input.addEventListener('keydown', e=>{
+    if(e.key==='Enter' && !e.shiftKey){ e.preventDefault(); sendMessage(); }
+  });
+  sendBtn.addEventListener('click', sendMessage);
+}
+
+function renderMessages(){
+  const wrap = document.getElementById('threadMessages');
+  const msgs = THREADS[activeId].messages;
+  wrap.innerHTML = msgs.map(m=>{
+    if(m.system){
+      return `<div class="msg-system"><i class="fa-solid fa-calendar-check"></i>${m.text}</div>`;
+    }
+    return `<div class="msg-row ${m.from==='me'?'sent':'received'}">
+        <div class="msg-bubble">${m.text}</div>
+        <div class="msg-time">${m.time}</div>
+      </div>`;
+  }).join('');
+  wrap.scrollTop = wrap.scrollHeight;
+}
+
+function nowLabel(){
+  const d = new Date();
+  let h = d.getHours(); const m = d.getMinutes();
+  const period = h>=12 ? 'PM':'AM';
+  h = h%12; if(h===0) h=12;
+  return `${h}:${m.toString().padStart(2,'0')} ${period}`;
+}
+
+function sendMessage(){
+  const input = document.getElementById('messageInput');
+  const text = input.value.trim();
+  if(!text) return;
+  THREADS[activeId].messages.push({from:'me', text, time:nowLabel()});
+  input.value=''; input.style.height='auto';
+  renderMessages();
+  renderConvList(document.getElementById('convSearch').value);
+
+  const wrap = document.getElementById('threadMessages');
+  setTimeout(()=>{
+    const typing = document.createElement('div');
+    typing.className = 'typing-row';
+    typing.id = 'typingRow';
+    typing.innerHTML = '<span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>';
+    wrap.appendChild(typing);
+    wrap.scrollTop = wrap.scrollHeight;
+
+    setTimeout(()=>{
+      const el = document.getElementById('typingRow');
+      if(el) el.remove();
+      const reply = REPLIES[Math.floor(Math.random()*REPLIES.length)];
+      THREADS[activeId].messages.push({from:'them', text:reply, time:nowLabel()});
+      renderMessages();
+      renderConvList(document.getElementById('convSearch').value);
+    }, 1300);
+  }, 500);
+}
+
+document.getElementById('convSearch').addEventListener('input', e=>{
+  renderConvList(e.target.value);
+});
+
+/* init */
+THREADS[activeId].unread = 0;
+renderConvList('');
+renderThread();
+if(fromParam){ document.getElementById('messagesLayout').classList.add('show-thread'); }
+
+
+</script>
+
+</body>
+</html>

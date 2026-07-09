@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calories Calculator</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <link rel="stylesheet" href="calorie.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+<header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+       <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!-- ================= HERO SECTION ================= -->
+    <section class="hero-section text-center text-white">
+        <div class="container">
+
+            <h1 class="hero-title" style="font-size:80px;">
+                Calculate 
+                <span style="color: #9ffcf7;">Your Calories</span>
+            </h1>
+            <p class="hero-subtitle">
+                A Calories Calculator estimates your daily calorie needs based on age, gender, weight, height, activity
+                level, and fitness goals such as weight loss, maintenance, or muscle gain.
+            </p>
+        </div>
+    </section>
+
+    <!-- ================= MAIN CALCULATOR ================= -->
+    <section class="calculator-section py-5">
+        <div class="container">
+
+            <div class="row g-4">
+
+                <!-- LEFT PANEL: INPUTS -->
+                <div class="col-lg-5">
+
+                    <div class="glass-card p-4">
+
+                        <h3 class="section-title mb-3">
+                            <i class="fa-solid fa-user"></i>Calculate Calories
+                        </h3>
+
+                        <!-- Gender -->
+                        <div class="mb-3">
+                            <label class="form-label">Gender</label>
+                            <div class="d-flex gap-2">
+                                <button class="btn btn-toggle">Male</button>
+                                <button class="btn btn-toggle">Female</button>
+                            </div>
+                        </div>
+
+                        <!-- Age -->
+                        <div class="mb-3">
+                            <label class="form-label">Age</label>
+                            <input id="age" type="number" class="form-control " placeholder="Enter your age">
+                        </div>
+
+                        <!-- Height -->
+                        <div class="mb-3">
+                            <label class="form-label">Height (cm)</label>
+                            <input id="height" type="number" class="form-control " placeholder="Enter height">
+                        </div>
+
+                        <!-- Weight -->
+                        <div class="mb-3">
+                            <label class="form-label">Weight (kg)</label>
+                            <input id="weight" type="number" class="form-control" placeholder="Enter weight">
+                        </div>
+
+                        <hr class="text-light">
+
+                        <!-- Activity Level -->
+                        <h5 class="section-title mb-3">Activity Level</h5>
+
+                        <select id="activity" class="form-select ">
+                            <option value="1.2">Sedentary</option>
+                            <option value="1.375">Lightly Active</option>
+                            <option value="1.55">Moderately Active</option>
+                            <option value="1.725">Very Active</option>
+                            <option value="1.9">Athlete</option>
+                        </select>
+
+                        <hr class="text-light">
+
+                        <!-- Goal -->
+                        <h5 class=" section-title mb-3">Fitness Goal</h5>
+
+                        <button class="goal-card" data-goal="fatloss">Fat Loss</button>
+                        <button class="goal-card" data-goal="maintain">Maintain</button>
+                        <button class="goal-card" data-goal="muscle">Muscle Gain</button>
+                        <button class="goal-card" data-goal="recomp">Recomposition</button>
+                        <!-- Calculate Button -->
+                        <button class="btn w-100 mt-4" id="calculateBtn">
+                            Calculate Calories
+                        </button>
+
+                    </div>
+                </div>
+
+                <!-- RIGHT PANEL: RESULTS -->
+                <div class="col-lg-7">
+
+                    <div class="glass-card p-4 h-100">
+
+                        <h3 class="section-title mb-3">
+                            <i class="fa-solid fa-chart-line"></i> Results Dashboard
+                        </h3>
+
+                        <!-- MAIN CALORIES -->
+                        <div class="result-box text-center">
+                            <h2 class="big-number" id="calorieResult">0</h2>
+                            <p>Daily Calorie Target</p>
+                        </div>
+
+                        <!-- METRICS -->
+                        <div class="row g-3 mt-3">
+
+                            <div class="col-md-6">
+                                <div class="mini-card">
+                                    <h6>BMR</h6>
+                                    <p id="bmrResult">0</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mini-card">
+                                    <h6>TDEE</h6>
+                                    <p id="tdeeResult">0</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mini-card">
+                                    <h6>BMI</h6>
+                                    <p id="bmiResult">0</p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="mini-card">
+                                    <h6>Water Intake</h6>
+                                    <p id="waterResult">0 L</p>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- AI BOX -->
+                        <div class="ai-box mt-4">
+                            <h5><i class="fa-solid fa-robot"></i> AI Recommendation</h5>
+                            <p id="aiText">
+                                Your personalized fitness insights will appear here after calculation.
+                            </p>
+                        </div>
+
+                        <button class="btn  w-100 mt-4" id="downloadPdfBtn">
+                            <i class="fa-solid fa-file-pdf"></i> Download PDF Report
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= INFO SECTION ================= -->
+    <section class="info-section text-white py-5">
+        <div class="container">
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <h5>What are Calories?</h5>
+                        <p>Calories are energy units your body uses for daily activities.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <h5>BMR Explained</h5>
+                        <p>Basal Metabolic Rate is the energy your body needs at rest.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="info-card">
+                        <h5>Deficit vs Surplus</h5>
+                        <p>Eat less to lose weight, eat more to gain muscle mass.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    </main>
+
+     <footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+
+    <!-- ================= SCRIPTS ================= -->
+    <script>
+                   // navbar responsive
+const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const icon = menu.querySelector("i");
+
+menu.onclick = function () {
+    navLinks.classList.toggle("active");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+};
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // create close button
+            let closeBtn = document.createElement("button");
+
+            closeBtn.innerHTML = "✖";
+            closeBtn.className = "js-close-btn";
+
+            // add style + position
+            closeBtn.style.position = "fixed";
+            closeBtn.style.top = "90px";
+            closeBtn.style.right = "20px";
+            closeBtn.style.width = "40px";
+            closeBtn.style.height = "40px";
+            closeBtn.style.borderRadius = "50%";
+            closeBtn.style.border = "none";
+            closeBtn.style.background = "#006D77";
+            closeBtn.style.color = "white";
+            closeBtn.style.fontSize = "18px";
+            closeBtn.style.cursor = "pointer";
+            closeBtn.style.zIndex = "9999";
+
+            document.body.appendChild(closeBtn);
+
+            // close action
+            closeBtn.addEventListener("click", function () {
+                window.location.href = "all calculator.html";
+                // 👆 yahan apna main page name likho
+            });
+
+        });
+
+
+        const calculateBtn = document.getElementById("calculateBtn");
+
+        const ageEl = document.getElementById("age");
+        const heightEl = document.getElementById("height");
+        const weightEl = document.getElementById("weight");
+        const activityEl = document.getElementById("activity");
+
+        const calorieResult = document.getElementById("calorieResult");
+        const bmrResult = document.getElementById("bmrResult");
+        const tdeeResult = document.getElementById("tdeeResult");
+        const bmiResult = document.getElementById("bmiResult");
+        const waterResult = document.getElementById("waterResult");
+        const aiText = document.getElementById("aiText");
+
+        let selectedGender = "male";
+        let selectedGoal = "maintain";
+
+        // ================= GENDER =================
+        document.querySelectorAll(".btn-toggle").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelectorAll(".btn-toggle").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                selectedGender = btn.innerText.toLowerCase();
+            });
+        });
+
+        // ================= GOAL =================
+        document.querySelectorAll(".goal-card").forEach(btn => {
+            btn.addEventListener("click", () => {
+                document.querySelectorAll(".goal-card").forEach(b => b.classList.remove("active"));
+                btn.classList.add("active");
+                selectedGoal = btn.dataset.goal;
+            });
+        });
+
+        // ================= CALCULATE =================
+        calculateBtn.addEventListener("click", () => {
+
+            const age = Number(ageEl.value);
+            const height = Number(heightEl.value);
+            const weight = Number(weightEl.value);
+            const activity = Number(activityEl.value);
+
+            if (!age || !height || !weight || !activity) {
+                alert("Please fill all fields");
+                return;
+            }
+
+            // BMR
+            let bmr = (selectedGender === "male")
+                ? (10 * weight + 6.25 * height - 5 * age + 5)
+                : (10 * weight + 6.25 * height - 5 * age - 161);
+
+            // TDEE
+            let tdee = bmr * activity;
+
+            // Goal
+            let calories = tdee;
+
+            if (selectedGoal === "fatloss") calories *= 0.8;
+            if (selectedGoal === "muscle") calories *= 1.15;
+            if (selectedGoal === "recomp") calories *= 0.95;
+
+            // BMI
+            let bmi = weight / ((height / 100) ** 2);
+
+            // Water
+            let water = (weight * 0.033);
+
+            // OUTPUT
+            calorieResult.innerText = Math.round(calories);
+            bmrResult.innerText = Math.round(bmr);
+            tdeeResult.innerText = Math.round(tdee);
+            bmiResult.innerText = bmi.toFixed(1);
+            waterResult.innerText = water.toFixed(2) + " L";
+
+            // AI message
+            let msg = "";
+
+            if (selectedGoal === "fatloss") {
+                msg = "Focus on calorie deficit + high protein intake.";
+            } else if (selectedGoal === "muscle") {
+                msg = "Increase protein and strength training.";
+            } else if (selectedGoal === "recomp") {
+                msg = "Balance diet + cardio + weights.";
+            } else {
+                msg = "Maintain your current routine.";
+            }
+
+            aiText.innerText = msg;
+        });
+        // ================= PDF REPORT =================
+        document.getElementById("downloadPdfBtn").addEventListener("click", () => {
+
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFontSize(22);
+            doc.text("AI Calories Report", 20, 20);
+
+            doc.setFontSize(12);
+            doc.text("Generated Fitness Report", 20, 30);
+
+            doc.line(20, 35, 190, 35);
+
+            doc.text(`Gender: ${selectedGender}`, 20, 50);
+            doc.text(`Age: ${ageEl.value}`, 20, 60);
+            doc.text(`Height: ${heightEl.value} cm`, 20, 70);
+            doc.text(`Weight: ${weightEl.value} kg`, 20, 80);
+
+            doc.text(`Goal: ${selectedGoal}`, 20, 95);
+
+            doc.line(20, 105, 190, 105);
+
+            doc.setFontSize(16);
+            doc.text("Results", 20, 120);
+
+            doc.setFontSize(12);
+            doc.text(`Daily Calories: ${calorieResult.innerText}`, 20, 135);
+            doc.text(`BMR: ${bmrResult.innerText}`, 20, 145);
+            doc.text(`TDEE: ${tdeeResult.innerText}`, 20, 155);
+            doc.text(`BMI: ${bmiResult.innerText}`, 20, 165);
+            doc.text(`Water Intake: ${waterResult.innerText}`, 20, 175);
+
+            doc.line(20, 185, 190, 185);
+
+            doc.text("AI Recommendation:", 20, 200);
+
+            const recommendation =
+                doc.splitTextToSize(aiText.innerText, 160);
+
+            doc.text(recommendation, 20, 210);
+
+            doc.save("AI_Calories_Report.pdf");
+        });
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MacroFit calculator</title>
+
+<!-- Fonts -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<!-- jsPDF -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<link rel="stylesheet" href="macro.css">
+</head>
+
+<body>
+<header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+        <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!-- Hero -->
+    <section class="hero-section">
+        <div class="container1 text-center">
+
+           
+            <h1 class="hero-title" style="font-size:80px;">
+               Calculate
+               <span style="color: #9ffcf7;">Your Macro</span>
+            </h1>
+
+            <p class="hero-subtitle">
+               Macro calculator estimates your daily intake of protein, carbohydrates, and fats based on your calories, body stats, and fitness goals.
+            </p>
+
+        </div>
+    </section>
+   
+<div class="bg-glow"></div>
+
+<div class="container">
+
+
+
+<!-- INPUT SECTION -->
+<div class="card">
+    <h1 style="color: var(--text);">Calculate Macro</h1>
+<div class="grid">
+
+<input id="age" type="number" placeholder="Age">
+
+<select id="gender">
+<option value="male">Male</option>
+<option value="female">Female</option>
+</select>
+
+<input id="height" type="number" placeholder="Height (cm)">
+<input id="weight" type="number" placeholder="Weight (kg)">
+
+<select id="activity">
+<option value="1.2">Sedentary</option>
+<option value="1.375">Light</option>
+<option value="1.55">Moderate</option>
+<option value="1.725">Active</option>
+<option value="1.9">Very Active</option>
+</select>
+
+<select id="goal">
+<option value="lose">Fat Loss</option>
+<option value="maintain">Maintenance</option>
+<option value="gain">Muscle Gain</option>
+</select>
+
+</div>
+
+<br>
+
+<button class="btn" onclick="calculate()">⚡ Calculate Macros</button>
+</div>
+
+
+
+    <!-- AI SUMMARY -->
+    <!-- RESULTS -->
+<div class="card2 result-card">
+
+    <h3 class="title">📊 AI Fitness Intelligence Dashboard</h3>
+
+    <div class="circle-grid">
+
+        <div class="circle-card">
+            <div class="circle" id="calorieCircle">
+                <span id="calories">0</span>
+            </div>
+            <p>🔥 Calories</p>
+        </div>
+
+        <div class="circle-card">
+            <div class="circle green" id="proteinCircle">
+                <span id="protein">0g</span>
+            </div>
+            <p>🍗 Protein</p>
+        </div>
+
+        <div class="circle-card">
+            <div class="circle purple" id="carbCircle">
+                <span id="carbs">0g</span>
+            </div>
+            <p>🍞 Carbs</p>
+        </div>
+
+        <div class="circle-card">
+            <div class="circle orange" id="fatCircle">
+                <span id="fats">0g</span>
+            </div>
+            <p>🥑 Fats</p>
+        </div>
+
+    </div>
+
+    <div class="ai-box">
+        <h4>🤖 AI Summary</h4>
+        <p id="aiText">Enter data to generate AI insights...</p>
+    </div>
+
+    <button class="btn pdf-btn" onclick="downloadPDF()">
+📄⬇️ Download AI MacroFit Pro Report
+</button>
+</div>
+
+
+   
+</div>
+
+
+</div>
+
+</div>
+
+</main>
+
+    <footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+               // navbar responsive
+const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const icon = menu.querySelector("i");
+
+menu.onclick = function () {
+    navLinks.classList.toggle("active");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+};
+    document.addEventListener("DOMContentLoaded", function () {
+
+            // create close button
+            let closeBtn = document.createElement("button");
+
+            closeBtn.innerHTML = "✖";
+            closeBtn.className = "js-close-btn";
+
+            // add style + position
+            closeBtn.style.position = "fixed";
+            closeBtn.style.top = "90px";
+            closeBtn.style.right = "20px";
+            closeBtn.style.width = "40px";
+            closeBtn.style.height = "40px";
+            closeBtn.style.borderRadius = "50%";
+            closeBtn.style.border = "none";
+            closeBtn.style.background = "#006D77";
+            closeBtn.style.color = "white";
+            closeBtn.style.fontSize = "18px";
+            closeBtn.style.cursor = "pointer";
+            closeBtn.style.zIndex = "9999";
+
+            document.body.appendChild(closeBtn);
+
+            // close action
+            closeBtn.addEventListener("click", function () {
+                window.location.href = "all calculator.html";
+                // 👆 yahan apna main page name likho
+            });
+
+        });
+
+// =========================
+// GLOBAL DATA
+// =========================
+let resultData = {};
+
+
+// =========================
+// CALCULATE FUNCTION
+// =========================
+function calculate(){
+
+    let age = +document.getElementById("age").value;
+    let gender = document.getElementById("gender").value;
+    let height = +document.getElementById("height").value;
+    let weight = +document.getElementById("weight").value;
+    let activity = +document.getElementById("activity").value;
+    let goal = document.getElementById("goal").value;
+
+    // BMR
+    let bmr;
+    if(gender === "male"){
+        bmr = 10*weight + 6.25*height - 5*age + 5;
+    } else {
+        bmr = 10*weight + 6.25*height - 5*age - 161;
+    }
+
+    // TDEE
+    let tdee = bmr * activity;
+
+    // Goal adjustment
+    if(goal === "lose") tdee -= 400;
+    if(goal === "gain") tdee += 300;
+
+    // Macros
+    let protein = weight * 2.2;
+    let fats = weight * 0.9;
+    let carbs = (tdee - (protein*4 + fats*9)) / 4;
+
+    // UI update
+    document.getElementById("calories").innerText = Math.round(tdee);
+    document.getElementById("protein").innerText = Math.round(protein) + "g";
+    document.getElementById("carbs").innerText = Math.round(carbs) + "g";
+    document.getElementById("fats").innerText = Math.round(fats) + "g";
+
+    // AI TEXT
+    let aiText = "";
+
+    if(goal === "lose"){
+        aiText = "🔥 Fat Loss Mode: High protein + calorie deficit burns fat while protecting muscle.";
+    }
+    else if(goal === "gain"){
+        aiText = "💪 Muscle Gain Mode: Calorie surplus + carbs supports strength & growth.";
+    }
+    else{
+        aiText = "⚖️ Maintenance Mode: Balanced macros for stable health.";
+    }
+
+    document.getElementById("aiText").innerText = aiText;
+
+    // SAVE DATA
+    resultData = {tdee, protein, carbs, fats, goal};
+
+    // CIRCLE ANIMATION
+    animateCircle("calorieCircle", Math.min((tdee / 3000) * 100, 100), "#7393d2");
+animateCircle("proteinCircle", Math.min((protein / 200) * 100, 100), "#10b981");
+animateCircle("carbCircle", Math.min((carbs / 300) * 100, 100), "#a855f7");
+animateCircle("fatCircle", Math.min((fats / 100) * 100, 100), "#fb923c");
+}
+
+
+// =========================
+// CIRCLE ANIMATION
+// =========================
+function animateCircle(id, value, color){
+
+    let el = document.getElementById(id);
+    let start = 0;
+
+    clearInterval(el.timer);
+
+    el.timer = setInterval(() => {
+
+        start++;
+
+        el.style.background =
+            `conic-gradient(${color} ${start}%, rgba(255,255,255,0.1) 0%)`;
+
+        if(start >= value){
+            clearInterval(el.timer);
+        }
+
+    }, 10);
+}
+
+
+// =========================
+// PDF DOWNLOAD
+// =========================
+function downloadPDF(){
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    doc.setFont("helvetica","bold");
+    doc.text("AI MacroFit Pro Report",20,20);
+
+    doc.setFont("helvetica","normal");
+    doc.text("Calories: " + Math.round(resultData.tdee),20,40);
+    doc.text("Protein: " + Math.round(resultData.protein) + "g",20,50);
+    doc.text("Carbs: " + Math.round(resultData.carbs) + "g",20,60);
+    doc.text("Fats: " + Math.round(resultData.fats) + "g",20,70);
+
+    doc.text("Goal: " + resultData.goal,20,90);
+
+    doc.text("AI Tip: Drink 2-3L water daily & train consistently.",20,110);
+
+    doc.save("MacroFit-Pro-Report.pdf");
+}
+
+
+</script>
+
+</body>
+</html>

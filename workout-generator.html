@@ -1,0 +1,1339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Workout Generator</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+<link rel="stylesheet" href="workout-generator.css">
+</head>
+<body>
+    <header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+         <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+
+<main>
+  <div class="page">
+
+  <!-- Header -->
+  <div class="hdr">
+    <h1><i class="fa-solid fa-bolt"></i> Workout Generator</h1>
+    <p>Build a custom training plan tailored to your goals, split, equipment and schedule.</p>
+  </div>
+
+  <!-- Steps -->
+  <div class="steps">
+    <div class="step active" id="s1"><span class="snum">1</span>Setup</div>
+    <div class="sdiv" id="d1"></div>
+    <div class="step" id="s2"><span class="snum">2</span>Exercises</div>
+    <div class="sdiv" id="d2"></div>
+    <div class="step" id="s3"><span class="snum">3</span>Review</div>
+  </div>
+
+  <div class="layout">
+
+    <!-- LEFT PANEL -->
+    <div>
+      <div class="card">
+        <div class="card-body">
+
+          <!-- Gender -->
+          <div class="sec-title"><i class="fa-solid fa-user"></i> I am training as</div>
+          <div class="gender-toggle">
+            <button class="gender-btn sel" id="genderMale" onclick="setGender('male')">
+              <i class="fa-solid fa-mars"></i> Male
+            </button>
+            <button class="gender-btn" id="genderFemale" onclick="setGender('female')">
+              <i class="fa-solid fa-venus"></i> Female
+            </button>
+          </div>
+
+          <!-- Goal -->
+          <div class="sec-title"><i class="fa-solid fa-bullseye"></i> Select Your Goal</div>
+          <div class="goal-grid" id="goalGrid">
+            <!-- Male goals (default) -->
+            <button class="goal-btn sel" data-val="fat-loss">
+              <div class="goal-icon" style="background:#FFF7ED"><i class="fa-solid fa-fire" style="color:#F97316"></i></div>Fat Loss
+            </button>
+            <button class="goal-btn" data-val="muscle">
+              <div class="goal-icon" style="background:#EFF6FF"><i class="fa-solid fa-dumbbell" style="color:#2563EB"></i></div>Muscle Gain
+            </button>
+            <button class="goal-btn" data-val="strength">
+              <div class="goal-icon" style="background:#F5F3FF"><i class="fa-solid fa-trophy" style="color:#7C3AED"></i></div>Strength
+            </button>
+            <button class="goal-btn" data-val="maintenance">
+              <div class="goal-icon" style="background:#ECFDF5"><i class="fa-solid fa-shield-halved" style="color:#10B981"></i></div>Maintenance
+            </button>
+            <button class="goal-btn" data-val="endurance">
+              <div class="goal-icon" style="background:#FEF2F2"><i class="fa-solid fa-person-running" style="color:#EF4444"></i></div>Endurance
+            </button>
+            <button class="goal-btn" data-val="athletic">
+              <div class="goal-icon" style="background:#FFFBEB"><i class="fa-solid fa-medal" style="color:#D97706"></i></div>Athletic
+            </button>
+          </div>
+
+          <!-- Level -->
+          <div class="sec-gap">
+            <div class="slabel"><i class="fa-solid fa-signal"></i> Training Level</div>
+            <div class="sel-wrap">
+              <select id="levelSel">
+                <option value="">Select your level</option>
+                <option value="beginner">Beginner (0–6 months)</option>
+                <option value="intermediate">Intermediate (6m–2yr)</option>
+                <option value="advanced">Advanced (2+ years)</option>
+                <option value="elite">Elite / Competitive</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Split -->
+          <div class="sec-gap">
+            <div class="sec-title" id="splitTitle"><i class="fa-solid fa-table-cells-large"></i> Training Split</div>
+            <div class="split-grid" id="splitGrid">
+              <!-- populated by JS -->
+            </div>
+          </div>
+
+          <!-- Equipment -->
+          <div class="sec-gap">
+            <div class="sec-title"><i class="fa-solid fa-toolbox"></i> Available Equipment</div>
+            <div class="equip-grid" id="equipGrid">
+              <button class="equip-btn sel" data-val="barbell"><i class="fa-solid fa-weight-hanging eq-icon"></i>Barbell<span class="chkbox"><i class="fa-solid fa-check"></i></span></button>
+              <button class="equip-btn sel" data-val="dumbbell"><i class="fa-solid fa-dumbbell eq-icon"></i>Dumbbells<span class="chkbox"><i class="fa-solid fa-check"></i></span></button>
+              <button class="equip-btn" data-val="cables"><i class="fa-solid fa-circle-nodes eq-icon"></i>Cables<span class="chkbox"></span></button>
+              <button class="equip-btn" data-val="machines"><i class="fa-solid fa-gear eq-icon"></i>Machines<span class="chkbox"></span></button>
+              <button class="equip-btn" data-val="kettlebell"><i class="fa-solid fa-bowling-ball eq-icon"></i>Kettlebell<span class="chkbox"></span></button>
+              <button class="equip-btn" data-val="bands"><i class="fa-solid fa-wave-square eq-icon"></i>Res. Bands<span class="chkbox"></span></button>
+              <button class="equip-btn" data-val="bodyweight"><i class="fa-solid fa-person eq-icon"></i>Bodyweight<span class="chkbox"></span></button>
+              <button class="equip-btn" data-val="mat"><i class="fa-solid fa-layer-group eq-icon"></i>Yoga Mat<span class="chkbox"></span></button>
+            </div>
+          </div>
+
+          <!-- Schedule -->
+          <div class="sec-gap">
+            <div class="sec-title"><i class="fa-solid fa-calendar-days"></i> Schedule</div>
+            <div class="row2">
+              <div>
+                <div class="slabel"><i class="fa-regular fa-clock"></i> Duration</div>
+                <div class="sel-wrap">
+                  <select id="durSel">
+                    <option value="30">30 Minutes</option>
+                    <option value="45" selected>45 Minutes</option>
+                    <option value="60">60 Minutes</option>
+                    <option value="75">75 Minutes</option>
+                    <option value="90">90 Minutes</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <div class="slabel"><i class="fa-solid fa-repeat"></i> Days / Week</div>
+                <div class="sel-wrap">
+                  <select id="daysSel">
+                    <option value="3">3 Days</option>
+                    <option value="4" selected>4 Days</option>
+                    <option value="5">5 Days</option>
+                    <option value="6">6 Days</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Advanced -->
+          <div class="adv-toggle" id="advToggle">
+            <i class="fa-solid fa-sliders"></i> Advanced Options
+            <i class="fa-solid fa-chevron-down" style="margin-left:auto;font-size:.75rem"></i>
+          </div>
+          <div class="adv-section" id="advSection">
+            <div class="adv-row">
+              <div class="slabel"><i class="fa-solid fa-stopwatch"></i> Rest Between Sets</div>
+              <div class="sel-wrap">
+                <select id="restSel">
+                  <option value="60">60 sec – Hypertrophy</option>
+                  <option value="90" selected>90 sec – General</option>
+                  <option value="120">2 min – Strength</option>
+                  <option value="180">3 min – Heavy Compound</option>
+                </select>
+              </div>
+            </div>
+            <div class="adv-row">
+              <div class="slabel"><i class="fa-solid fa-gauge-high"></i> Intensity (RPE) — <span id="rpeLabel">7</span></div>
+              <input type="range" id="rpeSl" min="5" max="10" step="0.5" value="7"/>
+              <div class="range-labels"><span>RPE 5</span><span>RPE 10</span></div>
+            </div>
+            <div class="adv-row">
+              <div class="slabel"><i class="fa-solid fa-layer-group"></i> Set Style</div>
+              <div class="sel-wrap">
+                <select id="styleSel">
+                  <option value="straight">Straight Sets</option>
+                  <option value="superset">Supersets</option>
+                  <option value="dropset">Drop Sets</option>
+                  <option value="pyramid">Pyramid</option>
+                  <option value="circuit">Circuit Training</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Generate -->
+          <button class="btn-gen" id="genBtn">
+            <i class="fa-solid fa-bolt"></i> Generate My Workout
+          </button>
+
+        </div>
+
+        <!-- Stats bar -->
+        <div class="stats">
+          <div class="stat">
+            <i class="fa-solid fa-fire" style="color:#F97316"></i>
+            <div><div class="stat-val" id="calStat">—</div><div class="stat-lbl">Est. Calories</div></div>
+          </div>
+          <div class="stat">
+            <i class="fa-solid fa-dumbbell" style="color:#2563EB"></i>
+            <div><div class="stat-val" id="exStat">—</div><div class="stat-lbl">Total Exercises</div></div>
+          </div>
+          <div class="stat">
+            <i class="fa-regular fa-clock" style="color:#7C3AED"></i>
+            <div><div class="stat-val" id="timeStat">—</div><div class="stat-lbl">Total Time</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="card" id="resultCard">
+      <div class="res-hdr">
+        <h2 id="resTitle">Your Generated Workout</h2>
+        <div class="res-btns">
+          <button class="btn-sm" id="shuffleBtn" style="display:none" onclick="doGenerate()">
+            <i class="fa-solid fa-shuffle"></i> Shuffle
+          </button>
+          <button class="btn-sm primary" id="pdfBtn" style="display:none" onclick="downloadPDF()">
+            <i class="fa-solid fa-download"></i> Save PDF
+          </button>
+        </div>
+      </div>
+
+      <div class="empty" id="emptyState">
+        <div class="empty-icon"><i class="fa-solid fa-dumbbell"></i></div>
+        <h3>Ready to build your plan</h3>
+        <p>Choose your goal, split, and equipment<br>then hit Generate to create your personalised workout.</p>
+      </div>
+
+      <div class="spinner" id="spinner">
+        <div class="spin-ring"></div>
+        <p>Building your personalised plan…</p>
+      </div>
+
+      <div id="workoutOut" style="display:none"></div>
+    </div>
+
+  </div>
+</div>
+
+<div class="toast" id="toast"><i class="fa-solid fa-circle-check"></i><span id="toastMsg"></span></div>
+</main>
+
+
+    <footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  
+/* ── NAVBAR SCROLL SHADOW ───────────────────────────────────── */
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+});
+           // navbar responsive
+const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const icon = menu.querySelector("i");
+
+menu.onclick = function () {
+    navLinks.classList.toggle("active");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+};
+/* ── TOAST ──────────────────────────────────────────────────── */
+let toastTimer;
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  document.getElementById('toastMsg').innerHTML = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+}
+
+// ── STATE ──
+var state = {
+  gender:'male', goal:'fat-loss', level:'', split:'ppl',
+  equip:['barbell','dumbbell'], dur:45, days:4, rest:90, rpe:7, style:'straight'
+};
+
+// ── FALLBACK IMAGE ──
+var FALLBACK = 'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=100&h=100&fit=crop&auto=format';
+
+var IMGS = {
+  'Bench Press':        'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=100&h=100&fit=crop&auto=format',
+  'Incline Bench':      'https://images.unsplash.com/photo-1534368786749-b63e05c90863?w=100&h=100&fit=crop&auto=format',
+  'Overhead Press':     'https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=100&h=100&fit=crop&auto=format',
+  'Cable Fly':          'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=100&h=100&fit=crop&auto=format',
+  'Tricep Pushdown':    'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=100&h=100&fit=crop&auto=format',
+  'Lateral Raise':      'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=100&h=100&fit=crop&auto=format',
+  'Pull-Ups':           'https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=100&h=100&fit=crop&auto=format',
+  'Deadlift':           'https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=100&h=100&fit=crop&auto=format',
+  'Bent Over Row':      'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=100&h=100&fit=crop&auto=format',
+  'Face Pull':          'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=100&h=100&fit=crop&auto=format',
+  'Bicep Curl':         'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=100&h=100&fit=crop&auto=format',
+  'Hammer Curl':        'https://images.unsplash.com/photo-1540497077202-7c8a3999166f?w=100&h=100&fit=crop&auto=format',
+  'Squat':              'https://images.unsplash.com/photo-1567598508481-65985588e295?w=100&h=100&fit=crop&auto=format',
+  'Romanian Deadlift':  'https://images.unsplash.com/photo-1550980280-0f9d40e04de1?w=100&h=100&fit=crop&auto=format',
+  'Leg Press':          'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=100&h=100&fit=crop&auto=format',
+  'Leg Curl':           'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=100&h=100&fit=crop&auto=format',
+  'Calf Raise':         'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=100&h=100&fit=crop&auto=format',
+  'Lunges':             'https://images.unsplash.com/photo-1506806732259-39c2d0268443?w=100&h=100&fit=crop&auto=format',
+  'Hip Thrust':         'https://images.unsplash.com/photo-1550980280-0f9d40e04de1?w=100&h=100&fit=crop&auto=format',
+  'Arnold Press':       'https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=100&h=100&fit=crop&auto=format',
+  'Dips':               'https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=100&h=100&fit=crop&auto=format',
+  'Plank':              'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=100&h=100&fit=crop&auto=format',
+  'Russian Twist':      'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=100&h=100&fit=crop&auto=format',
+  'Hanging Leg Raise':  'https://images.unsplash.com/photo-1598971639058-fab3c3109a00?w=100&h=100&fit=crop&auto=format',
+  'Burpees':            'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=100&h=100&fit=crop&auto=format',
+  'Box Jumps':          'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=100&h=100&fit=crop&auto=format',
+  'Kettlebell Swing':   'https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=100&h=100&fit=crop&auto=format',
+  'Sumo Deadlift':      'https://images.unsplash.com/photo-1517963879433-6ad2b056d712?w=100&h=100&fit=crop&auto=format',
+  'Front Squat':        'https://images.unsplash.com/photo-1567598508481-65985588e295?w=100&h=100&fit=crop&auto=format',
+  'Close Grip Bench':   'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=100&h=100&fit=crop&auto=format',
+  'T-Bar Row':          'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=100&h=100&fit=crop&auto=format',
+  'Preacher Curl':      'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=100&h=100&fit=crop&auto=format',
+  'Skull Crushers':     'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=100&h=100&fit=crop&auto=format',
+  'Cable Row':          'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=100&h=100&fit=crop&auto=format',
+  'Lat Pulldown':       'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=100&h=100&fit=crop&auto=format',
+  'DB Shoulder Press':  'https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?w=100&h=100&fit=crop&auto=format',
+  'Glute Bridge':       'https://images.unsplash.com/photo-1550980280-0f9d40e04de1?w=100&h=100&fit=crop&auto=format',
+  'Cable Kickback':     'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=100&h=100&fit=crop&auto=format',
+  'Sumo Squat':         'https://images.unsplash.com/photo-1567598508481-65985588e295?w=100&h=100&fit=crop&auto=format',
+  'Donkey Kicks':       'https://images.unsplash.com/photo-1506806732259-39c2d0268443?w=100&h=100&fit=crop&auto=format',
+  'Fire Hydrants':      'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=100&h=100&fit=crop&auto=format',
+  'Side Lunges':        'https://images.unsplash.com/photo-1506806732259-39c2d0268443?w=100&h=100&fit=crop&auto=format',
+  'Step-Ups':           'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=100&h=100&fit=crop&auto=format',
+  'Curtsy Lunge':       'https://images.unsplash.com/photo-1506806732259-39c2d0268443?w=100&h=100&fit=crop&auto=format',
+  'Banded Clamshells':  'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=100&h=100&fit=crop&auto=format',
+  'Cable Hip Abduction':'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=100&h=100&fit=crop&auto=format',
+  'DB Romanian DL':     'https://images.unsplash.com/photo-1550980280-0f9d40e04de1?w=100&h=100&fit=crop&auto=format',
+  'Push-Ups':           'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=100&h=100&fit=crop&auto=format',
+  'Tricep Dips':        'https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=100&h=100&fit=crop&auto=format',
+  'Resistance Band Row':'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=100&h=100&fit=crop&auto=format',
+  'Mountain Climbers':  'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=100&h=100&fit=crop&auto=format',
+  'Jump Squats':        'https://images.unsplash.com/photo-1567598508481-65985588e295?w=100&h=100&fit=crop&auto=format',
+  'Skater Jumps':       'https://images.unsplash.com/photo-1574680096145-d05b474e2155?w=100&h=100&fit=crop&auto=format',
+  'High Knees':         'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=100&h=100&fit=crop&auto=format',
+};
+
+// ── SPLITS ──
+var MALE_SPLITS = [
+  {val:'ppl',   icon:'fa-solid fa-arrows-split-up-and-left', label:'Push / Pull / Legs', sub:'6-day'},
+  {val:'upper-lower', icon:'fa-solid fa-arrows-up-down',     label:'Upper / Lower',       sub:'4-day'},
+  {val:'full-body',   icon:'fa-solid fa-circle',             label:'Full Body',            sub:'3-day'},
+  {val:'bro',         icon:'fa-solid fa-person-rays',        label:'Bro Split',            sub:'5-day'},
+  {val:'arnold',      icon:'fa-solid fa-star',               label:'Arnold Split',         sub:'6-day'},
+  {val:'531',         icon:'fa-solid fa-sort-numeric-up',    label:'5/3/1 Strength',       sub:'4-day'},
+  {val:'phat',        icon:'fa-solid fa-rocket',             label:'PHAT',                 sub:'5-day'},
+  {val:'gzclp',       icon:'fa-solid fa-chart-line',         label:'GZCLP',                sub:'4-day'},
+  {val:'hiit',        icon:'fa-solid fa-heart-pulse',        label:'HIIT + Weights',       sub:'4-day'},
+  {val:'custom',      icon:'fa-solid fa-wand-magic-sparkles',label:'Custom',               sub:'flexible'},
+];
+
+var FEMALE_SPLITS = [
+  {val:'glute-focused',  icon:'fa-solid fa-star',            label:'Glute Focused',        sub:'4-day'},
+  {val:'full-body-lean', icon:'fa-solid fa-fire',            label:'Full Body Lean',       sub:'3-day'},
+  {val:'yoga-flow',      icon:'fa-solid fa-leaf',            label:'Yoga Flow',            sub:'5-day'},
+  {val:'yoga-strength',  icon:'fa-solid fa-spa',             label:'Yoga + Strength',      sub:'4-day'},
+  {val:'lower-body',     icon:'fa-solid fa-person-walking',  label:'Lower Body Sculpt',    sub:'4-day'},
+  {val:'upper-tone',     icon:'fa-solid fa-hand-fist',       label:'Upper Body Tone',      sub:'3-day'},
+  {val:'hiit-female',    icon:'fa-solid fa-heart-pulse',     label:'HIIT Cardio Sculpt',   sub:'4-day'},
+  {val:'pilates-core',   icon:'fa-solid fa-circle-dot',      label:'Pilates + Core',       sub:'3-day'},
+  {val:'ppl-female',     icon:'fa-solid fa-arrows-split-up-and-left', label:'Push/Pull/Legs', sub:'6-day'},
+  {val:'custom-female',  icon:'fa-solid fa-wand-magic-sparkles', label:'Custom Mix',        sub:'flexible'},
+];
+
+// ── WORKOUT DATA ──
+var SPLITS_DATA = {
+ppl:[
+  {name:'Day 1 · Push — Chest / Shoulders / Triceps', type:'push', ex:[
+    {n:'Bench Press',s:4,r:'6-8',m:'Chest',tags:['Compound','Primary']},
+    {n:'Incline Bench',s:3,r:'8-10',m:'Upper Chest',tags:['Compound']},
+    {n:'Cable Fly',s:3,r:'12-15',m:'Chest',tags:['Isolation']},
+    {n:'Overhead Press',s:4,r:'6-8',m:'Shoulders',tags:['Compound','Primary']},
+    {n:'Lateral Raise',s:3,r:'15-20',m:'Side Delt',tags:['Isolation']},
+    {n:'Tricep Pushdown',s:3,r:'12-15',m:'Triceps',tags:['Accessory']},
+  ]},
+  {name:'Day 2 · Pull — Back / Biceps', type:'pull', ex:[
+    {n:'Deadlift',s:4,r:'4-6',m:'Full Back',tags:['Compound','Primary']},
+    {n:'Pull-Ups',s:4,r:'6-10',m:'Lats',tags:['Compound']},
+    {n:'Bent Over Row',s:3,r:'8-10',m:'Mid Back',tags:['Compound']},
+    {n:'Face Pull',s:3,r:'15-20',m:'Rear Delt',tags:['Isolation']},
+    {n:'Bicep Curl',s:3,r:'10-12',m:'Biceps',tags:['Accessory']},
+    {n:'Hammer Curl',s:2,r:'12-15',m:'Brachialis',tags:['Accessory']},
+  ]},
+  {name:'Day 3 · Legs — Quads / Hamstrings / Glutes', type:'legs', ex:[
+    {n:'Squat',s:4,r:'5-8',m:'Quads',tags:['Compound','Primary']},
+    {n:'Romanian Deadlift',s:3,r:'8-10',m:'Hamstrings',tags:['Compound']},
+    {n:'Leg Press',s:3,r:'12-15',m:'Quads',tags:['Compound']},
+    {n:'Leg Curl',s:3,r:'12-15',m:'Hamstrings',tags:['Isolation']},
+    {n:'Hip Thrust',s:3,r:'10-12',m:'Glutes',tags:['Compound']},
+    {n:'Calf Raise',s:4,r:'15-20',m:'Calves',tags:['Accessory']},
+  ]},
+  {name:'Day 4 · Rest', type:'rest', ex:[]},
+  {name:'Day 5 · Push — Volume', type:'push', ex:[
+    {n:'Incline Bench',s:4,r:'8-10',m:'Upper Chest',tags:['Compound','Primary']},
+    {n:'DB Shoulder Press',s:3,r:'10-12',m:'Shoulders',tags:['Compound']},
+    {n:'Cable Fly',s:3,r:'15-20',m:'Chest',tags:['Isolation']},
+    {n:'Lateral Raise',s:4,r:'15-20',m:'Side Delt',tags:['Isolation']},
+    {n:'Skull Crushers',s:3,r:'10-12',m:'Triceps',tags:['Accessory']},
+  ]},
+  {name:'Day 6 · Pull — Volume', type:'pull', ex:[
+    {n:'Lat Pulldown',s:4,r:'10-12',m:'Lats',tags:['Compound','Primary']},
+    {n:'Cable Row',s:3,r:'10-12',m:'Mid Back',tags:['Compound']},
+    {n:'T-Bar Row',s:3,r:'8-10',m:'Thickness',tags:['Compound']},
+    {n:'Face Pull',s:3,r:'15-20',m:'Rear Delt',tags:['Isolation']},
+    {n:'Preacher Curl',s:3,r:'10-12',m:'Biceps',tags:['Accessory']},
+  ]},
+  {name:'Day 7 · Rest', type:'rest', ex:[]},
+],
+'upper-lower':[
+  {name:'Day 1 · Upper — Strength', type:'upper', ex:[
+    {n:'Bench Press',s:4,r:'4-6',m:'Chest',tags:['Compound','Primary']},
+    {n:'Bent Over Row',s:4,r:'4-6',m:'Back',tags:['Compound','Primary']},
+    {n:'Overhead Press',s:3,r:'6-8',m:'Shoulders',tags:['Compound']},
+    {n:'Pull-Ups',s:3,r:'6-8',m:'Lats',tags:['Compound']},
+    {n:'Tricep Pushdown',s:2,r:'10-12',m:'Triceps',tags:['Accessory']},
+    {n:'Bicep Curl',s:2,r:'10-12',m:'Biceps',tags:['Accessory']},
+  ]},
+  {name:'Day 2 · Lower — Strength', type:'lower', ex:[
+    {n:'Squat',s:4,r:'4-6',m:'Quads',tags:['Compound','Primary']},
+    {n:'Romanian Deadlift',s:3,r:'6-8',m:'Hamstrings',tags:['Compound']},
+    {n:'Leg Press',s:3,r:'10-12',m:'Quads',tags:['Compound']},
+    {n:'Leg Curl',s:3,r:'10-12',m:'Hamstrings',tags:['Isolation']},
+    {n:'Calf Raise',s:4,r:'15-20',m:'Calves',tags:['Accessory']},
+  ]},
+  {name:'Day 3 · Rest', type:'rest', ex:[]},
+  {name:'Day 4 · Upper — Hypertrophy', type:'upper', ex:[
+    {n:'Incline Bench',s:4,r:'8-12',m:'Upper Chest',tags:['Compound','Primary']},
+    {n:'Cable Row',s:4,r:'10-12',m:'Back',tags:['Compound']},
+    {n:'Lateral Raise',s:3,r:'15-20',m:'Side Delt',tags:['Isolation']},
+    {n:'Face Pull',s:3,r:'15-20',m:'Rear Delt',tags:['Isolation']},
+    {n:'Skull Crushers',s:3,r:'10-12',m:'Triceps',tags:['Accessory']},
+    {n:'Hammer Curl',s:3,r:'12-15',m:'Biceps',tags:['Accessory']},
+  ]},
+  {name:'Day 5 · Lower — Hypertrophy', type:'lower', ex:[
+    {n:'Front Squat',s:4,r:'8-10',m:'Quads',tags:['Compound','Primary']},
+    {n:'Sumo Deadlift',s:3,r:'8-10',m:'Posterior Chain',tags:['Compound']},
+    {n:'Leg Press',s:3,r:'12-15',m:'Quads',tags:['Compound']},
+    {n:'Hip Thrust',s:3,r:'12-15',m:'Glutes',tags:['Compound']},
+    {n:'Calf Raise',s:4,r:'15-20',m:'Calves',tags:['Accessory']},
+  ]},
+],
+'full-body':[
+  {name:'Day 1 · Full Body A', type:'full', ex:[
+    {n:'Squat',s:4,r:'5',m:'Quads',tags:['Compound','Primary']},
+    {n:'Bench Press',s:3,r:'5',m:'Chest',tags:['Compound','Primary']},
+    {n:'Bent Over Row',s:3,r:'5',m:'Back',tags:['Compound']},
+    {n:'Overhead Press',s:2,r:'8',m:'Shoulders',tags:['Compound']},
+    {n:'Romanian Deadlift',s:2,r:'8',m:'Hamstrings',tags:['Compound']},
+    {n:'Plank',s:3,r:'45 sec',m:'Core',tags:['Isolation']},
+  ]},
+  {name:'Day 2 · Rest / Cardio', type:'rest', ex:[]},
+  {name:'Day 3 · Full Body B', type:'full', ex:[
+    {n:'Deadlift',s:4,r:'5',m:'Full Back',tags:['Compound','Primary']},
+    {n:'Incline Bench',s:3,r:'8',m:'Upper Chest',tags:['Compound']},
+    {n:'Pull-Ups',s:3,r:'6-8',m:'Lats',tags:['Compound']},
+    {n:'DB Shoulder Press',s:2,r:'10',m:'Shoulders',tags:['Compound']},
+    {n:'Lunges',s:2,r:'10 each',m:'Legs',tags:['Compound']},
+    {n:'Russian Twist',s:3,r:'15',m:'Core',tags:['Isolation']},
+  ]},
+  {name:'Day 4 · Rest', type:'rest', ex:[]},
+  {name:'Day 5 · Full Body C', type:'full', ex:[
+    {n:'Front Squat',s:4,r:'5',m:'Quads',tags:['Compound','Primary']},
+    {n:'Close Grip Bench',s:3,r:'8',m:'Triceps / Chest',tags:['Compound']},
+    {n:'T-Bar Row',s:3,r:'8',m:'Back',tags:['Compound']},
+    {n:'Arnold Press',s:2,r:'10',m:'Shoulders',tags:['Compound']},
+    {n:'Hip Thrust',s:3,r:'10',m:'Glutes',tags:['Compound']},
+    {n:'Hanging Leg Raise',s:3,r:'12',m:'Core',tags:['Isolation']},
+  ]},
+],
+bro:[
+  {name:'Day 1 · Chest', type:'chest', ex:[
+    {n:'Bench Press',s:4,r:'8-10',m:'Chest',tags:['Compound','Primary']},
+    {n:'Incline Bench',s:4,r:'10-12',m:'Upper Chest',tags:['Compound']},
+    {n:'Cable Fly',s:3,r:'12-15',m:'Chest',tags:['Isolation']},
+    {n:'Dips',s:3,r:'12-15',m:'Lower Chest',tags:['Compound']},
+  ]},
+  {name:'Day 2 · Back', type:'back', ex:[
+    {n:'Deadlift',s:4,r:'5-6',m:'Full Back',tags:['Compound','Primary']},
+    {n:'Pull-Ups',s:4,r:'8-10',m:'Lats',tags:['Compound']},
+    {n:'Bent Over Row',s:4,r:'8-10',m:'Mid Back',tags:['Compound']},
+    {n:'Lat Pulldown',s:3,r:'10-12',m:'Lats',tags:['Compound']},
+    {n:'T-Bar Row',s:3,r:'10-12',m:'Thickness',tags:['Compound']},
+  ]},
+  {name:'Day 3 · Shoulders', type:'shoulders', ex:[
+    {n:'Overhead Press',s:4,r:'6-8',m:'Shoulders',tags:['Compound','Primary']},
+    {n:'DB Shoulder Press',s:3,r:'10-12',m:'Shoulders',tags:['Compound']},
+    {n:'Lateral Raise',s:4,r:'15-20',m:'Side Delt',tags:['Isolation']},
+    {n:'Face Pull',s:3,r:'15-20',m:'Rear Delt',tags:['Isolation']},
+    {n:'Arnold Press',s:3,r:'10-12',m:'All Delts',tags:['Compound']},
+  ]},
+  {name:'Day 4 · Arms', type:'arms', ex:[
+    {n:'Bicep Curl',s:4,r:'10-12',m:'Biceps',tags:['Isolation','Primary']},
+    {n:'Hammer Curl',s:3,r:'12-15',m:'Brachialis',tags:['Accessory']},
+    {n:'Preacher Curl',s:3,r:'10-12',m:'Biceps',tags:['Isolation']},
+    {n:'Skull Crushers',s:4,r:'10-12',m:'Triceps',tags:['Accessory']},
+    {n:'Tricep Pushdown',s:3,r:'12-15',m:'Triceps',tags:['Accessory']},
+    {n:'Close Grip Bench',s:3,r:'8-10',m:'Triceps',tags:['Compound']},
+  ]},
+  {name:'Day 5 · Legs', type:'legs', ex:[
+    {n:'Squat',s:4,r:'6-8',m:'Quads',tags:['Compound','Primary']},
+    {n:'Romanian Deadlift',s:3,r:'8-10',m:'Hamstrings',tags:['Compound']},
+    {n:'Leg Press',s:3,r:'12-15',m:'Quads',tags:['Compound']},
+    {n:'Leg Curl',s:3,r:'12-15',m:'Hamstrings',tags:['Isolation']},
+    {n:'Calf Raise',s:4,r:'20',m:'Calves',tags:['Accessory']},
+  ]},
+  {name:'Day 6 · Rest', type:'rest', ex:[]},
+  {name:'Day 7 · Rest', type:'rest', ex:[]},
+],
+arnold:[
+  {name:'Day 1 · Chest + Back', type:'push', ex:[
+    {n:'Bench Press',s:4,r:'6-8',m:'Chest',tags:['Compound','Primary']},
+    {n:'Pull-Ups',s:4,r:'6-8',m:'Lats',tags:['Compound','Primary']},
+    {n:'Incline Bench',s:3,r:'8-10',m:'Upper Chest',tags:['Compound']},
+    {n:'Bent Over Row',s:3,r:'8-10',m:'Back',tags:['Compound']},
+    {n:'Cable Fly',s:3,r:'12',m:'Chest',tags:['Isolation']},
+    {n:'Cable Row',s:3,r:'12',m:'Back',tags:['Compound']},
+  ]},
+  {name:'Day 2 · Shoulders + Arms', type:'shoulders', ex:[
+    {n:'Overhead Press',s:4,r:'6-8',m:'Shoulders',tags:['Compound','Primary']},
+    {n:'Lateral Raise',s:3,r:'15',m:'Side Delt',tags:['Isolation']},
+    {n:'Bicep Curl',s:4,r:'10',m:'Biceps',tags:['Accessory']},
+    {n:'Skull Crushers',s:4,r:'10',m:'Triceps',tags:['Accessory']},
+    {n:'Face Pull',s:3,r:'15',m:'Rear Delt',tags:['Isolation']},
+  ]},
+  {name:'Day 3 · Legs + Core', type:'legs', ex:[
+    {n:'Squat',s:5,r:'5-8',m:'Quads',tags:['Compound','Primary']},
+    {n:'Deadlift',s:3,r:'6',m:'Posterior Chain',tags:['Compound']},
+    {n:'Leg Press',s:3,r:'12',m:'Quads',tags:['Compound']},
+    {n:'Calf Raise',s:4,r:'20',m:'Calves',tags:['Accessory']},
+    {n:'Plank',s:3,r:'60 sec',m:'Core',tags:['Isolation']},
+  ]},
+  {name:'Day 4 · Chest + Back (Volume)', type:'push', ex:[
+    {n:'Incline Bench',s:4,r:'10-12',m:'Upper Chest',tags:['Compound','Primary']},
+    {n:'T-Bar Row',s:4,r:'10-12',m:'Back',tags:['Compound','Primary']},
+    {n:'Dips',s:3,r:'12',m:'Chest',tags:['Compound']},
+    {n:'Lat Pulldown',s:3,r:'12',m:'Lats',tags:['Compound']},
+  ]},
+  {name:'Day 5 · Shoulders + Arms (Volume)', type:'shoulders', ex:[
+    {n:'Arnold Press',s:4,r:'10-12',m:'All Delts',tags:['Compound','Primary']},
+    {n:'Lateral Raise',s:4,r:'15-20',m:'Side Delt',tags:['Isolation']},
+    {n:'Hammer Curl',s:3,r:'12',m:'Biceps',tags:['Accessory']},
+    {n:'Tricep Pushdown',s:3,r:'15',m:'Triceps',tags:['Accessory']},
+  ]},
+  {name:'Day 6 · Legs + Core (Volume)', type:'legs', ex:[
+    {n:'Front Squat',s:4,r:'8-10',m:'Quads',tags:['Compound','Primary']},
+    {n:'Romanian Deadlift',s:3,r:'10-12',m:'Hamstrings',tags:['Compound']},
+    {n:'Hip Thrust',s:3,r:'12',m:'Glutes',tags:['Compound']},
+    {n:'Hanging Leg Raise',s:3,r:'15',m:'Core',tags:['Isolation']},
+    {n:'Russian Twist',s:3,r:'20',m:'Core',tags:['Isolation']},
+  ]},
+  {name:'Day 7 · Rest', type:'rest', ex:[]},
+],
+'531':[
+  {name:'Day 1 · Squat (5/3/1)', type:'legs', ex:[
+    {n:'Squat',s:4,r:'5/5/3/1+',m:'Quads',tags:['Compound','Primary']},
+    {n:'Leg Press',s:3,r:'10',m:'Quads',tags:['Compound']},
+    {n:'Leg Curl',s:3,r:'10',m:'Hamstrings',tags:['Isolation']},
+    {n:'Calf Raise',s:3,r:'15',m:'Calves',tags:['Accessory']},
+  ]},
+  {name:'Day 2 · Bench (5/3/1)', type:'push', ex:[
+    {n:'Bench Press',s:4,r:'5/5/3/1+',m:'Chest',tags:['Compound','Primary']},
+    {n:'Close Grip Bench',s:3,r:'10',m:'Triceps',tags:['Compound']},
+    {n:'Dips',s:3,r:'10',m:'Chest',tags:['Compound']},
+    {n:'Tricep Pushdown',s:3,r:'12',m:'Triceps',tags:['Accessory']},
+  ]},
+  {name:'Day 3 · Deadlift (5/3/1)', type:'pull', ex:[
+    {n:'Deadlift',s:4,r:'5/5/3/1+',m:'Full Back',tags:['Compound','Primary']},
+    {n:'Bent Over Row',s:3,r:'10',m:'Back',tags:['Compound']},
+    {n:'Pull-Ups',s:3,r:'8',m:'Lats',tags:['Compound']},
+    {n:'Face Pull',s:3,r:'15',m:'Rear Delt',tags:['Isolation']},
+  ]},
+  {name:'Day 4 · Overhead Press (5/3/1)', type:'push', ex:[
+    {n:'Overhead Press',s:4,r:'5/5/3/1+',m:'Shoulders',tags:['Compound','Primary']},
+    {n:'DB Shoulder Press',s:3,r:'10',m:'Shoulders',tags:['Compound']},
+    {n:'Lateral Raise',s:3,r:'15',m:'Side Delt',tags:['Isolation']},
+    {n:'Bicep Curl',s:3,r:'12',m:'Biceps',tags:['Accessory']},
+  ]},
+],
+phat:[
+  {name:'Day 1 · Upper Power', type:'upper', ex:[
+    {n:'Bench Press',s:4,r:'3-5',m:'Chest',tags:['Compound','Primary']},
+    {n:'Bent Over Row',s:4,r:'3-5',m:'Back',tags:['Compound','Primary']},
+    {n:'Overhead Press',s:3,r:'5-8',m:'Shoulders',tags:['Compound']},
+    {n:'Pull-Ups',s:3,r:'6-8',m:'Lats',tags:['Compound']},
+    {n:'Close Grip Bench',s:2,r:'6-8',m:'Triceps',tags:['Compound']},
+    {n:'Hammer Curl',s:2,r:'6-8',m:'Biceps',tags:['Accessory']},
+  ]},
+  {name:'Day 2 · Lower Power', type:'lower', ex:[
+    {n:'Squat',s:4,r:'3-5',m:'Quads',tags:['Compound','Primary']},
+    {n:'Deadlift',s:3,r:'3-5',m:'Full Back',tags:['Compound','Primary']},
+    {n:'Leg Press',s:3,r:'10',m:'Quads',tags:['Compound']},
+    {n:'Leg Curl',s:3,r:'10',m:'Hamstrings',tags:['Isolation']},
+  ]},
+  {name:'Day 3 · Rest', type:'rest', ex:[]},
+  {name:'Day 4 · Back + Shoulders Hypertrophy', type:'pull', ex:[
+    {n:'Lat Pulldown',s:4,r:'10-12',m:'Lats',tags:['Compound','Primary']},
+    {n:'Cable Row',s:4,r:'10-12',m:'Back',tags:['Compound']},
+    {n:'T-Bar Row',s:3,r:'10-12',m:'Thickness',tags:['Compound']},
+    {n:'Face Pull',s:3,r:'15-20',m:'Rear Delt',tags:['Isolation']},
+    {n:'Lateral Raise',s:4,r:'15-20',m:'Side Delt',tags:['Isolation']},
+  ]},
+  {name:'Day 5 · Chest + Arms Hypertrophy', type:'push', ex:[
+    {n:'Incline Bench',s:4,r:'10-12',m:'Upper Chest',tags:['Compound','Primary']},
+    {n:'Cable Fly',s:3,r:'12-15',m:'Chest',tags:['Isolation']},
+    {n:'Preacher Curl',s:4,r:'10-12',m:'Biceps',tags:['Accessory']},
+    {n:'Skull Crushers',s:4,r:'10-12',m:'Triceps',tags:['Accessory']},
+    {n:'Tricep Pushdown',s:3,r:'12-15',m:'Triceps',tags:['Accessory']},
+  ]},
+],
+gzclp:[
+  {name:'Day 1 · T1 Squat · T2 Bench', type:'full', ex:[
+    {n:'Squat',s:5,r:'3',m:'Quads',tags:['Compound','Primary']},
+    {n:'Bench Press',s:3,r:'10',m:'Chest',tags:['Compound','Primary']},
+    {n:'Lat Pulldown',s:2,r:'15',m:'Lats',tags:['Compound']},
+    {n:'Bicep Curl',s:2,r:'15',m:'Biceps',tags:['Accessory']},
+  ]},
+  {name:'Day 2 · T1 OHP · T2 Deadlift', type:'full', ex:[
+    {n:'Overhead Press',s:5,r:'3',m:'Shoulders',tags:['Compound','Primary']},
+    {n:'Deadlift',s:3,r:'10',m:'Full Back',tags:['Compound','Primary']},
+    {n:'Bent Over Row',s:2,r:'15',m:'Back',tags:['Compound']},
+    {n:'Tricep Pushdown',s:2,r:'15',m:'Triceps',tags:['Accessory']},
+  ]},
+  {name:'Day 3 · T1 Bench · T2 Squat', type:'full', ex:[
+    {n:'Bench Press',s:5,r:'3',m:'Chest',tags:['Compound','Primary']},
+    {n:'Squat',s:3,r:'10',m:'Quads',tags:['Compound','Primary']},
+    {n:'Pull-Ups',s:2,r:'15',m:'Lats',tags:['Compound']},
+    {n:'Face Pull',s:2,r:'15',m:'Rear Delt',tags:['Isolation']},
+  ]},
+  {name:'Day 4 · Rest', type:'rest', ex:[]},
+],
+hiit:[
+  {name:'Day 1 · HIIT + Upper Push', type:'push', ex:[
+    {n:'Burpees',s:4,r:'30 sec',m:'Full Body',tags:['Compound','Primary']},
+    {n:'Box Jumps',s:3,r:'10',m:'Explosive Power',tags:['Compound']},
+    {n:'Bench Press',s:3,r:'10-12',m:'Chest',tags:['Compound']},
+    {n:'Overhead Press',s:3,r:'10-12',m:'Shoulders',tags:['Compound']},
+    {n:'Tricep Pushdown',s:2,r:'15',m:'Triceps',tags:['Accessory']},
+  ]},
+  {name:'Day 2 · HIIT + Lower Body', type:'legs', ex:[
+    {n:'Kettlebell Swing',s:4,r:'20',m:'Posterior Chain',tags:['Compound','Primary']},
+    {n:'Box Jumps',s:3,r:'10',m:'Explosive Power',tags:['Compound']},
+    {n:'Squat',s:3,r:'12',m:'Quads',tags:['Compound']},
+    {n:'Romanian Deadlift',s:3,r:'12',m:'Hamstrings',tags:['Compound']},
+    {n:'Calf Raise',s:3,r:'20',m:'Calves',tags:['Accessory']},
+  ]},
+  {name:'Day 3 · Active Recovery', type:'rest', ex:[]},
+  {name:'Day 4 · HIIT + Upper Pull', type:'pull', ex:[
+    {n:'Burpees',s:4,r:'30 sec',m:'Full Body',tags:['Compound','Primary']},
+    {n:'Pull-Ups',s:4,r:'8-10',m:'Lats',tags:['Compound']},
+    {n:'Bent Over Row',s:3,r:'10-12',m:'Back',tags:['Compound']},
+    {n:'Face Pull',s:3,r:'15',m:'Rear Delt',tags:['Isolation']},
+    {n:'Bicep Curl',s:2,r:'15',m:'Biceps',tags:['Accessory']},
+  ]},
+],
+custom:[
+  {name:'Day 1 · Full Body A', type:'full', ex:[
+    {n:'Squat',s:3,r:'8-10',m:'Quads',tags:['Compound','Primary']},
+    {n:'Bench Press',s:3,r:'8-10',m:'Chest',tags:['Compound']},
+    {n:'Bent Over Row',s:3,r:'8-10',m:'Back',tags:['Compound']},
+    {n:'Plank',s:3,r:'45 sec',m:'Core',tags:['Isolation']},
+  ]},
+  {name:'Day 2 · Full Body B', type:'full', ex:[
+    {n:'Deadlift',s:3,r:'6-8',m:'Full Back',tags:['Compound','Primary']},
+    {n:'Overhead Press',s:3,r:'8-10',m:'Shoulders',tags:['Compound']},
+    {n:'Pull-Ups',s:3,r:'6-8',m:'Lats',tags:['Compound']},
+    {n:'Hanging Leg Raise',s:3,r:'12',m:'Core',tags:['Isolation']},
+  ]},
+],
+// ── FEMALE SPLITS ──
+'glute-focused':[
+  {name:'Day 1 · Glutes & Hamstrings — Heavy', type:'glute', ex:[
+    {n:'Hip Thrust',s:5,r:'8-10',m:'Glutes',tags:['Compound','Primary']},
+    {n:'Romanian Deadlift',s:4,r:'8-10',m:'Hamstrings',tags:['Compound']},
+    {n:'Sumo Squat',s:3,r:'12-15',m:'Inner Thigh / Glutes',tags:['Compound']},
+    {n:'Cable Kickback',s:3,r:'15 each',m:'Glutes',tags:['Isolation']},
+    {n:'Donkey Kicks',s:3,r:'20 each',m:'Glutes',tags:['Isolation']},
+    {n:'Banded Clamshells',s:3,r:'20 each',m:'Hip Abductors',tags:['Accessory']},
+  ]},
+  {name:'Day 2 · Upper Body Tone', type:'upper', ex:[
+    {n:'Push-Ups',s:4,r:'10-15',m:'Chest / Triceps',tags:['Compound','Primary']},
+    {n:'Resistance Band Row',s:3,r:'15',m:'Back',tags:['Compound']},
+    {n:'Lateral Raise',s:3,r:'15-20',m:'Shoulders',tags:['Isolation']},
+    {n:'Bicep Curl',s:3,r:'12-15',m:'Biceps',tags:['Accessory']},
+    {n:'Tricep Dips',s:3,r:'12-15',m:'Triceps',tags:['Accessory']},
+  ]},
+  {name:'Day 3 · Active Recovery / Cardio', type:'rest', ex:[]},
+  {name:'Day 4 · Glutes & Quads — Volume', type:'glute', ex:[
+    {n:'Squat',s:4,r:'10-12',m:'Quads / Glutes',tags:['Compound','Primary']},
+    {n:'Hip Thrust',s:4,r:'12-15',m:'Glutes',tags:['Compound']},
+    {n:'Lunges',s:3,r:'12 each',m:'Quads / Glutes',tags:['Compound']},
+    {n:'Step-Ups',s:3,r:'12 each',m:'Glutes',tags:['Compound']},
+    {n:'Cable Hip Abduction',s:3,r:'20 each',m:'Hip Abductors',tags:['Isolation']},
+    {n:'Calf Raise',s:3,r:'20',m:'Calves',tags:['Accessory']},
+  ]},
+  {name:'Day 5 · Rest', type:'rest', ex:[]},
+],
+'full-body-lean':[
+  {name:'Day 1 · Full Body — Strength Focus', type:'full', ex:[
+    {n:'Squat',s:4,r:'8-10',m:'Quads / Glutes',tags:['Compound','Primary']},
+    {n:'DB Romanian DL',s:3,r:'10-12',m:'Hamstrings',tags:['Compound']},
+    {n:'Push-Ups',s:3,r:'10-15',m:'Chest / Triceps',tags:['Compound']},
+    {n:'Resistance Band Row',s:3,r:'15',m:'Back',tags:['Compound']},
+    {n:'Plank',s:3,r:'45 sec',m:'Core',tags:['Isolation']},
+    {n:'Glute Bridge',s:3,r:'15',m:'Glutes',tags:['Compound']},
+  ]},
+  {name:'Day 2 · Rest / Light Cardio', type:'rest', ex:[]},
+  {name:'Day 3 · Full Body — Metabolic', type:'full', ex:[
+    {n:'Burpees',s:3,r:'10',m:'Full Body',tags:['Compound','Primary']},
+    {n:'Jump Squats',s:3,r:'12',m:'Quads / Glutes',tags:['Compound']},
+    {n:'Mountain Climbers',s:3,r:'30 sec',m:'Core / Full Body',tags:['Compound']},
+    {n:'Hip Thrust',s:3,r:'12',m:'Glutes',tags:['Compound']},
+    {n:'Lateral Raise',s:3,r:'15',m:'Shoulders',tags:['Isolation']},
+    {n:'Bicep Curl',s:2,r:'15',m:'Biceps',tags:['Accessory']},
+  ]},
+  {name:'Day 4 · Rest', type:'rest', ex:[]},
+  {name:'Day 5 · Full Body — Sculpt', type:'full', ex:[
+    {n:'Lunges',s:4,r:'12 each',m:'Quads / Glutes',tags:['Compound','Primary']},
+    {n:'DB Romanian DL',s:3,r:'12',m:'Hamstrings',tags:['Compound']},
+    {n:'Push-Ups',s:3,r:'12-15',m:'Chest',tags:['Compound']},
+    {n:'Lat Pulldown',s:3,r:'12',m:'Back',tags:['Compound']},
+    {n:'Russian Twist',s:3,r:'20',m:'Core',tags:['Isolation']},
+    {n:'Donkey Kicks',s:3,r:'20 each',m:'Glutes',tags:['Isolation']},
+  ]},
+],
+'yoga-flow':[
+  {name:'Day 1 · Morning Flow — Sun Salutation', type:'yoga', yogaOnly:true, ex:[
+    {n:'Cat-Cow',s:3,r:'10 breaths',m:'Spine',tags:['Yoga','Warm-Up']},
+    {n:'Downward Dog',s:3,r:'5 breaths',m:'Full Body',tags:['Yoga','Foundation']},
+    {n:'Warrior I',s:2,r:'5 breaths each',m:'Legs / Hips',tags:['Yoga','Strength']},
+    {n:'Warrior II',s:2,r:'5 breaths each',m:'Legs / Core',tags:['Yoga','Strength']},
+    {n:'Triangle Pose',s:2,r:'5 breaths each',m:'Hips / Hamstrings',tags:['Yoga','Flexibility']},
+    {n:'Child\'s Pose',s:1,r:'10 breaths',m:'Full Body',tags:['Yoga','Recovery']},
+  ]},
+  {name:'Day 2 · Core & Balance Flow', type:'yoga', yogaOnly:true, ex:[
+    {n:'Plank',s:3,r:'30-60 sec',m:'Core',tags:['Yoga','Strength']},
+    {n:'Boat Pose',s:3,r:'5 breaths',m:'Core',tags:['Yoga','Strength']},
+    {n:'Tree Pose',s:2,r:'5 breaths each',m:'Balance',tags:['Yoga','Balance']},
+    {n:'Chair Pose',s:3,r:'5 breaths',m:'Quads / Glutes',tags:['Yoga','Strength']},
+    {n:'Crow Pose',s:3,r:'3-5 breaths',m:'Arms / Core',tags:['Yoga','Advanced']},
+    {n:'Savasana',s:1,r:'5 min',m:'Full Body',tags:['Yoga','Recovery']},
+  ]},
+  {name:'Day 3 · Rest & Gentle Stretch', type:'rest', ex:[]},
+  {name:'Day 4 · Hip Opening Flow', type:'yoga', yogaOnly:true, ex:[
+    {n:'Pigeon Pose',s:2,r:'8 breaths each',m:'Hips',tags:['Yoga','Flexibility']},
+    {n:'Lizard Pose',s:2,r:'8 breaths each',m:'Hip Flexors',tags:['Yoga','Flexibility']},
+    {n:'Happy Baby',s:1,r:'10 breaths',m:'Hips / Lower Back',tags:['Yoga','Recovery']},
+    {n:'Butterfly Pose',s:2,r:'8 breaths',m:'Inner Thigh',tags:['Yoga','Flexibility']},
+    {n:'Supine Twist',s:2,r:'5 breaths each',m:'Spine',tags:['Yoga','Flexibility']},
+    {n:'Legs Up the Wall',s:1,r:'5 min',m:'Recovery',tags:['Yoga','Recovery']},
+  ]},
+  {name:'Day 5 · Power Yoga Flow', type:'yoga', yogaOnly:true, ex:[
+    {n:'Downward Dog',s:1,r:'5 breaths',m:'Full Body',tags:['Yoga','Warm-Up']},
+    {n:'Warrior I',s:2,r:'5 breaths each',m:'Legs',tags:['Yoga','Strength']},
+    {n:'Warrior III',s:2,r:'5 breaths each',m:'Balance / Glutes',tags:['Yoga','Balance']},
+    {n:'Side Plank',s:2,r:'5 breaths each',m:'Core',tags:['Yoga','Strength']},
+    {n:'Chair Pose',s:3,r:'10 breaths',m:'Quads / Glutes',tags:['Yoga','Strength']},
+    {n:'Wheel Pose',s:3,r:'5 breaths',m:'Full Body',tags:['Yoga','Advanced']},
+  ]},
+  {name:'Day 6 · Yin Yoga — Deep Release', type:'yoga', yogaOnly:true, ex:[
+    {n:'Butterfly Pose',s:1,r:'3-5 min',m:'Inner Thigh',tags:['Yoga','Yin']},
+    {n:'Dragonfly Pose',s:1,r:'3-5 min',m:'Hamstrings',tags:['Yoga','Yin']},
+    {n:'Sleeping Swan',s:1,r:'3-5 min each',m:'Hips',tags:['Yoga','Yin']},
+    {n:'Sphinx Pose',s:1,r:'3-5 min',m:'Lower Back',tags:['Yoga','Yin']},
+    {n:'Savasana',s:1,r:'10 min',m:'Full Body',tags:['Yoga','Recovery']},
+  ]},
+  {name:'Day 7 · Rest', type:'rest', ex:[]},
+],
+'yoga-strength':[
+  {name:'Day 1 · Strength — Lower Body', type:'lower', ex:[
+    {n:'Hip Thrust',s:4,r:'10-12',m:'Glutes',tags:['Compound','Primary']},
+    {n:'Squat',s:4,r:'10-12',m:'Quads',tags:['Compound']},
+    {n:'Romanian Deadlift',s:3,r:'10-12',m:'Hamstrings',tags:['Compound']},
+    {n:'Calf Raise',s:3,r:'20',m:'Calves',tags:['Accessory']},
+  ]},
+  {name:'Day 2 · Yoga — Flexibility & Recovery', type:'yoga', yogaOnly:true, ex:[
+    {n:'Sun Salutation',s:3,r:'5 rounds',m:'Full Body',tags:['Yoga','Warm-Up']},
+    {n:'Warrior I',s:2,r:'5 breaths each',m:'Legs / Hips',tags:['Yoga','Strength']},
+    {n:'Pigeon Pose',s:2,r:'8 breaths each',m:'Hips',tags:['Yoga','Flexibility']},
+    {n:'Child\'s Pose',s:1,r:'10 breaths',m:'Recovery',tags:['Yoga','Recovery']},
+    {n:'Savasana',s:1,r:'5 min',m:'Full Body',tags:['Yoga','Recovery']},
+  ]},
+  {name:'Day 3 · Strength — Upper Body', type:'upper', ex:[
+    {n:'Push-Ups',s:4,r:'12-15',m:'Chest / Triceps',tags:['Compound','Primary']},
+    {n:'Lat Pulldown',s:4,r:'10-12',m:'Back',tags:['Compound']},
+    {n:'Lateral Raise',s:3,r:'15-20',m:'Shoulders',tags:['Isolation']},
+    {n:'Bicep Curl',s:3,r:'12-15',m:'Biceps',tags:['Accessory']},
+    {n:'Tricep Dips',s:3,r:'12-15',m:'Triceps',tags:['Accessory']},
+  ]},
+  {name:'Day 4 · Yoga — Power Flow', type:'yoga', yogaOnly:true, ex:[
+    {n:'Chair Pose',s:3,r:'8 breaths',m:'Quads / Glutes',tags:['Yoga','Strength']},
+    {n:'Warrior II',s:2,r:'5 breaths each',m:'Legs',tags:['Yoga','Strength']},
+    {n:'Side Plank',s:2,r:'5 breaths each',m:'Core',tags:['Yoga','Strength']},
+    {n:'Boat Pose',s:3,r:'5 breaths',m:'Core',tags:['Yoga','Strength']},
+    {n:'Downward Dog',s:2,r:'5 breaths',m:'Full Body',tags:['Yoga','Foundation']},
+    {n:'Savasana',s:1,r:'5 min',m:'Full Body',tags:['Yoga','Recovery']},
+  ]},
+],
+'lower-body':[
+  {name:'Day 1 · Quads & Glutes', type:'legs', ex:[
+    {n:'Squat',s:4,r:'10-12',m:'Quads / Glutes',tags:['Compound','Primary']},
+    {n:'Hip Thrust',s:4,r:'12-15',m:'Glutes',tags:['Compound']},
+    {n:'Lunges',s:3,r:'12 each',m:'Quads',tags:['Compound']},
+    {n:'Sumo Squat',s:3,r:'15',m:'Inner Thigh',tags:['Compound']},
+    {n:'Fire Hydrants',s:3,r:'20 each',m:'Hip Abductors',tags:['Isolation']},
+  ]},
+  {name:'Day 2 · Hamstrings & Calves', type:'legs', ex:[
+    {n:'Romanian Deadlift',s:4,r:'10-12',m:'Hamstrings',tags:['Compound','Primary']},
+    {n:'Leg Curl',s:4,r:'12-15',m:'Hamstrings',tags:['Isolation']},
+    {n:'Step-Ups',s:3,r:'12 each',m:'Glutes / Quads',tags:['Compound']},
+    {n:'Calf Raise',s:4,r:'20-25',m:'Calves',tags:['Accessory']},
+    {n:'Donkey Kicks',s:3,r:'20 each',m:'Glutes',tags:['Isolation']},
+  ]},
+  {name:'Day 3 · Rest', type:'rest', ex:[]},
+  {name:'Day 4 · Full Lower Sculpt', type:'legs', ex:[
+    {n:'Hip Thrust',s:5,r:'10-12',m:'Glutes',tags:['Compound','Primary']},
+    {n:'Side Lunges',s:3,r:'12 each',m:'Inner Thigh',tags:['Compound']},
+    {n:'Curtsy Lunge',s:3,r:'12 each',m:'Glutes',tags:['Compound']},
+    {n:'Cable Kickback',s:3,r:'15 each',m:'Glutes',tags:['Isolation']},
+    {n:'Banded Clamshells',s:3,r:'20 each',m:'Hip Abductors',tags:['Accessory']},
+    {n:'Calf Raise',s:3,r:'20',m:'Calves',tags:['Accessory']},
+  ]},
+  {name:'Day 5 · Rest / Active Recovery', type:'rest', ex:[]},
+],
+'upper-tone':[
+  {name:'Day 1 · Push — Chest & Triceps', type:'push', ex:[
+    {n:'Push-Ups',s:4,r:'10-15',m:'Chest / Triceps',tags:['Compound','Primary']},
+    {n:'Incline Bench',s:3,r:'10-12',m:'Upper Chest',tags:['Compound']},
+    {n:'Cable Fly',s:3,r:'12-15',m:'Chest',tags:['Isolation']},
+    {n:'Tricep Dips',s:3,r:'12-15',m:'Triceps',tags:['Accessory']},
+    {n:'Tricep Pushdown',s:3,r:'15',m:'Triceps',tags:['Accessory']},
+  ]},
+  {name:'Day 2 · Pull — Back & Biceps', type:'pull', ex:[
+    {n:'Lat Pulldown',s:4,r:'10-12',m:'Lats',tags:['Compound','Primary']},
+    {n:'Resistance Band Row',s:3,r:'15',m:'Mid Back',tags:['Compound']},
+    {n:'Face Pull',s:3,r:'15-20',m:'Rear Delt',tags:['Isolation']},
+    {n:'Bicep Curl',s:3,r:'12-15',m:'Biceps',tags:['Accessory']},
+    {n:'Hammer Curl',s:2,r:'12-15',m:'Brachialis',tags:['Accessory']},
+  ]},
+  {name:'Day 3 · Shoulders & Core', type:'push', ex:[
+    {n:'DB Shoulder Press',s:4,r:'10-12',m:'Shoulders',tags:['Compound','Primary']},
+    {n:'Lateral Raise',s:4,r:'15-20',m:'Side Delt',tags:['Isolation']},
+    {n:'Face Pull',s:3,r:'15-20',m:'Rear Delt',tags:['Isolation']},
+    {n:'Plank',s:3,r:'45 sec',m:'Core',tags:['Isolation']},
+    {n:'Russian Twist',s:3,r:'20',m:'Core',tags:['Isolation']},
+  ]},
+],
+'hiit-female':[
+  {name:'Day 1 · HIIT Cardio Burn', type:'hiit', ex:[
+    {n:'Jump Squats',s:4,r:'20',m:'Quads / Glutes',tags:['Compound','Primary']},
+    {n:'Burpees',s:4,r:'30 sec',m:'Full Body',tags:['Compound']},
+    {n:'High Knees',s:4,r:'30 sec',m:'Full Body / Cardio',tags:['Compound']},
+    {n:'Skater Jumps',s:3,r:'20',m:'Legs',tags:['Compound']},
+    {n:'Mountain Climbers',s:3,r:'30 sec',m:'Core',tags:['Compound']},
+  ]},
+  {name:'Day 2 · Lower Body Sculpt', type:'legs', ex:[
+    {n:'Hip Thrust',s:4,r:'12-15',m:'Glutes',tags:['Compound','Primary']},
+    {n:'Squat',s:4,r:'12-15',m:'Quads',tags:['Compound']},
+    {n:'Lunges',s:3,r:'12 each',m:'Quads / Glutes',tags:['Compound']},
+    {n:'Donkey Kicks',s:3,r:'20 each',m:'Glutes',tags:['Isolation']},
+    {n:'Calf Raise',s:3,r:'20',m:'Calves',tags:['Accessory']},
+  ]},
+  {name:'Day 3 · Active Recovery', type:'rest', ex:[]},
+  {name:'Day 4 · Full Body HIIT + Tone', type:'full', ex:[
+    {n:'Burpees',s:3,r:'30 sec',m:'Full Body',tags:['Compound','Primary']},
+    {n:'Push-Ups',s:3,r:'12-15',m:'Chest',tags:['Compound']},
+    {n:'Jump Squats',s:3,r:'15',m:'Quads / Glutes',tags:['Compound']},
+    {n:'Resistance Band Row',s:3,r:'15',m:'Back',tags:['Compound']},
+    {n:'Plank',s:3,r:'45 sec',m:'Core',tags:['Isolation']},
+    {n:'Hip Thrust',s:3,r:'15',m:'Glutes',tags:['Compound']},
+  ]},
+],
+'pilates-core':[
+  {name:'Day 1 · Core & Pilates A', type:'core', ex:[
+    {n:'Plank',s:4,r:'45-60 sec',m:'Core',tags:['Compound','Primary']},
+    {n:'Russian Twist',s:3,r:'20',m:'Obliques',tags:['Isolation']},
+    {n:'Hanging Leg Raise',s:3,r:'12-15',m:'Lower Abs',tags:['Isolation']},
+    {n:'Glute Bridge',s:4,r:'15',m:'Glutes / Core',tags:['Compound']},
+    {n:'Side Plank',s:2,r:'30 sec each',m:'Core',tags:['Isolation']},
+    {n:'Donkey Kicks',s:3,r:'20 each',m:'Glutes',tags:['Isolation']},
+  ]},
+  {name:'Day 2 · Rest / Gentle Stretch', type:'rest', ex:[]},
+  {name:'Day 3 · Core & Pilates B', type:'core', ex:[
+    {n:'Mountain Climbers',s:4,r:'30 sec',m:'Core / Cardio',tags:['Compound','Primary']},
+    {n:'Plank',s:3,r:'60 sec',m:'Core',tags:['Compound']},
+    {n:'Hip Thrust',s:3,r:'15',m:'Glutes',tags:['Compound']},
+    {n:'Fire Hydrants',s:3,r:'20 each',m:'Hip Abductors',tags:['Isolation']},
+    {n:'Banded Clamshells',s:3,r:'20 each',m:'Hip Abductors',tags:['Accessory']},
+    {n:'Glute Bridge',s:3,r:'20',m:'Glutes',tags:['Compound']},
+  ]},
+],
+'ppl-female':[
+  {name:'Day 1 · Push — Tone & Sculpt', type:'push', ex:[
+    {n:'Push-Ups',s:4,r:'10-15',m:'Chest / Triceps',tags:['Compound','Primary']},
+    {n:'Incline Bench',s:3,r:'10-12',m:'Upper Chest',tags:['Compound']},
+    {n:'Lateral Raise',s:3,r:'15-20',m:'Side Delt',tags:['Isolation']},
+    {n:'DB Shoulder Press',s:3,r:'10-12',m:'Shoulders',tags:['Compound']},
+    {n:'Tricep Pushdown',s:3,r:'12-15',m:'Triceps',tags:['Accessory']},
+    {n:'Tricep Dips',s:2,r:'12',m:'Triceps',tags:['Accessory']},
+  ]},
+  {name:'Day 2 · Pull — Back & Arms', type:'pull', ex:[
+    {n:'Lat Pulldown',s:4,r:'10-12',m:'Lats',tags:['Compound','Primary']},
+    {n:'Resistance Band Row',s:3,r:'15',m:'Mid Back',tags:['Compound']},
+    {n:'Face Pull',s:3,r:'15-20',m:'Rear Delt',tags:['Isolation']},
+    {n:'Bicep Curl',s:3,r:'12-15',m:'Biceps',tags:['Accessory']},
+    {n:'Hammer Curl',s:2,r:'12-15',m:'Brachialis',tags:['Accessory']},
+  ]},
+  {name:'Day 3 · Legs & Glutes — Heavy', type:'glute', ex:[
+    {n:'Squat',s:4,r:'8-10',m:'Quads / Glutes',tags:['Compound','Primary']},
+    {n:'Hip Thrust',s:4,r:'10-12',m:'Glutes',tags:['Compound']},
+    {n:'Romanian Deadlift',s:3,r:'10-12',m:'Hamstrings',tags:['Compound']},
+    {n:'Leg Press',s:3,r:'12-15',m:'Quads',tags:['Compound']},
+    {n:'Calf Raise',s:3,r:'20',m:'Calves',tags:['Accessory']},
+  ]},
+  {name:'Day 4 · Rest', type:'rest', ex:[]},
+  {name:'Day 5 · Push — Volume', type:'push', ex:[
+    {n:'Cable Fly',s:3,r:'15-20',m:'Chest',tags:['Isolation','Primary']},
+    {n:'Push-Ups',s:3,r:'15',m:'Chest / Triceps',tags:['Compound']},
+    {n:'Lateral Raise',s:4,r:'15-20',m:'Side Delt',tags:['Isolation']},
+    {n:'Tricep Dips',s:3,r:'15',m:'Triceps',tags:['Accessory']},
+  ]},
+  {name:'Day 6 · Legs & Glutes — Volume', type:'glute', ex:[
+    {n:'Hip Thrust',s:5,r:'12-15',m:'Glutes',tags:['Compound','Primary']},
+    {n:'Lunges',s:3,r:'12 each',m:'Quads / Glutes',tags:['Compound']},
+    {n:'Cable Kickback',s:3,r:'15 each',m:'Glutes',tags:['Isolation']},
+    {n:'Donkey Kicks',s:3,r:'20 each',m:'Glutes',tags:['Isolation']},
+    {n:'Banded Clamshells',s:3,r:'20 each',m:'Hip Abductors',tags:['Accessory']},
+  ]},
+  {name:'Day 7 · Rest', type:'rest', ex:[]},
+],
+'custom-female':[
+  {name:'Day 1 · Glutes & Core', type:'glute', ex:[
+    {n:'Hip Thrust',s:4,r:'12',m:'Glutes',tags:['Compound','Primary']},
+    {n:'Squat',s:3,r:'12',m:'Quads',tags:['Compound']},
+    {n:'Plank',s:3,r:'45 sec',m:'Core',tags:['Isolation']},
+    {n:'Donkey Kicks',s:3,r:'15 each',m:'Glutes',tags:['Isolation']},
+  ]},
+  {name:'Day 2 · Upper Tone', type:'upper', ex:[
+    {n:'Push-Ups',s:3,r:'12',m:'Chest',tags:['Compound','Primary']},
+    {n:'Resistance Band Row',s:3,r:'15',m:'Back',tags:['Compound']},
+    {n:'Lateral Raise',s:3,r:'15',m:'Shoulders',tags:['Isolation']},
+    {n:'Bicep Curl',s:3,r:'12',m:'Biceps',tags:['Accessory']},
+  ]},
+]
+};
+
+// ── TIPS ──
+var TIPS = {
+  push:'Start with your heaviest compound lift. Control the eccentric (lowering) for maximum chest activation.',
+  pull:'Drive elbows back and down — not with your arms — for proper lat engagement.',
+  legs:'Warm up hips and ankles before squatting. Full depth maximises muscle recruitment.',
+  upper:'Pair push and pull movements to balance the shoulder girdle and prevent overuse injury.',
+  lower:'Include both hip-hinge (RDL) and knee-dominant (squat) movements each lower session.',
+  full:'Full-body sessions: hit the big compound lifts first while you are fresh and strong.',
+  chest:'Stretch at the bottom of each rep — peak contraction at the top builds the chest.',
+  back:'If your biceps dominate during rows, widen your grip slightly and think elbows.',
+  shoulders:'Strict, controlled lateral raises with moderate weight beat heavy cheat curls every time.',
+  arms:'Alternate bicep and tricep exercises as supersets to save time and increase pump.',
+  glute:'Squeeze at the top of every glute movement — hip thrusts should feel like your glutes are working, not your lower back.',
+  core:'Brace your core before every rep — think "ribcage down, belly button in."',
+  hiit:'Keep rest periods short (30–45 sec). Heart rate drives the calorie burn in HIIT.',
+  yoga:'Move with your breath — inhale to lengthen, exhale to deepen. Never force a stretch.',
+};
+
+// ── GOAL CONFIGS ──
+var MALE_GOALS = [
+  {val:'fat-loss',    icon:'fa-solid fa-fire',          bg:'#FFF7ED', ic:'#F97316', label:'Fat Loss'},
+  {val:'muscle',      icon:'fa-solid fa-dumbbell',       bg:'#EFF6FF', ic:'#2563EB', label:'Muscle Gain'},
+  {val:'strength',    icon:'fa-solid fa-trophy',         bg:'#F5F3FF', ic:'#7C3AED', label:'Strength'},
+  {val:'maintenance', icon:'fa-solid fa-shield-halved',  bg:'#ECFDF5', ic:'#10B981', label:'Maintenance'},
+  {val:'endurance',   icon:'fa-solid fa-person-running', bg:'#FEF2F2', ic:'#EF4444', label:'Endurance'},
+  {val:'athletic',    icon:'fa-solid fa-medal',          bg:'#FFFBEB', ic:'#D97706', label:'Athletic'},
+];
+
+var FEMALE_GOALS = [
+  {val:'fat-loss',    icon:'fa-solid fa-fire',           bg:'#FFF7ED', ic:'#F97316', label:'Fat Loss'},
+  {val:'toning',      icon:'fa-solid fa-star',           bg:'#FDF2F8', ic:'#DB2777', label:'Toning & Sculpt'},
+  {val:'glutes',      icon:'fa-solid fa-circle-dot',     bg:'#FDF2F8', ic:'#9333EA', label:'Glute Growth'},
+  {val:'lean-muscle', icon:'fa-solid fa-dumbbell',       bg:'#EFF6FF', ic:'#2563EB', label:'Lean Muscle'},
+  {val:'yoga',        icon:'fa-solid fa-leaf',           bg:'#F0FDF4', ic:'#059669', label:'Flexibility & Yoga'},
+  {val:'endurance',   icon:'fa-solid fa-person-running', bg:'#FEF2F2', ic:'#EF4444', label:'Endurance'},
+];
+
+// ── GENDER SWITCH ──
+function setGender(g) {
+  state.gender = g;
+  document.body.className = g === 'female' ? 'female' : '';
+  document.getElementById('genderMale').classList.toggle('sel', g === 'male');
+  document.getElementById('genderFemale').classList.toggle('sel', g === 'female');
+  document.getElementById('genderFemale').classList.toggle('female', g === 'female');
+  renderGoals();
+  renderSplits();
+  // default split
+  state.split = g === 'female' ? 'glute-focused' : 'ppl';
+  state.goal = g === 'female' ? 'fat-loss' : 'fat-loss';
+}
+
+function renderGoals() {
+  var goals = state.gender === 'female' ? FEMALE_GOALS : MALE_GOALS;
+  var grid = document.getElementById('goalGrid');
+  grid.innerHTML = goals.map(function(g, i) {
+    return '<button class="goal-btn'+(i===0?' sel':'')+'" data-val="'+g.val+'">'
+      +'<div class="goal-icon" style="background:'+g.bg+'"><i class="'+g.icon+'" style="color:'+g.ic+'"></i></div>'
+      +g.label+'</button>';
+  }).join('');
+  state.goal = goals[0].val;
+  grid.querySelectorAll('.goal-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      grid.querySelectorAll('.goal-btn').forEach(function(b){ b.classList.remove('sel'); });
+      btn.classList.add('sel');
+      state.goal = btn.dataset.val;
+    });
+  });
+}
+
+function renderSplits() {
+  var splits = state.gender === 'female' ? FEMALE_SPLITS : MALE_SPLITS;
+  var grid = document.getElementById('splitGrid');
+  grid.innerHTML = splits.map(function(s, i) {
+    return '<button class="split-btn'+(i===0?' sel':'')+'" data-val="'+s.val+'">'
+      +'<i class="'+s.icon+'"></i>'
+      +'<span class="split-label">'+s.label+'<small>'+s.sub+'</small></span>'
+      +'</button>';
+  }).join('');
+  state.split = splits[0].val;
+  grid.querySelectorAll('.split-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      grid.querySelectorAll('.split-btn').forEach(function(b){ b.classList.remove('sel'); });
+      btn.classList.add('sel');
+      state.split = btn.dataset.val;
+    });
+  });
+}
+
+// ── EQUIPMENT ──
+document.querySelectorAll('.equip-btn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    btn.classList.toggle('sel');
+    var v = btn.dataset.val;
+    var chk = btn.querySelector('.chkbox');
+    if (btn.classList.contains('sel')) {
+      state.equip.push(v);
+      chk.innerHTML = '<i class="fa-solid fa-check"></i>';
+    } else {
+      state.equip = state.equip.filter(function(e){ return e !== v; });
+      chk.innerHTML = '';
+    }
+  });
+});
+
+document.getElementById('levelSel').addEventListener('change', function(){ state.level = this.value; });
+document.getElementById('durSel').addEventListener('change', function(){ state.dur = parseInt(this.value); });
+document.getElementById('daysSel').addEventListener('change', function(){ state.days = parseInt(this.value); });
+document.getElementById('restSel').addEventListener('change', function(){ state.rest = parseInt(this.value); });
+document.getElementById('styleSel').addEventListener('change', function(){ state.style = this.value; });
+document.getElementById('rpeSl').addEventListener('input', function(){
+  state.rpe = parseFloat(this.value);
+  document.getElementById('rpeLabel').textContent = this.value;
+});
+document.getElementById('advToggle').addEventListener('click', function(){
+  document.getElementById('advSection').classList.toggle('open');
+});
+
+// ── STEPS ──
+function setStep(n) {
+  [1,2,3].forEach(function(i) {
+    var s = document.getElementById('s'+i);
+    s.classList.remove('active','done');
+    if (i < n) s.classList.add('done');
+    else if (i === n) s.classList.add('active');
+    if (i < 3) document.getElementById('d'+i).classList.toggle('done', i < n);
+  });
+}
+
+// ── GENERATE ──
+document.getElementById('genBtn').addEventListener('click', function() {
+  setStep(2);
+  document.getElementById('emptyState').style.display = 'none';
+  document.getElementById('workoutOut').style.display = 'none';
+  document.getElementById('spinner').classList.add('vis');
+  document.getElementById('shuffleBtn').style.display = 'none';
+  document.getElementById('pdfBtn').style.display = 'none';
+  setTimeout(doGenerate, 900);
+});
+
+function doGenerate() {
+  document.getElementById('spinner').classList.remove('vis');
+  renderWorkout();
+  setStep(3);
+  document.getElementById('shuffleBtn').style.display = '';
+  document.getElementById('pdfBtn').style.display = '';
+}
+
+function getTagClass(t) {
+  if (t === 'Compound') return 'tag blue';
+  if (t === 'Isolation') return 'tag orange';
+  if (t === 'Yoga') return 'tag purple';
+  if (t === 'Yin' || t === 'Recovery') return 'tag green';
+  if (t === 'Accessory') return 'tag purple';
+  return 'tag pink';
+}
+
+function getTagIcon(t) {
+  if (t === 'Compound') return 'fa-solid fa-link';
+  if (t === 'Isolation') return 'fa-solid fa-crosshairs';
+  if (t === 'Yoga') return 'fa-solid fa-leaf';
+  if (t === 'Yin') return 'fa-solid fa-moon';
+  if (t === 'Recovery') return 'fa-solid fa-heart';
+  if (t === 'Accessory') return 'fa-solid fa-plus';
+  return 'fa-solid fa-star';
+}
+
+function renderWorkout() {
+  var days = SPLITS_DATA[state.split] || SPLITS_DATA.ppl;
+  var isFemale = state.gender === 'female';
+
+  var GOAL_LABELS = {
+    'fat-loss':'Fat Loss','muscle':'Muscle Gain','strength':'Strength',
+    'maintenance':'Maintenance','endurance':'Endurance','athletic':'Athletic',
+    'toning':'Toning & Sculpt','glutes':'Glute Growth','lean-muscle':'Lean Muscle',
+    'yoga':'Flexibility & Yoga'
+  };
+  var SPLIT_LABELS = {
+    ppl:'Push/Pull/Legs','upper-lower':'Upper/Lower','full-body':'Full Body',
+    bro:'Bro Split',arnold:'Arnold Split','531':'5/3/1 Strength',
+    phat:'PHAT',gzclp:'GZCLP',hiit:'HIIT + Weights',custom:'Custom',
+    'glute-focused':'Glute Focused','full-body-lean':'Full Body Lean',
+    'yoga-flow':'Yoga Flow','yoga-strength':'Yoga + Strength',
+    'lower-body':'Lower Body Sculpt','upper-tone':'Upper Body Tone',
+    'hiit-female':'HIIT Cardio Sculpt','pilates-core':'Pilates + Core',
+    'ppl-female':'Push/Pull/Legs','custom-female':'Custom Mix',
+  };
+
+  document.getElementById('resTitle').textContent =
+    (GOAL_LABELS[state.goal]||'Custom') + ' · ' + (SPLIT_LABELS[state.split]||'') + ' Plan';
+
+  var totalEx = 0;
+  var html = '';
+
+  days.forEach(function(day, idx) {
+    var isRest = day.type === 'rest';
+    var isYoga = day.yogaOnly === true;
+    var isOpen = idx === 0 && !isRest;
+
+    var badgeTxt, badgeCls;
+    if (isRest) { badgeTxt = 'Rest'; badgeCls = 'badge rest'; }
+    else if (isYoga) { badgeTxt = day.ex.length + ' poses'; badgeCls = 'badge yoga'; }
+    else { badgeTxt = day.ex.length + ' exercises'; badgeCls = 'badge'; }
+
+    var dayIcon = isRest ? 'fa-solid fa-bed'
+                : isYoga ? 'fa-solid fa-leaf'
+                : day.type === 'glute' ? 'fa-solid fa-star'
+                : day.type === 'push' ? 'fa-solid fa-hand-fist'
+                : day.type === 'pull' ? 'fa-solid fa-arrow-down'
+                : day.type === 'legs' ? 'fa-solid fa-person-walking'
+                : day.type === 'upper' ? 'fa-solid fa-arrows-up-down'
+                : day.type === 'lower' ? 'fa-solid fa-arrow-down-short-wide'
+                : day.type === 'hiit' ? 'fa-solid fa-heart-pulse'
+                : day.type === 'core' ? 'fa-solid fa-circle-dot'
+                : 'fa-solid fa-dumbbell';
+
+    var bodyHtml = '';
+    if (isRest) {
+      bodyHtml = '<div class="tip'+(isFemale?' female-tip':'')+'"><i class="fa-solid fa-moon"></i><span>Rest day — light walk, mobility work, or 20 min low-intensity cardio. Prioritise sleep (7–9 hrs) and protein intake.</span></div>';
+    } else {
+      var tipClass = isYoga ? 'tip yoga-tip' : (isFemale ? 'tip female-tip' : 'tip');
+      var tipIcon = isYoga ? 'fa-solid fa-leaf' : (day.type === 'glute' ? 'fa-solid fa-star' : 'fa-solid fa-circle-info');
+      var tipType = day.yogaOnly ? 'yoga' : day.type;
+      bodyHtml += '<div class="'+tipClass+'"><i class="'+tipIcon+'"></i><span>'+(TIPS[tipType]||TIPS.full)+'</span></div>';
+
+      day.ex.forEach(function(ex) {
+        totalEx++;
+        var img = IMGS[ex.n] || FALLBACK;
+        var tagsHtml = ex.tags.filter(function(t){ return t !== 'Primary'; }).map(function(t) {
+          return '<span class="'+getTagClass(t)+'"><i class="'+getTagIcon(t)+'"></i>'+t+'</span>';
+        }).join('');
+
+        bodyHtml += '<div class="ex-row">'
+          +'<img class="ex-img" src="'+img+'" alt="'+ex.n+'" loading="lazy" onerror="this.src=\''+FALLBACK+'\'">'
+          +'<div class="ex-info">'
+          +'<div class="ex-name">'+ex.n+'</div>'
+          +'<div class="ex-meta">'+ex.s+' sets &times; '+ex.r+(isYoga?' ':'  reps')+'&nbsp;&middot;&nbsp; '+ex.m+'</div>'
+          +'<div class="ex-tags">'+tagsHtml+'</div>'
+          +'</div>'
+          +'<button class="ex-menu-btn"><i class="fa-solid fa-ellipsis-vertical"></i></button>'
+          +'</div>';
+      });
+    }
+
+    html += '<div class="day-block">'
+      +'<div class="day-hdr" onclick="toggleDay(this)">'
+      +'<div class="day-title"><i class="'+dayIcon+'"></i>'+day.name+'<span class="'+badgeCls+'">'+badgeTxt+'</span></div>'
+      +'<i class="fa-solid fa-chevron-down chev'+(isOpen?' open':'')+'"></i>'
+      +'</div>'
+      +'<div class="day-body'+(isOpen?' open':'')+'">'+bodyHtml+'</div>'
+      +'</div>';
+  });
+
+  document.getElementById('workoutOut').innerHTML = html;
+  document.getElementById('workoutOut').style.display = 'block';
+
+  var isHiit = state.split === 'hiit' || state.split === 'hiit-female';
+  var isYogaSplit = state.split.indexOf('yoga') >= 0;
+  var calMult = isYogaSplit ? 4 : isHiit ? 10 : 7;
+  document.getElementById('calStat').textContent = '~'+Math.round(state.dur * calMult)+' kcal';
+  document.getElementById('exStat').textContent = totalEx+' Exercises';
+  document.getElementById('timeStat').textContent = state.dur+' min';
+}
+
+function toggleDay(hdr) {
+  var body = hdr.nextElementSibling;
+  var chev = hdr.querySelector('.chev');
+  body.classList.toggle('open');
+  chev.classList.toggle('open');
+}
+
+// ── PDF ──
+function downloadPDF() {
+  document.querySelectorAll('.day-body').forEach(function(b){ b.classList.add('open'); });
+  document.querySelectorAll('.chev').forEach(function(c){ c.classList.add('open'); });
+  if (typeof html2pdf !== 'undefined') {
+    html2pdf().set({
+      margin:[8,8,8,8], filename:'Workout_Plan.pdf',
+      image:{type:'jpeg',quality:.95},
+      html2canvas:{scale:2,useCORS:true},
+      jsPDF:{unit:'mm',format:'a4',orientation:'portrait'}
+    }).from(document.getElementById('resultCard')).save().then(function(){ showToast('Workout plan saved as PDF'); });
+  } else {
+    window.print();
+    showToast('Print dialog opened — save as PDF');
+  }
+}
+
+// ── TOAST ──
+function showToast(msg) {
+  document.getElementById('toastMsg').textContent = msg;
+  var t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(function(){ t.classList.remove('show'); }, 2800);
+}
+
+// ── INIT ──
+(function(){
+  renderGoals();
+  renderSplits();
+  // load html2pdf
+  var s = document.createElement('script');
+  s.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
+  s.async = true;
+  document.head.appendChild(s);
+})();
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Step Calculator</title>
+
+  <link rel="stylesheet" href="step.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+</head>
+
+<body>
+<header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+        <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+
+  <main>
+  <!-- Hero -->
+  <section class="hero-section">
+    <div class="container text-center">
+
+
+      <h1 class="hero-title" style="font-size:80px;">
+        Calculate
+        <span style="color: #9ffcf7;">Your Total Step</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Step Calculator app that converts user fitness data into personalized daily step goals, calories, and walking
+        time with a premium report.
+      </p>
+
+    </div>
+  </section>
+
+  <div class="container">
+    <div class="card">
+      <h1>Calculate Step</h1>
+
+      <div class="form-grid">
+        <input type="number" id="age" placeholder="Age">
+        <input type="number" id="weight" placeholder="Weight (kg)">
+        <input type="number" id="height" placeholder="Height (cm)">
+
+        <select id="gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+
+        <select id="activity">
+          <option value="1.2">Low Activity</option>
+          <option value="1.55">Moderate</option>
+          <option value="1.75">High</option>
+        </select>
+
+        <select id="goal">
+          <option value="fat">Fat Loss</option>
+          <option value="maintain">Maintenance</option>
+          <option value="muscle">Muscle Gain</option>
+        </select>
+      </div>
+
+      <button onclick="calculateSteps()">Calculate Steps</button>
+
+      <div class="result" id="result">
+
+        <div class="result-header">
+          <div class="badge">Step REPORT</div>
+          <div class="sub">Personalized Daily Optimization Plan</div>
+        </div>
+
+        <div class="steps-box">
+          <div class="steps-title">DAILY STEPS</div>
+          <div class="big" id="steps">0 Steps</div>
+        </div>
+
+        <div class="grid">
+          <div class="card-box">
+            <div class="label">Calories</div>
+            <div class="value" id="calories">0 kcal</div>
+          </div>
+
+          <div class="card-box">
+            <div class="label">Walking Time</div>
+            <div class="value" id="time">0 min</div>
+          </div>
+        </div>
+
+        <div class="message-box" id="message"></div>
+
+        <div class="progress">
+          <div class="bar" id="bar"></div>
+        </div>
+
+        <button class="pdf-btn" onclick="downloadPDF()">Download PDF Report</button>
+
+      </div>
+
+    </div>
+  </div>
+
+  </main>
+  
+      <footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+  <script>
+               // navbar responsive
+const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const icon = menu.querySelector("i");
+
+menu.onclick = function () {
+    navLinks.classList.toggle("active");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+};
+
+      document.addEventListener("DOMContentLoaded", function () {
+
+            // create close button
+            let closeBtn = document.createElement("button");
+
+            closeBtn.innerHTML = "✖";
+            closeBtn.className = "js-close-btn";
+
+            // add style + position
+            closeBtn.style.position = "fixed";
+            closeBtn.style.top = "70px";
+            closeBtn.style.right = "20px";
+            closeBtn.style.width = "40px";
+            closeBtn.style.height = "40px";
+            closeBtn.style.borderRadius = "50%";
+            closeBtn.style.border = "none";
+            closeBtn.style.background = "#006D77";
+            closeBtn.style.color = "white";
+            closeBtn.style.fontSize = "18px";
+            closeBtn.style.cursor = "pointer";
+            closeBtn.style.zIndex = "9999";
+
+            document.body.appendChild(closeBtn);
+
+            // close action
+            closeBtn.addEventListener("click", function () {
+                window.location.href = "all calculator.html";
+                // 👆 yahan apna main page name likho
+            });
+
+        });
+        
+    let lastData = {};
+
+    function calculateSteps() {
+
+      let age = Number(document.getElementById("age").value);
+      let weight = Number(document.getElementById("weight").value);
+      let height = Number(document.getElementById("height").value);
+      let activity = Number(document.getElementById("activity").value);
+      let goal = document.getElementById("goal").value;
+
+      if (!age || !weight || !height) {
+        alert("Please fill all fields");
+        return;
+      }
+
+      setTimeout(() => {
+
+        let bmr = (10 * weight + 6.25 * height - 5 * age) * activity;
+
+        let steps;
+        if (goal === "fat") {
+          steps = 9000 + weight * 20;
+        } else if (goal === "maintain") {
+          steps = 7000 + weight * 10;
+        } else {
+          steps = 6000 + weight * 8;
+        }
+
+        if (age < 20) steps *= 1.1;
+        else if (age > 40) steps *= 0.9;
+
+        steps = Math.round(steps);
+
+        let calories = Math.round(bmr / 20);
+        let time = Math.round(steps / 100);
+
+        let msg = goal === "fat"
+          ? "Focus on high daily movement for fat loss."
+          : goal === "maintain"
+            ? "Maintain steady activity daily."
+            : "Combine strength training + walking.";
+
+        document.getElementById("steps").innerText = steps + " Steps / Day";
+        document.getElementById("calories").innerText = "Calories Burned: " + calories + " kcal";
+        document.getElementById("time").innerText = "Walking Time: " + time + " min";
+        document.getElementById("message").innerText = msg;
+
+        let percent = Math.min((steps / 15000) * 100, 100);
+        document.getElementById("bar").style.width = percent + "%";
+
+        document.getElementById("result").style.display = "block";
+
+        lastData = { age, weight, height, steps, calories, time, msg };
+
+      }, 800);
+    }
+
+    /* ================= PDF DOWNLOAD ================= */
+    function downloadPDF() {
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      doc.setFontSize(16);
+      doc.text("Ultra Step Calculator AI Report", 20, 20);
+
+      doc.setFontSize(12);
+      doc.text("Age: " + lastData.age, 20, 40);
+      doc.text("Weight: " + lastData.weight + " kg", 20, 50);
+      doc.text("Height: " + lastData.height + " cm", 20, 60);
+
+      doc.text("Steps: " + lastData.steps, 20, 80);
+      doc.text("Calories: " + lastData.calories + " kcal", 20, 90);
+      doc.text("Walking Time: " + lastData.time + " min", 20, 100);
+
+      doc.text("Advice: " + lastData.msg, 20, 120);
+
+      doc.save("step-report.pdf");
+    }
+
+  </script>
+
+</body>
+
+</html>

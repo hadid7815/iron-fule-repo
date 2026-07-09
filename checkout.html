@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iron fuel/checkout</title>
+    <link rel="stylesheet" href="checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+        <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+
+
+<main>
+  <div class="checkout-head">
+    <h1>Checkout</h1>
+    <p class="checkout-sub">You're almost there — complete your order below.</p>
+
+    <!-- STEP TRACKER -->
+    <div class="step-tracker">
+      <div class="step done">
+        <span class="step-circle"><i class="fa-solid fa-check"></i></span>
+        <span class="step-label">Cart</span>
+      </div>
+      <div class="step-line done"></div>
+      <div class="step active">
+        <span class="step-circle">2</span>
+        <span class="step-label">Shipping</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <span class="step-circle">3</span>
+        <span class="step-label">Payment</span>
+      </div>
+      <div class="step-line"></div>
+      <div class="step">
+        <span class="step-circle">4</span>
+        <span class="step-label">Review</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="checkout-layout">
+
+    <!-- LEFT: FORMS -->
+    <div class="checkout-forms">
+
+      <!-- CONTACT INFO -->
+      <section class="checkout-card" id="section-contact">
+        <div class="card-head">
+          <span class="card-num">1</span>
+          <h2>Contact Information</h2>
+        </div>
+        <div class="field-grid">
+          <div class="field">
+            <label for="contactEmail">Email Address</label>
+            <input type="email" id="contactEmail" placeholder="you@example.com">
+          </div>
+          <div class="field">
+            <label for="contactPhone">Phone Number</label>
+            <input type="tel" id="contactPhone" placeholder="+92 300 1234567">
+          </div>
+        </div>
+        <label class="check-row">
+          <input type="checkbox" id="contactUpdates">
+          <span>Email me with order updates and offers</span>
+        </label>
+      </section>
+
+      <!-- SHIPPING ADDRESS -->
+      <section class="checkout-card" id="section-shipping">
+        <div class="card-head">
+          <span class="card-num">2</span>
+          <h2>Shipping Address</h2>
+        </div>
+        <div class="field-grid">
+          <div class="field">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" placeholder="John">
+          </div>
+          <div class="field">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" placeholder="Doe">
+          </div>
+          <div class="field field-full">
+            <label for="address1">Street Address</label>
+            <input type="text" id="address1" placeholder="House 12, Street 5">
+          </div>
+          <div class="field field-full">
+            <label for="address2">Apartment, Suite, etc. (optional)</label>
+            <input type="text" id="address2" placeholder="Apartment, floor, landmark">
+          </div>
+          <div class="field">
+            <label for="city">City</label>
+            <input type="text" id="city" placeholder="Karachi">
+          </div>
+          <div class="field">
+            <label for="state">State / Province</label>
+            <input type="text" id="state" placeholder="Sindh">
+          </div>
+          <div class="field">
+            <label for="zip">Postal Code</label>
+            <input type="text" id="zip" placeholder="74400">
+          </div>
+          <div class="field">
+            <label for="country">Country</label>
+            <select id="country">
+              <option value="PK">Pakistan</option>
+              <option value="US">United States</option>
+              <option value="UK">United Kingdom</option>
+              <option value="AE">United Arab Emirates</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- SHIPPING METHOD -->
+      <section class="checkout-card" id="section-method">
+        <div class="card-head">
+          <span class="card-num">3</span>
+          <h2>Shipping Method</h2>
+        </div>
+
+        <label class="ship-option selected" data-ship="standard">
+          <input type="radio" name="shipMethod" value="standard" checked>
+          <span class="ship-radio"></span>
+          <span class="ship-info">
+            <strong>Standard Shipping</strong>
+            <span>3–5 business days</span>
+          </span>
+          <span class="ship-price" id="priceStandard">FREE</span>
+        </label>
+
+        <label class="ship-option" data-ship="express">
+          <input type="radio" name="shipMethod" value="express">
+          <span class="ship-radio"></span>
+          <span class="ship-info">
+            <strong>Express Shipping</strong>
+            <span>1–2 business days</span>
+          </span>
+          <span class="ship-price">$14.99</span>
+        </label>
+
+        <label class="ship-option" data-ship="pickup">
+          <input type="radio" name="shipMethod" value="pickup">
+          <span class="ship-radio"></span>
+          <span class="ship-info">
+            <strong>Store Pickup</strong>
+            <span>Ready in 24 hours</span>
+          </span>
+          <span class="ship-price">FREE</span>
+        </label>
+      </section>
+
+      <!-- PAYMENT METHOD -->
+      <section class="checkout-card" id="section-payment">
+        <div class="card-head">
+          <span class="card-num">4</span>
+          <h2>Payment Method</h2>
+        </div>
+
+        <div class="pay-tabs">
+          <button class="pay-tab active" data-pay="card">
+            <i class="fa-regular fa-credit-card"></i> Card
+          </button>
+          <button class="pay-tab" data-pay="paypal">
+            <i class="fa-brands fa-paypal"></i> PayPal
+          </button>
+          <button class="pay-tab" data-pay="applepay">
+            <i class="fa-brands fa-apple"></i> Apple Pay
+          </button>
+        </div>
+
+        <div class="pay-panel" id="panel-card">
+          <div class="field-grid">
+            <div class="field field-full">
+              <label for="cardNumber">Card Number</label>
+              <div class="input-icon">
+                <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19">
+                <i class="fa-regular fa-credit-card"></i>
+              </div>
+            </div>
+            <div class="field field-full">
+              <label for="cardName">Name on Card</label>
+              <input type="text" id="cardName" placeholder="John Doe">
+            </div>
+            <div class="field">
+              <label for="cardExpiry">Expiry Date</label>
+              <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5">
+            </div>
+            <div class="field">
+              <label for="cardCvv">CVV</label>
+              <div class="input-icon">
+                <input type="text" id="cardCvv" placeholder="123" maxlength="4">
+                <i class="fa-solid fa-lock"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="pay-panel hidden" id="panel-paypal">
+          <div class="pay-redirect">
+            <i class="fa-brands fa-paypal"></i>
+            <p>You'll be redirected to PayPal to complete your payment securely.</p>
+          </div>
+        </div>
+
+        <div class="pay-panel hidden" id="panel-applepay">
+          <div class="pay-redirect">
+            <i class="fa-brands fa-apple"></i>
+            <p>Use Touch ID or Face ID to pay with Apple Pay.</p>
+          </div>
+        </div>
+
+        <label class="check-row">
+          <input type="checkbox" id="billingSame" checked>
+          <span>Billing address same as shipping address</span>
+        </label>
+      </section>
+
+    </div>
+
+    <!-- RIGHT: ORDER SUMMARY -->
+    <aside class="checkout-summary">
+      <div class="summary-card">
+        <h2>Order Summary</h2>
+
+        <div class="summary-items" id="summary-items"></div>
+
+        <div class="promo-row">
+          <i class="fa-solid fa-tag"></i>
+          <span id="promo-text">No coupon applied</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="sumSubtotal">$0.00</span>
+        </div>
+        <div class="summary-row" id="rowDiscount" style="display:none;">
+          <span>Discount</span>
+          <span class="discount" id="sumDiscount">−$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping</span>
+          <span id="sumShipping">FREE</span>
+        </div>
+        <div class="summary-row">
+          <span>Estimated Tax</span>
+          <span id="sumTax">$0.00</span>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="summary-total">
+          <span>Total</span>
+          <span id="sumTotal">$0.00</span>
+        </div>
+
+        <button class="place-order-btn" id="placeOrderBtn">
+          <i class="fa-solid fa-lock"></i> Place Order Securely
+        </button>
+
+        <a class="back-to-cart" href="cart.html">
+          <i class="fa-solid fa-arrow-left"></i> Back to Cart
+        </a>
+
+        <div class="secure-note">
+          <i class="fa-solid fa-shield-halved"></i>
+          <span><strong>100% Secure Checkout</strong><br>Your payment information is encrypted and protected.</span>
+        </div>
+
+        <div class="accepts">
+          <p>We Accept</p>
+          <div class="pay-logos">
+            <span class="pay-logo">VISA</span>
+            <span class="pay-logo">MC</span>
+            <span class="pay-logo">AMEX</span>
+            <span class="pay-logo"><i class="fa-brands fa-paypal"></i></span>
+            <span class="pay-logo"><i class="fa-brands fa-apple"></i></span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</main>
+
+<div class="toast" id="checkoutToast"></div>
+
+
+
+<!-- ============ FOOTER ============ -->
+    <footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+
+
+<script>
+/* ── STATE ─────────────────────────────────────────────── */
+let checkoutCart = JSON.parse(localStorage.getItem('fitfuel_cart') || '[]');
+let checkoutCoupon = { code: 'WELCOME10', discount: 10 };
+let checkoutCouponApplied = JSON.parse(localStorage.getItem('fitfuel_coupon') || 'false');
+
+const SHIP_RATES = { standard: 0, express: 14.99, pickup: 0 };
+let selectedShipMethod = 'standard';
+
+/* ── CALCULATIONS ──────────────────────────────────────── */
+function checkoutSubtotal(){
+  return checkoutCart.reduce((s, i) => s + i.price * i.qty, 0);
+}
+
+function checkoutShippingCost(){
+  if(selectedShipMethod === 'express') return SHIP_RATES.express;
+  if(selectedShipMethod === 'pickup') return 0;
+  return checkoutSubtotal() >= 75 ? 0 : 9.99;
+}
+
+function checkoutTax(){
+  return checkoutSubtotal() * 0.06;
+}
+
+function checkoutTotal(){
+  return checkoutSubtotal() + checkoutShippingCost() + checkoutTax() - (checkoutCouponApplied ? checkoutCoupon.discount : 0);
+}
+
+/* ── RENDER SUMMARY ────────────────────────────────────── */
+function renderCheckoutSummary(){
+  const itemsEl = document.getElementById('summary-items');
+
+  if(!checkoutCart.length){
+    itemsEl.innerHTML = `<div class="empty-summary">Your cart is empty. <a href="store.html" style="color:var(--ff-primary-light);">Shop now</a></div>`;
+  } else {
+    itemsEl.innerHTML = checkoutCart.map(item => `
+      <div class="summary-item">
+        <img src="${item.img}" alt="${item.name}" onerror="this.src='https://placehold.co/52x52/0F3B38/4FD1C9?text=${encodeURIComponent(item.name)}'">
+        <div class="summary-item-info">
+          <div class="summary-item-name">${item.name}</div>
+          <div class="summary-item-qty">Qty ${item.qty}</div>
+        </div>
+        <div class="summary-item-price">$${(item.price * item.qty).toFixed(2)}</div>
+      </div>
+    `).join('');
+  }
+
+  document.getElementById('promo-text').textContent = checkoutCouponApplied
+    ? `${checkoutCoupon.code} applied — $${checkoutCoupon.discount.toFixed(2)} off`
+    : 'No coupon applied';
+
+  document.getElementById('sumSubtotal').textContent = `$${checkoutSubtotal().toFixed(2)}`;
+  document.getElementById('sumTax').textContent = `$${checkoutTax().toFixed(2)}`;
+
+  const shipCost = checkoutShippingCost();
+  document.getElementById('sumShipping').textContent = shipCost === 0 ? 'FREE' : `$${shipCost.toFixed(2)}`;
+
+  const rowDiscount = document.getElementById('rowDiscount');
+  if(checkoutCouponApplied){
+    rowDiscount.style.display = 'flex';
+    document.getElementById('sumDiscount').textContent = `−$${checkoutCoupon.discount.toFixed(2)}`;
+  } else {
+    rowDiscount.style.display = 'none';
+  }
+
+  document.getElementById('sumTotal').textContent = `$${checkoutTotal().toFixed(2)}`;
+}
+
+/* ── SHIPPING METHOD SELECTION ─────────────────────────── */
+function initShippingOptions(){
+  const options = document.querySelectorAll('.ship-option');
+  options.forEach(option => {
+    option.addEventListener('click', () => selectShipMethod(option));
+  });
+}
+
+function selectShipMethod(option){
+  document.querySelectorAll('.ship-option').forEach(o => o.classList.remove('selected'));
+  option.classList.add('selected');
+  option.querySelector('input').checked = true;
+  selectedShipMethod = option.dataset.ship;
+  renderCheckoutSummary();
+}
+
+/* ── PAYMENT TAB SWITCHING ─────────────────────────────── */
+function initPaymentTabs(){
+  const tabs = document.querySelectorAll('.pay-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => switchPaymentTab(tab));
+  });
+}
+
+function switchPaymentTab(tab){
+  document.querySelectorAll('.pay-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.pay-panel').forEach(p => p.classList.add('hidden'));
+  tab.classList.add('active');
+  document.getElementById(`panel-${tab.dataset.pay}`).classList.remove('hidden');
+}
+
+/* ── CARD INPUT FORMATTING ─────────────────────────────── */
+function initCardFormatting(){
+  const cardNumber = document.getElementById('cardNumber');
+  const cardExpiry = document.getElementById('cardExpiry');
+
+  cardNumber.addEventListener('input', () => formatCardNumber(cardNumber));
+  cardExpiry.addEventListener('input', () => formatExpiry(cardExpiry));
+}
+
+function formatCardNumber(input){
+  let digits = input.value.replace(/\D/g, '').slice(0, 16);
+  input.value = digits.replace(/(.{4})/g, '$1 ').trim();
+}
+
+function formatExpiry(input){
+  let digits = input.value.replace(/\D/g, '').slice(0, 4);
+  if(digits.length >= 3){
+    input.value = digits.slice(0, 2) + '/' + digits.slice(2);
+  } else {
+    input.value = digits;
+  }
+}
+
+/* ── PLACE ORDER ───────────────────────────────────────── */
+function initPlaceOrder(){
+  document.getElementById('placeOrderBtn').addEventListener('click', handlePlaceOrder);
+}
+
+function handlePlaceOrder(){
+  if(!checkoutCart.length){
+    showCheckoutToast('Your cart is empty', 'error');
+    return;
+  }
+
+  const email = document.getElementById('contactEmail').value.trim();
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const address1 = document.getElementById('address1').value.trim();
+  const address2 = document.getElementById('address2').value.trim();
+  const city = document.getElementById('city').value.trim();
+  const state = document.getElementById('state').value.trim();
+  const zip = document.getElementById('zip').value.trim();
+  const country = document.getElementById('country').value;
+
+  if(!email || !firstName || !address1 || !city){
+    showCheckoutToast('Please fill in all required fields', 'error');
+    return;
+  }
+
+  const activePayTab = document.querySelector('.pay-tab.active').dataset.pay;
+  const payLabels = { card: 'Credit / Debit Card', paypal: 'PayPal', applepay: 'Apple Pay' };
+
+  const shipLabels = {
+    standard: 'Standard Shipping (3–5 business days)',
+    express: 'Express Shipping (1–2 business days)',
+    pickup: 'Store Pickup (ready in 24 hours)'
+  };
+
+  const orderSnapshot = {
+    orderNumber: generateOrderNumber(),
+    date: new Date().toISOString(),
+    items: checkoutCart,
+    subtotal: checkoutSubtotal(),
+    shipping: checkoutShippingCost(),
+    tax: checkoutTax(),
+    discount: checkoutCouponApplied ? checkoutCoupon.discount : 0,
+    couponCode: checkoutCouponApplied ? checkoutCoupon.code : null,
+    total: checkoutTotal(),
+    shipMethod: selectedShipMethod,
+    shipMethodLabel: shipLabels[selectedShipMethod],
+    paymentMethod: payLabels[activePayTab],
+    email: email,
+    name: `${firstName} ${lastName}`.trim(),
+    address: { address1, address2, city, state, zip, country }
+  };
+
+  localStorage.setItem('fitfuel_last_order', JSON.stringify(orderSnapshot));
+
+  showCheckoutToast('Order placed successfully', 'success');
+  localStorage.removeItem('fitfuel_cart');
+  localStorage.removeItem('fitfuel_coupon');
+
+  setTimeout(() => {
+    window.location.href = 'order conformation.html';
+  }, 1500);
+}
+
+function generateOrderNumber(){
+  const rand = Math.floor(100000 + Math.random() * 900000);
+  return `FF-${rand}`;
+}
+
+/* ── TOAST ─────────────────────────────────────────────── */
+function showCheckoutToast(msg, type){
+  const toast = document.getElementById('checkoutToast');
+  const icon = type === 'error' ? 'fa-circle-exclamation' : 'fa-circle-check';
+  toast.innerHTML = `<i class="fa-solid ${icon}"></i> ${msg}`;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 2600);
+}
+
+/* ── INIT ──────────────────────────────────────────────── */
+function initCheckoutPage(){
+  renderCheckoutSummary();
+  initShippingOptions();
+  initPaymentTabs();
+  initCardFormatting();
+  initPlaceOrder();
+}
+
+initCheckoutPage();
+</script>
+
+</body>
+</html>

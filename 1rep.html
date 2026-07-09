@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1-Rep Max Calculator</title>
+
+    <link rel="stylesheet" href="1rep.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body>
+
+<header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+        <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+
+    <main>
+    <!-- Header -->
+    <section class="hero text-center">
+        <div class="container">
+            <h1 class="hero-title" style="font-size:80px;">
+                Calculate 
+                    <span style="color: #9ffcf7;">Your 1-Rep </span>
+                        Max
+
+            </h1>
+            <p class="hero-subtitle">
+                Your 1RM (One Rep Max) is the estimated maximum weight you can lift for a single repetition using
+                strength formulas (like Epley, Brzycki, and Lombardi). </p>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <div class="card">
+            <h1>🏋️ AI 1 Rep Max Calculator</h1>
+
+            <div class="grid">
+
+                <div class="input-group">
+                    <label>Exercise Name</label>
+                    <input type="text" id="exercise" placeholder="Bench Press">
+                </div>
+
+                <div class="input-group">
+                    <label>Weight Lifted</label>
+                    <input type="number" id="weight" placeholder="100">
+                </div>
+
+                <div class="input-group">
+                    <label>Repetitions</label>
+                    <input type="number" id="reps" placeholder="5">
+                </div>
+
+                <div class="input-group">
+                    <label>Gender</label>
+                    <select id="gender">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Age (Optional)</label>
+                    <input type="number" id="age" placeholder="25">
+                </div>
+
+                <div class="input-group">
+                    <label>Unit</label>
+                    <select id="unit">
+                        <option>kg</option>
+                        <option>lbs</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <button onclick="calculate1RM()">Calculate Strength</button>
+
+        </div>
+
+        <div class="result-card hidden" id="result">
+
+            <h2 style="color: #13333d;">🏆 Strength Results</h2>
+
+            <div class="result-grid">
+
+                <div class="box">
+                    <span>Estimated 1RM</span>
+                    <h3 id="avg1rm">0</h3>
+                </div>
+
+                <div class="box">
+                    <span>Strength Level</span>
+                    <h3 id="level">-</h3>
+                </div>
+
+                <div class="box">
+                    <span>Performance Score</span>
+                    <h3 id="score">0</h3>
+                </div>
+
+            </div>
+
+            <div class="training-table">
+                <h3 style="color: #13333d;"></h3>>📈 Training Percentages</h3>
+                <div id="training"></div>
+            </div>
+
+            <div class="ai-box">
+                <h3 style="color: #13333d;"></h3>>🤖 AI Analysis</h3>
+                <p id="analysis"></p>
+            </div>
+
+            <div class="btns">
+                <button onclick="downloadPDF()">📥 Download Full Strength Report</button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    </main>
+    
+    <footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+
+    <script>
+           // navbar responsive
+const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const icon = menu.querySelector("i");
+
+menu.onclick = function () {
+    navLinks.classList.toggle("active");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+};
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // create close button
+            let closeBtn = document.createElement("button");
+
+            closeBtn.innerHTML = "✖";
+            closeBtn.className = "js-close-btn";
+
+            // add style + position
+            closeBtn.style.position = "fixed";
+            closeBtn.style.top = "70px";
+            closeBtn.style.right = "20px";
+            closeBtn.style.width = "40px";
+            closeBtn.style.height = "40px";
+            closeBtn.style.borderRadius = "50%";
+            closeBtn.style.border = "none";
+            closeBtn.style.background = "#006D77";
+            closeBtn.style.color = "white";
+            closeBtn.style.fontSize = "18px";
+            closeBtn.style.cursor = "pointer";
+            closeBtn.style.zIndex = "9999";
+
+            document.body.appendChild(closeBtn);
+
+            // close action
+            closeBtn.addEventListener("click", function () {
+                window.location.href = "all calculator.html";
+                // 👆 yahan apna main page name likho
+            });
+
+        });
+        let reportData = "";
+
+        function calculate1RM() {
+
+            let weight = parseFloat(document.getElementById("weight").value);
+            let reps = parseInt(document.getElementById("reps").value);
+            let unit = document.getElementById("unit").value;
+
+            if (!weight || !reps) {
+                alert("Enter Weight & Reps");
+                return;
+            }
+
+            let epley = weight * (1 + reps / 30);
+            let brzycki = weight * (36 / (37 - reps));
+            let lombardi = weight * Math.pow(reps, 0.10);
+
+            let avg = ((epley + brzycki + lombardi) / 3);
+
+            let level = "Beginner";
+            let score = 50;
+
+            if (avg > 80) {
+                level = "Intermediate";
+                score = 75;
+            }
+
+            if (avg > 120) {
+                level = "Advanced";
+                score = 92;
+            }
+
+            if (avg > 180) {
+                level = "Elite";
+                score = 99;
+            }
+
+            document.getElementById("avg1rm").innerHTML =
+                avg.toFixed(1) + " " + unit;
+
+            document.getElementById("level").innerHTML = level;
+            document.getElementById("score").innerHTML = score + "/100";
+
+            let training = `
+95% : ${(avg * .95).toFixed(1)} ${unit}<br>
+90% : ${(avg * .90).toFixed(1)} ${unit}<br>
+85% : ${(avg * .85).toFixed(1)} ${unit}<br>
+80% : ${(avg * .80).toFixed(1)} ${unit}<br>
+75% : ${(avg * .75).toFixed(1)} ${unit}<br>
+70% : ${(avg * .70).toFixed(1)} ${unit}
+`;
+
+            document.getElementById("training").innerHTML = training;
+
+            let analysis =
+                `Your estimated 1RM is ${avg.toFixed(1)} ${unit}. 
+Strength level is ${level}. Focus on progressive overload, quality recovery, and consistent training. 
+Target a 5-10% increase in strength over the next training cycle.`;
+
+            document.getElementById("analysis").innerHTML = analysis;
+
+            document.getElementById("result").classList.remove("hidden");
+
+            reportData = `
+1RM: ${avg.toFixed(1)} ${unit}
+Strength Level: ${level}
+Performance Score: ${score}/100
+
+95%: ${(avg * .95).toFixed(1)}
+90%: ${(avg * .90).toFixed(1)}
+85%: ${(avg * .85).toFixed(1)}
+80%: ${(avg * .80).toFixed(1)}
+75%: ${(avg * .75).toFixed(1)}
+70%: ${(avg * .70).toFixed(1)}
+
+${analysis}
+`;
+        }
+
+        function copyResults() {
+            navigator.clipboard.writeText(reportData);
+            alert("Results Copied");
+        }
+
+        function downloadPDF() {
+
+            const { jsPDF } = window.jspdf;
+
+            const doc = new jsPDF();
+
+            doc.setFontSize(18);
+            doc.text("AI 1RM Strength Report", 20, 20);
+
+            doc.setFontSize(12);
+
+            let lines = doc.splitTextToSize(reportData, 170);
+
+            doc.text(lines, 20, 40);
+
+            doc.save("1RM-Strength-Report.pdf");
+        }
+
+
+    </script>
+</body>
+
+</html>

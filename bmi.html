@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI calculator</title>
+
+    <link rel="stylesheet" href="bmi.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+
+<body>
+<header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+       <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+
+<main>
+    <!-- Header -->
+    <section class="hero text-center">
+        <div class="container">
+            <h1 class="hero-title" style="font-size:80px;">
+                Calculate 
+                <span style="color: #9ffcf7;">Your Body Mass Index</span>
+
+            </h1>
+            <p class="hero-subtitle" style="color: var(--bg);">
+                BMI is a simple measurement that estimates whether your weight is healthy for your height by using your
+                weight and height. It helps classify you as underweight, normal weight, overweight, or obese.</p>
+        </div>
+    </section>
+
+    <div class="container pb-5">
+
+        <div class="row g-4">
+
+            <!-- Calculator Card -->
+            <div class="col-lg-5">
+                <div class="glass p-4 card-hover ">
+
+                    <h3 class="mb-4">
+                        <i class="bi bi-heart-pulse-fill " style="color:#9ffcf7;"></i>
+                        Calculate BMI
+                    </h3>
+
+                    <div class="mb-3">
+                        <label class="form-label" style="color: var(--text);">Height (cm)</label>
+                        <input type="number" id="height" class="form-control" placeholder="Enter Height"
+                            style="border: 3px solid var(--primary);">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label" style="color: var(--text);">Weight (kg)</label>
+                        <input type="number" id="weight" class="form-control" placeholder="Enter Weight"
+                            style="border: 3px solid var(--primary);">
+                    </div>
+
+                    <div class="d-flex gap-2">
+                        <button class="btn btn-custom flex-fill" onclick="calculateBMI()">
+                            <i class="bi bi-calculator" style=" color:var(--bg);"> Calculate BMI</i>
+                        </button>
+
+                        <button class="btn btn-reset" text-danger onclick="resetBMI()">
+                            <i class="bi bi-arrow-clockwise" style="color: var(--bg);"></i>
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Result -->
+            <div class="col-lg-7">
+                <div class="glass p-4 result-box card-hover" id="resultBox">
+
+                    <h3 class="mb-4">
+                        <i class="bi bi-bar-chart-fill" style="color:#9ffcf7;"></i>
+                        BMI Result
+                    </h3>
+
+                    <div class="progress-circle mb-4" id="circle">
+                        <div class="progress-value" id="bmiValue">0</div>
+                    </div>
+
+                    <div class="text-center">
+                        <h4 id="bmiText">0</h4>
+                        <span id="categoryBadge" class="badge badge-custom"></span>
+                    </div>
+                    <div class="text-center mt-4">
+                        <button class="btn btn-custom" onclick="downloadBMIReport()">
+                            <i class="bi bi-file-earmark-pdf-fill"></i>
+                            Download PDF Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BMI Info -->
+        <div class="glass p-4 mt-5 card-hover">
+
+            <h2 class="mb-4" style="color: var(--text);">
+                <i class="bi bi-info-circle-fill" style="color:#9ffcf7;"></i>
+                BMI Information
+            </h2>
+
+            <p>
+                BMI (Body Mass Index) is a simple calculation using your height and weight.
+                It helps determine whether your body weight falls within a healthy range.
+            </p>
+
+            <div class="table-responsive mt-4">
+                <table class="table table-bordered text-center" style="border: 4px solid var(--light-blue);">
+                    <thead>
+                        <tr>
+                            <th style="color:var(--text);">BMI Range</th>
+                            <th style="color:var(--text);">Category</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="text-dark">Below 18.5</td>
+                            <td class="text-primary">Underweight</td>
+                        </tr>
+                        <tr>
+                            <td class="text-dark">18.5 – 24.9</td>
+                            <td class="text-success">Normal Weight</td>
+                        </tr>
+                        <tr>
+                            <td class="text-dark">25 – 29.9</td>
+                            <td class="text-warning">Overweight</td>
+                        </tr>
+                        <tr>
+                            <td class="text-dark">30+</td>
+                            <td class="text-danger">Obese</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="mt-4">
+                <h4 style="color:var(--text);">Health Tips</h4>
+                <ul>
+                    <li>Eat a balanced diet rich in nutrients.</li>
+                    <li>Exercise regularly for at least 30 minutes daily.</li>
+                    <li>Stay hydrated and sleep 7–8 hours.</li>
+                    <li>Avoid excessive sugar and processed foods.</li>
+                    <li>Monitor your BMI periodically.</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+
+    </main>
+
+     <footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+
+    <script>
+
+                   // navbar responsive
+const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const icon = menu.querySelector("i");
+
+menu.onclick = function () {
+    navLinks.classList.toggle("active");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+};
+
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // create close button
+            let closeBtn = document.createElement("button");
+
+            closeBtn.innerHTML = "✖";
+            closeBtn.className = "js-close-btn";
+
+            // add style + position
+            closeBtn.style.position = "fixed";
+            closeBtn.style.top = "90px";
+            closeBtn.style.right = "20px";
+            closeBtn.style.width = "40px";
+            closeBtn.style.height = "40px";
+            closeBtn.style.borderRadius = "50%";
+            closeBtn.style.border = "none";
+            closeBtn.style.background = "#006D77";
+            closeBtn.style.color = "white";
+            closeBtn.style.fontSize = "18px";
+            closeBtn.style.cursor = "pointer";
+            closeBtn.style.zIndex = "9999";
+
+            document.body.appendChild(closeBtn);
+
+            // close action
+            closeBtn.addEventListener("click", function () {
+                window.location.href = "all calculator.html";
+                // 👆 yahan apna main page name likho
+            });
+
+        });
+
+        function calculateBMI() {
+
+            let height = document.getElementById("height").value;
+            let weight = document.getElementById("weight").value;
+
+            if (height === "" || weight === "") {
+                alert("Please fill all fields.");
+                return;
+            }
+
+            if (height <= 0 || weight <= 0) {
+                alert("Values must be greater than 0.");
+                return;
+            }
+
+            let bmi = weight / ((height / 100) * (height / 100));
+
+            let category = "";
+            let color = "";
+            let progress = Math.min((bmi / 40) * 360, 360);
+
+            if (bmi < 18.5) {
+                category = "Underweight";
+                color = "primary";
+            }
+            else if (bmi < 25) {
+                category = "Normal Weight";
+                color = "success";
+            }
+            else if (bmi < 30) {
+                category = "Overweight";
+                color = "warning";
+            }
+            else {
+                category = "Obese";
+                color = "danger";
+            }
+
+            document.getElementById("resultBox").style.display = "block";
+
+            let count = 0;
+            let target = bmi.toFixed(2);
+
+            let interval = setInterval(() => {
+                count += 0.1;
+
+                if (count >= target) {
+                    count = target;
+                    clearInterval(interval);
+                }
+
+                document.getElementById("bmiValue").innerHTML = parseFloat(count).toFixed(2);
+
+            }, 15);
+
+            document.getElementById("bmiText").innerHTML = "BMI: " + bmi.toFixed(2);
+
+            document.getElementById("categoryBadge").className = "badge badge-custom bg-" + color;
+            document.getElementById("categoryBadge").innerHTML = category;
+
+            document.getElementById("circle").style.background =
+                `conic-gradient(#00515B ${progress}deg,#006D77 0deg)`;
+
+        }
+
+        function downloadBMIReport() {
+
+            let height = document.getElementById("height").value;
+            let weight = document.getElementById("weight").value;
+            let bmiText = document.getElementById("bmiText").innerText;
+            let category = document.getElementById("categoryBadge").innerText;
+
+            if (!height || !weight || category === "") {
+                alert("Please calculate BMI first.");
+                return;
+            }
+
+            const report = document.createElement("div");
+
+            report.innerHTML = `
+        <div style="
+            font-family: Arial, sans-serif;
+            padding:30px;
+            color:#0f172a;
+        ">
+            <h1 style="
+                text-align:center;
+                color:#7393d2;
+                margin-bottom:20px;
+            ">
+                BMI Health Report
+            </h1>
+
+            <hr>
+
+            <h3>Personal Information</h3>
+
+            <p><strong>Height:</strong> ${height} cm</p>
+            <p><strong>Weight:</strong> ${weight} kg</p>
+
+            <hr>
+
+            <h3>BMI Result</h3>
+
+            <p><strong>${bmiText}</strong></p>
+            <p><strong>Category:</strong> ${category}</p>
+
+            <hr>
+
+            <h3>Health Tips</h3>
+
+            <ul>
+                <li>Eat a balanced diet.</li>
+                <li>Exercise at least 30 minutes daily.</li>
+                <li>Drink enough water.</li>
+                <li>Get 7-8 hours of sleep.</li>
+                <li>Track your BMI regularly.</li>
+            </ul>
+
+            <br>
+
+            <p style="text-align:center;color:gray;">
+                Generated by Iron Fuel BMI Calculator
+            </p>
+        </div>
+    `;
+
+            const options = {
+                margin: 0.5,
+                filename: 'BMI_Report.pdf',
+                image: { type: 'jpeg', quality: 1 },
+                html2canvas: { scale: 2 },
+                jsPDF: {
+                    unit: 'in',
+                    format: 'a4',
+                    orientation: 'portrait'
+                }
+            };
+
+            html2pdf().set(options).from(report).save();
+        }
+
+    </script>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitFuel - Your Fitness. Our Mission.</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <link rel="stylesheet" href="about.css">
+</head>
+
+<body>
+
+<header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+        <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+
+
+<main>
+        <!-- ══════════════════════════ JOURNEY MODAL ══════════════════════════ -->
+    <div class="modal-overlay" id="journeyModal" onclick="closeJourneyModal(event)">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Our Journey: A to Z</h3>
+                <button class="modal-close" onclick="closeJourneyModalDirect()" aria-label="Close"><i
+                        class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-year">2020</span>
+                    <h4 class="timeline-title">The Spark</h4>
+                    <p class="timeline-text">FitFuel started as a late-night idea in a cramped college dorm. Frustrated
+                        by the lack of free, science-backed fitness tools, our founder decided to build a simple calorie
+                        calculator for personal use.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-year">2021</span>
+                    <h4 class="timeline-title">Going Live</h4>
+                    <p class="timeline-text">After months of coding and collaborating with nutritionists, FitFuel
+                        officially launched. Within months, we hit 10,000 active users, driven entirely by word-of-mouth
+                        in fitness communities.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-year">2022</span>
+                    <h4 class="timeline-title">Expanding the Ecosystem</h4>
+                    <p class="timeline-text">We introduced macro tracking, custom diet plans, and a mobile app. To
+                        support our growing community, we also launched the FitFuel Store, offering premium supplements
+                        and gear.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-year">2023</span>
+                    <h4 class="timeline-title">1 Million Strong</h4>
+                    <p class="timeline-text">Crossing the 1 million user mark was a milestone we only dreamed of. We
+                        assembled a world-class team of developers, fitness experts, and dietitians to ensure our tools
+                        remained the best on the market.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <span class="timeline-year">2025 & Beyond</span>
+                    <h4 class="timeline-title">The Future of Fitness</h4>
+                    <p class="timeline-text">Today, FitFuel is used in over 150 countries. We are now investing heavily
+                        in AI-driven personal training and predictive nutrition to make fitness truly effortless for
+                        everyone. And we're just getting started.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-inner">
+            <div class="hero-content reveal active">
+                <span class="section-label">ABOUT US</span>
+                <h1 class="hero-title">Your Fitness.<br><span class="text-blue">Our Mission.</span></h1>
+                <p class="hero-text">At FitFuel, we believe fitness is for everyone. Our mission is to empower you with
+                    smart tools, expert resources, and a supportive community to help you achieve your best self.</p>
+            </div>
+            <div class="hero-visual reveal active reveal-delay-1">
+                <div class="hero-image-wrapper">
+                    <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&h=500&fit=crop"
+                        alt="Fit couple in athletic wear" class="hero-image">
+                    <div class="impact-card">
+                        <div class="impact-circle">
+                            <svg viewBox="0 0 100 100" class="progress-ring">
+                                <circle cx="50" cy="50" r="42" stroke="#e8f0fe" />
+                                <circle cx="50" cy="50" r="42" stroke="#2563eb" />
+                            </svg>
+                            <span class="impact-percent">100%</span>
+                        </div>
+                        <div class="impact-stats">
+                            <div class="impact-item"><span class="impact-value">1M+</span><span
+                                    class="impact-label">Trusted by Users</span></div>
+                            <div class="impact-item"><span class="impact-value">50+</span><span
+                                    class="impact-label">Expert Tools</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon"><i class="fas fa-calculator"></i></div>
+                    <h3 class="feature-title">Smart Tools</h3>
+                    <p class="feature-text">Powerful calculators and trackers for your goals.</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-1">
+                    <div class="feature-icon"><i class="fas fa-lightbulb"></i></div>
+                    <h3 class="feature-title">Expert Guidance</h3>
+                    <p class="feature-text">Science-based content you can trust.</p>
+                </div>
+                <div class="feature-card reveal reveal-delay-2">
+                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                    <h3 class="feature-title">For Everyone</h3>
+                    <p class="feature-text">Built for all fitness levels and lifestyles.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="story">
+        <div class="container story-inner">
+            <div class="story-content reveal">
+                <span class="section-label">OUR STORY</span>
+                <h2 class="section-title">Built by Fitness Enthusiasts, For Fitness Enthusiasts</h2>
+                <p class="story-text">FitFuel was founded with a simple idea: health and fitness should be accessible,
+                    personalized, and backed by science. We built the tools we wish we had—so you can focus on what
+                    matters most: your progress.</p>
+                <button class="btn-primary" onclick="openJourneyModal()">Discover Our Journey <i
+                        class="fa-solid fa-arrow-right"></i></button>
+            </div>
+            <div class="story-image reveal reveal-delay-1">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=450&fit=crop"
+                    alt="People training in gym">
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="values">
+        <div class="container">
+            <div class="values-header reveal">
+                <span class="section-label">OUR VALUES</span>
+                <h2 class="section-title">The Principles That Drive Us</h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card reveal">
+                    <div class="value-icon"><i class="fas fa-shield-halved"></i></div>
+                    <h3 class="value-title">Trust & Security</h3>
+                    <p class="value-text">Your data is safe with us. We prioritize privacy and transparency.</p>
+                </div>
+                <div class="value-card reveal reveal-delay-1">
+                    <div class="value-icon"><i class="fas fa-heart"></i></div>
+                    <h3 class="value-title">Science-Based</h3>
+                    <p class="value-text">We rely on proven research to deliver accurate and effective tools.</p>
+                </div>
+                <div class="value-card reveal reveal-delay-2">
+                    <div class="value-icon"><i class="fas fa-user-check"></i></div>
+                    <h3 class="value-title">User-Centered</h3>
+                    <p class="value-text">Everything we build is designed around your needs and goals.</p>
+                </div>
+                <div class="value-card reveal reveal-delay-3">
+                    <div class="value-icon"><i class="fas fa-people-group"></i></div>
+                    <h3 class="value-title">Community First</h3>
+                    <p class="value-text">We grow together through support, motivation, and shared success.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-card reveal">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <span class="stat-number" data-target="1">0</span><span class="stat-suffix">M+</span>
+                    <span class="stat-label">Happy Users</span>
+                </div>
+                <div class="stat-card reveal reveal-delay-1">
+                    <div class="stat-icon"><i class="fas fa-tools"></i></div>
+                    <span class="stat-number" data-target="50">0</span><span class="stat-suffix">+</span>
+                    <span class="stat-label">Expert Tools</span>
+                </div>
+                <div class="stat-card reveal reveal-delay-2">
+                    <div class="stat-icon"><i class="fas fa-shield-halved"></i></div>
+                    <span class="stat-number" data-target="100">0</span><span class="stat-suffix">%</span>
+                    <span class="stat-label">Trusted & Secure</span>
+                </div>
+                <div class="stat-card reveal reveal-delay-3">
+                    <div class="stat-icon"><i class="fas fa-globe"></i></div>
+                    <span class="stat-number" data-target="150">0</span><span class="stat-suffix">+</span>
+                    <span class="stat-label">Countries Reached</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team">
+        <div class="container">
+            <div class="team-header reveal">
+                <span class="section-label">THE TEAM</span>
+                <h2 class="section-title">Real People. Real Passion.</h2>
+                <p class="team-text">We're a team of fitness experts, developers, and dreamers working together to make
+                    fitness simpler, smarter, and more impactful for millions around the world.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-card reveal">
+                    <div class="team-photo"><img src="https://i.pravatar.cc/150?img=47" alt="Ms. Mahnoor"></div>
+                    <h4 class="team-name">Ms. Mahnoor</h4>
+                    <span class="team-role">Co-Founder & CEO</span>
+                </div>
+                <div class="team-card reveal reveal-delay-1">
+                    <div class="team-photo"><img src="https://i.pravatar.cc/150?img=12" alt="Mr. Hasnain Khan"></div>
+                    <h4 class="team-name">Mr. Hasnain Khan</h4>
+                    <span class="team-role">Head of Nutrition</span>
+                </div>
+                <div class="team-card reveal reveal-delay-2">
+                    <div class="team-photo"><img src="https://i.pravatar.cc/150?img=33" alt="Mr. Muhammad Hadid"></div>
+                    <h4 class="team-name">Mr. Muhammad Hadid</h4>
+                    <span class="team-role">Head of Training</span>
+                </div>
+                <div class="team-card reveal reveal-delay-3">
+                    <div class="team-photo"><img src="https://i.pravatar.cc/150?img=68" alt="Mr. Muhammad Ubaid"></div>
+                    <h4 class="team-name">Mr. Muhammad Ubaid</h4>
+                    <span class="team-role">Lead Developer</span>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+    <!-- ══════════════════════════ FOOTER ══════════════════════════ -->
+   <footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+
+    <script>
+        /* ── NAVBAR SCROLL SHADOW ───────────────────────────────────── */
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+        });
+
+                   // navbar responsive
+const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const icon = menu.querySelector("i");
+
+menu.onclick = function () {
+    navLinks.classList.toggle("active");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+};
+
+
+        /* ── JOURNEY MODAL ──────────────────────────────────────────── */
+        function openJourneyModal() {
+            document.getElementById('journeyModal').classList.add('open');
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
+        function closeJourneyModal(e) {
+            if (e.target === document.getElementById('journeyModal')) {
+                closeJourneyModalDirect();
+            }
+        }
+        function closeJourneyModalDirect() {
+            document.getElementById('journeyModal').classList.remove('open');
+            document.body.style.overflow = 'auto'; // Restore scrolling
+        }
+
+        /* ── TOAST ──────────────────────────────────────────────────── */
+        let toastTimer;
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMsg').innerHTML = msg;
+            toast.classList.add('show');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        /* ── CART ───────────────────────────────────────────────────── */
+        let cartItems = [];
+        function addToCart(name, price, icon) {
+            const existing = cartItems.find(i => i.name === name);
+            if (existing) { existing.qty++; } else { cartItems.push({ name, price, icon, qty: 1, id: Date.now() }); }
+            updateCartBadge();
+            showToast('<i class="fa-solid fa-circle-check"></i> "' + name + '" added to cart!');
+        }
+        function updateCartBadge() {
+            const count = cartItems.reduce((s, i) => s + i.qty, 0);
+            const badge = document.getElementById('cartBadge');
+            badge.textContent = count;
+            if (count > 0) { badge.classList.add('visible'); } else { badge.classList.remove('visible'); }
+        }
+
+        /* ── NEWSLETTER ─────────────────────────────────────────────── */
+        function footerSubscribe() {
+            const email = document.getElementById('footerEmail').value.trim();
+            if (!email || !email.includes('@')) {
+                showToast('<i class="fa-solid fa-triangle-exclamation"></i> Please enter a valid email!');
+                return;
+            }
+            showToast('<i class="fa-solid fa-star"></i> You\'re subscribed! Welcome to FitFuel.');
+            document.getElementById('footerEmail').value = '';
+        }
+
+        /* ── SCROLL REVEAL ANIMATIONS ───────────────────────────────── */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    if (entry.target.classList.contains('stat-card')) {
+                        const statNumber = entry.target.querySelector('.stat-number');
+                        if (statNumber && !statNumber.dataset.animated) {
+                            animateCounter(statNumber);
+                            statNumber.dataset.animated = "true";
+                        }
+                    }
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        /* ── COUNTER ANIMATION ──────────────────────────────────────── */
+        function animateCounter(el) {
+            const target = +el.dataset.target;
+            const duration = 2000;
+            const start = performance.now();
+            function update(time) {
+                const elapsed = time - start;
+                const progress = Math.min(elapsed / duration, 1);
+                const current = Math.floor(progress * target);
+                el.textContent = current;
+                if (progress < 1) { requestAnimationFrame(update); } else { el.textContent = target; }
+            }
+            requestAnimationFrame(update);
+        }
+
+        /* ── INIT ───────────────────────────────────────────────────── */
+        updateCartBadge();
+    </script>
+</body>
+
+</html>

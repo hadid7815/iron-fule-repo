@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protein Calculator</title>
+
+    <link rel="stylesheet" href="protein.css">
+
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+</head>
+
+<body>
+    <header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+         <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+<main>
+
+    <!-- Hero -->
+    <section class="hero-section">
+        <div class="container1 text-center">
+
+
+            <h1 class="hero-title" style="font-size:80px;">
+                Calculate 
+             <span style="color: #9ffcf7;">Your Protein Intake</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Protein calculator estimates your daily protein requirement based on body weight, activity level, and
+                fitness goal (muscle gain, fat loss, or maintenance).
+            </p>
+
+        </div>
+    </section>
+
+    <div class="container">
+        <h1>Calculate Protein</h1>
+
+        <div class="form-grid">
+            <input id="age" type="number" placeholder="Age">
+            <select id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+
+            <input id="weight" type="number" placeholder="Weight (kg)">
+            <input id="height" type="number" placeholder="Height (cm)">
+
+            <select id="activity">
+                <option value="0.8">Sedentary</option>
+                <option value="1.0">Light</option>
+                <option value="1.3">Moderate</option>
+                <option value="1.6">Active</option>
+                <option value="2.0">Athlete / Muscle Gain</option>
+            </select>
+
+            <select id="goal">
+                <option value="0">Maintenance</option>
+                <option value="0.1">Fat Loss (+10%)</option>
+                <option value="0.2">Muscle Gain (+20%)</option>
+            </select>
+        </div>
+
+        <button class="btn" onclick="calculate()">Calculate Protein</button>
+        <button class="btn" onclick="downloadPDF()">Download PDF Report</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    </main>
+
+        <footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+
+    <script>
+                   // navbar responsive
+const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const icon = menu.querySelector("i");
+
+menu.onclick = function () {
+    navLinks.classList.toggle("active");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+};
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // create close button
+            let closeBtn = document.createElement("button");
+
+            closeBtn.innerHTML = "✖";
+            closeBtn.className = "js-close-btn";
+
+            // add style + position
+            closeBtn.style.position = "fixed";
+            closeBtn.style.top = "70px";
+            closeBtn.style.right = "20px";
+            closeBtn.style.width = "40px";
+            closeBtn.style.height = "40px";
+            closeBtn.style.borderRadius = "50%";
+            closeBtn.style.border = "none";
+            closeBtn.style.background = "#006D77";
+            closeBtn.style.color = "white";
+            closeBtn.style.fontSize = "18px";
+            closeBtn.style.cursor = "pointer";
+            closeBtn.style.zIndex = "9999";
+
+            document.body.appendChild(closeBtn);
+
+            // close action
+            closeBtn.addEventListener("click", function () {
+                window.location.href = "all calculator.html";
+                // 👆 yahan apna main page name likho
+            });
+
+        });
+        
+        let lastResult = {};
+function calculate() {
+
+    let age = parseInt(document.getElementById("age").value);
+    let gender = document.getElementById("gender").value;
+    let weight = parseFloat(document.getElementById("weight").value);
+    let height = parseFloat(document.getElementById("height").value);
+    let activity = document.getElementById("activity").value;
+    let goal = document.getElementById("goal").value;
+
+    if (!weight || !height || !age) {
+        alert("Please fill all fields.");
+        return;
+    }
+
+    let proteinPerKg = 0;
+
+    if (activity == "0.8") {
+        proteinPerKg = 0.8;
+    }
+    else if (activity == "1.0") {
+        proteinPerKg = 1.0;
+    }
+    else if (activity == "1.3") {
+        proteinPerKg = 1.3;
+    }
+    else if (activity == "1.6") {
+        proteinPerKg = 1.6;
+    }
+    else {
+        proteinPerKg = 2.0;
+    }
+
+    // Goal Adjustment
+    if (goal == "0.1") {
+        proteinPerKg += 0.2;
+    }
+    else if (goal == "0.2") {
+        proteinPerKg += 0.4;
+    }
+
+    let totalProtein = weight * proteinPerKg;
+
+    let meals = Math.ceil(totalProtein / 4);
+
+    let plan = `
+        <h3>💪 Daily Protein Intake</h3>
+
+        <p><b>Age:</b> ${age}</p>
+        <p><b>Gender:</b> ${gender}</p>
+        <p><b>Weight:</b> ${weight} kg</p>
+        <p><b>Height:</b> ${height} cm</p>
+
+        <hr>
+
+        <h2>${totalProtein.toFixed(1)} g/day</h2>
+
+        <p><b>Protein per Meal:</b> ${meals} g</p>
+
+        <h4>🥗 Meal Plan</h4>
+
+        <ul>
+            <li>🍳 Breakfast : ${Math.round(meals)} g</li>
+            <li>🍗 Lunch : ${Math.round(meals)} g</li>
+            <li>🥜 Snack : ${Math.round(meals)} g</li>
+            <li>🐟 Dinner : ${Math.round(meals)} g</li>
+        </ul>
+    `;
+
+    document.getElementById("result").innerHTML = plan;
+
+    lastResult = {
+        protein: totalProtein.toFixed(1),
+        meals: meals
+    };
+}
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.setFontSize(16);
+            doc.text("AI Protein Report", 20, 20);
+
+            doc.setFontSize(12);
+            doc.text(`Daily Protein: ${lastResult.protein || 0}g`, 20, 40);
+            doc.text(`Per Meal: ~${lastResult.meals || 0}g`, 20, 50);
+
+            doc.text("Food Plan:", 20, 70);
+            doc.text("Breakfast: Eggs + Milk", 20, 80);
+            doc.text("Lunch: Chicken + Rice", 20, 90);
+            doc.text("Snack: Yogurt + Nuts", 20, 100);
+            doc.text("Dinner: Fish + Vegetables", 20, 110);
+
+            doc.save("protein-report.pdf");
+        }
+
+    </script>
+
+</body>
+
+</html>

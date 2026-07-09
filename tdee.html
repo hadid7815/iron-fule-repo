@@ -1,0 +1,977 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TDEE Calculator</title>
+
+    <meta name="description" content="Calculate your TDEE, BMR, daily calorie needs, macros and download a professional PDF report.">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="tdee.css">
+</head>
+<body>
+<header>
+    <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
+
+    <nav>
+        <div class="logo">
+            Fit<span>Fuel</span>
+        </div>
+
+        <!-- Hamburger -->
+        <div class="menu-toggle">
+            <i class="fa-solid fa-bars"></i>
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="all calculator.html">Calculators</a></li>
+            <li><a href="Training.html">Training</a></li>
+            <li><a href="diet-generator.html">Nutrition</a></li>
+            <li><a href="store.html">Store</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+         <div class="right-nav"> 
+            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+            <a href="#"><i class="fa-regular fa-user"></i></a>
+        </div>
+    </nav>
+</header>
+
+<main>
+
+    <!-- Hero -->
+    <section class="hero-section">
+        <div class="container1 text-center">
+
+           
+            <h1 class="hero-title" style="font-size:80px;">
+                Calculate 
+            <span style="color: #9ffcf7;">Your Total Daily Energy Expenditure</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                Discover your BMR, TDEE, calorie target and macro breakdown
+                with professional fitness insights.
+            </p>
+
+        </div>
+    </section>
+
+    <!-- Calculator -->
+    <section class="calculator-section">
+        <div class="container">
+
+            <div class="calculator-card">
+
+                <div class="section-title">
+                    <h2>
+                        <i class="fa-solid fa-calculator"></i>
+                        Calculate Tdee
+                    </h2>
+                </div>
+
+                <form id="tdeeForm">
+
+                    <div class="row g-4">
+
+                        <!-- Gender -->
+                        <div class="col-md-6">
+                            <label class="form-label">Gender</label>
+                            <select id="gender" class="form-select">
+                                <option value="male">Male</option>
+                                <option value="female">Female</option>
+                            </select>
+                        </div>
+
+                        <!-- Age -->
+                        <div class="col-md-6">
+                            <label class="form-label">Age</label>
+                            <input
+                                type="number"
+                                id="age"
+                                class="form-control"
+                                placeholder="Enter age"
+                            >
+                        </div>
+
+                        <!-- Weight -->
+                        <div class="col-md-6">
+                            <label class="form-label">Weight</label>
+                            <input
+                                type="number"
+                                id="weight"
+                                class="form-control"
+                                placeholder="Enter weight"
+                            >
+                        </div>
+
+                        <!-- Weight Unit -->
+                        <div class="col-md-6">
+                            <label class="form-label">Weight Unit</label>
+                            <select id="weightUnit" class="form-select">
+                                <option value="kg">KG</option>
+                                <option value="lbs">LBS</option>
+                            </select>
+                        </div>
+
+                        <!-- Height -->
+                        <div class="col-md-6">
+                            <label class="form-label">Height</label>
+                            <input
+                                type="number"
+                                id="height"
+                                class="form-control"
+                                placeholder="Enter height"
+                            >
+                        </div>
+
+                        <!-- Height Unit -->
+                        <div class="col-md-6">
+                            <label class="form-label">Height Unit</label>
+                            <select id="heightUnit" class="form-select">
+                                <option value="cm">CM</option>
+                                <option value="ft">Feet/Inches</option>
+                            </select>
+                        </div>
+
+                        <!-- Activity -->
+                        <div class="col-md-6">
+                            <label class="form-label">Activity Level</label>
+                            <select id="activity" class="form-select">
+                                <option value="1.2">Sedentary</option>
+                                <option value="1.375">Lightly Active</option>
+                                <option value="1.55">Moderately Active</option>
+                                <option value="1.725">Very Active</option>
+                                <option value="1.9">Athlete</option>
+                            </select>
+                        </div>
+
+                        <!-- Goal -->
+                        <div class="col-md-6">
+                            <label class="form-label">Goal</label>
+                            <select id="goal" class="form-select">
+                                <option value="maintain">Maintain Weight</option>
+                                <option value="fatloss">Fat Loss</option>
+                                <option value="extreme">Extreme Fat Loss</option>
+                                <option value="leanbulk">Lean Bulk</option>
+                                <option value="musclegain">Muscle Gain</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="action-buttons">
+
+                        <button
+                            type="button"
+                            id="calculateBtn"
+                            class="btn calculate-btn">
+                            <i class="fa-solid fa-bolt"></i>
+                            Calculate TDEE
+                        </button>
+
+                        <button
+                            type="reset"
+                            id="resetBtn"
+                            class="btn reset-btn">
+                            <i class="fa-solid fa-rotate-right"></i>
+                            Reset
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Result Section -->
+    <section id="resultSection" class="result-section d-none">
+
+        <div class="container">
+
+            <div class="result-card">
+
+                <div class="result-header">
+
+                    <h2>
+                        🔥 Daily Calorie Target
+                    </h2>
+
+                    <div id="calorieTarget" class="main-calorie">
+                        0
+                    </div>
+
+                    <p>Calories Per Day</p>
+
+                </div>
+
+                <div class="row g-4 mt-2">
+
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <h5>⚡ BMR</h5>
+                            <span id="bmrResult">0</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <h5>🔥 TDEE</h5>
+                            <span id="tdeeResult">0</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="stat-card">
+                            <h5>🎯 Goal Calories</h5>
+                            <span id="goalCalories">0</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="stat-card">
+                            <h5>💪 Activity Level</h5>
+                            <span id="activityResult">-</span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="stat-card">
+                            <h5>📉 Goal</h5>
+                            <span id="goalResult">-</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- AI Insight -->
+                <div class="ai-insight-card mt-4">
+
+                    <h4>
+                        <i class="fa-solid fa-robot"></i>
+                        AI Fitness Insight
+                    </h4>
+
+                    <p id="aiInsight">
+                        Your personalized recommendation will appear here.
+                    </p>
+
+                </div>
+
+                <!-- Macros -->
+                <div class="macro-card mt-4">
+
+                    <h4>
+                        <i class="fa-solid fa-chart-pie"></i>
+                        Macro Breakdown
+                    </h4>
+
+                    <div class="macro-item">
+                        <label>Protein</label>
+                        <div id="proteinResult">0g</div>
+                    </div>
+
+                    <div class="macro-item">
+                        <label>Carbs</label>
+                        <div id="carbsResult">0g</div>
+                    </div>
+
+                    <div class="macro-item">
+                        <label>Fats</label>
+                        <div id="fatsResult">0g</div>
+                    </div>
+
+                </div>
+
+                <!-- Charts -->
+                <div class="chart-card mt-4">
+
+                    <div class="row">
+
+                        <div class="col-lg-6">
+                            <canvas id="macroChart"></canvas>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <canvas id="calorieChart"></canvas>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="result-actions">
+
+                    <button id="pdfBtn" class="btn action-btn">
+                        <i class="fa-solid fa-file-pdf"></i>
+                        Download PDF
+                    </button>
+
+                    
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+    <footer id="footer">
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="footer-logo">
+        <div class="footer-logo-icon">FF</div>
+        <span class="footer-logo-text">FitFuel</span>
+      </a>
+      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+      <div class="footer-socials">
+        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Shop</h5>
+      <ul class="footer-links">
+        <li><a href="store.html">All Products</a></li>
+        <li><a href="store.html">Protein</a></li>
+        <li><a href="store.html">Pre-Workout</a></li>
+        <li><a href="store.html">Vitamins</a></li>
+        <li><a href="store.html">Accessories</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Info</h5>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Shipping Policy</a></li>
+        <li><a href="#">Return Policy</a></li>
+        <li><a href="#">Terms &amp; Conditions</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-col">
+      <h5>Support</h5>
+      <ul class="footer-links">
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQ</a></li>
+        <li><a href="#">Track Order</a></li>
+        <li><a href="#">Size Guide</a></li>
+      </ul>
+    </div>
+ 
+    <div class="footer-newsletter-col">
+      <h5>Newsletter</h5>
+      <p>Get tips, updates &amp; offers straight to your inbox.</p>
+      <div class="footer-email-form">
+        <input type="email" id="footerEmail" placeholder="Enter your email">
+        <button onclick="footerSubscribe()">Subscribe</button>
+      </div>
+    </div>
+  </div>
+ 
+  <hr class="footer-divider">
+ 
+  <div class="footer-bottom">
+    <p>© 2024 FitFuel. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+               // navbar responsive
+const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
+const icon = menu.querySelector("i");
+
+menu.onclick = function () {
+    navLinks.classList.toggle("active");
+    icon.classList.toggle("fa-bars");
+    icon.classList.toggle("fa-xmark");
+};
+
+      document.addEventListener("DOMContentLoaded", function () {
+
+            // create close button
+            let closeBtn = document.createElement("button");
+
+            closeBtn.innerHTML = "✖";
+            closeBtn.className = "js-close-btn";
+
+            // add style + position
+            closeBtn.style.position = "fixed";
+            closeBtn.style.top = "90px";
+            closeBtn.style.right = "20px";
+            closeBtn.style.width = "40px";
+            closeBtn.style.height = "40px";
+            closeBtn.style.borderRadius = "50%";
+            closeBtn.style.border = "none";
+            closeBtn.style.background = "#006D77";
+            closeBtn.style.color = "white";
+            closeBtn.style.fontSize = "18px";
+            closeBtn.style.cursor = "pointer";
+            closeBtn.style.zIndex = "9999";
+
+            document.body.appendChild(closeBtn);
+
+            // close action
+            closeBtn.addEventListener("click", function () {
+                window.location.href = "all calculator.html";
+                // 👆 yahan apna main page name likho
+            });
+
+        });
+// ======================================
+// AI TDEE CALCULATOR - script.js
+// ======================================
+
+let macroChart = null;
+let calorieChart = null;
+
+// ================================
+// CALCULATE BUTTON
+// ================================
+
+document
+    .getElementById("calculateBtn")
+    .addEventListener("click", calculateTDEE);
+
+// ================================
+// CALCULATE TDEE
+// ================================
+
+function calculateTDEE() {
+
+    let gender = document.getElementById("gender").value;
+    let age = parseInt(document.getElementById("age").value);
+    let weight = parseFloat(document.getElementById("weight").value);
+    let height = parseFloat(document.getElementById("height").value);
+
+    let weightUnit = document.getElementById("weightUnit").value;
+    let heightUnit = document.getElementById("heightUnit").value;
+
+    let activity = parseFloat(
+        document.getElementById("activity").value
+    );
+
+    let goal = document.getElementById("goal").value;
+
+    // Validation
+
+    if (
+        !age ||
+        !weight ||
+        !height ||
+        age <= 0 ||
+        weight <= 0 ||
+        height <= 0
+    ) {
+        alert("Please enter valid information.");
+        return;
+    }
+
+    // ================================
+    // UNIT CONVERSIONS
+    // ================================
+
+    if (weightUnit === "lbs") {
+        weight = weight * 0.453592;
+    }
+
+    if (heightUnit === "ft") {
+        height = height * 30.48;
+    }
+
+    // ================================
+    // BMR
+    // ================================
+
+    let bmr;
+
+    if (gender === "male") {
+        bmr =
+            (10 * weight) +
+            (6.25 * height) -
+            (5 * age) +
+            5;
+    } else {
+        bmr =
+            (10 * weight) +
+            (6.25 * height) -
+            (5 * age) -
+            161;
+    }
+
+    // ================================
+    // TDEE
+    // ================================
+
+    let tdee = bmr * activity;
+
+    // ================================
+    // GOAL CALORIES
+    // ================================
+
+    let goalCalories = tdee;
+    let goalText = "Maintain Weight";
+
+    switch (goal) {
+
+        case "fatloss":
+            goalCalories = tdee - 500;
+            goalText = "Fat Loss";
+            break;
+
+        case "extreme":
+            goalCalories = tdee - 750;
+            goalText = "Extreme Fat Loss";
+            break;
+
+        case "leanbulk":
+            goalCalories = tdee + 250;
+            goalText = "Lean Bulk";
+            break;
+
+        case "musclegain":
+            goalCalories = tdee + 500;
+            goalText = "Muscle Gain";
+            break;
+    }
+
+    // ================================
+    // MACROS
+    // Protein 30%
+    // Carbs 40%
+    // Fat 30%
+    // ================================
+
+    const protein =
+        Math.round((goalCalories * 0.30) / 4);
+
+    const carbs =
+        Math.round((goalCalories * 0.40) / 4);
+
+    const fats =
+        Math.round((goalCalories * 0.30) / 9);
+
+    // ================================
+    // SHOW RESULT SECTION
+    // ================================
+
+    document
+        .getElementById("resultSection")
+        .classList.remove("d-none");
+
+    // Count animation
+
+    animateValue(
+        "calorieTarget",
+        0,
+        Math.round(goalCalories),
+        1500
+    );
+
+    animateValue(
+        "bmrResult",
+        0,
+        Math.round(bmr),
+        1200
+    );
+
+    animateValue(
+        "tdeeResult",
+        0,
+        Math.round(tdee),
+        1200
+    );
+
+    animateValue(
+        "goalCalories",
+        0,
+        Math.round(goalCalories),
+        1200
+    );
+
+    document.getElementById(
+        "proteinResult"
+    ).innerText = protein + " g";
+
+    document.getElementById(
+        "carbsResult"
+    ).innerText = carbs + " g";
+
+    document.getElementById(
+        "fatsResult"
+    ).innerText = fats + " g";
+
+    document.getElementById(
+        "goalResult"
+    ).innerText = goalText;
+
+    document.getElementById(
+        "activityResult"
+    ).innerText =
+        document.getElementById("activity")
+        .options[
+            document.getElementById("activity")
+            .selectedIndex
+        ].text;
+
+    // AI Insight
+
+    document.getElementById(
+        "aiInsight"
+    ).innerText =
+        generateAIInsight(
+            goalText,
+            Math.round(tdee),
+            Math.round(goalCalories),
+            protein
+        );
+
+    // Charts
+
+    createMacroChart(
+        protein,
+        carbs,
+        fats
+    );
+
+    createCalorieChart(
+        Math.round(bmr),
+        Math.round(tdee),
+        Math.round(goalCalories)
+    );
+
+    // Save latest result
+
+    saveResult({
+        bmr: Math.round(bmr),
+        tdee: Math.round(tdee),
+        goalCalories: Math.round(goalCalories),
+        protein,
+        carbs,
+        fats,
+        goalText
+    });
+
+    // Smooth scroll
+
+    document
+        .getElementById("resultSection")
+        .scrollIntoView({
+            behavior: "smooth"
+        });
+}
+
+// ================================
+// AI INSIGHT
+// ================================
+
+function generateAIInsight(
+    goal,
+    tdee,
+    goalCalories,
+    protein
+) {
+
+    return `Your estimated maintenance calories are ${tdee} kcal/day. For ${goal.toLowerCase()}, consume around ${goalCalories} kcal daily while aiming for approximately ${protein}g protein. Focus on strength training, hydration, quality sleep, and nutrient-dense foods for the best results.`;
+}
+
+// ================================
+// COUNT ANIMATION
+// ================================
+
+function animateValue(
+    id,
+    start,
+    end,
+    duration
+) {
+
+    let range = end - start;
+    let current = start;
+    let increment =
+        end > start ? 1 : -1;
+
+    let stepTime =
+        Math.abs(
+            Math.floor(duration / range)
+        );
+
+    let obj =
+        document.getElementById(id);
+
+    let timer = setInterval(() => {
+
+        current += increment;
+
+        obj.innerText =
+            current.toLocaleString();
+
+        if (current === end) {
+            clearInterval(timer);
+        }
+
+    }, stepTime);
+}
+
+// ================================
+// MACRO CHART
+// ================================
+
+function createMacroChart(
+    protein,
+    carbs,
+    fats
+) {
+
+    const ctx =
+        document
+        .getElementById("macroChart")
+        .getContext("2d");
+
+    if (macroChart) {
+        macroChart.destroy();
+    }
+
+    macroChart = new Chart(ctx, {
+
+        type: "doughnut",
+
+        data: {
+            labels: [
+                "Protein",
+                "Carbs",
+                "Fats"
+            ],
+            datasets: [{
+                data: [
+                    protein,
+                    carbs,
+                    fats
+                ],
+                backgroundColor: [
+                    "#cedaf2",
+                    "#7393d2",
+                    "#92aee6"
+                ]
+            }]
+        },
+
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    labels: {
+                        color: "#ffffff"
+                    }
+                }
+            }
+        }
+    });
+}
+
+// ================================
+// CALORIE CHART
+// ================================
+
+function createCalorieChart(
+    bmr,
+    tdee,
+    goalCalories
+) {
+
+    const ctx =
+        document
+        .getElementById("calorieChart")
+        .getContext("2d");
+
+    if (calorieChart) {
+        calorieChart.destroy();
+    }
+
+    calorieChart = new Chart(ctx, {
+
+        type: "bar",
+
+        data: {
+            labels: [
+                "BMR",
+                "TDEE",
+                "Goal"
+            ],
+
+            datasets: [{
+                label: "Calories",
+                data: [
+                    bmr,
+                    tdee,
+                    goalCalories
+                ],
+                backgroundColor: [
+                    "#cedaf2",
+                    "#92aee6",
+                    "#7393d2"
+
+                    
+                ]
+            }]
+        },
+
+        options: {
+            responsive: true,
+
+            plugins: {
+                legend: {
+                    labels: {
+                        color: "#fff"
+                    }
+                }
+            },
+
+            scales: {
+                y: {
+                    ticks: {
+                        color: "#fff"
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: "#fff"
+                    }
+                }
+            }
+        }
+    });
+}
+
+// ================================
+// PDF DOWNLOAD
+// ================================
+
+document
+    .getElementById("pdfBtn")
+    .addEventListener("click", () => {
+
+        const { jsPDF } = window.jspdf;
+
+        const doc = new jsPDF();
+
+        doc.setFontSize(20);
+        doc.text(
+            "AI FITNESS TDEE REPORT",
+            20,
+            20
+        );
+
+        doc.setFontSize(12);
+
+        doc.text(
+            `Date: ${new Date().toLocaleDateString()}`,
+            20,
+            35
+        );
+
+        doc.text(
+            `BMR: ${document.getElementById("bmrResult").innerText}`,
+            20,
+            50
+        );
+
+        doc.text(
+            `TDEE: ${document.getElementById("tdeeResult").innerText}`,
+            20,
+            60
+        );
+
+        doc.text(
+            `Goal Calories: ${document.getElementById("goalCalories").innerText}`,
+            20,
+            70
+        );
+
+        doc.text(
+            `Protein: ${document.getElementById("proteinResult").innerText}`,
+            20,
+            90
+        );
+
+        doc.text(
+            `Carbs: ${document.getElementById("carbsResult").innerText}`,
+            20,
+            100
+        );
+
+        doc.text(
+            `Fats: ${document.getElementById("fatsResult").innerText}`,
+            20,
+            110
+        );
+
+        doc.text(
+            "AI Recommendation:",
+            20,
+            130
+        );
+
+        doc.text(
+            document
+            .getElementById("aiInsight")
+            .innerText,
+            20,
+            140,
+            { maxWidth: 170 }
+        );
+
+        doc.save("TDEE-Report.pdf");
+    });
+// ================================
+// THEME TOGGLE
+// ================================
+
+document
+    .getElementById("themeToggle")
+    .addEventListener("click", () => {
+
+        document.body.classList.toggle(
+            "light-mode"
+        );
+    });
+
+
+</script>
+    <!-- Chart JS -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+   
+
+</body>
+</html>
+```
