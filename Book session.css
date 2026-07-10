@@ -227,6 +227,7 @@ nav{
   align-items: center;
   justify-content: space-between;
   padding: 26px 24px 6px;
+  margin-top: 6%;
 }
 
 .back-link {
@@ -269,6 +270,7 @@ nav{
   display: flex;
   flex-direction: column;
   gap: 22px;
+  
 }
 
 /* ── TRAINER SUMMARY ─────────────────────────────────────────── */

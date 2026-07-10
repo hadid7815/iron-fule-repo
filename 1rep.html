@@ -7,7 +7,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>1-Rep Max Calculator</title>
     <link href="1rep.css" rel="stylesheet" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
@@ -153,6 +153,73 @@
         </div>
     </main>
     
+    
+  <!-- ============ FOOTER ============ -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="footer-logo">
+          <div class="footer-logo-icon">FF</div>
+          <span class="footer-logo-text">FitFuel</span>
+        </a>
+        <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
+        <div class="footer-socials">
+          <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5>Shop</h5>
+        <ul class="footer-links">
+          <li><a href="store.html">All Products</a></li>
+          <li><a href="store.html">Protein</a></li>
+          <li><a href="store.html">Pre-Workout</a></li>
+          <li><a href="store.html">Vitamins</a></li>
+          <li><a href="store.html">Accessories</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Info</h5>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Shipping Policy</a></li>
+          <li><a href="#">Return Policy</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Support</h5>
+        <ul class="footer-links">
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Track Order</a></li>
+          <li><a href="#">Size Guide</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-newsletter-col">
+        <h5>Newsletter</h5>
+        <p>Get tips, updates &amp; offers straight to your inbox.</p>
+        <div class="footer-email-form">
+          <input type="email" id="footerEmail" placeholder="Enter your email">
+          <button onclick="footerSubscribe()">Subscribe</button>
+        </div>
+      </div>
+    </div>
+
+    <hr class="footer-divider">
+
+    <div class="footer-bottom">
+      <p>© 2024 FitFuel. All rights reserved.</p>
+    </div>
+  </footer>
+
     <script>
 
         document.addEventListener("DOMContentLoaded", function () {
@@ -288,12 +355,34 @@ ${analysis}
             doc.save("1RM-Strength-Report.pdf");
         }
 
-        const menu = document.querySelector(".menu-toggle");
-        const navLinks = document.querySelector(".nav-links");
+        
+    /* ── NAVBAR SCROLL SHADOW ───────────────────────────────────── */
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 10);
+    });
+    // navbar responsive
+    const menu = document.querySelector(".menu-toggle");
+    const navLinks = document.querySelector(".nav-links");
+    const icon = menu.querySelector("i");
 
-        menu.onclick = () => {
-            navLinks.classList.toggle("active");
-        };
+    menu.onclick = function () {
+      navLinks.classList.toggle("active");
+      icon.classList.toggle("fa-bars");
+      icon.classList.toggle("fa-xmark");
+    };
+
+
+    /* ── TOAST ──────────────────────────────────────────────────── */
+    let toastTimer;
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').innerHTML = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
     </script>
 
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
