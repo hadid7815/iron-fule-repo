@@ -15,48 +15,53 @@
 </head>
 
 <body>
-<header>
+
+  <header>
     <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
 
     <nav>
-        <div class="logo">
-            Fit<span>Fuel</span>
-        </div>
+      <div class="logo">
+        Fit<span>Fuel</span>
+      </div>
 
-        <!-- Hamburger -->
-        <div class="menu-toggle">
-            <i class="fa-solid fa-bars"></i>
-        </div>
+      <!-- Hamburger -->
+      <div class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
 
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="all calculator.html">Calculators</a></li>
-            <li><a href="Training.html">Training</a></li>
-            <li><a href="diet-generator.html">Nutrition</a></li>
-            <li><a href="store.html">Store</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="community.html">Community</a></li>
-        </ul>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="all calculator.html">Calculators</a></li>
+        <li><a href="Training.html">Training</a></li>
+        <li><a href="diet-generator.html">Nutrition</a></li>
+        <li><a href="store.html">Store</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="community.html">Community</a></li>
+      </ul>
 
-        <div class="right-nav"> 
-            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
-            <a href="#"><i class="fa-regular fa-user"></i></a>
-        </div>
+      <div class="right-nav">
+        <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+        <a href="#"><i class="fa-regular fa-user"></i></a>
+      </div>
     </nav>
-</header>
+  </header>
+  <!-- ══════════════════════════ TOAST ══════════════════════════ -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">Done!</span>
+  </div>
 
 <main>
     <!-- Hero -->
-    <section class="hero-section">
+    <section class="hero-section" data-aos="fade-up">
         <div class="container1 text-center">
 
-           
-            <h1 class="hero-title" style="font-size:80px;">
+           <h1 class="hero-title" style="font-size:80px;" data-aos="zoom-in" data-aos-delay="200">
                Calculate
                <span style="color: #9ffcf7;">Your Macro</span>
             </h1>
 
-            <p class="hero-subtitle">
+            <p class="hero-subtitle"data-aos="fade-up"data-aos-delay="400">
                Macro calculator estimates your daily intake of protein, carbohydrates, and fats based on your calories, body stats, and fitness goals.
             </p>
 
@@ -70,7 +75,7 @@
 
 
 <!-- INPUT SECTION -->
-<div class="card">
+<div class="card reveal">
     <h1 style="color: var(--text);">Calculate Macro</h1>
 <div class="grid">
 
@@ -109,7 +114,7 @@
 
     <!-- AI SUMMARY -->
     <!-- RESULTS -->
-<div class="card2 result-card">
+<div class="card2 result-card reveal">
 
     <h3 class="title">📊 AI Fitness Intelligence Dashboard</h3>
 
@@ -165,83 +170,7 @@
 </div>
 
 </main>
-
-    <footer id="footer">
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="#" class="footer-logo">
-        <div class="footer-logo-icon">FF</div>
-        <span class="footer-logo-text">FitFuel</span>
-      </a>
-      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
-      <div class="footer-socials">
-        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
-      </div>
-    </div>
- 
-    <div class="footer-col">
-      <h5>Shop</h5>
-      <ul class="footer-links">
-        <li><a href="store.html">All Products</a></li>
-        <li><a href="store.html">Protein</a></li>
-        <li><a href="store.html">Pre-Workout</a></li>
-        <li><a href="store.html">Vitamins</a></li>
-        <li><a href="store.html">Accessories</a></li>
-      </ul>
-    </div>
- 
-    <div class="footer-col">
-      <h5>Info</h5>
-      <ul class="footer-links">
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Shipping Policy</a></li>
-        <li><a href="#">Return Policy</a></li>
-        <li><a href="#">Terms &amp; Conditions</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-      </ul>
-    </div>
- 
-    <div class="footer-col">
-      <h5>Support</h5>
-      <ul class="footer-links">
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Track Order</a></li>
-        <li><a href="#">Size Guide</a></li>
-      </ul>
-    </div>
- 
-    <div class="footer-newsletter-col">
-      <h5>Newsletter</h5>
-      <p>Get tips, updates &amp; offers straight to your inbox.</p>
-      <div class="footer-email-form">
-        <input type="email" id="footerEmail" placeholder="Enter your email">
-        <button onclick="footerSubscribe()">Subscribe</button>
-      </div>
-    </div>
-  </div>
- 
-  <hr class="footer-divider">
- 
-  <div class="footer-bottom">
-    <p>© 2024 FitFuel. All rights reserved.</p>
-  </div>
-</footer>
-
 <script>
-               // navbar responsive
-const menu = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
-const icon = menu.querySelector("i");
-
-menu.onclick = function () {
-    navLinks.classList.toggle("active");
-    icon.classList.toggle("fa-bars");
-    icon.classList.toggle("fa-xmark");
-};
     document.addEventListener("DOMContentLoaded", function () {
 
             // create close button
@@ -393,7 +322,28 @@ function downloadPDF(){
     doc.save("MacroFit-Pro-Report.pdf");
 }
 
+const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
 
+menu.onclick = () => {
+    navLinks.classList.toggle("active");
+}; 
+/*==============================
+  SCROLL REVEAL
+==============================*/
+
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+},{
+    threshold:0.25
+});
+document.querySelectorAll(".reveal").forEach(item=>{
+    observer.observe(item);
+});
 </script>
 
 </body>

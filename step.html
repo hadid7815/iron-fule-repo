@@ -12,51 +12,58 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 
 <body>
-<header>
+  
+  <header>
     <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
 
     <nav>
-        <div class="logo">
-            Fit<span>Fuel</span>
-        </div>
+      <div class="logo">
+        Fit<span>Fuel</span>
+      </div>
 
-        <!-- Hamburger -->
-        <div class="menu-toggle">
-            <i class="fa-solid fa-bars"></i>
-        </div>
+      <!-- Hamburger -->
+      <div class="menu-toggle">
+        <i class="fa-solid fa-bars"></i>
+      </div>
 
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="all calculator.html">Calculators</a></li>
-            <li><a href="Training.html">Training</a></li>
-            <li><a href="diet-generator.html">Nutrition</a></li>
-            <li><a href="store.html">Store</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="community.html">Community</a></li>
-        </ul>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="all calculator.html">Calculators</a></li>
+        <li><a href="Training.html">Training</a></li>
+        <li><a href="diet-generator.html">Nutrition</a></li>
+        <li><a href="store.html">Store</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="community.html">Community</a></li>
+      </ul>
 
-        <div class="right-nav"> 
-            <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
-            <a href="#"><i class="fa-regular fa-user"></i></a>
-        </div>
+      <div class="right-nav">
+        <a href="cart.html"><i class="fa-brands fa-opencart"></i></a>
+        <a href="#"><i class="fa-regular fa-user"></i></a>
+      </div>
     </nav>
-</header>
+  </header>
+  <!-- ══════════════════════════ TOAST ══════════════════════════ -->
+  <div class="toast" id="toast">
+    <i class="fa-solid fa-circle-check"></i>
+    <span id="toastMsg">Done!</span>
+  </div>
 
   <main>
   <!-- Hero -->
-  <section class="hero-section">
+  <section class="hero-section" data-aos="fade-up">
     <div class="container text-center">
 
 
-      <h1 class="hero-title" style="font-size:80px;">
+      <h1 class="hero-title" style="font-size:80px;" data-aos="zoom-in" data-aos-delay="200">
         Calculate
         <span style="color: #9ffcf7;">Your Total Step</span>
       </h1>
 
-      <p class="hero-subtitle">
+      <p class="hero-subtitle"data-aos="fade-up"data-aos-delay="400">
         Step Calculator app that converts user fitness data into personalized daily step goals, calories, and walking
         time with a premium report.
       </p>
@@ -64,11 +71,11 @@
     </div>
   </section>
 
-  <div class="container">
-    <div class="card">
+  <div class="container" data-aos="zoom-in-up" data-aos-delay="200">
+    <div class="card" data-aos="fade-up">
       <h1>Calculate Step</h1>
 
-      <div class="form-grid">
+      <div class="form-grid"data-aos="fade-up"data-aos-delay="300">
         <input type="number" id="age" placeholder="Age">
         <input type="number" id="weight" placeholder="Weight (kg)">
         <input type="number" id="height" placeholder="Height (cm)">
@@ -91,9 +98,9 @@
         </select>
       </div>
 
-      <button onclick="calculateSteps()">Calculate Steps</button>
+      <button onclick="calculateSteps()"data-aos="zoom-in"data-aos-delay="500">Calculate Steps</button>
 
-      <div class="result" id="result">
+      <div class="result"id="result"data-aos="fade-up"data-aos-duration="1200">
 
         <div class="result-header">
           <div class="badge">Step REPORT</div>
@@ -105,7 +112,7 @@
           <div class="big" id="steps">0 Steps</div>
         </div>
 
-        <div class="grid">
+        <div class="grid"data-aos="fade-up"data-aos-delay="300">
           <div class="card-box">
             <div class="label">Calories</div>
             <div class="value" id="calories">0 kcal</div>
@@ -123,7 +130,7 @@
           <div class="bar" id="bar"></div>
         </div>
 
-        <button class="pdf-btn" onclick="downloadPDF()">Download PDF Report</button>
+        <button class="pdf-btn"onclick="downloadPDF()"data-aos="zoom-in"data-aos-delay="700">Download PDF Report</button>
 
       </div>
 
@@ -131,83 +138,7 @@
   </div>
 
   </main>
-  
-      <footer id="footer">
-  <div class="footer-top">
-    <div class="footer-brand">
-      <a href="#" class="footer-logo">
-        <div class="footer-logo-icon">FF</div>
-        <span class="footer-logo-text">FitFuel</span>
-      </a>
-      <p>Your all-in-one fitness &amp; nutrition partner. Smarter tools, better results.</p>
-      <div class="footer-socials">
-        <a class="social-btn" href="#" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-        <a class="social-btn" href="#" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
-        <a class="social-btn" href="#" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-        <a class="social-btn" href="#" title="Twitter/X"><i class="fa-brands fa-x-twitter"></i></a>
-      </div>
-    </div>
- 
-    <div class="footer-col">
-      <h5>Shop</h5>
-      <ul class="footer-links">
-        <li><a href="store.html">All Products</a></li>
-        <li><a href="store.html">Protein</a></li>
-        <li><a href="store.html">Pre-Workout</a></li>
-        <li><a href="store.html">Vitamins</a></li>
-        <li><a href="store.html">Accessories</a></li>
-      </ul>
-    </div>
- 
-    <div class="footer-col">
-      <h5>Info</h5>
-      <ul class="footer-links">
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">Shipping Policy</a></li>
-        <li><a href="#">Return Policy</a></li>
-        <li><a href="#">Terms &amp; Conditions</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-      </ul>
-    </div>
- 
-    <div class="footer-col">
-      <h5>Support</h5>
-      <ul class="footer-links">
-        <li><a href="#">Contact Us</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Track Order</a></li>
-        <li><a href="#">Size Guide</a></li>
-      </ul>
-    </div>
- 
-    <div class="footer-newsletter-col">
-      <h5>Newsletter</h5>
-      <p>Get tips, updates &amp; offers straight to your inbox.</p>
-      <div class="footer-email-form">
-        <input type="email" id="footerEmail" placeholder="Enter your email">
-        <button onclick="footerSubscribe()">Subscribe</button>
-      </div>
-    </div>
-  </div>
- 
-  <hr class="footer-divider">
- 
-  <div class="footer-bottom">
-    <p>© 2024 FitFuel. All rights reserved.</p>
-  </div>
-</footer>
   <script>
-               // navbar responsive
-const menu = document.querySelector(".menu-toggle");
-const navLinks = document.querySelector(".nav-links");
-const icon = menu.querySelector("i");
-
-menu.onclick = function () {
-    navLinks.classList.toggle("active");
-    icon.classList.toggle("fa-bars");
-    icon.classList.toggle("fa-xmark");
-};
-
       document.addEventListener("DOMContentLoaded", function () {
 
             // create close button
@@ -291,6 +222,8 @@ menu.onclick = function () {
         document.getElementById("bar").style.width = percent + "%";
 
         document.getElementById("result").style.display = "block";
+        
+        AOS.refresh();
 
         lastData = { age, weight, height, steps, calories, time, msg };
 
@@ -318,8 +251,24 @@ menu.onclick = function () {
 
       doc.save("step-report.pdf");
     }
+    const menu = document.querySelector(".menu-toggle");
+const navLinks = document.querySelector(".nav-links");
 
+menu.onclick = () => {
+    navLinks.classList.toggle("active");
+};
   </script>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+    duration:1000,
+    easing:"ease-in-out",
+    once:true,
+    offset:100
+});
+</script>
 
 </body>
 

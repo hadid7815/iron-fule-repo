@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Membership Calculator & Slip</title>
+    <!-- ✅ EXACT SCRIPT LINK FIXED FOR AUTO PDF DOWNLOAD -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        body {
+            background: #000;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .calc-container {
+            background: #111;
+            color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            border: 2px solid #ffcc00;
+        }
+
+        h2 {
+            color: #ffcc00;
+            margin-bottom: 20px;
+        }
+
+        select,
+        input {
+            width: 90%;
+            padding: 12px;
+            margin: 10px 0;
+            background: #222;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 6px;
+            font-size: 15px;
+            box-sizing: border-box;
+        }
+
+        select:focus,
+        input:focus {
+            border-color: #ffcc00;
+            outline: none;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-left: 15px;
+            color: #888;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .price-box {
+            background: #222;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border-left: 5px solid #ffcc00;
+            text-align: left;
+        }
+
+        .price-line {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            font-size: 16px;
+        }
+
+        .final-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #ffcc00;
+            border-top: 1px dashed #444;
+            padding-top: 8px;
+        }
+
+        #couponMessage {
+            font-size: 13px;
+            text-align: left;
+            margin-left: 15px;
+            font-weight: bold;
+        }
+
+        .download-btn {
+            background: #ffcc00;
+            color: #000;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 90%;
+            margin-top: 15px;
+            transition: 0.2s;
+            text-transform: uppercase;
+        }
+
+        .download-btn:hover {
+            background: #e6b800;
+        }
+
+        /* Hidden Slip Styling ਜੋ PDF mein convert hogi */
+        #hiddenSlip {
+            background: #ffffff;
+            color: #000;
+            padding: 30px;
+            font-family: 'Courier New', Courier, monospace;
+            width: 350px;
+            border: 1px solid #000;
+            text-align: left;
+            box-sizing: border-box;
+
+        }
+
+        .slip-header {
+            text-align: center;
+            font-weight: bold;
+            font-size: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px dashed #000;
+            padding-bottom: 10px;
+        }
+
+        .slip-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 8px 0;
+            font-size: 14px;
+        }
+
+        .slip-footer {
+            text-align: center;
+            margin-top: 20px;
+            border-top: 2px dashed #000;
+            padding-top: 10px;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="calc-container">
+        <h2>Fee Calculator 💰</h2>
+        <p style="color: #aaa; margin-top: -10px;">Apna plan select karein aur live fee dekhein</p>
+
+        <label>Member Name:</label>
+        <input type="text" id="userName" placeholder="Apna Naam likhein">
+
+        <label>Phone Number:</label>
+        <input type="tel" id="userPhone" placeholder="03xxxxxxxxx">
+
+        <label>Select Package:</label>
+        <select id="packageSelect" onchange="calculateFee()">
+            <option value="2000">Monthly Plan - Rs. 2,000</option>
+            <option value="5000">3 Months Plan - Rs. 5,000</option>
+            <option value="9000">6 Months Plan - Rs. 9,000</option>
+        </select>
+
+        <label>Add Coupon Code (Try: GYMNEW20):</label>
+        <input type="text" id="couponInput" placeholder="Enter Coupon Code" oninput="calculateFee()">
+        <div id="couponMessage"></div>
+
+        <div class="price-box">
+            <div class="price-line">
+                <span>Original Price:</span>
+                <span>Rs. <span id="originalPrice">2000</span></span>
+            </div>
+            <div class="price-line" style="color: #ff3333;">
+                <span>Discount:</span>
+                <span>- Rs. <span id="discountAmount">0</span></span>
+            </div>
+            <div class="price-line final-price">
+                <span>Total Payable:</span>
+                <span>Rs. <span id="finalPrice">2000</span></span>
+            </div>
+        </div>
+
+        <button class="download-btn" onclick="generatePDF()">Download Slip 📄</button>
+    </div>
+
+    <!-- Hidden Slip Area for PDF Export -->
+    <div id="hiddenSlip">
+        <div class="slip-header">
+            POWER GYM CLUB<br>
+            <span style="font-size: 12px; font-weight: normal;">Membership Invoice Slip</span>
+        </div>
+        <div class="slip-row"><strong>Invoice No:</strong> <span id="slipInvoice"></span></div>
+        <div class="slip-row"><strong>Date:</strong> <span id="slipDate"></span></div>
+        <hr style="border: none; border-top: 1px dashed #000;">
+        <div class="slip-row"><strong>Member Name:</strong> <span id="slipMemberName">-</span></div>
+        <div class="slip-row"><strong>Phone:</strong> <span id="slipMemberPhone">-</span></div>
+        <div class="slip-row"><strong>Plan Type:</strong> <span id="slipPlan">Monthly Plan</span></div>
+        <hr style="border: none; border-top: 1px dashed #000;">
+        <div class="slip-row"><span>Original Fee:</span> <span>Rs. <span id="slipOriginal">2000</span></span></div>
+        <div class="slip-row"><span>Discount:</span> <span>-Rs. <span id="slipDiscount">0</span></span></div>
+        <hr style="border: none; border-top: 1px dashed #000;">
+        <div class="slip-row" style="font-size: 18px; font-weight: bold;"><span>Total Paid:</span> <span>Rs. <span
+                    id="slipTotal">2000</span></span></div>
+        <div class="slip-footer">
+            Thank you for joining our Gym!<br>
+            Bring this slip on your first day.
+        </div>
+    </div>
+
+    <script>
+        function calculateFee() {
+            const basePrice = parseFloat(document.getElementById('packageSelect').value);
+            const couponCode = document.getElementById('couponInput').value.trim().toUpperCase();
+            const msgCode = document.getElementById('couponMessage');
+
+            let discount = 0;
+
+            if (couponCode === "GYMNEW20") {
+                discount = basePrice * 0.20;
+                msgCode.innerText = "Coupon Applied! 20% Off Saved.";
+                msgCode.style.color = "#00ff00";
+            } else if (couponCode === "") {
+                msgCode.innerText = "";
+            } else {
+                msgCode.innerText = "Invalid Coupon Code";
+                msgCode.style.color = "#ff3333";
+            }
+
+            const totalPayable = basePrice - discount;
+
+            document.getElementById('originalPrice').innerText = basePrice;
+            document.getElementById('discountAmount').innerText = discount;
+            document.getElementById('finalPrice').innerText = totalPayable;
+        }
+        function generatePDF() {
+
+            const nameInput = document.getElementById('userName').value.trim();
+            const phoneInput = document.getElementById('userPhone').value.trim();
+
+            if (nameInput === "" || phoneInput === "") {
+                alert("Meherbani karke Naam aur Phone enter karein!");
+                return;
+            }
+
+            document.getElementById('slipDate').innerText = new Date().toLocaleDateString();
+            document.getElementById('slipInvoice').innerText =
+                "PG-" + Math.floor(100000 + Math.random() * 900000);
+
+            document.getElementById('slipMemberName').innerText = nameInput;
+            document.getElementById('slipMemberPhone').innerText = phoneInput;
+
+            const selectBox = document.getElementById('packageSelect');
+            const selectedPlanText = selectBox.options[selectBox.selectedIndex].text.split(' - ')[0];
+            document.getElementById('slipPlan').innerText = selectedPlanText;
+
+            document.getElementById('slipOriginal').innerText = document.getElementById('originalPrice').innerText;
+            document.getElementById('slipDiscount').innerText = document.getElementById('discountAmount').innerText;
+            document.getElementById('slipTotal').innerText = document.getElementById('finalPrice').innerText;
+
+            const element = document.getElementById('hiddenSlip');
+
+            const opt = {
+                margin: 10,
+                filename: 'Gym_Membership_' + nameInput.replace(/\s+/g, '_') + '.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { format: 'a5', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
+
+</body>
+
+</html>
