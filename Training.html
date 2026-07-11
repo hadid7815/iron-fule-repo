@@ -7,6 +7,7 @@
   <title>FitFuel Training</title>
   <link rel="stylesheet" href="training.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+ <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
 </head>
 
 <body>
@@ -14,7 +15,7 @@
   <header>
     <!-- ══════════════════════════ NAVBAR ══════════════════════════ -->
 
-    <nav>
+    <nav >
       <div class="logo">
         Fit<span>Fuel</span>
       </div>
@@ -44,8 +45,8 @@
   <main>
 
     <!-- ══════════ HERO ══════════ -->
-    <section class="hero">
-      <div class="hero__left">
+    <section class="hero" data-aos="fade-up">
+      <div class="hero__left" data-aos="fade-right">
         <h1 class="hero__heading">
           Train Smarter.
           <span class="hero__heading-accent">Get Stronger.</span>
@@ -89,7 +90,7 @@
         </div>
       </div>
 
-      <div class="hero__right">
+      <div class="hero__right" data-aos="fade-left">
         <img class="hero__image" src="image/herosection store1.png" alt="Fit athletes training"
           onerror="this.src='https://placehold.co/460x360/dbeafe/0ea5e9?text=Train+Smarter'">
       </div>
@@ -97,7 +98,7 @@
 
 
     <!-- ══════════ PROGRAMS ══════════ -->
-    <section class="programs">
+    <section class="programs" data-aos="fade-up">
       <p class="eyebrow">Programs for Every Goal</p>
       <h2 class="section-title">Find Your Perfect Program</h2>
 
@@ -149,7 +150,7 @@
 
 
     <!-- ══════════ WORKOUT PLANS ══════════ -->
-    <section class="plans" id="plans">
+    <section class="plans" id="plans" data-aos="fade-up">
       <div class="plans__header">
         <h2 class="plans__heading">Workout Plans for You</h2>
         <div class="plans__gender-tabs">
@@ -171,10 +172,10 @@
 
 
     <!-- ══════════ THREE COLUMN ══════════ -->
-    <section class="three-col">
+    <section class="three-col" data-aos="fade-up">
 
       <!-- Personal Training -->
-      <div class="pt-col">
+      <div class="pt-col" data-aos="fade-right">
         <h2 class="pt__heading">Personal Training</h2>
         <p class="pt__desc">Get 1-on-1 coaching tailored to your goals, lifestyle, and schedule.</p>
         <ul class="pt__features">
@@ -189,7 +190,7 @@
       </div>
 
       <!-- How It Works -->
-      <div class="how-col">
+      <div class="how-col" data-aos="zoom-in">
         <h2 class="how__heading">How It Works</h2>
 
         <div class="how__step">
@@ -230,7 +231,7 @@
       </div>
 
       <!-- CTA Card -->
-      <div class="cta-card">
+      <div class="cta-card" data-aos="fade-left">
         <div>
           <h2 class="cta-card__heading">Start Your Transformation Today</h2>
           <p class="cta-card__desc">Join thousands who are becoming stronger, healthier, and more confident every day.
@@ -254,7 +255,7 @@
     </section>
 
 <!-- ================= Featured Trainers ================= -->
-    <section class="section trainers-section" id="trainers">
+    <section class="section trainers-section" id="trainers" data-aos="fade-up">
 
         <div class="section-header">
             <span class="section-label">EXPERT COACHES</span>
@@ -284,13 +285,13 @@
         <div class="trainers-grid">
 
             <!-- Strength -->
-            <div class="trainer-card" data-category="strength">
+            <div class="trainer-card" data-category="strength" data-aos="zoom-in" data-aos-delay="100">
           <div class="trainer-img" style="background:linear-gradient(135deg,#d4f7f3,#b2eeea)">
-            <img src="image/trainer 1 - Copy.jpg" alt="Marcus Reed"
+            <img src="image/strength.jpg" alt="Marcus Reed"
               onerror="window.__avatarFallback(this,'Marcus Reed','#0d9488')">
             <button class="trainer-save" aria-label="Save Marcus Reed" onclick="window.__toggleSave(this)"><i
                 class="fa-regular fa-heart"></i></button>
-            <div class="trainer-badge"><i class="fa-solid fa-star"></i> Top Rated</div>
+            <div class="trainer-badge" style="background:var(--accent-blue)"><i class="fa-solid fa-star"></i> Top Rated</div>
             <div class="trainer-avail avail-open"><span class="avail-dot"></span>Available Today</div>
           </div>
           <div class="trainer-body">
@@ -325,17 +326,17 @@
         </div>
 
             <!-- Nutrition -->
-<div class="trainer-card" data-category="nutrition">
+<div class="trainer-card" data-category="nutrition" data-aos="zoom-in" data-aos-delay="200">
           <div class="trainer-img" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8)">
 
-            <img src="image/trainer female1.1.jpg" alt="Victoria Hayes"
+            <img src="image/nutrition.jpg" alt="Victoria Hayes"
               onerror="window.__avatarFallback(this,'Victoria Hayes','#db2777')">
 
             <button class="trainer-save" aria-label="Save Victoria Hayes" onclick="window.__toggleSave(this)">
               <i class="fa-regular fa-heart"></i>
             </button>
 
-            <div class="trainer-badge" style="background:#db2777">
+            <div class="trainer-badge" style="background:var(--accent-blue)">
               <i class="fa-solid fa-leaf"></i> Premium Nutrition
             </div>
 
@@ -396,9 +397,9 @@
         </div>
 
             <!-- Cardio -->
-            <div class="trainer-card" data-category="cardio">
+           <div class="trainer-card" data-category="cardio" data-aos="zoom-in" data-aos-delay="300">
           <div class="trainer-img" style="background:linear-gradient(135deg,#ddeeff,#c0d8f8)">
-            <img src="image/trainer 1 - Copy.jpg" alt="HK" onerror="window.__avatarFallback(this,'HK','#2f6fed')">
+            <img src="image/cardio.jpg" alt="HK" onerror="window.__avatarFallback(this,'HK','#2f6fed')">
             <button class="trainer-save" aria-label="Save HK" onclick="window.__toggleSave(this)"><i
                 class="fa-regular fa-heart"></i></button>
             <div class="trainer-badge" style="background:var(--accent-blue)"><i class="fa-solid fa-heart-pulse"></i>
@@ -437,12 +438,12 @@
           </div>
         </div>
             <!-- Core -->
-            <div class="trainer-card" data-category="pilates">
+            <div class="trainer-card" data-category="pilates" data-aos="zoom-in" data-aos-delay="400">
           <div class="trainer-img" style="background:linear-gradient(135deg,#f3e8ff,#e0c8fb)">
-            <img src="image/trainer-liam.jpg" alt="Liam O'Connor">
+            <img src="image/core.jpg" alt="Liam O'Connor">
             <button class="trainer-save" aria-label="Save Liam O'Connor" onclick="window.__toggleSave(this)"><i
                 class="fa-regular fa-heart"></i></button>
-            <div class="trainer-badge" style="background:#7c3aed"><i class="fa-solid fa-spa"></i> Pilates</div>
+            <div class="trainer-badge" style="background:var(--accent-blue)"><i class="fa-solid fa-spa"></i> Pilates</div>
             <div class="trainer-avail avail-open"><span class="avail-dot"></span>Available Today</div>
           </div>
           <div class="trainer-body">
@@ -488,7 +489,7 @@
 
   </main>
 
-  <footer id="footer">
+<footer id="footer" data-aos="fade-up">
     <div class="footer-top">
       <div class="footer-brand">
         <a href="#" class="footer-logo">
@@ -787,6 +788,28 @@
 
   </script>
 
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+<script>
+AOS.init({
+    duration: 1000,
+    easing: "ease-in-out",
+    once: false,
+    mirror: true,
+    offset: 100
+});
+
+// Refresh AOS on scroll
+window.addEventListener("load", () => {
+    AOS.refresh();
+});
+
+window.addEventListener("resize", () => {
+    AOS.refresh();
+});
+</script>
+</script>
 </body>
 
 </html>

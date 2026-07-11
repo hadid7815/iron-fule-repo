@@ -355,10 +355,10 @@ nav {
 .section-label {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 700;
   letter-spacing: .14em;
-  color: var(--primary);
+  color: var(--primary-dark);
   background: var(--primary-light);
   padding: 6px 14px;
   border-radius: 25px;
@@ -461,7 +461,7 @@ nav {
 }
 
 .filter-btn.active {
-  color: #fff;
+  color: var(--primary-dark);
 }
 
 .filter-btn:focus-visible {
