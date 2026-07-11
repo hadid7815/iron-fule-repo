@@ -2,546 +2,1051 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="coach.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="coach.css">
 </head>
 
 <body>
-    <!-- ================= Featured Trainers ================= -->
-    <section class="section trainers-section" id="trainers">
 
-        <div class="section-header">
-            <span class="section-label">EXPERT COACHES</span>
 
-            <div class="section-title">
-                <h2>Meet Our Trainers</h2>
-                <p>Professional Coaches Ready To Transform Your Body</p>
-            </div>
-        </div>
+  <!-- ══════════ trainers section ══════════ -->
+  <section class="section trainers-section" id="trainers">
+    <div class="section-header">
+      <span class="section-label">EXPERT COACHES</span>
+      <div class="section-title">
+        <h2>Meet Our Trainers</h2>
+        <p>Choose the perfect fitness coach based on your goals.
+          Strength, Nutrition, Cardio and Core specialists are
+          ready to help you transform your body.
+        </p>
+      </div>
+    </div>
 
-        <!-- Stats -->
-        <div class="trust-strip">
-            <div class="trust-item">
-                <strong>16</strong> Coaches
-            </div>
-            <div class="trust-divider"></div>
-            <div class="trust-item">
-                <strong>4,755</strong> Clients Trained
-            </div>
-            <div class="trust-divider"></div>
-            <div class="trust-item">
-                <strong>4.9</strong> Average Rating
-            </div>
-        </div>
+    <div class="trust-strip">
+      <div class="trust-item"><strong>16</strong> coaches</div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><strong>4,755</strong> clients trained</div>
+      <div class="trust-divider"></div>
+      <div class="trust-item"><strong>4.9</strong> avg. rating</div>
+    </div>
 
-        <!-- Featured Trainers -->
-        <div class="trainers-grid">
-
-            <!-- Strength -->
-            <div class="trainer-card" data-category="strength">
-          <div class="trainer-img" style="background:linear-gradient(135deg,#d4f7f3,#b2eeea)">
-            <img src="image/trainer 1 - Copy.jpg" alt="Marcus Reed"
-              onerror="window.__avatarFallback(this,'Marcus Reed','#0d9488')">
-            <button class="trainer-save" aria-label="Save Marcus Reed" onclick="window.__toggleSave(this)"><i
-                class="fa-regular fa-heart"></i></button>
-            <div class="trainer-badge"><i class="fa-solid fa-star"></i> Top Rated</div>
-            <div class="trainer-avail avail-open"><span class="avail-dot"></span>Available Today</div>
-          </div>
-          <div class="trainer-body">
-            <div class="trainer-top">
-              <div>
-                <div class="trainer-name">Marcus Reed <i class="fa-solid fa-circle-check verified"
-                    title="Verified trainer"></i></div>
-                <div class="trainer-role">Strength Hypertrophy Coach</div>
-              </div>
-              <div class="trainer-price">$85<span>/session</span></div>
-            </div>
-            <div class="trainer-tags">
-              <span class="tag">Powerlifting</span>
-              <span class="tag">Hypertrophy</span>
-              <span class="tag">CSCS</span>
-            </div>
-            <div class="trainer-bio">15 years transforming physiques. CSCS certified, former competitive powerlifter
-              with 200+ success stories.</div>
-            <div class="trainer-stats">
-              <div class="trainer-stat"><strong>847</strong>clients</div>
-              <div class="trainer-stat"><strong>15yr</strong>experience</div>
-              <div class="trainer-stat"><strong>4.9 <i class="fa-solid fa-star"
-                    style="font-size:10px;color:#F59E0B"></i></strong>rating</div>
-            </div>
-            <div class="trainer-actions">
-              <a class="btn-book" href="Book session.html?trainer=marcus">Book Session</a>
-              <a class="trainer-social" href="messeges.html?trainer=marcus" aria-label="Message"><i
-                  class="fa-regular fa-message"></i></a>
-              <a class="trainer-social" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-
-            <!-- Nutrition -->
-<div class="trainer-card" data-category="nutrition">
-          <div class="trainer-img" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8)">
-
-            <img src="image/trainer female1.1.jpg" alt="Victoria Hayes"
-              onerror="window.__avatarFallback(this,'Victoria Hayes','#db2777')">
-
-            <button class="trainer-save" aria-label="Save Victoria Hayes" onclick="window.__toggleSave(this)">
-              <i class="fa-regular fa-heart"></i>
-            </button>
-
-            <div class="trainer-badge" style="background:#db2777">
-              <i class="fa-solid fa-leaf"></i> Premium Nutrition
-            </div>
-
-            <div class="trainer-avail avail-open">
-              <span class="avail-dot"></span>Available Today
-            </div>
-          </div>
-
-          <div class="trainer-body">
-
-            <div class="trainer-top">
-              <div>
-                <div class="trainer-name">
-                  Victoria Hayes
-                  <i class="fa-solid fa-circle-check verified"></i>
-                </div>
-
-                <div class="trainer-role">
-                  Certified Sports Nutritionist
-                </div>
-              </div>
-              <div class="trainer-price">
-                $78<span>/session</span>
-              </div>
-            </div>
-            <div class="trainer-tags">
-              <span class="tag">Sports Nutrition</span>
-              <span class="tag">Muscle Gain</span>
-              <span class="tag">Weight Loss</span>
-            </div>
-            <div class="trainer-bio">
-              Certified sports nutritionist with 9+ years of experience creating personalized meal plans for fat loss,
-              muscle building and peak athletic performance.
-            </div>
-            <div class="trainer-stats">
-              <div class="trainer-stat">
-                <strong>940</strong>Clients
-              </div>
-              <div class="trainer-stat">
-                <strong>9yr</strong>Experience
-              </div>
-              <div class="trainer-stat">
-                <strong>4.9 <i class="fa-solid fa-star" style="font-size:10px;color:#F59E0B"></i></strong>Rating
-              </div>
-            </div>
-            <div class="trainer-actions">
-              <a class="btn-book" href="Book session.html?trainer=victoria">
-                Book Session
-              </a>
-              <a class="trainer-social" href="messeges.html?trainer=victoria">
-                <i class="fa-regular fa-message"></i>
-              </a>
-              <a class="trainer-social" href="#">
-                <i class="fa-brands fa-instagram"></i>
-              </a>
-            </div>
-          </div>
-        </div>
-
-            <!-- Cardio -->
-            <div class="trainer-card" data-category="cardio">
-          <div class="trainer-img" style="background:linear-gradient(135deg,#ddeeff,#c0d8f8)">
-            <img src="image/trainer 1 - Copy.jpg" alt="HK" onerror="window.__avatarFallback(this,'HK','#2f6fed')">
-            <button class="trainer-save" aria-label="Save HK" onclick="window.__toggleSave(this)"><i
-                class="fa-regular fa-heart"></i></button>
-            <div class="trainer-badge" style="background:var(--accent-blue)"><i class="fa-solid fa-heart-pulse"></i>
-              Cardio</div>
-            <div class="trainer-avail avail-open"><span class="avail-dot"></span>Available Today</div>
-          </div>
-          <div class="trainer-body">
-            <div class="trainer-top">
-              <div>
-                <div class="trainer-name">HK <i class="fa-solid fa-circle-check verified" title="Verified trainer"></i>
-                </div>
-                <div class="trainer-role">Cardio HIIT Specialist</div>
-              </div>
-              <div class="trainer-price">$75<span>/session</span></div>
-            </div>
-            <div class="trainer-tags">
-              <span class="tag">HIIT</span>
-              <span class="tag">Marathon Prep</span>
-              <span class="tag">8-Week Shred</span>
-            </div>
-            <div class="trainer-bio">Ex-Olympic marathon runner turned elite trainer. Burns fat, builds stamina — his
-              8-week shred program is legendary.His personalized training sessions
-              combine high.</div>
-            <div class="trainer-stats">
-              <div class="trainer-stat"><strong>634</strong>clients</div>
-              <div class="trainer-stat"><strong>10yr</strong>experience</div>
-              <div class="trainer-stat"><strong>4.8 <i class="fa-solid fa-star"
-                    style="font-size:10px;color:#F59E0B"></i></strong>rating</div>
-            </div>
-            <div class="trainer-actions">
-              <a class="btn-book" href="Book session.html?trainer=hk">Book Session</a>
-              <a class="trainer-social" href="messeges.html?trainer=hk" aria-label="Message"><i
-                  class="fa-regular fa-message"></i></a>
-              <a class="trainer-social" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-            <!-- Core -->
-            <div class="trainer-card" data-category="pilates">
-          <div class="trainer-img" style="background:linear-gradient(135deg,#f3e8ff,#e0c8fb)">
-            <img src="image/trainer-liam.jpg" alt="Liam O'Connor">
-            <button class="trainer-save" aria-label="Save Liam O'Connor" onclick="window.__toggleSave(this)"><i
-                class="fa-regular fa-heart"></i></button>
-            <div class="trainer-badge" style="background:#7c3aed"><i class="fa-solid fa-spa"></i> Pilates</div>
-            <div class="trainer-avail avail-open"><span class="avail-dot"></span>Available Today</div>
-          </div>
-          <div class="trainer-body">
-            <div class="trainer-top">
-              <div>
-                <div class="trainer-name">Liam O'Connor <i class="fa-solid fa-circle-check verified"
-                    title="Verified trainer"></i></div>
-                <div class="trainer-role">Pilates Core Specialist</div>
-              </div>
-              <div class="trainer-price">$72<span>/session</span></div>
-            </div>
-            <div class="trainer-tags">
-              <span class="tag">Reformer Pilates</span>
-              <span class="tag">Core Stability</span>
-              <span class="tag">Posture</span>
-            </div>
-            <div class="trainer-bio">Reformer-certified Pilates master who's worked with dancers and post-natal clients.
-              Builds unshakeable core strength from the inside out.</div>
-            <div class="trainer-stats">
-              <div class="trainer-stat"><strong>455</strong>clients</div>
-              <div class="trainer-stat"><strong>11yr</strong>experience</div>
-              <div class="trainer-stat"><strong>4.9 <i class="fa-solid fa-star"
-                    style="font-size:10px;color:#F59E0B"></i></strong>rating</div>
-            </div>
-            <div class="trainer-actions">
-              <a class="btn-book" href="Book session.html?trainer=liam">Book Session</a>
-              <a class="trainer-social" href="messeges.html?trainer=liam" aria-label="Message"><i
-                  class="fa-regular fa-message"></i></a>
-              <a class="trainer-social" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-            </div>
-          </div>
-        </div>
-        <!-- View All Button -->
-        <div class="view-all-wrap">
-            <a href="trainers.html" class="view-all-btn">
-                View All Trainers
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-        </div>
-    </section>
-    <!-- ================= Trainers Hero ================= -->
-    <section class="trainers-hero">
-        <div class="container">
-            <span class="hero-label">
-                OUR PROFESSIONAL COACHES
-            </span>
-            <h1>
-                Meet Our Expert Trainers
-            </h1>
-            <p>
-                Choose the perfect fitness coach based on your goals.
-                Strength, Nutrition, Cardio and Core specialists are
-                ready to help you transform your body.
-            </p>
-        </div>
-    </section>
-    <!-- ================= Search ================= -->
-    <section class="trainer-search-section">
-        <div class="container">
-            <div class="trainer-search">
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <input type="text" id="trainerSearch" placeholder="Search trainer by name...">
-            </div>
-        </div>
-    </section>
     <!-- ================= Filter Buttons ================= -->
 
-    <section class="trainer-filter-section">
-        <div class="container">
-            <div class="trainer-filters">
-                <button class="filter-btn active" data-filter="all">
-                    All Trainers
-                </button>
-                <button class="filter-btn" data-filter="strength">
-                    Strength
-                </button>
-                <button class="filter-btn" data-filter="nutrition">
-                    Nutrition
-                </button>
-                <button class="filter-btn" data-filter="cardio">
-                    Cardio
-                </button>
-                <button class="filter-btn" data-filter="core">
-                    Core
-                </button>
-            </div>
+    <div class="trainer-filters-wrap">
+      <div class="trainer-filters" id="trainerFilters">
+        <div class="filter-pill-slider" id="filterSlider"></div>
+        <button class="filter-btn active" data-filter="all">
+          All Trainers
+        </button>
+        <button class="filter-btn" data-filter="strength">
+          Strength
+        </button>
+        <button class="filter-btn" data-filter="nutrition">
+          Nutrition
+        </button>
+        <button class="filter-btn" data-filter="cardio">
+          Cardio
+        </button>
+        <button class="filter-btn" data-filter="core">
+          Core
+        </button>
+
+      </div>
+    </div>
+
+    <div class="trainers-grid" id="trainersGrid">
+
+
+      <!------------------ strenght Trainer 1--------------->
+      <div class="trainer-card" data-category="strength">
+        <div class="trainer-img" style="background:linear-gradient(135deg,#d4f7f3,#b2eeea)">
+          <img src="image/trainer 1 - Copy.jpg" alt="Marcus Reed"
+            onerror="window.__avatarFallback(this,'Marcus Reed','#0d9488')">
+          <button class="trainer-save" aria-label="Save Marcus Reed" onclick="window.__toggleSave(this)"><i
+              class="fa-regular fa-heart"></i></button>
+          <div class="trainer-badge"><i class="fa-solid fa-star"></i> Top Rated</div>
+          <div class="trainer-avail avail-open"><span class="avail-dot"></span>Available Today</div>
         </div>
-    </section>
-    <!-- ================= Trainer Cards ================= -->
-    <section class="trainers-page">
-        <div class="container">
-            <div class="trainers-grid">
-                <div class="trainer-card" data-category="strength">
-                    <img src="image/trainer 1 - Copy.jpg" alt="">
-                    <h3>Marcus Reed</h3>
-                    <p>Strength Coach</p>
-                    <span>⭐ 4.9</span>
-                    <a href="Book session.html?trainer=marcus" class="btn-book">Book Session</a>
-                </div>
-
-                <div class="trainer-card" data-category="strength">
-                    <img src="image/trainer1.jpg" alt="">
-                    <h3>Ryan Foster</h3>
-                    <p>Powerlifting Coach</p>
-                    <span>⭐ 4.8</span>
-                    <a href="#">Book Session</a>
-                </div>
-
-                <div class="trainer-card" data-category="strength">
-                    <img src="image/trainer2.jpg" alt="">
-                    <h3>Daniel Brooks</h3>
-                    <p>Hypertrophy Coach</p>
-                    <span>⭐ 4.9</span>
-                    <a href="#">Book Session</a>
-                </div>
-
-                <div class="trainer-card" data-category="strength">
-                    <img src="image/trainer3.jpg" alt="">
-                    <h3>James Carter</h3>
-                    <p>Strength Expert</p>
-                    <span>⭐ 5.0</span>
-                    <a href="#">Book Session</a>
-                </div>
-
-                <div class="trainer-card" data-category="nutrition">
-                    <img src="image/trainer female1.1.jpg">
-                    <h3>Victoria Hayes</h3>
-                    <p>Nutrition Coach</p>
-                    <span>⭐4.9</span>
-                    <a href="#">Book Session</a>
-                </div>
-
-                <div class="trainer-card" data-category="nutrition">
-                    <img src="image/trainer female1.1.jpg">
-                    <h3>Sofia Patel</h3>
-                    <p>Diet Expert</p>
-                    <span>⭐5.0</span>
-                    <a href="#">Book Session</a>
-                </div>
-
-                <div class="trainer-card" data-category="nutrition">
-                    <img src="image/trainer female2.jpg">
-                    <h3>Emma Wilson</h3>
-                    <p>Sports Nutrition</p>
-                    <span>⭐4.9</span>
-                    <a href="#">Book Session</a>
-                </div>
-
-                <div class="trainer-card" data-category="nutrition">
-                    <img src="image/trainer female3.jpg">
-                    <h3>Olivia Carter</h3>
-                    <p>Clinical Nutrition</p>
-                    <span>⭐4.9</span>
-                    <a href="#">Book Session</a>
-                </div>
-
-                <div class="trainer-card" data-category="cardio">
-                    <img src="image/cardio1.jpg">
-                    <h3>Ethan Brooks</h3>
-                    <p>HIIT Coach</p>
-                    <span>⭐4.9</span>
-                    <a href="#">Book Session</a>
-                </div>
-
-                <div class="trainer-card" data-category="cardio">
-                    <img src="image/cardio2.jpg">
-                    <h3>Logan Carter</h3>
-                    <p>Running Coach</p>
-                    <span>⭐5.0</span>
-                    <a href="#">Book Session</a>
-                </div>
-
-                <div class="trainer-card" data-category="cardio">
-                    <img src="image/cardio3.jpg">
-                    <h3>Nathan Walker</h3>
-                    <p>Cardio Coach</p>
-                    <span>⭐4.9</span>
-                    <a href="#">Book Session</a>
-                </div>
-
-                <div class="trainer-card" data-category="cardio">
-                    <img src="image/trainer 1 - Copy.jpg">
-                    <h3>HK</h3>
-                    <p>HIIT Specialist</p>
-                    <span>⭐4.8</span>
-                    <a href="#">Book Session</a>
-                </div>
-
-                <div class="trainer-card" data-category="core">
-                    <img src="image/trainer-liam.jpg">
-                    <h3>Liam O'Connor</h3>
-                    <p>Core Specialist</p>
-                    <span>⭐4.9</span>
-                    <a href="#">Book Session</a>
-                </div>
-
-                <div class="trainer-card" data-category="core">
-                    <img src="image/core1.jpg">
-                    <h3>Noah Bennett</h3>
-                    <p>Core Coach</p>
-                    <span>⭐4.9</span>
-                    <a href="#">Book Session</a>
-                </div>
-
-                <div class="trainer-card" data-category="core">
-                    <img src="image/core2.jpg">
-                    <h3>Lucas Miller</h3>
-                    <p>Pilates Coach</p>
-                    <span>⭐5.0</span>
-                    <a href="#">Book Session</a>
-                </div>
-
-                <div class="trainer-card" data-category="core">
-                    <img src="image/core3.jpg">
-                    <h3>Jacob Harris</h3>
-                    <p>Functional Coach</p>
-                    <span>⭐4.9</span>
-                    <a href="#">Book Session</a>
-                </div>
+        <div class="trainer-body">
+          <div class="trainer-top">
+            <div>
+              <div class="trainer-name">Marcus Reed <i class="fa-solid fa-circle-check verified"
+                  title="Verified trainer"></i></div>
+              <div class="trainer-role">Strength Hypertrophy Coach</div>
             </div>
+            <div class="trainer-price">$85<span>/session</span></div>
+          </div>
+          <div class="trainer-tags" style="margin-bottom: 17%;">
+            <span class="tag">Powerlifting</span>
+            <span class="tag">Hypertrophy</span>
+            <span class="tag">CSCS</span>
+          </div>
+          <div class="trainer-bio">15 years transforming physiques. CSCS certified, former competitive powerlifter
+            with 200+ success stories.</div>
+          <div class="trainer-stats">
+            <div class="trainer-stat"><strong>847</strong>clients</div>
+            <div class="trainer-stat"><strong>15yr</strong>experience</div>
+            <div class="trainer-stat"><strong>4.9 <i class="fa-solid fa-star"
+                  style="font-size:10px;color:#F59E0B"></i></strong>rating</div>
+          </div>
+          <div class="trainer-actions">
+            <a class="btn-book" href="Book session.html?trainer=marcus">Book Session</a>
+            <a class="trainer-social" href="messeges.html?trainer=marcus" aria-label="Message"><i
+                class="fa-regular fa-message"></i></a>
+            <a class="trainer-social" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <script>
-        /* ===========================================
-       TRAINER FILTER
+      <!-- ================= Strength Trainer 2 ================= -->
+      <div class="trainer-card" data-category="strength">
+        <div class="trainer-img" style="background:linear-gradient(135deg,#d4f7f3,#b2eeea)">
+          <img src="image/strength4.jpg" alt="Ethan Walker"
+            onerror="window.__avatarFallback(this,'Ethan Walker','#0d9488')">
+
+          <button class="trainer-save" aria-label="Save Ethan Walker" onclick="window.__toggleSave(this)">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+          <div class="trainer-badge">
+            <i class="fa-solid fa-trophy"></i> Champion Coach
+          </div>
+
+          <div class="trainer-avail avail-limited">
+            <span class="avail-dot"></span>2 Slots Left
+          </div>
+        </div>
+
+        <div class="trainer-body">
+          <div class="trainer-top">
+            <div>
+              <div class="trainer-name">
+                Ethan Walker
+                <i class="fa-solid fa-circle-check verified"></i>
+              </div>
+              <div class="trainer-role">Functional Strength Coach</div>
+            </div>
+
+            <div class="trainer-price">$88<span>/session</span></div>
+          </div>
+
+          <div class="trainer-tags">
+            <span class="tag">Athletic Power</span>
+            <span class="tag">Mobility</span>
+            <span class="tag">Conditioning</span>
+          </div>
+
+          <div class="trainer-bio">
+            Ethan Walker combines strength training, mobility work, and athletic conditioning real-world
+            strength and performance. 
+          </div>
+
+          <div class="trainer-stats">
+            <div class="trainer-stat"><strong>810</strong>clients</div>
+            <div class="trainer-stat"><strong>13yr</strong>experience</div>
+            <div class="trainer-stat"><strong>5.0 <i class="fa-solid fa-star"
+                  style="font-size:10px;color:#F59E0B"></i></strong>rating</div>
+          </div>
+
+          <div class="trainer-actions">
+            <a class="btn-book" href="Book session.html?trainer=ethan">Book Session</a>
+            <a class="trainer-social" href="messeges.html?trainer=ethan"><i class="fa-regular fa-message"></i></a>
+            <a class="trainer-social" href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= strenght Trainer 3 ================= -->
+      <div class="trainer-card" data-category="strength">
+        <div class="trainer-img" style="background:linear-gradient(135deg,#dff7ff,#b8ebff)">
+          <img src="image/trainer2.jpg" alt="Ryan Foster">
+          <button class="trainer-save" onclick="window.__toggleSave(this)">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+          <div class="trainer-badge">
+            <i class="fa-solid fa-medal"></i> Elite Coach
+          </div>
+
+          <div class="trainer-avail avail-open">
+            <span class="avail-dot"></span>Available
+          </div>
+        </div>
+
+        <div class="trainer-body">
+          <div class="trainer-top">
+            <div>
+              <div class="trainer-name">
+                Ryan Foster
+                <i class="fa-solid fa-circle-check verified"></i>
+              </div>
+              <div class="trainer-role">Powerlifting Coach</div>
+            </div>
+
+            <div class="trainer-price">$90<span>/session</span></div>
+          </div>
+
+          <div class="trainer-tags" style="margin-bottom: 17%;">
+            <span class="tag">Deadlift</span>
+            <span class="tag">Squat</span>
+            <span class="tag">Bench Press</span>
+          </div>
+
+          <div class="trainer-bio">
+            National powerlifting coach helping athletes increase strength and competition performance.
+          </div>
+
+          <div class="trainer-stats">
+            <div class="trainer-stat"><strong>650</strong>Clients</div>
+            <div class="trainer-stat"><strong>12yr</strong>Experience</div>
+            <div class="trainer-stat"><strong>4.8 <i class="fa-solid fa-star"
+                  style="font-size:10px;color:#F59E0B"></i></strong>Rating</div>
+          </div>
+
+          <div class="trainer-actions">
+            <a class="btn-book" href="Book session.html?trainer=ryan">Book Session</a>
+            <a class="trainer-social" href="#"><i class="fa-regular fa-message"></i></a>
+            <a class="trainer-social" href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= strenght Trainer 4 ================= -->
+      <div class="trainer-card" data-category="strength">
+        <div class="trainer-img" style="background:linear-gradient(135deg,#fff2d8,#ffe1a6)">
+          <img src="image/trainer3.jpg" alt="Daniel Brooks">
+          <button class="trainer-save" onclick="window.__toggleSave(this)">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+          <div class="trainer-badge">
+            <i class="fa-solid fa-fire"></i> Best Seller
+          </div>
+
+          <div class="trainer-avail avail-open">
+            <span class="avail-dot"></span>3 Slots Left
+          </div>
+        </div>
+
+        <div class="trainer-body">
+          <div class="trainer-top">
+            <div>
+              <div class="trainer-name">
+                Daniel Brooks
+                <i class="fa-solid fa-circle-check verified"></i>
+              </div>
+              <div class="trainer-role">Functional Strength Coach</div>
+            </div>
+
+            <div class="trainer-price">$75<span>/session</span></div>
+          </div>
+
+          <div class="trainer-tags" style="margin-bottom: 17%;">
+            <span class="tag">Athletic</span>
+            <span class="tag">Conditioning</span>
+            <span class="tag">Mobility</span>
+          </div>
+
+          <div class="trainer-bio">
+            Builds explosive power, functional strength and athletic performance for every fitness level.
+          </div>
+
+          <div class="trainer-stats">
+            <div class="trainer-stat"><strong>520</strong>Clients</div>
+            <div class="trainer-stat"><strong>10yr</strong>Experience</div>
+            <div class="trainer-stat"><strong>4.9 <i class="fa-solid fa-star"
+                  style="font-size:10px;color:#F59E0B"></i></strong>Rating</div>
+          </div>
+
+          <div class="trainer-actions">
+            <a class="btn-book" href="Book session.html?trainer=daniel">Book Session</a>
+            <a class="trainer-social" href="#"><i class="fa-regular fa-message"></i></a>
+            <a class="trainer-social" href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- ================= Nutrition Trainer 4 ================= -->
+      <div class="trainer-card" data-category="nutrition">
+        <div class="trainer-img" style="background:linear-gradient(135deg,#fce7f3,#fbcfe8)">
+
+          <img src="image/trainer female1.1.jpg" alt="Victoria Hayes"
+            onerror="window.__avatarFallback(this,'Victoria Hayes','#db2777')">
+
+          <button class="trainer-save" aria-label="Save Victoria Hayes" onclick="window.__toggleSave(this)">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+          <div class="trainer-badge" style="background:#db2777">
+            <i class="fa-solid fa-leaf"></i> Premium Nutrition
+          </div>
+
+          <div class="trainer-avail avail-open">
+            <span class="avail-dot"></span>Available Today
+          </div>
+        </div>
+
+        <div class="trainer-body">
+
+          <div class="trainer-top">
+            <div>
+              <div class="trainer-name">
+                Victoria Hayes
+                <i class="fa-solid fa-circle-check verified"></i>
+              </div>
+
+              <div class="trainer-role">
+                Certified Sports Nutritionist
+              </div>
+            </div>
+            <div class="trainer-price">
+              $78<span>/session</span>
+            </div>
+          </div>
+          <div class="trainer-tags">
+            <span class="tag">Sports Nutrition</span>
+            <span class="tag">Muscle Gain</span>
+            <span class="tag">Weight Loss</span>
+          </div>
+          <div class="trainer-bio">
+            Certified sports nutritionist with 9+ years of experience creating personalized meal plans for fat loss,
+            muscle building and peak athletic performance.
+          </div>
+          <div class="trainer-stats">
+            <div class="trainer-stat">
+              <strong>940</strong>Clients
+            </div>
+            <div class="trainer-stat">
+              <strong>9yr</strong>Experience
+            </div>
+            <div class="trainer-stat">
+              <strong>4.9 <i class="fa-solid fa-star" style="font-size:10px;color:#F59E0B"></i></strong>Rating
+            </div>
+          </div>
+          <div class="trainer-actions">
+            <a class="btn-book" href="Book session.html?trainer=victoria">
+              Book Session
+            </a>
+            <a class="trainer-social" href="messeges.html?trainer=victoria">
+              <i class="fa-regular fa-message"></i>
+            </a>
+            <a class="trainer-social" href="#">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- ================= Nutrition Trainer 5 ================= -->
+      <div class="trainer-card" data-category="nutrition">
+        <div class="trainer-img" style="background:linear-gradient(135deg,#ffe4f7,#ffd6f0)">
+          <img src="image/trainer female1.1.jpg" alt="Sofia Patel"
+            onerror="window.__avatarFallback(this,'Sofia Patel','#db2777')">
+          <button class="trainer-save" onclick="window.__toggleSave(this)">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+          <div class="trainer-badge" style="background:#db2777">
+            <i class="fa-solid fa-leaf"></i> Nutrition
+          </div>
+
+          <div class="trainer-avail avail-limited">
+            <span class="avail-dot"></span>2 Spots Left
+          </div>
+        </div>
+
+        <div class="trainer-body">
+          <div class="trainer-top">
+            <div>
+              <div class="trainer-name">Sofia Patel <i class="fa-solid fa-circle-check verified"></i></div>
+              <div class="trainer-role">Nutrition & Wellness Expert</div>
+            </div>
+
+            <div class="trainer-price">$70<span>/session</span></div>
+          </div>
+
+          <div class="trainer-tags">
+            <span class="tag">Meal Planning</span>
+            <span class="tag">Weight Loss</span>
+            <span class="tag">RD</span>
+          </div>
+
+          <div class="trainer-bio">
+            Sofia Patel specializes in weight management and balanced nutrition programs tailored to individual goals.
+            With 8 years of professional experience, she helps clients develop healthier eating habits.
+          </div>
+
+          <div class="trainer-stats">
+            <div class="trainer-stat"><strong>1200</strong>Clients</div>
+            <div class="trainer-stat"><strong>12yr</strong>Experience</div>
+            <div class="trainer-stat"><strong>5.0 <i class="fa-solid fa-star"
+                  style="font-size:10px;color:#F59E0B"></i></strong>Rating</div>
+          </div>
+
+          <div class="trainer-actions">
+            <a class="btn-book" href="Book session.html?trainer=sofia">Book Session</a>
+            <a class="trainer-social" href="#"><i class="fa-regular fa-message"></i></a>
+            <a class="trainer-social" href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= Nutrition Trainer 7 ================= -->
+      <div class="trainer-card" data-category="nutrition">
+        <div class="trainer-img" style="background:linear-gradient(135deg,#fff0d8,#ffe6b0)">
+          <img src="image/trainer female2.jpg" alt="Emma Wilson"
+            onerror="window.__avatarFallback(this,'Emma Wilson','#ea580c')">
+          <button class="trainer-save" onclick="window.__toggleSave(this)">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+          <div class="trainer-badge" style="background:#ea580c">
+            <i class="fa-solid fa-apple-whole"></i> Healthy Diet
+          </div>
+
+          <div class="trainer-avail avail-open">
+            <span class="avail-dot"></span>Available Today
+          </div>
+        </div>
+
+        <div class="trainer-body">
+          <div class="trainer-top">
+            <div>
+              <div class="trainer-name">Emma Wilson <i class="fa-solid fa-circle-check verified"></i></div>
+              <div class="trainer-role">Sports Nutritionist</div>
+            </div>
+
+            <div class="trainer-price">$75<span>/session</span></div>
+          </div>
+
+          <div class="trainer-tags">
+            <span class="tag">Sports Diet</span>
+            <span class="tag">Protein Plans</span>
+            <span class="tag">ISSN</span>
+          </div>
+
+          <div class="trainer-bio">
+            Emma Wilson is a wellness nutrition expert dedicated to helping individuals build healthy lifestyles
+            through proper nutrition and mindful eating. Her personalized coaching focuses on boosting energy,
+            improving overall health.
+          </div>
+
+          <div class="trainer-stats">
+            <div class="trainer-stat"><strong>980</strong>Clients</div>
+            <div class="trainer-stat"><strong>10yr</strong>Experience</div>
+            <div class="trainer-stat"><strong>4.9 <i class="fa-solid fa-star"
+                  style="font-size:10px;color:#F59E0B"></i></strong>Rating</div>
+          </div>
+
+          <div class="trainer-actions">
+            <a class="btn-book" href="Book session.html?trainer=emma">Book Session</a>
+            <a class="trainer-social" href="#"><i class="fa-regular fa-message"></i></a>
+            <a class="trainer-social" href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= Nutrition Trainer 8 ================= -->
+      <div class="trainer-card" data-category="nutrition">
+        <div class="trainer-img" style="background:linear-gradient(135deg,#e4fff4,#c8ffe8)">
+          <img src="image/trainer female3.jpg" alt="Olivia Carter"
+            onerror="window.__avatarFallback(this,'Olivia Carter','#16a34a')">
+          <button class="trainer-save" onclick="window.__toggleSave(this)">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+          <div class="trainer-badge" style="background:#16a34a">
+            <i class="fa-solid fa-seedling"></i> Clean Eating
+          </div>
+
+          <div class="trainer-avail avail-open">
+            <span class="avail-dot"></span>Open for Booking
+          </div>
+        </div>
+
+        <div class="trainer-body">
+          <div class="trainer-top">
+            <div>
+              <div class="trainer-name">Olivia Carter <i class="fa-solid fa-circle-check verified"></i></div>
+              <div class="trainer-role">Clinical Nutrition Coach</div>
+            </div>
+
+            <div class="trainer-price">$80<span>/session</span></div>
+          </div>
+
+          <div class="trainer-tags">
+            <span class="tag">Fat Loss</span>
+            <span class="tag">Healthy Lifestyle</span>
+            <span class="tag">Nutrition</span>
+          </div>
+
+          <div class="trainer-bio">
+            Olivia Carter is an experienced clinical dietitian with more than 13 years of expertise in nutrition
+            planning, fat loss, and disease prevention. She designs customized meal plans that support overall
+            wellness.
+          </div>
+
+          <div class="trainer-stats">
+            <div class="trainer-stat"><strong>1100</strong>Clients</div>
+            <div class="trainer-stat"><strong>11yr</strong>Experience</div>
+            <div class="trainer-stat"><strong>4.9 <i class="fa-solid fa-star"
+                  style="font-size:10px;color:#F59E0B"></i></strong>Rating</div>
+          </div>
+
+          <div class="trainer-actions">
+            <a class="btn-book" href="Book session.html?trainer=olivia">Book Session</a>
+            <a class="trainer-social" href="#"><i class="fa-regular fa-message"></i></a>
+            <a class="trainer-social" href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- ================= Cardio Trainer 9 ================= -->
+      <div class="trainer-card" data-category="cardio">
+        <div class="trainer-img" style="background:linear-gradient(135deg,#ddeeff,#c0d8f8)">
+          <img src="image/trainer 1 - Copy.jpg" alt="HK" onerror="window.__avatarFallback(this,'HK','#2f6fed')">
+          <button class="trainer-save" aria-label="Save HK" onclick="window.__toggleSave(this)"><i
+              class="fa-regular fa-heart"></i></button>
+          <div class="trainer-badge" style="background:var(--accent-blue)"><i class="fa-solid fa-heart-pulse"></i>
+            Cardio</div>
+          <div class="trainer-avail avail-open"><span class="avail-dot"></span>Available Today</div>
+        </div>
+        <div class="trainer-body">
+          <div class="trainer-top">
+            <div>
+              <div class="trainer-name">HK <i class="fa-solid fa-circle-check verified" title="Verified trainer"></i>
+              </div>
+              <div class="trainer-role">Cardio HIIT Specialist</div>
+            </div>
+            <div class="trainer-price">$75<span>/session</span></div>
+          </div>
+          <div class="trainer-tags">
+            <span class="tag">HIIT</span>
+            <span class="tag">Marathon Prep</span>
+            <span class="tag">8-Week Shred</span>
+          </div>
+          <div class="trainer-bio">Ex-Olympic marathon runner turned elite trainer. Burns fat, builds stamina — his
+            8-week shred program is legendary.His personalized training sessions
+            combine high.</div>
+          <div class="trainer-stats">
+            <div class="trainer-stat"><strong>634</strong>clients</div>
+            <div class="trainer-stat"><strong>10yr</strong>experience</div>
+            <div class="trainer-stat"><strong>4.8 <i class="fa-solid fa-star"
+                  style="font-size:10px;color:#F59E0B"></i></strong>rating</div>
+          </div>
+          <div class="trainer-actions">
+            <a class="btn-book" href="Book session.html?trainer=hk">Book Session</a>
+            <a class="trainer-social" href="messeges.html?trainer=hk" aria-label="Message"><i
+                class="fa-regular fa-message"></i></a>
+            <a class="trainer-social" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- ================= Cardio Trainer 10 ================= -->
+      <div class="trainer-card" data-category="cardio">
+        <div class="trainer-img" style="background:linear-gradient(135deg,#ddeeff,#c0d8f8)">
+          <img src="image/cardio1.jpg" alt="Ethan Brooks"
+            onerror="window.__avatarFallback(this,'Ethan Brooks','#2f6fed')">
+
+          <button class="trainer-save" onclick="window.__toggleSave(this)">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+          <div class="trainer-badge" style="background:var(--accent-blue)">
+            <i class="fa-solid fa-heart-pulse"></i> Cardio Elite
+          </div>
+
+          <div class="trainer-avail avail-open">
+            <span class="avail-dot"></span>Available Today
+          </div>
+        </div>
+
+        <div class="trainer-body">
+          <div class="trainer-top">
+            <div>
+              <div class="trainer-name">
+                Ethan Brooks
+                <i class="fa-solid fa-circle-check verified"></i>
+              </div>
+              <div class="trainer-role">HIIT & Fat Loss Coach</div>
+            </div>
+
+            <div class="trainer-price">$78<span>/session</span></div>
+          </div>
+
+          <div class="trainer-tags">
+            <span class="tag">HIIT</span>
+            <span class="tag">Fat Burn</span>
+            <span class="tag">Endurance</span>
+          </div>
+
+          <div class="trainer-bio">
+            Ethan Brooks is a certified HIIT and cardio performance coach with over 11 years of experience helping
+            clients burn fat, improve stamina, and boost cardiovascular health.
+          </div>
+
+          <div class="trainer-stats">
+            <div class="trainer-stat"><strong>820</strong>Clients</div>
+            <div class="trainer-stat"><strong>11yr</strong>Experience</div>
+            <div class="trainer-stat"><strong>4.9 <i class="fa-solid fa-star"
+                  style="font-size:10px;color:#F59E0B"></i></strong>Rating</div>
+          </div>
+
+          <div class="trainer-actions">
+            <a class="btn-book" href="Book session.html?trainer=ethan">Book Session</a>
+            <a class="trainer-social" href="#"><i class="fa-regular fa-message"></i></a>
+            <a class="trainer-social" href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= Cardio Trainer 11 ================= -->
+      <div class="trainer-card" data-category="cardio">
+        <div class="trainer-img" style="background:linear-gradient(135deg,#dff6ff,#b9e7ff)">
+          <img src="image/cardio2.jpg" alt="Logan Carter"
+            onerror="window.__avatarFallback(this,'Logan Carter','#2563eb')">
+
+          <button class="trainer-save" onclick="window.__toggleSave(this)">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+          <div class="trainer-badge" style="background:#2563eb">
+            <i class="fa-solid fa-person-running"></i> Marathon Coach
+          </div>
+
+          <div class="trainer-avail avail-open">
+            <span class="avail-dot"></span>Open for Booking
+          </div>
+        </div>
+
+        <div class="trainer-body">
+          <div class="trainer-top">
+            <div>
+              <div class="trainer-name">
+                Logan Carter
+                <i class="fa-solid fa-circle-check verified"></i>
+              </div>
+              <div class="trainer-role">Running & Endurance Coach</div>
+            </div>
+
+            <div class="trainer-price">$80<span>/session</span></div>
+          </div>
+
+          <div class="trainer-tags">
+            <span class="tag">Running</span>
+            <span class="tag">Endurance</span>
+            <span class="tag">Marathon</span>
+          </div>
+
+          <div class="trainer-bio">
+            Logan Carter has spent more than 12 years coaching level, from beginners to marathon
+            athletes. His structured endurance programs improve speed, stamina.
+          </div>
+
+          <div class="trainer-stats">
+            <div class="trainer-stat"><strong>910</strong>Clients</div>
+            <div class="trainer-stat"><strong>12yr</strong>Experience</div>
+            <div class="trainer-stat"><strong>5.0 <i class="fa-solid fa-star"
+                  style="font-size:10px;color:#F59E0B"></i></strong>Rating</div>
+          </div>
+
+          <div class="trainer-actions">
+            <a class="btn-book" href="Book session.html?trainer=logan">Book Session</a>
+            <a class="trainer-social" href="#"><i class="fa-regular fa-message"></i></a>
+            <a class="trainer-social" href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= Cardio Trainer 12 ================= -->
+      <div class="trainer-card" data-category="cardio">
+        <div class="trainer-img" style="background:linear-gradient(135deg,#dbeafe,#bfdbfe)">
+          <img src="image/cardio3.jpg" alt="Nathan Walker"
+            onerror="window.__avatarFallback(this,'Nathan Walker','#1d4ed8')">
+
+          <button class="trainer-save" onclick="window.__toggleSave(this)">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+          <div class="trainer-badge" style="background:#1d4ed8">
+            <i class="fa-solid fa-fire"></i> Fat Burn Pro
+          </div>
+
+          <div class="trainer-avail avail-limited">
+            <span class="avail-dot"></span>Only 2 Slots Left
+          </div>
+        </div>
+
+        <div class="trainer-body">
+          <div class="trainer-top">
+            <div>
+              <div class="trainer-name">
+                Nathan Walker
+                <i class="fa-solid fa-circle-check verified"></i>
+              </div>
+              <div class="trainer-role">Cardio Conditioning Coach</div>
+            </div>
+
+            <div class="trainer-price">$76<span>/session</span></div>
+          </div>
+
+          <div class="trainer-tags">
+            <span class="tag">Circuit Training</span>
+            <span class="tag">HIIT</span>
+            <span class="tag">Conditioning</span>
+          </div>
+
+          <div class="trainer-bio">
+            Nathan Walker specializes in high-energy cardio conditioning and functional fitness programs
+            improve endurance, burn calories, and strengthen the entire body.
+          </div>
+
+          <div class="trainer-stats">
+            <div class="trainer-stat"><strong>760</strong>Clients</div>
+            <div class="trainer-stat"><strong>9yr</strong>Experience</div>
+            <div class="trainer-stat"><strong>4.9 <i class="fa-solid fa-star"
+                  style="font-size:10px;color:#F59E0B"></i></strong>Rating</div>
+          </div>
+
+          <div class="trainer-actions">
+            <a class="btn-book" href="Book session.html?trainer=nathan">Book Session</a>
+            <a class="trainer-social" href="#"><i class="fa-regular fa-message"></i></a>
+            <a class="trainer-social" href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- ================= Core Trainer 13 ================= -->
+      <div class="trainer-card" data-category="pilates">
+        <div class="trainer-img" style="background:linear-gradient(135deg,#f3e8ff,#e0c8fb)">
+          <img src="image/trainer-liam.jpg" alt="Liam O'Connor">
+          <button class="trainer-save" aria-label="Save Liam O'Connor" onclick="window.__toggleSave(this)"><i
+              class="fa-regular fa-heart"></i></button>
+          <div class="trainer-badge" style="background:#7c3aed"><i class="fa-solid fa-spa"></i> Pilates</div>
+          <div class="trainer-avail avail-open"><span class="avail-dot"></span>Available Today</div>
+        </div>
+        <div class="trainer-body">
+          <div class="trainer-top">
+            <div>
+              <div class="trainer-name">Liam O'Connor <i class="fa-solid fa-circle-check verified"
+                  title="Verified trainer"></i></div>
+              <div class="trainer-role">Pilates Core Specialist</div>
+            </div>
+            <div class="trainer-price">$72<span>/session</span></div>
+          </div>
+          <div class="trainer-tags">
+            <span class="tag">Reformer Pilates</span>
+            <span class="tag">Core Stability</span>
+            <span class="tag">Posture</span>
+          </div>
+          <div class="trainer-bio">Reformer-certified Pilates master who's worked with dancers and post-natal clients.
+            Builds unshakeable core strength from the inside out.</div>
+          <div class="trainer-stats">
+            <div class="trainer-stat"><strong>455</strong>clients</div>
+            <div class="trainer-stat"><strong>11yr</strong>experience</div>
+            <div class="trainer-stat"><strong>4.9 <i class="fa-solid fa-star"
+                  style="font-size:10px;color:#F59E0B"></i></strong>rating</div>
+          </div>
+          <div class="trainer-actions">
+            <a class="btn-book" href="Book session.html?trainer=liam">Book Session</a>
+            <a class="trainer-social" href="messeges.html?trainer=liam" aria-label="Message"><i
+                class="fa-regular fa-message"></i></a>
+            <a class="trainer-social" href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- ================= Core Trainer 14 ================= -->
+      <div class="trainer-card" data-category="pilates">
+        <div class="trainer-img" style="background:linear-gradient(135deg,#f3e8ff,#e0c8fb)">
+          <img src="image/core1.jpg" alt="Noah Bennett"
+            onerror="window.__avatarFallback(this,'Noah Bennett','#7c3aed')">
+
+          <button class="trainer-save" onclick="window.__toggleSave(this)">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+          <div class="trainer-badge" style="background:#7c3aed">
+            <i class="fa-solid fa-spa"></i> Core Expert
+          </div>
+
+          <div class="trainer-avail avail-open">
+            <span class="avail-dot"></span>Available Today
+          </div>
+        </div>
+
+        <div class="trainer-body">
+          <div class="trainer-top">
+            <div>
+              <div class="trainer-name">
+                Noah Bennett
+                <i class="fa-solid fa-circle-check verified"></i>
+              </div>
+              <div class="trainer-role">Core Stability Coach</div>
+            </div>
+
+            <div class="trainer-price">$74<span>/session</span></div>
+          </div>
+
+          <div class="trainer-tags">
+            <span class="tag">Core Strength</span>
+            <span class="tag">Balance</span>
+            <span class="tag">Mobility</span>
+          </div>
+
+          <div class="trainer-bio">
+            Noah Bennett is a certified core strength specialist with over 10 years of experience helping clients
+            improve posture, balance, flexibility, and functional strength. His programs combine.
+          </div>
+
+          <div class="trainer-stats">
+            <div class="trainer-stat"><strong>540</strong>Clients</div>
+            <div class="trainer-stat"><strong>10yr</strong>Experience</div>
+            <div class="trainer-stat"><strong>4.9 ⭐</strong>Rating</div>
+          </div>
+
+          <div class="trainer-actions">
+            <a class="btn-book" href="Book session.html?trainer=noah">Book Session</a>
+            <a class="trainer-social" href="#"><i class="fa-regular fa-message"></i></a>
+            <a class="trainer-social" href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= Core Trainer 15 ================= -->
+      <div class="trainer-card" data-category="pilates">
+        <div class="trainer-img" style="background:linear-gradient(135deg,#ede9fe,#ddd6fe)">
+          <img src="image/core2.jpg" alt="Lucas Miller"
+            onerror="window.__avatarFallback(this,'Lucas Miller','#6d28d9')">
+
+          <button class="trainer-save" onclick="window.__toggleSave(this)">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+          <div class="trainer-badge" style="background:#6d28d9">
+            <i class="fa-solid fa-dumbbell"></i> Core Performance
+          </div>
+
+          <div class="trainer-avail avail-open">
+            <span class="avail-dot"></span>Open for Booking
+          </div>
+        </div>
+
+        <div class="trainer-body">
+          <div class="trainer-top">
+            <div>
+              <div class="trainer-name">
+                Lucas Miller
+                <i class="fa-solid fa-circle-check verified"></i>
+              </div>
+              <div class="trainer-role">Pilates & Mobility Coach</div>
+            </div>
+
+            <div class="trainer-price">$76<span>/session</span></div>
+          </div>
+
+          <div class="trainer-tags">
+            <span class="tag">Pilates</span>
+            <span class="tag">Flexibility</span>
+            <span class="tag">Posture</span>
+          </div>
+
+          <div class="trainer-bio">
+            Lucas Miller specializes in Pilates and mobility training designed to improve flexibility, strengthen the
+            core, and correct posture. His sessions are ideal for beginners, athletes.
+          </div>
+
+          <div class="trainer-stats">
+            <div class="trainer-stat"><strong>610</strong>Clients</div>
+            <div class="trainer-stat"><strong>11yr</strong>Experience</div>
+            <div class="trainer-stat"><strong>5.0 ⭐</strong>Rating</div>
+          </div>
+
+          <div class="trainer-actions">
+            <a class="btn-book" href="Book session.html?trainer=lucas">Book Session</a>
+            <a class="trainer-social" href="#"><i class="fa-regular fa-message"></i></a>
+            <a class="trainer-social" href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= Core Trainer 16 ================= -->
+      <div class="trainer-card" data-category="pilates">
+        <div class="trainer-img" style="background:linear-gradient(135deg,#f5e8ff,#e9d5ff)">
+          <img src="image/core3.jpg" alt="Jacob Harris"
+            onerror="window.__avatarFallback(this,'Jacob Harris','#8b5cf6')">
+
+          <button class="trainer-save" onclick="window.__toggleSave(this)">
+            <i class="fa-regular fa-heart"></i>
+          </button>
+
+          <div class="trainer-badge" style="background:#8b5cf6">
+            <i class="fa-solid fa-spa"></i> Elite Core
+          </div>
+
+          <div class="trainer-avail avail-limited">
+            <span class="avail-dot"></span>Only 2 Slots Left
+          </div>
+        </div>
+
+        <div class="trainer-body">
+          <div class="trainer-top">
+            <div>
+              <div class="trainer-name">
+                Jacob Harris
+                <i class="fa-solid fa-circle-check verified"></i>
+              </div>
+              <div class="trainer-role">Core & Functional Fitness Coach</div>
+            </div>
+
+            <div class="trainer-price">$79<span>/session</span></div>
+          </div>
+
+          <div class="trainer-tags">
+            <span class="tag">Core Training</span>
+            <span class="tag">Functional</span>
+            <span class="tag">Balance</span>
+          </div>
+
+          <div class="trainer-bio">
+            Jacob Harris has over 12 years of experience helping clients develop stronger core muscles, better
+            balance, and improved functional movement. His training programs combine Pilates.
+          </div>
+
+          <div class="trainer-stats">
+            <div class="trainer-stat"><strong>720</strong>Clients</div>
+            <div class="trainer-stat"><strong>12yr</strong>Experience</div>
+            <div class="trainer-stat"><strong>4.9 ⭐</strong>Rating</div>
+          </div>
+
+          <div class="trainer-actions">
+            <a class="btn-book" href="Book session.html?trainer=jacob">Book Session</a>
+            <a class="trainer-social" href="#"><i class="fa-regular fa-message"></i></a>
+            <a class="trainer-social" href="#"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script>
+    /* ===========================================
+   TRAINER FILTER
+=========================================== */
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const trainerCards = document.querySelectorAll(".trainer-card");
+
+    filterButtons.forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        filterButtons.forEach(btn => btn.classList.remove("active"));
+        button.classList.add("active");
+
+        const filter = button.dataset.filter;
+
+        trainerCards.forEach(card => {
+
+          if (filter === "all") {
+
+            card.style.display = "block";
+
+          }
+
+          else if (card.dataset.category === filter) {
+
+            card.style.display = "block";
+
+          }
+
+          else {
+
+            card.style.display = "none";
+
+          }
+
+        });
+
+      });
+
+    });
+
+
+    /* ===========================================
+       SEARCH
     =========================================== */
 
-        const filterButtons = document.querySelectorAll(".filter-btn");
-        const trainerCards = document.querySelectorAll(".trainer-card");
+    const searchInput = document.getElementById("trainerSearch");
 
-        filterButtons.forEach(button => {
-
-            button.addEventListener("click", () => {
-
-                filterButtons.forEach(btn => btn.classList.remove("active"));
-                button.classList.add("active");
-
-                const filter = button.dataset.filter;
-
-                trainerCards.forEach(card => {
-
-                    if (filter === "all") {
-
-                        card.style.display = "block";
-
-                    }
-
-                    else if (card.dataset.category === filter) {
-
-                        card.style.display = "block";
-
-                    }
-
-                    else {
-
-                        card.style.display = "none";
-
-                    }
-
-                });
-
-            });
-
-        });
-
-
-        /* ===========================================
-           SEARCH
-        =========================================== */
-
-        const searchInput = document.getElementById("trainerSearch");
-
-        if (searchInput) {
-            searchInput.addEventListener("keyup", () => {
-                const value = searchInput.value.toLowerCase();
-                trainerCards.forEach(card => {
-                    const name = card.querySelector("h3").innerText.toLowerCase();
-                    if (name.includes(value)) {
-                        card.style.display = "block";
-                    }
-                    else {
-                        card.style.display = "none";
-                    }
-                });
-            });
-        }
-
-        /* ===========================================
-           SAVE BUTTON
-        =========================================== */
-
-        document.querySelectorAll(".trainer-save").forEach(btn => {
-            btn.addEventListener("click", function () {
-                this.classList.toggle("saved");
-                const icon = this.querySelector("i");
-                if (icon) {
-                    icon.classList.toggle("fa-regular");
-                    icon.classList.toggle("fa-solid");
-                }
-            });
-        });
-
-        /* ===========================================
-           SCROLL ANIMATION
-        =========================================== */
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("show-card");
-                }
-            });
-        }, {
-            threshold: .15
-        });
+    if (searchInput) {
+      searchInput.addEventListener("keyup", () => {
+        const value = searchInput.value.toLowerCase();
         trainerCards.forEach(card => {
-            card.classList.add("hidden-card");
-            observer.observe(card);
+          const name = card.querySelector("h3").innerText.toLowerCase();
+          if (name.includes(value)) {
+            card.style.display = "block";
+          }
+          else {
+            card.style.display = "none";
+          }
         });
+      });
+    }
 
-        /* ===========================================
-           SCROLL TOP
-        =========================================== */
+    /* ===========================================
+       SAVE BUTTON
+    =========================================== */
 
-        const scrollBtn = document.createElement("button");
-        scrollBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
-        scrollBtn.className = "scroll-top";
-        document.body.appendChild(scrollBtn);
-        window.addEventListener("scroll", () => {
-            if (window.scrollY > 500) {
-                scrollBtn.classList.add("show");
-            }
-            else {
-                scrollBtn.classList.remove("show");
-            }
-        });
-        scrollBtn.onclick = () => {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        };
-    </script>
+    document.querySelectorAll(".trainer-save").forEach(btn => {
+      btn.addEventListener("click", function () {
+        this.classList.toggle("saved");
+        const icon = this.querySelector("i");
+        if (icon) {
+          icon.classList.toggle("fa-regular");
+          icon.classList.toggle("fa-solid");
+        }
+      });
+    });
+
+    /* ===========================================
+       SCROLL ANIMATION
+    =========================================== */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show-card");
+        }
+      });
+    }, {
+      threshold: .15
+    });
+    trainerCards.forEach(card => {
+      card.classList.add("hidden-card");
+      observer.observe(card);
+    });
+
+    /* ===========================================
+       SCROLL TOP
+    =========================================== */
+
+    const scrollBtn = document.createElement("button");
+    scrollBtn.innerHTML = '<i class="fa-solid fa-arrow-up"></i>';
+    scrollBtn.className = "scroll-top";
+    document.body.appendChild(scrollBtn);
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 500) {
+        scrollBtn.classList.add("show");
+      }
+      else {
+        scrollBtn.classList.remove("show");
+      }
+    });
+    scrollBtn.onclick = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    };
+  </script>
 </body>
 
 </html>

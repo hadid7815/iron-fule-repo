@@ -1104,11 +1104,10 @@ nav {
 .section-label {
   display: inline-block;
   font-family: var(--font-body);
-  font-size: 12px;
+  font-size: 17px;
   font-weight: 700;
   letter-spacing: .14em;
-  color: var(--primary);
-  background: var(--primary-light);
+  color: var(--primary-dark);
   padding: 6px 14px;
   border-radius: 25px;
   margin-bottom: 14px;
@@ -1154,68 +1153,6 @@ nav {
   border-radius: 50%;
   background: var(--text-light);
   opacity: .5;
-}
-
-/* ── FILTER BAR (signature interaction) ─────────────────────── */
-.trainer-filters-wrap {
-  max-width: 1280px;
-  margin: 0 auto 36px;
-  position: relative;
-}
-
-.trainer-filters {
-  position: relative;
-  display: flex;
-  gap: 6px;
-  overflow-x: auto;
-  padding: 6px;
-  background: var(--surface);
-  border: 1px solid #DCEEEC;
-  border-radius: 999px;
-  box-shadow: 0 2px 10px rgba(11, 61, 60, .07);
-  scrollbar-width: none;
-}
-
-.trainer-filters::-webkit-scrollbar {
-  display: none;
-}
-
-.filter-pill-slider {
-  position: absolute;
-  top: 6px;
-  bottom: 6px;
-  left: 6px;
-  width: 0;
-  border-radius: 999px;
-  background: var(--primary);
-  transition: left .35s cubic-bezier(.65, 0, .35, 1), width .35s cubic-bezier(.65, 0, .35, 1);
-  z-index: 0;
-}
-
-.filter-btn {
-  position: relative;
-  z-index: 1;
-  flex: 0 0 auto;
-  border: none;
-  background: transparent;
-  cursor: pointer;
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: 13.5px;
-  color: var(--text-mid);
-  padding: 10px 18px;
-  border-radius: 999px;
-  white-space: nowrap;
-  transition: color .25s;
-}
-
-.filter-btn.active {
-  color: #fff;
-}
-
-.filter-btn:focus-visible {
-  outline: 2px solid var(--primary-dark);
-  outline-offset: 2px;
 }
 
 /* ── GRID ────────────────────────────────────────────────────── */
@@ -1470,14 +1407,35 @@ nav {
   gap: 8px;
   margin-top: 18px;
 }
+.view-all-btn{
+   flex: 1;
+  background: var(--primary);
+  color: #fff;
+  border-radius: 12px;
+  font-family: sans-serif;
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 11px 14px;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
 
+.view-all-btn:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+
+.view-all-btn:focus-visible {
+  outline: 2px solid var(--primary-dark);
+  outline-offset: 2px;
+}
 .btn-book {
   flex: 1;
   background: var(--primary);
   color: #fff;
   border: none;
   border-radius: 12px;
-  font-family: var(--font-body);
+  font-family: sans-serif;
   font-weight: 700;
   font-size: 13.5px;
   padding: 11px 14px;
