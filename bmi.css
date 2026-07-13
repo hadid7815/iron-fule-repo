@@ -437,7 +437,7 @@ i{
   margin: 0% 10% 0% 10%;
   border-radius: 30px;
   border: 2px solid var(--primary-dark);
-  background-color: var(--primary);
+  background: var(--gradient);
   transition: 3s;
   box-shadow:
     0 25px 60px rgba(0, 109, 119, .20),
@@ -447,7 +447,7 @@ i{
 .d-flex:hover {
   transform: translateY(8px);
   border: 3px solid var(--primary);
-  background-color: var(--primary);
+  background: var(--gradient);
 }
 
 /*====================================

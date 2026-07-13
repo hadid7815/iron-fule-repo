@@ -591,36 +591,6 @@ button:active{
     margin-bottom:20px;
 }
 
-/*==================================================
-  19. RESPONSIVE
-==================================================*/
-
-/* Laptop */
-@media(max-width:1024px){
-
-    nav{
-        padding:0 40px;
-    }
-
-    .container{
-        width:95%;
-    }
-
-    .hero-title{
-        font-size:clamp(2.2rem,5vw,4rem);
-    }
-
-}
-
-/* Tablet */
-@media(max-width:768px){
-
-    nav{
-        height:75px;
-        padding:0 20px;
-    }
-
-    .logo{
 /* ══════════════════════════ FOOTER ══════════════════════════ */
 #footer {
   background: #00515B;
@@ -909,6 +879,37 @@ a {
   }
 
 }
+/*==================================================
+  19. RESPONSIVE
+==================================================*/
+
+/* Laptop */
+@media(max-width:1024px){
+
+    nav{
+        padding:0 40px;
+    }
+
+    .container{
+        width:95%;
+    }
+
+    .hero-title{
+        font-size:clamp(2.2rem,5vw,4rem);
+    }
+
+}
+
+/* Tablet */
+@media(max-width:768px){
+
+    nav{
+        height:75px;
+        padding:0 20px;
+    }
+
+    .logo{
+
         font-size:26px;
     }
 

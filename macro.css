@@ -484,19 +484,19 @@ button{
     cursor:pointer;
     font-weight:600;
     transition:4s;
-    background-color:var(--primary);
+    background:var(--gradient);
 }
 
 button:hover{
     transform:translateY(8px);
     box-shadow:
-        0 25px 60px rgba(0,109,119,.20),
-        0 10px 25px rgba(0,180,216,.15);
+        0 25px 60px rgba(0, 109, 119, .20),
+        0 10px 25px rgba(0, 180, 216, .15);
     border:5px solid var(--primary);
 }
 
 .btn{
-    background:var(--primary);
+    background:var(--gradient);
     color:white;
     width:100%;
 }
@@ -539,7 +539,7 @@ i{
 ==============================*/
 .pdf-btn{
     margin-top:15px;
-    background:var(--primary);
+    background:var(--gradient);
     color:var(--bg);
     transition:3s;
     border:3px solid var(--primary);

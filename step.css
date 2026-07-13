@@ -480,7 +480,7 @@ button{
     margin-top:15px;
     padding:14px;
     border-radius:12px;
-    border:3px solid var(--primary-dark);
+    border:1.5px solid var(--primary-dark);
      background: var(--gradient);
     color:#fff;
     font-size:16px;

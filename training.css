@@ -1409,7 +1409,7 @@ nav {
 }
 .view-all-btn{
    flex: 1;
-  background: var(--primary);
+  background: var(--gradient);
   color: #fff;
   border-radius: 12px;
   font-family: sans-serif;
@@ -1417,12 +1417,15 @@ nav {
   font-size: 13.5px;
   padding: 11px 14px;
   cursor: pointer;
-  transition: background .2s, transform .2s;
+  transition:3s;
 }
 
 .view-all-btn:hover {
-  background: var(--primary-dark);
-  transform: translateY(-1px);
+  background: var(--gradient);
+  transform: translateY(8px);
+  box-shadow:
+        0 25px 60px rgba(0, 109, 119, .20),
+        0 10px 25px rgba(0, 180, 216, .15);
 }
 
 .view-all-btn:focus-visible {
@@ -1431,7 +1434,7 @@ nav {
 }
 .btn-book {
   flex: 1;
-  background: var(--primary);
+  background: var(--gradient);
   color: #fff;
   border: none;
   border-radius: 12px;
@@ -1440,12 +1443,15 @@ nav {
   font-size: 13.5px;
   padding: 11px 14px;
   cursor: pointer;
-  transition: background .2s, transform .2s;
+  transition:3s;
 }
 
 .btn-book:hover {
-  background: var(--primary-dark);
-  transform: translateY(-1px);
+  background: var(--gradient);
+  box-shadow:
+        0 25px 60px rgba(0, 109, 119, .20),
+        0 10px 25px rgba(0, 180, 216, .15);
+  transform: translateY(8px);
 }
 
 .btn-book:focus-visible {
